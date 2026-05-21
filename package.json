@@ -1,11 +1,11 @@
 {
-  "name": "odin-mono-web-apps",
+  "name": "react-typescript-web-apps",
   "version": "0.1.0",
-  "description": "The Odin Projects collection",
+  "description": "A collection of React and TypeScript frontend applications built during frontend training.",
   "license": "MIT",
-  "repository": "https://github.com/itkrivoshei/OdinMonoWebApps",
+  "repository": "https://github.com/itkrivoshei/react-typescript-web-apps",
   "private": true,
-  "homepage": "https://kriv.dev/OdinMonoWebApps/",
+  "homepage": "https://itkrivoshei.github.io/react-typescript-web-apps/",
   "proxy": "http://api.weatherapi.com",
   "dependencies": {
     "@chakra-ui/icons": "^2.1.1",
@@ -36,7 +36,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --watchAll=false",
     "eject": "react-scripts eject",
     "pretty": "prettier --write .",
     "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}' --fix",
