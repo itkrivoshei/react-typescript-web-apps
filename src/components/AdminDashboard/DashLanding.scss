@@ -28,8 +28,13 @@
     font: inherit;
   }
 
-  button {
+  button,
+  a {
     cursor: pointer;
+  }
+
+  a {
+    text-decoration: none;
   }
 
   .sidebar {
@@ -78,14 +83,18 @@
       list-style: none;
     }
 
-    li {
+    button {
       display: flex;
       align-items: center;
       gap: 12px;
+      width: 100%;
       padding: 11px 12px;
+      border: 0;
       border-radius: 14px;
+      background: transparent;
       color: #bdc2d9;
       font-weight: 700;
+      text-align: left;
       transition:
         background-color 0.2s ease,
         color 0.2s ease,
@@ -95,6 +104,11 @@
         background: rgba(189, 147, 249, 0.14);
         color: #f8f8f2;
         transform: translateX(2px);
+      }
+
+      &:focus-visible {
+        outline: 3px solid rgba(255, 121, 198, 0.35);
+        outline-offset: 3px;
       }
 
       svg {
@@ -172,8 +186,8 @@
   }
 
   .icon-button,
-  .card-actions button,
-  .actions button {
+  .card-actions a,
+  .actions a {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -209,6 +223,10 @@
     display: flex;
     align-items: center;
     gap: 12px;
+  }
+
+  .user-info {
+    color: inherit;
   }
 
   .nickname {
@@ -264,7 +282,7 @@
     flex-wrap: wrap;
     gap: 10px;
 
-    button {
+    a {
       padding: 10px 14px;
       font-weight: 800;
     }
@@ -406,7 +424,7 @@
     margin-top: auto;
     padding-top: 18px;
 
-    button {
+    a {
       width: 38px;
       height: 38px;
     }
