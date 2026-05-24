@@ -38,10 +38,11 @@ const darkTheme = createTheme({
       main: '#c4b5fd',
     },
     background: {
-      default: '#111827',
-      paper: '#1f2937',
+      default: '#0f172a',
+      paper: '#1e293b',
     },
     text: {
+      primary: '#f8fafc',
       secondary: '#cbd5e1',
     },
   },
@@ -50,10 +51,11 @@ const darkTheme = createTheme({
       'Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
     h1: {
       fontWeight: 900,
-      letterSpacing: '-0.07em',
+      letterSpacing: '-0.075em',
     },
     h6: {
-      fontWeight: 800,
+      fontWeight: 900,
+      letterSpacing: '-0.025em',
     },
   },
   shape: {
@@ -93,10 +95,16 @@ const Library: React.FC = () => {
     [books]
   );
 
+  const unreadBooksCount = books.length - readBooksCount;
+
   const totalPages = useMemo(
     () => books.reduce((total, book) => total + book.pages, 0),
     [books]
   );
+
+  const readProgress = books.length
+    ? Math.round((readBooksCount / books.length) * 100)
+    : 0;
 
   const resetForm = () => {
     setFormData(initialFormData);
@@ -149,236 +157,347 @@ const Library: React.FC = () => {
       <Box
         sx={{
           minHeight: '100vh',
-          py: { xs: 4, md: 6 },
+          py: { xs: 3, md: 6 },
+          px: { xs: 2, md: 3 },
           background:
-            'radial-gradient(circle at 15% 0, rgba(167, 243, 208, 0.16), transparent 32rem), radial-gradient(circle at 90% 10%, rgba(196, 181, 253, 0.12), transparent 28rem), #111827',
+            'radial-gradient(circle at 16% 0, rgba(167, 243, 208, 0.18), transparent 34rem), radial-gradient(circle at 88% 8%, rgba(196, 181, 253, 0.16), transparent 30rem), linear-gradient(135deg, #0f172a, #111827 52%, #1e1b4b)',
         }}
       >
-        <Container component='main' maxWidth='lg'>
+        <Container component='main' maxWidth='lg' disableGutters>
           <Paper
-            elevation={12}
+            elevation={0}
             sx={{
-              p: { xs: 3, md: 4 },
+              position: 'relative',
+              overflow: 'hidden',
+              p: { xs: 2.5, md: 4 },
               width: '100%',
               border: '1px solid rgba(167, 243, 208, 0.14)',
-              borderRadius: 5,
+              borderRadius: { xs: 4, md: 6 },
               background:
-                'linear-gradient(145deg, rgba(31, 41, 55, 0.96), rgba(17, 24, 39, 0.98))',
-              boxShadow: '0 30px 100px rgba(0, 0, 0, 0.34)',
+                'linear-gradient(145deg, rgba(15, 23, 42, 0.92), rgba(30, 41, 59, 0.86))',
+              boxShadow: '0 32px 110px rgba(0, 0, 0, 0.38)',
+              '&::before': {
+                position: 'absolute',
+                inset: 0,
+                pointerEvents: 'none',
+                content: '""',
+                background:
+                  'linear-gradient(90deg, rgba(167, 243, 208, 0.08), transparent 28%, rgba(196, 181, 253, 0.08))',
+              },
             }}
           >
-            <Stack
-              direction={{ xs: 'column', md: 'row' }}
-              justifyContent='space-between'
-              alignItems={{ xs: 'flex-start', md: 'flex-end' }}
-              spacing={3}
-              sx={{ mb: 4 }}
-            >
-              <Box>
-                <Typography
-                  variant='overline'
-                  color='primary'
-                  sx={{ fontWeight: 900, letterSpacing: '0.18em' }}
-                >
-                  Reading tracker
-                </Typography>
-                <Typography
-                  variant='h1'
-                  color='secondary'
-                  sx={{
-                    fontSize: { xs: '3rem', md: '4.8rem' },
-                    lineHeight: 0.95,
-                  }}
-                >
-                  Book Library
-                </Typography>
-                <Typography
-                  color='text.secondary'
-                  sx={{ mt: 2, maxWidth: 620, lineHeight: 1.8 }}
-                >
-                  Track books, reading status, and page count in a compact
-                  library board without extra routing or storage complexity.
-                </Typography>
-              </Box>
-
-              <Button
-                variant='contained'
-                color='secondary'
-                onClick={() => setShowForm((current) => !current)}
-                sx={{ minWidth: 160, borderRadius: 999, fontWeight: 900 }}
+            <Box sx={{ position: 'relative' }}>
+              <Stack
+                direction={{ xs: 'column', md: 'row' }}
+                justifyContent='space-between'
+                alignItems={{ xs: 'flex-start', md: 'flex-end' }}
+                spacing={3}
+                sx={{ mb: { xs: 3, md: 4 } }}
               >
-                {showForm ? 'Close Form' : 'Add Book'}
-              </Button>
-            </Stack>
-
-            <Box
-              sx={{
-                display: 'grid',
-                gridTemplateColumns: {
-                  xs: '1fr',
-                  md: showForm ? '1.2fr 0.8fr' : '1fr',
-                },
-                gap: 3,
-              }}
-            >
-              <Box>
-                <Box
-                  sx={{
-                    display: 'grid',
-                    gridTemplateColumns: {
-                      xs: '1fr',
-                      sm: 'repeat(3, minmax(0, 1fr))',
-                    },
-                    gap: 1.5,
-                    mb: 3,
-                  }}
-                >
-                  <StatCard label='Books' value={books.length} />
-                  <StatCard label='Read' value={readBooksCount} />
-                  <StatCard label='Pages' value={totalPages} />
+                <Box>
+                  <Typography
+                    variant='overline'
+                    color='primary'
+                    sx={{ fontWeight: 900, letterSpacing: '0.18em' }}
+                  >
+                    Reading tracker
+                  </Typography>
+                  <Typography
+                    variant='h1'
+                    sx={{
+                      mt: 0.5,
+                      fontSize: { xs: '3.2rem', md: '5.4rem' },
+                      lineHeight: 0.9,
+                      color: '#f8fafc',
+                    }}
+                  >
+                    Book Library
+                  </Typography>
+                  <Typography
+                    color='text.secondary'
+                    sx={{ mt: 2.25, maxWidth: 640, lineHeight: 1.8 }}
+                  >
+                    A compact library board for tracking books, reading status,
+                    and total page count with a small, focused interface.
+                  </Typography>
                 </Box>
 
-                <Box
+                <Button
+                  variant='contained'
+                  color='secondary'
+                  onClick={() => setShowForm((current) => !current)}
                   sx={{
-                    display: 'grid',
-                    gridTemplateColumns: {
-                      xs: '1fr',
-                      md: 'repeat(2, minmax(0, 1fr))',
+                    minWidth: 168,
+                    minHeight: 46,
+                    borderRadius: 999,
+                    color: '#111827',
+                    fontWeight: 900,
+                    boxShadow: '0 18px 40px rgba(196, 181, 253, 0.2)',
+                    '&:hover': {
+                      boxShadow: '0 22px 50px rgba(196, 181, 253, 0.3)',
+                      transform: 'translateY(-1px)',
                     },
-                    gap: 2,
                   }}
                 >
-                  {books.map((book, index) => (
-                    <Paper
-                      key={`${book.title}-${book.author}`}
-                      variant='outlined'
+                  {showForm ? 'Close Form' : 'Add Book'}
+                </Button>
+              </Stack>
+
+              <Box
+                sx={{
+                  display: 'grid',
+                  gridTemplateColumns: {
+                    xs: '1fr',
+                    lg: showForm ? 'minmax(0, 1.25fr) 360px' : '1fr',
+                  },
+                  gap: 3,
+                  alignItems: 'start',
+                }}
+              >
+                <Box>
+                  <Box
+                    sx={{
+                      display: 'grid',
+                      gridTemplateColumns: {
+                        xs: '1fr',
+                        sm: 'repeat(3, minmax(0, 1fr))',
+                      },
+                      gap: 1.5,
+                      mb: 2,
+                    }}
+                  >
+                    <StatCard label='Books' value={books.length} />
+                    <StatCard label='Read' value={readBooksCount} />
+                    <StatCard label='Pages' value={totalPages} />
+                  </Box>
+
+                  <Paper
+                    variant='outlined'
+                    sx={{
+                      mb: 3,
+                      p: 2,
+                      borderRadius: 4,
+                      borderColor: 'rgba(167, 243, 208, 0.12)',
+                      background: 'rgba(15, 23, 42, 0.52)',
+                    }}
+                  >
+                    <Stack
+                      direction={{ xs: 'column', sm: 'row' }}
+                      justifyContent='space-between'
+                      spacing={1.5}
+                      sx={{ mb: 1.5 }}
+                    >
+                      <Typography fontWeight={900}>Reading progress</Typography>
+                      <Typography color='text.secondary'>
+                        {readBooksCount} read · {unreadBooksCount} unread
+                      </Typography>
+                    </Stack>
+                    <Box
+                      aria-label={`Reading progress ${readProgress}%`}
                       sx={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        gap: 1.5,
-                        p: 2.5,
-                        minHeight: 210,
-                        borderRadius: 4,
-                        borderColor: book.read
-                          ? 'rgba(167, 243, 208, 0.28)'
-                          : 'rgba(196, 181, 253, 0.22)',
-                        background:
-                          'linear-gradient(180deg, rgba(55, 65, 81, 0.56), rgba(31, 41, 55, 0.72))',
+                        height: 10,
+                        overflow: 'hidden',
+                        borderRadius: 999,
+                        background: 'rgba(148, 163, 184, 0.16)',
                       }}
                     >
-                      <Stack
-                        direction='row'
-                        justifyContent='space-between'
-                        spacing={1}
-                        alignItems='flex-start'
+                      <Box
+                        sx={{
+                          width: `${readProgress}%`,
+                          height: '100%',
+                          borderRadius: 999,
+                          background:
+                            'linear-gradient(90deg, #a7f3d0, #c4b5fd)',
+                        }}
+                      />
+                    </Box>
+                  </Paper>
+
+                  <Box
+                    sx={{
+                      display: 'grid',
+                      gridTemplateColumns: {
+                        xs: '1fr',
+                        md: 'repeat(2, minmax(0, 1fr))',
+                      },
+                      gap: 2,
+                    }}
+                  >
+                    {books.map((book, index) => (
+                      <Paper
+                        key={`${book.title}-${book.author}`}
+                        variant='outlined'
+                        sx={{
+                          position: 'relative',
+                          display: 'flex',
+                          flexDirection: 'column',
+                          gap: 1.5,
+                          minHeight: 230,
+                          overflow: 'hidden',
+                          p: 2.5,
+                          pl: 3,
+                          borderRadius: 4,
+                          borderColor: book.read
+                            ? 'rgba(167, 243, 208, 0.3)'
+                            : 'rgba(196, 181, 253, 0.24)',
+                          background: book.read
+                            ? 'linear-gradient(145deg, rgba(20, 83, 45, 0.28), rgba(30, 41, 59, 0.82))'
+                            : 'linear-gradient(145deg, rgba(76, 29, 149, 0.22), rgba(30, 41, 59, 0.82))',
+                          boxShadow: '0 20px 60px rgba(0, 0, 0, 0.22)',
+                          '&::before': {
+                            position: 'absolute',
+                            top: 0,
+                            bottom: 0,
+                            left: 0,
+                            width: 8,
+                            content: '""',
+                            background: book.read
+                              ? 'linear-gradient(180deg, #a7f3d0, #34d399)'
+                              : 'linear-gradient(180deg, #c4b5fd, #818cf8)',
+                          },
+                        }}
                       >
-                        <Box>
-                          <Typography color='primary' variant='h6'>
-                            {book.title}
-                          </Typography>
-                          <Typography color='text.secondary'>
-                            {book.author}
-                          </Typography>
-                        </Box>
-                        <Chip
-                          size='small'
-                          label={book.read ? 'Read' : 'Unread'}
-                          color={book.read ? 'success' : 'secondary'}
-                          variant='outlined'
-                        />
-                      </Stack>
-
-                      <Typography color='text.secondary'>
-                        {book.pages} pages
-                      </Typography>
-
-                      <Divider sx={{ mt: 'auto' }} />
-
-                      <Stack
-                        direction='row'
-                        justifyContent='space-between'
-                        spacing={1}
-                      >
-                        <FormControlLabel
-                          control={
-                            <Checkbox
-                              checked={book.read}
-                              onChange={() => toggleRead(index)}
-                            />
-                          }
-                          label='Read'
-                        />
-                        <Button
-                          variant='outlined'
-                          color='error'
-                          onClick={() => removeBook(index)}
+                        <Stack
+                          direction='row'
+                          justifyContent='space-between'
+                          spacing={1.5}
+                          alignItems='flex-start'
                         >
-                          Remove
-                        </Button>
-                      </Stack>
-                    </Paper>
-                  ))}
-                </Box>
-              </Box>
+                          <Box sx={{ minWidth: 0 }}>
+                            <Typography
+                              color='primary'
+                              variant='h6'
+                              sx={{ lineHeight: 1.2 }}
+                            >
+                              {book.title}
+                            </Typography>
+                            <Typography color='text.secondary' sx={{ mt: 0.5 }}>
+                              {book.author}
+                            </Typography>
+                          </Box>
+                          <Chip
+                            size='small'
+                            label={book.read ? 'Read' : 'Unread'}
+                            color={book.read ? 'success' : 'secondary'}
+                            variant='outlined'
+                            sx={{ fontWeight: 900 }}
+                          />
+                        </Stack>
 
-              {showForm && (
-                <Paper
-                  component='form'
-                  onSubmit={handleFormSubmit}
-                  variant='outlined'
-                  sx={{
-                    p: 2.5,
-                    borderRadius: 4,
-                    borderColor: 'rgba(167, 243, 208, 0.14)',
-                    background: 'rgba(31, 41, 55, 0.72)',
-                  }}
-                >
-                  <Typography variant='h6' color='primary' gutterBottom>
-                    Add a book
-                  </Typography>
-                  <Stack spacing={2}>
-                    <TextField
-                      name='title'
-                      label='Title'
-                      value={formData.title}
-                      onChange={handleInputChange}
-                      fullWidth
-                      required
-                    />
-                    <TextField
-                      name='author'
-                      label='Author'
-                      value={formData.author}
-                      onChange={handleInputChange}
-                      fullWidth
-                      required
-                    />
-                    <TextField
-                      name='pages'
-                      label='Pages'
-                      type='number'
-                      value={formData.pages}
-                      onChange={handleInputChange}
-                      inputProps={{ min: 1 }}
-                      fullWidth
-                      required
-                    />
-                    <FormControlLabel
-                      control={
-                        <Checkbox
-                          name='read'
-                          checked={formData.read}
-                          onChange={handleInputChange}
-                        />
-                      }
-                      label='Already read'
-                    />
-                    <Button type='submit' variant='contained' color='primary'>
-                      Save Book
-                    </Button>
-                  </Stack>
-                </Paper>
-              )}
+                        <Typography color='text.secondary'>
+                          {book.pages} pages
+                        </Typography>
+
+                        <Divider sx={{ mt: 'auto', borderColor: 'divider' }} />
+
+                        <Stack
+                          direction={{ xs: 'column', sm: 'row' }}
+                          justifyContent='space-between'
+                          spacing={1.25}
+                          alignItems={{ xs: 'stretch', sm: 'center' }}
+                        >
+                          <FormControlLabel
+                            control={
+                              <Checkbox
+                                checked={book.read}
+                                onChange={() => toggleRead(index)}
+                              />
+                            }
+                            label='Read'
+                          />
+                          <Button
+                            variant='outlined'
+                            color='error'
+                            onClick={() => removeBook(index)}
+                            sx={{ borderRadius: 999, fontWeight: 900 }}
+                          >
+                            Remove
+                          </Button>
+                        </Stack>
+                      </Paper>
+                    ))}
+                  </Box>
+                </Box>
+
+                {showForm && (
+                  <Paper
+                    component='form'
+                    onSubmit={handleFormSubmit}
+                    variant='outlined'
+                    sx={{
+                      position: { lg: 'sticky' },
+                      top: { lg: 24 },
+                      p: 2.5,
+                      borderRadius: 4,
+                      borderColor: 'rgba(167, 243, 208, 0.16)',
+                      background:
+                        'linear-gradient(180deg, rgba(30, 41, 59, 0.92), rgba(15, 23, 42, 0.9))',
+                      boxShadow: '0 22px 70px rgba(0, 0, 0, 0.24)',
+                    }}
+                  >
+                    <Typography variant='h6' color='primary'>
+                      Add a book
+                    </Typography>
+                    <Typography
+                      color='text.secondary'
+                      sx={{ mt: 0.5, mb: 2, lineHeight: 1.6 }}
+                    >
+                      Add a title, author, and page count to extend the board.
+                    </Typography>
+                    <Stack spacing={2}>
+                      <TextField
+                        name='title'
+                        label='Title'
+                        value={formData.title}
+                        onChange={handleInputChange}
+                        fullWidth
+                        required
+                      />
+                      <TextField
+                        name='author'
+                        label='Author'
+                        value={formData.author}
+                        onChange={handleInputChange}
+                        fullWidth
+                        required
+                      />
+                      <TextField
+                        name='pages'
+                        label='Pages'
+                        type='number'
+                        value={formData.pages}
+                        onChange={handleInputChange}
+                        inputProps={{ min: 1 }}
+                        fullWidth
+                        required
+                      />
+                      <FormControlLabel
+                        control={
+                          <Checkbox
+                            name='read'
+                            checked={formData.read}
+                            onChange={handleInputChange}
+                          />
+                        }
+                        label='Already read'
+                      />
+                      <Button
+                        type='submit'
+                        variant='contained'
+                        color='primary'
+                        sx={{
+                          minHeight: 44,
+                          borderRadius: 999,
+                          color: '#111827',
+                          fontWeight: 900,
+                        }}
+                      >
+                        Save Book
+                      </Button>
+                    </Stack>
+                  </Paper>
+                )}
+              </Box>
             </Box>
           </Paper>
         </Container>
@@ -399,14 +518,20 @@ const StatCard: React.FC<StatCardProps> = ({ label, value }) => {
       sx={{
         p: 2,
         borderRadius: 3,
-        borderColor: 'rgba(167, 243, 208, 0.14)',
-        background: 'rgba(167, 243, 208, 0.05)',
+        borderColor: 'rgba(167, 243, 208, 0.16)',
+        background:
+          'linear-gradient(145deg, rgba(167, 243, 208, 0.08), rgba(30, 41, 59, 0.62))',
+        boxShadow: '0 16px 45px rgba(0, 0, 0, 0.16)',
       }}
     >
-      <Typography variant='caption' color='text.secondary'>
+      <Typography
+        variant='caption'
+        color='text.secondary'
+        sx={{ fontWeight: 900, letterSpacing: '0.12em', textTransform: 'uppercase' }}
+      >
         {label}
       </Typography>
-      <Typography variant='h4' sx={{ fontWeight: 900 }}>
+      <Typography variant='h4' sx={{ mt: 0.5, fontWeight: 900 }}>
         {value}
       </Typography>
     </Paper>
