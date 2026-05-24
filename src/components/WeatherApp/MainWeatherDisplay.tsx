@@ -1,8 +1,7 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect, useRef } from 'react';
 import { Box, Typography, Divider, Paper, Stack } from '@mui/material';
 
-import { RootState, AppDispatch } from '../../redux/store';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { fetchWeather } from '../../redux/slices/weatherSlice';
 import WeatherMeme from './WeatherMeme';
 
@@ -22,27 +21,36 @@ const dividerSx = {
   backgroundColor: 'rgba(114, 9, 183, 0.75)',
 };
 
+const formatLocalTime = (localTime: string): string => {
+  const date = new Date(localTime);
+  const hours = date.getHours().toString().padStart(2, '0');
+  const minutes = date.getMinutes().toString().padStart(2, '0');
+  const day = date.getDate().toString().padStart(2, '0');
+  const month = (date.getMonth() + 1).toString().padStart(2, '0');
+  const year = date.getFullYear();
+
+  return `${hours}:${minutes} | ${day}/${month}/${year}`;
+};
+
 const MainWeatherDisplay: React.FC = () => {
-  const dispatch: AppDispatch = useDispatch();
-  const { weatherData, error, region } = useSelector(
-    (state: RootState) => state.weather
+  const dispatch = useAppDispatch();
+  const hasRequestedLocation = useRef(false);
+  const { weatherData, weatherLoading, error, region } = useAppSelector(
+    (state) => state.weather
   );
 
   useEffect(() => {
-    if ('geolocation' in navigator) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const { latitude, longitude } = position.coords;
-          dispatch(fetchWeather({ latitude, longitude }));
-        },
-        (error) => {
-          console.error('Geolocation error:', error.message);
-        }
-      );
-    } else {
-      console.error('Geolocation is not supported by this browser.');
-    }
-  }, [dispatch]);
+    if (hasRequestedLocation.current || weatherData) return;
+
+    hasRequestedLocation.current = true;
+
+    if (!('geolocation' in navigator)) return;
+
+    navigator.geolocation.getCurrentPosition((position) => {
+      const { latitude, longitude } = position.coords;
+      dispatch(fetchWeather({ latitude, longitude }));
+    });
+  }, [dispatch, weatherData]);
 
   const renderStatusCard = (
     message: string,
@@ -71,6 +79,10 @@ const MainWeatherDisplay: React.FC = () => {
     return renderStatusCard(`Error: ${error}`, 'error');
   }
 
+  if (weatherLoading) {
+    return renderStatusCard('Loading weather data');
+  }
+
   if (!weatherData) {
     return renderStatusCard('Search by city or allow location access');
   }
@@ -80,16 +92,6 @@ const MainWeatherDisplay: React.FC = () => {
 
   const displayWindSpeed = (speed: number) =>
     `${speed} ${region === 'EU' ? 'kph' : 'mph'}`;
-
-  function formatLocalTime(localTime: string): string {
-    const date = new Date(localTime);
-    const hours = date.getHours().toString().padStart(2, '0');
-    const minutes = date.getMinutes().toString().padStart(2, '0');
-    const day = date.getDate().toString().padStart(2, '0');
-    const month = (date.getMonth() + 1).toString().padStart(2, '0');
-    const year = date.getFullYear();
-    return `${hours}:${minutes} | ${day}/${month}/${year}`;
-  }
 
   return (
     <Box
@@ -163,4 +165,4 @@ const MainWeatherDisplay: React.FC = () => {
   );
 };
 
-export default MainWeatherDisplay;
+export default React.memo(MainWeatherDisplay);
