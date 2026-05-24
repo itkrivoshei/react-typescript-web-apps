@@ -31,10 +31,10 @@ interface GameState {
   outcome: Outcome;
 }
 
-const weapons: { value: Weapon; label: string; hint: string }[] = [
-  { value: 'ROCK', label: 'Rock', hint: 'Breaks scissors' },
-  { value: 'PAPER', label: 'Paper', hint: 'Covers rock' },
-  { value: 'SCISSORS', label: 'Scissors', hint: 'Cuts paper' },
+const weapons: { value: Weapon; label: string; icon: string; hint: string }[] = [
+  { value: 'ROCK', label: 'Rock', icon: '✊', hint: 'Breaks scissors' },
+  { value: 'PAPER', label: 'Paper', icon: '✋', hint: 'Covers rock' },
+  { value: 'SCISSORS', label: 'Scissors', icon: '✌️', hint: 'Cuts paper' },
 ];
 
 const initialGameState: GameState = {
@@ -49,44 +49,27 @@ const initialGameState: GameState = {
 };
 
 const outcomeStyles: Record<OutcomeView, { label: string; color: string }> = {
-  idle: { label: 'Ready', color: '#bdc2d9' },
-  win: { label: 'Win', color: '#50fa7b' },
-  loss: { label: 'Loss', color: '#ff5555' },
-  tie: { label: 'Tie', color: '#f1fa8c' },
+  idle: { label: 'Ready', color: '#cbd5e1' },
+  win: { label: 'Win', color: '#22c55e' },
+  loss: { label: 'Loss', color: '#fb7185' },
+  tie: { label: 'Tie', color: '#facc15' },
 };
 
 const theme = createTheme({
   palette: {
     mode: 'dark',
-    primary: {
-      main: '#50fa7b',
-    },
-    secondary: {
-      main: '#ff79c6',
-    },
-    background: {
-      default: '#282a36',
-      paper: '#44475a',
-    },
-    text: {
-      primary: '#f8f8f2',
-      secondary: '#bdc2d9',
-    },
+    primary: { main: '#38bdf8' },
+    secondary: { main: '#f97316' },
+    background: { default: '#0f172a', paper: '#1e293b' },
+    text: { primary: '#f8fafc', secondary: '#cbd5e1' },
   },
   typography: {
     fontFamily:
       'Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
-    h1: {
-      fontWeight: 900,
-      letterSpacing: '-0.07em',
-    },
-    h6: {
-      fontWeight: 800,
-    },
+    h1: { fontWeight: 900, letterSpacing: '-0.07em' },
+    h6: { fontWeight: 900 },
   },
-  shape: {
-    borderRadius: 18,
-  },
+  shape: { borderRadius: 10 },
 });
 
 const getComputerChoice = (): Weapon => {
@@ -98,9 +81,7 @@ const getRoundResult = (
   playerWeapon: Weapon,
   computerWeapon: Weapon
 ): Outcome => {
-  if (computerWeapon === playerWeapon) {
-    return 'tie';
-  }
+  if (computerWeapon === playerWeapon) return 'tie';
 
   if (
     (computerWeapon === 'PAPER' && playerWeapon === 'SCISSORS') ||
@@ -129,18 +110,9 @@ const getRoundMessage = (
 };
 
 const ResultIcon: React.FC<{ outcome: Outcome }> = ({ outcome }) => {
-  if (outcome === 'win') {
-    return <EmojiEventsIcon sx={{ fontSize: 46, color: '#50fa7b' }} />;
-  }
-
-  if (outcome === 'tie') {
-    return <PeopleIcon sx={{ fontSize: 46, color: '#f1fa8c' }} />;
-  }
-
-  if (outcome === 'loss') {
-    return <MoodBadIcon sx={{ fontSize: 46, color: '#ff5555' }} />;
-  }
-
+  if (outcome === 'win') return <EmojiEventsIcon sx={{ fontSize: 46, color: '#22c55e' }} />;
+  if (outcome === 'tie') return <PeopleIcon sx={{ fontSize: 46, color: '#facc15' }} />;
+  if (outcome === 'loss') return <MoodBadIcon sx={{ fontSize: 46, color: '#fb7185' }} />;
   return null;
 };
 
@@ -180,24 +152,24 @@ export const RockPaperScissors: React.FC = () => {
           alignItems: 'center',
           py: { xs: 4, md: 6 },
           background:
-            'radial-gradient(circle at 20% 0, rgba(80, 250, 123, 0.16), transparent 30rem), radial-gradient(circle at 85% 10%, rgba(255, 121, 198, 0.12), transparent 28rem), #282a36',
+            'radial-gradient(circle at 18% 0, rgba(56, 189, 248, 0.2), transparent 30rem), radial-gradient(circle at 88% 12%, rgba(249, 115, 22, 0.16), transparent 28rem), linear-gradient(135deg, #0f172a, #111827 55%, #312e81)',
         }}
       >
         <Container maxWidth='md'>
           <Paper
-            elevation={14}
+            elevation={0}
             sx={{
-              p: { xs: 3, md: 4 },
-              borderRadius: 5,
-              border: '1px solid rgba(248, 248, 242, 0.08)',
+              p: { xs: 2.5, md: 4 },
+              borderRadius: 3,
+              border: '1px solid rgba(248, 250, 252, 0.12)',
               background:
-                'linear-gradient(145deg, rgba(68, 71, 90, 0.96), rgba(40, 42, 54, 0.98))',
+                'linear-gradient(145deg, rgba(15, 23, 42, 0.94), rgba(30, 41, 59, 0.9))',
               boxShadow: '0 30px 100px rgba(0, 0, 0, 0.34)',
             }}
           >
             <Stack
               direction={{ xs: 'column', md: 'row' }}
-              spacing={4}
+              spacing={3}
               alignItems='stretch'
             >
               <Box sx={{ flex: 1.1 }}>
@@ -244,18 +216,28 @@ export const RockPaperScissors: React.FC = () => {
                       color='primary'
                       onClick={() => playOneRound(weapon.value)}
                       sx={{
-                        minHeight: 104,
+                        minHeight: 112,
                         alignItems: 'flex-start',
                         justifyContent: 'space-between',
                         flexDirection: 'column',
                         p: 2,
-                        borderRadius: 4,
-                        color: '#1f2130',
+                        borderRadius: 2,
+                        color: '#0f172a',
                         textAlign: 'left',
+                        boxShadow: '0 16px 36px rgba(56, 189, 248, 0.16)',
+                        '&:hover': {
+                          transform: 'translateY(-2px)',
+                          boxShadow: '0 20px 44px rgba(56, 189, 248, 0.24)',
+                        },
                       }}
                     >
-                      <Typography variant='h6'>{weapon.label}</Typography>
-                      <Typography variant='caption'>{weapon.hint}</Typography>
+                      <Typography sx={{ fontSize: '2rem', lineHeight: 1 }}>
+                        {weapon.icon}
+                      </Typography>
+                      <Box>
+                        <Typography variant='h6'>{weapon.label}</Typography>
+                        <Typography variant='caption'>{weapon.hint}</Typography>
+                      </Box>
                     </Button>
                   ))}
                 </Box>
@@ -269,16 +251,12 @@ export const RockPaperScissors: React.FC = () => {
                   flexDirection: 'column',
                   gap: 2.5,
                   p: { xs: 2.5, md: 3 },
-                  borderRadius: 4,
-                  borderColor: 'rgba(248, 248, 242, 0.08)',
-                  background: 'rgba(40, 42, 54, 0.7)',
+                  borderRadius: 2,
+                  borderColor: 'rgba(248, 250, 252, 0.12)',
+                  background: 'rgba(15, 23, 42, 0.66)',
                 }}
               >
-                <Stack
-                  direction='row'
-                  justifyContent='space-between'
-                  spacing={2}
-                >
+                <Stack direction='row' justifyContent='space-between' spacing={2}>
                   <Typography variant='overline' color='text.secondary'>
                     Round status
                   </Typography>
@@ -286,8 +264,10 @@ export const RockPaperScissors: React.FC = () => {
                     size='small'
                     label={resultStyle.label}
                     sx={{
+                      borderRadius: 1.5,
                       borderColor: resultStyle.color,
                       color: resultStyle.color,
+                      fontWeight: 900,
                     }}
                     variant='outlined'
                   />
@@ -301,11 +281,12 @@ export const RockPaperScissors: React.FC = () => {
                     alignItems: 'center',
                     justifyContent: 'center',
                     gap: 1.5,
-                    border: '1px solid rgba(248, 248, 242, 0.08)',
-                    borderRadius: 4,
+                    border: '1px solid rgba(248, 250, 252, 0.1)',
+                    borderRadius: 2,
                     background:
-                      'radial-gradient(circle at top, rgba(189, 147, 249, 0.12), transparent 15rem)',
+                      'radial-gradient(circle at top, rgba(56, 189, 248, 0.12), transparent 15rem)',
                     textAlign: 'center',
+                    px: 2,
                   }}
                 >
                   <ResultIcon outcome={gameState.outcome} />
@@ -342,7 +323,7 @@ export const RockPaperScissors: React.FC = () => {
                   variant='outlined'
                   color='secondary'
                   onClick={resetGame}
-                  sx={{ borderRadius: 999, fontWeight: 800 }}
+                  sx={{ borderRadius: 2, fontWeight: 900 }}
                 >
                   Reset score
                 </Button>
@@ -365,9 +346,9 @@ const ScoreCard: React.FC<ScoreCardProps> = ({ label, value }) => {
     <Box
       sx={{
         p: 1.5,
-        border: '1px solid rgba(248, 248, 242, 0.08)',
-        borderRadius: 3,
-        background: 'rgba(68, 71, 90, 0.54)',
+        border: '1px solid rgba(248, 250, 252, 0.1)',
+        borderRadius: 2,
+        background: 'rgba(30, 41, 59, 0.64)',
       }}
     >
       <Typography variant='caption' color='text.secondary'>
