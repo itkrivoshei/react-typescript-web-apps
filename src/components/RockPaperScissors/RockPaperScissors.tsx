@@ -6,6 +6,9 @@ import {
   CssBaseline,
   ThemeProvider,
   createTheme,
+  Paper,
+  Stack,
+  Box,
 } from '@mui/material';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import PeopleIcon from '@mui/icons-material/People';
@@ -21,27 +24,27 @@ interface GameState {
   message: string;
 }
 
-export const RockPaperScissors: React.FC = () => {
-  const theme = createTheme({
-    palette: {
-      mode: 'dark',
-      primary: {
-        main: '#50fa7b',
-      },
-      secondary: {
-        main: '#ff79c6',
-      },
-      background: {
-        default: '#282a36',
-        paper: '#44475a',
-      },
-      text: {
-        primary: '#f8f8f2',
-        secondary: '#6272a4',
-      },
+const theme = createTheme({
+  palette: {
+    mode: 'dark',
+    primary: {
+      main: '#50fa7b',
     },
-  });
+    secondary: {
+      main: '#ff79c6',
+    },
+    background: {
+      default: '#282a36',
+      paper: '#44475a',
+    },
+    text: {
+      primary: '#f8f8f2',
+      secondary: '#bdc2d9',
+    },
+  },
+});
 
+export const RockPaperScissors: React.FC = () => {
   const [gameState, setGameState] = useState<GameState>({
     gamesPlayed: 0,
     ties: 0,
@@ -106,87 +109,106 @@ export const RockPaperScissors: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Container
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
+      <Box
+        sx={{
           minHeight: '100vh',
+          display: 'flex',
+          alignItems: 'center',
+          background:
+            'radial-gradient(circle at top, rgba(80, 250, 123, 0.12), transparent 32rem), #282a36',
         }}
       >
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'space-evenly',
-            width: '100%',
-            maxWidth: '400px',
-            marginBottom: '2rem',
-          }}
-        >
-          <Button
-            variant='contained'
-            color='primary'
-            onClick={() => playOneRound('ROCK')}
+        <Container maxWidth='sm'>
+          <Paper
+            elevation={10}
+            sx={{
+              p: { xs: 3, md: 4 },
+              borderRadius: 4,
+              textAlign: 'center',
+              border: '1px solid rgba(248, 248, 242, 0.08)',
+            }}
           >
-            Rock
-          </Button>
-          <Button
-            variant='contained'
-            color='primary'
-            onClick={() => playOneRound('PAPER')}
-          >
-            Paper
-          </Button>
-          <Button
-            variant='contained'
-            color='primary'
-            onClick={() => playOneRound('SCISSORS')}
-          >
-            Scissors
-          </Button>
-        </div>
+            <Typography variant='overline' color='primary'>
+              Quick round
+            </Typography>
+            <Typography variant='h3' gutterBottom>
+              Rock Paper Scissors
+            </Typography>
+            <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1.5}>
+              <Button
+                fullWidth
+                variant='contained'
+                color='primary'
+                onClick={() => playOneRound('ROCK')}
+              >
+                Rock
+              </Button>
+              <Button
+                fullWidth
+                variant='contained'
+                color='primary'
+                onClick={() => playOneRound('PAPER')}
+              >
+                Paper
+              </Button>
+              <Button
+                fullWidth
+                variant='contained'
+                color='primary'
+                onClick={() => playOneRound('SCISSORS')}
+              >
+                Scissors
+              </Button>
+            </Stack>
 
-        <Typography
-          variant='h6'
-          style={{
-            marginTop: '2rem',
-            color: gameState.message.includes('WIN')
-              ? '#50fa7b'
-              : gameState.message.includes('TIE')
-                ? '#f1fa8c'
-                : '#ff5555',
-          }}
-        >
-          {gameState.message}
-        </Typography>
+            <Typography
+              variant='h6'
+              sx={{
+                minHeight: 32,
+                mt: 4,
+                color: gameState.message.includes('WIN')
+                  ? '#50fa7b'
+                  : gameState.message.includes('TIE')
+                    ? '#f1fa8c'
+                    : '#ff5555',
+              }}
+            >
+              {gameState.message}
+            </Typography>
 
-        {gameState.message.includes('WIN') && (
-          <EmojiEventsIcon style={{ marginTop: '0.5rem', color: '#50fa7b' }} />
-        )}
-        {gameState.message.includes('TIE') && (
-          <PeopleIcon style={{ marginTop: '0.5rem', color: '#f1fa8c' }} />
-        )}
-        {gameState.message.includes('LOSE') && (
-          <MoodBadIcon style={{ marginTop: '0.5rem', color: '#ff5555' }} />
-        )}
+            {gameState.message.includes('WIN') && (
+              <EmojiEventsIcon sx={{ mt: 1, color: '#50fa7b' }} />
+            )}
+            {gameState.message.includes('TIE') && (
+              <PeopleIcon sx={{ mt: 1, color: '#f1fa8c' }} />
+            )}
+            {gameState.message.includes('LOSE') && (
+              <MoodBadIcon sx={{ mt: 1, color: '#ff5555' }} />
+            )}
 
-        <Typography style={{ marginTop: '1.5rem' }}>
-          Game played: {gameState.gamesPlayed} <br />
-          Ties: {gameState.ties} <br />
-          You: {gameState.playerScore} <br />
-          Computer: {gameState.computerScore}
-        </Typography>
+            <Stack
+              direction={{ xs: 'column', sm: 'row' }}
+              spacing={2}
+              justifyContent='center'
+              sx={{ mt: 3 }}
+            >
+              <Typography>Games: {gameState.gamesPlayed}</Typography>
+              <Typography>Ties: {gameState.ties}</Typography>
+              <Typography>You: {gameState.playerScore}</Typography>
+              <Typography>Computer: {gameState.computerScore}</Typography>
+            </Stack>
 
-        <Button
-          variant='contained'
-          color='secondary'
-          onClick={resetGame}
-          style={{ marginTop: '2rem' }}
-        >
-          Play Again
-        </Button>
-      </Container>
+            <Button
+              variant='outlined'
+              color='secondary'
+              onClick={resetGame}
+              sx={{ mt: 4 }}
+            >
+              Reset
+            </Button>
+          </Paper>
+        </Container>
+      </Box>
     </ThemeProvider>
   );
 };
