@@ -9,7 +9,11 @@ const DEFAULT_BOARD_SIZE = 24;
 const DEFAULT_BOARD_COLOR = '#f8fafc';
 const DEFAULT_PIXEL_COLOR = '#6366f1';
 
-const drawModes: Array<{ value: DrawMode; label: string; description: string }> = [
+const drawModes: Array<{
+  value: DrawMode;
+  label: string;
+  description: string;
+}> = [
   {
     value: 'color',
     label: 'Color',
@@ -48,9 +52,9 @@ const EtchASketch: React.FC = () => {
   const rows = useMemo(() => Array.from({ length: boardSize }), [boardSize]);
 
   const resetPixels = (nextBoardColor = boardColor) => {
-    const pixels = workspaceRef.current?.querySelectorAll(
-      '.pixel'
-    ) as NodeListOf<HTMLDivElement> | undefined;
+    const pixels = workspaceRef.current?.querySelectorAll('.pixel') as
+      | NodeListOf<HTMLDivElement>
+      | undefined;
 
     pixels?.forEach((pixel) => {
       pixel.style.backgroundColor = nextBoardColor;
@@ -112,8 +116,8 @@ const EtchASketch: React.FC = () => {
           <p>Grid drawing tool</p>
           <h1>Etch A Sketch</h1>
           <span>
-            Hover across the canvas to draw. Tune the grid, background, and brush
-            mode.
+            Hover across the canvas to draw. Tune the grid, background, and
+            brush mode.
           </span>
         </div>
 
@@ -210,7 +214,9 @@ const EtchASketch: React.FC = () => {
               ))}
             </div>
             <div className='sketch-meta'>
-              <span>{boardSize} × {boardSize}</span>
+              <span>
+                {boardSize} × {boardSize}
+              </span>
               <span>{drawMode} mode</span>
             </div>
           </div>
