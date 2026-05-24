@@ -50,7 +50,7 @@ const DrumKey: React.FC<DrumKeyProps> = ({ pad }) => {
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.keyCode !== pad.keyCode) return;
+      if (event.repeat || event.keyCode !== pad.keyCode) return;
       playSound();
     };
 
