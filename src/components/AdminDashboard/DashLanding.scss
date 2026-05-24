@@ -1,34 +1,39 @@
-/* Global Styles */
 .dash-landing-container {
   * {
     box-sizing: border-box;
-    font-family: 'Fira Code', monospace;
+    font-family:
+      'Fira Code',
+      ui-monospace,
+      SFMono-Regular,
+      Menlo,
+      monospace;
     margin: 0;
   }
 
-  /* Form Controls */
   #search-input {
-    background-color: #282a36;
-    border: 1px solid #ff79c6;
-    padding: 7px 20px;
+    background-color: rgba(40, 42, 54, 0.9);
+    border: 1px solid rgba(255, 121, 198, 0.54);
+    border-radius: 999px;
+    padding: 9px 20px;
     width: 100%;
     color: #f8f8f2;
   }
 
   #search-input:focus {
     outline: none;
-    box-shadow: 0 0 0 1px #ff79c6;
+    box-shadow: 0 0 0 3px rgba(255, 121, 198, 0.18);
     border-color: #ff79c6;
   }
 
   display: grid;
-  grid-template-columns: 1fr 5fr;
-  height: 100vh;
+  grid-template-columns: minmax(220px, 1fr) 5fr;
+  min-height: 100vh;
+  background: #282a36;
 
-  /* Sidebar */
   .sidebar {
     background: #282a36;
-    padding: 20px;
+    padding: 24px;
+    border-right: 1px solid rgba(248, 248, 242, 0.08);
   }
 
   .sidebar .logo,
@@ -38,7 +43,7 @@
     display: flex;
     font-weight: bold;
     gap: 15px;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
     color: #f8f8f2;
   }
 
@@ -67,10 +72,6 @@
     cursor: pointer;
   }
 
-  .sidebar .logo img {
-    width: 50px;
-  }
-
   img {
     border: 2px solid #ff79c6;
   }
@@ -88,7 +89,13 @@
   .sidebar ul li {
     align-items: center;
     display: flex;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
+    padding: 8px 10px;
+    border-radius: 10px;
+  }
+
+  .sidebar ul li:hover {
+    background: rgba(189, 147, 249, 0.12);
   }
 
   .sidebar ul li svg {
@@ -99,38 +106,38 @@
     color: #f8f8f2;
   }
 
-  /* Main */
   .main {
     display: grid;
     grid-template-rows: auto 1fr;
   }
 
-  /* Header */
   .header {
     background: #44475a;
-    padding: 20px;
+    padding: 24px;
+    box-shadow: 0 18px 60px rgba(0, 0, 0, 0.18);
   }
 
   .header .top-bar,
   .header .lower-bar {
     align-items: center;
-    border-bottom: 1px solid #6272a4;
     display: flex;
     justify-content: space-between;
   }
 
   .top-bar {
     padding: 0 20px 20px 0;
+    border-bottom: 1px solid rgba(98, 114, 164, 0.8);
   }
 
   .lower-bar {
-    padding: 20px;
+    padding: 20px 0 0;
+
     .actions {
       display: flex;
+      gap: 12px;
     }
   }
 
-  /* Search Bar */
   .search-bar {
     align-items: center;
     display: flex;
@@ -148,7 +155,6 @@
     color: #ff79c6;
   }
 
-  /* User Info */
   .user-info {
     align-items: center;
     display: flex;
@@ -164,7 +170,6 @@
     color: #bd93f9;
   }
 
-  /* Notifications */
   .notifications {
     margin-left: auto;
   }
@@ -195,17 +200,12 @@
     color: #f8f8f2;
   }
 
-  .greeting h2 {
-    margin: 0;
-  }
-
-  /* Content */
   .content {
-    background: #44475a;
+    background: #383a4d;
     display: grid;
     gap: 20px;
     grid-template-columns: 2fr 1fr;
-    padding: 20px;
+    padding: 24px;
   }
 
   .main-content h2 {
@@ -215,20 +215,25 @@
 
   .my-projects {
     background: #282a36;
+    border-radius: 18px;
     display: grid;
-    gap: 20px;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 18px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     padding: 20px;
   }
 
   .card {
     background: #44475a;
+    border: 1px solid rgba(248, 248, 242, 0.08);
+    border-radius: 16px;
     padding: 20px;
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.18);
   }
 
-  .card-actions :nth-child(-n + 2),
-  .actions :nth-child(-n + 2) {
-    margin-right: 10px;
+  .card-actions {
+    align-items: center;
+    display: flex;
+    gap: 10px;
   }
 
   .card h3 {
@@ -236,14 +241,9 @@
     color: #f8f8f2;
   }
 
-  .card-actions {
-    align-items: center;
-    display: flex;
-  }
-
-  /* Right Sidebar */
   .right-sidebar {
     background: #282a36;
+    border-radius: 18px;
     padding: 20px;
     align-self: start;
   }
@@ -255,8 +255,11 @@
   .announcements,
   .statistics {
     background: #44475a;
+    border: 1px solid rgba(248, 248, 242, 0.08);
+    border-radius: 16px;
     padding: 20px;
     color: #f8f8f2;
+    line-height: 1.5;
   }
 
   .announcements {
@@ -265,10 +268,12 @@
 
   .announcements h3,
   .statistics h3 {
-    padding-bottom: 20px;
+    padding-bottom: 14px;
   }
 
-  @media (max-width: 800px) {
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+
     .content {
       grid-template-columns: 1fr;
     }
