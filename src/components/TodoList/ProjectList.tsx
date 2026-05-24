@@ -52,7 +52,7 @@ const ProjectList: React.FC = () => {
 
   return (
     <Box
-      sx={{ display: 'flex', flexDirection: 'column', gap: 2, width: '100%' }}
+      sx={{ display: 'flex', flexDirection: 'column', gap: 1.5, width: '100%' }}
     >
       {projects.map((project: Project) => (
         <Paper
@@ -62,12 +62,22 @@ const ProjectList: React.FC = () => {
             wordBreak: 'break-word',
             justifyContent: 'space-between',
             alignItems: 'center',
+            minHeight: 48,
+            px: 1,
+            borderRadius: 2,
+            border: '1px solid rgba(40, 42, 54, 0.12)',
             backgroundColor:
-              project.id === activeProjectId ? '#957fef' : '#c8b6ff',
+              project.id === activeProjectId
+                ? 'rgba(109, 93, 252, 0.62)'
+                : 'rgba(200, 182, 255, 0.84)',
             cursor: 'pointer',
+            transition: 'background-color 0.15s ease, transform 0.15s ease',
             '&:hover': {
               backgroundColor:
-                project.id === activeProjectId ? '#b0a6db' : '#a096cb',
+                project.id === activeProjectId
+                  ? 'rgba(109, 93, 252, 0.72)'
+                  : 'rgba(200, 182, 255, 0.96)',
+              transform: 'translateY(-1px)',
             },
           }}
           onClick={() => handleProjectClick(project.id)}
@@ -78,6 +88,7 @@ const ProjectList: React.FC = () => {
                 width: '100%',
                 display: 'flex',
                 justifyContent: 'space-between',
+                gap: 1,
               }}
             >
               <TextField
@@ -106,7 +117,7 @@ const ProjectList: React.FC = () => {
             </Typography>
           )}
           {!isEditing && (
-            <Box sx={{ ml: 'auto' }}>
+            <Box sx={{ ml: 'auto', display: 'flex' }}>
               <IconButton
                 onClick={(event) => {
                   event.stopPropagation();
