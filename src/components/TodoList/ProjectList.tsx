@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { Box, Typography, TextField, IconButton, Paper } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import SaveIcon from '@mui/icons-material/Save';
 
-import { RootState } from '../../redux/store';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import {
   Project,
   setActiveProject,
@@ -15,13 +14,11 @@ import {
 
 const ProjectList: React.FC = () => {
   const [isEditing, setIsEditing] = useState<number | string | null>(null);
-  const [newName, setNewName] = useState<string>('');
+  const [newName, setNewName] = useState('');
 
-  const projects = useSelector((state: RootState) => state.todo.projects) || [];
-  const activeProjectId = useSelector(
-    (state: RootState) => state.todo.activeProject
-  );
-  const dispatch = useDispatch();
+  const projects = useAppSelector((state) => state.todo.projects);
+  const activeProjectId = useAppSelector((state) => state.todo.activeProject);
+  const dispatch = useAppDispatch();
 
   const handleProjectClick = (projectId: number | string) => {
     dispatch(setActiveProject(projectId));
@@ -43,11 +40,11 @@ const ProjectList: React.FC = () => {
   const handleSaveClick = (projectId: number | string) => {
     const trimmedName = newName.trim();
 
-    if (trimmedName) {
-      dispatch(editProject({ projectId, newName: trimmedName }));
-      setIsEditing(null);
-      setNewName('');
-    }
+    if (!trimmedName) return;
+
+    dispatch(editProject({ projectId, newName: trimmedName }));
+    setIsEditing(null);
+    setNewName('');
   };
 
   return (
@@ -146,4 +143,4 @@ const ProjectList: React.FC = () => {
   );
 };
 
-export default ProjectList;
+export default React.memo(ProjectList);
