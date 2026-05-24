@@ -31,11 +31,12 @@ interface GameState {
   outcome: Outcome;
 }
 
-const weapons: { value: Weapon; label: string; icon: string; hint: string }[] = [
-  { value: 'ROCK', label: 'Rock', icon: '✊', hint: 'Breaks scissors' },
-  { value: 'PAPER', label: 'Paper', icon: '✋', hint: 'Covers rock' },
-  { value: 'SCISSORS', label: 'Scissors', icon: '✌️', hint: 'Cuts paper' },
-];
+const weapons: { value: Weapon; label: string; icon: string; hint: string }[] =
+  [
+    { value: 'ROCK', label: 'Rock', icon: '✊', hint: 'Breaks scissors' },
+    { value: 'PAPER', label: 'Paper', icon: '✋', hint: 'Covers rock' },
+    { value: 'SCISSORS', label: 'Scissors', icon: '✌️', hint: 'Cuts paper' },
+  ];
 
 const initialGameState: GameState = {
   gamesPlayed: 0,
@@ -110,9 +111,12 @@ const getRoundMessage = (
 };
 
 const ResultIcon: React.FC<{ outcome: Outcome }> = ({ outcome }) => {
-  if (outcome === 'win') return <EmojiEventsIcon sx={{ fontSize: 46, color: '#22c55e' }} />;
-  if (outcome === 'tie') return <PeopleIcon sx={{ fontSize: 46, color: '#facc15' }} />;
-  if (outcome === 'loss') return <MoodBadIcon sx={{ fontSize: 46, color: '#fb7185' }} />;
+  if (outcome === 'win')
+    return <EmojiEventsIcon sx={{ fontSize: 46, color: '#22c55e' }} />;
+  if (outcome === 'tie')
+    return <PeopleIcon sx={{ fontSize: 46, color: '#facc15' }} />;
+  if (outcome === 'loss')
+    return <MoodBadIcon sx={{ fontSize: 46, color: '#fb7185' }} />;
   return null;
 };
 
@@ -256,7 +260,11 @@ export const RockPaperScissors: React.FC = () => {
                   background: 'rgba(15, 23, 42, 0.66)',
                 }}
               >
-                <Stack direction='row' justifyContent='space-between' spacing={2}>
+                <Stack
+                  direction='row'
+                  justifyContent='space-between'
+                  spacing={2}
+                >
                   <Typography variant='overline' color='text.secondary'>
                     Round status
                   </Typography>
