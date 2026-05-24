@@ -58,17 +58,20 @@ const settingsItems: MenuItem[] = [
 const projects: Project[] = [
   {
     title: 'Infrastructure cleanup',
-    description: 'Review config files, remove unused assets, and keep scripts predictable.',
+    description:
+      'Review config files, remove unused assets, and keep scripts predictable.',
     status: 'In review',
   },
   {
     title: 'Release checklist',
-    description: 'Validate build, formatting, linting, tests, and deployment readiness.',
+    description:
+      'Validate build, formatting, linting, tests, and deployment readiness.',
     status: 'Active',
   },
   {
     title: 'Metrics panel',
-    description: 'Summarize useful project signals in a compact dashboard surface.',
+    description:
+      'Summarize useful project signals in a compact dashboard surface.',
     status: 'Queued',
   },
 ];
@@ -310,7 +313,9 @@ const Announcements = () => {
       <p className='side-label'>Updates</p>
       <h3>Announcements</h3>
       <ul>
-        <li>Verification runs cover typecheck, lint, format, test, and build.</li>
+        <li>
+          Verification runs cover typecheck, lint, format, test, and build.
+        </li>
         <li>Deployment should stay tied to a successful main branch check.</li>
       </ul>
     </section>
