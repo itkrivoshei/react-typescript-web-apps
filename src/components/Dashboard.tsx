@@ -132,7 +132,8 @@ const Dashboard: React.FunctionComponent = () => {
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
                   border: '1px solid rgba(248, 250, 252, 0.12)',
-                  transition: 'transform 0.15s ease-in-out, box-shadow 0.15s ease-in-out',
+                  transition:
+                    'transform 0.15s ease-in-out, box-shadow 0.15s ease-in-out',
                   '&:hover': {
                     transform: 'translateY(-4px)',
                     boxShadow: 6,
