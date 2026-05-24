@@ -3,6 +3,7 @@ import {
   Button,
   List,
   ListItem,
+  ListItemButton,
   Typography,
   Container,
   Card,
@@ -16,6 +17,13 @@ import {
 const theme = createTheme({
   palette: {
     mode: 'dark',
+    primary: {
+      main: '#f59e0b',
+    },
+    background: {
+      default: '#1c1917',
+      paper: '#292524',
+    },
   },
 });
 
@@ -50,36 +58,39 @@ function OdinRecipes() {
   function RecipeList() {
     return (
       <Container
+        maxWidth='sm'
         sx={{
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
-          height: '100vh',
+          minHeight: '100vh',
+          py: 4,
         }}
       >
-        <Typography variant='h4' component='div' gutterBottom color='white'>
+        <Typography variant='overline' color='primary'>
+          Simple cookbook
+        </Typography>
+        <Typography variant='h3' component='h1' gutterBottom color='white'>
           Odin Recipes
         </Typography>
-        <List>
-          <ListItem
-            component='li'
-            onClick={() => setSelectedRecipe('HomemadeLasagna')}
-            sx={{ color: 'white', cursor: 'pointer' }}
-          >
-            Homemade Lasagna
+        <List sx={{ width: '100%' }}>
+          <ListItem disablePadding>
+            <ListItemButton onClick={() => setSelectedRecipe('HomemadeLasagna')}>
+              Homemade Lasagna
+            </ListItemButton>
           </ListItem>
-          <ListItem
-            onClick={() => setSelectedRecipe('AcornSquash')}
-            sx={{ color: 'white', cursor: 'pointer' }}
-          >
-            Acorn Squash
+          <ListItem disablePadding>
+            <ListItemButton onClick={() => setSelectedRecipe('AcornSquash')}>
+              Acorn Squash
+            </ListItemButton>
           </ListItem>
-          <ListItem
-            onClick={() => setSelectedRecipe('MicrowaveBakedPotato')}
-            sx={{ color: 'white', cursor: 'pointer' }}
-          >
-            Microwave Baked Potato
+          <ListItem disablePadding>
+            <ListItemButton
+              onClick={() => setSelectedRecipe('MicrowaveBakedPotato')}
+            >
+              Microwave Baked Potato
+            </ListItemButton>
           </ListItem>
         </List>
       </Container>
@@ -88,11 +99,7 @@ function OdinRecipes() {
 
   function BackButton() {
     return (
-      <Button
-        variant='outlined'
-        sx={{ color: 'white', borderColor: 'white', marginBottom: 2 }}
-        onClick={goBack}
-      >
+      <Button variant='outlined' sx={{ mb: 2 }} onClick={goBack}>
         Back to Recipes
       </Button>
     );
@@ -111,25 +118,38 @@ function OdinRecipes() {
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          pt: 2,
+          minHeight: '100vh',
+          py: 4,
+          px: 2,
+          background:
+            'radial-gradient(circle at top, rgba(245, 158, 11, 0.14), transparent 32rem)',
         }}
       >
         <BackButton />
-        <Card sx={{ maxWidth: 900 }}>
+        <Card
+          sx={{
+            maxWidth: 900,
+            borderRadius: 4,
+            border: '1px solid rgba(245, 158, 11, 0.18)',
+            overflow: 'hidden',
+          }}
+        >
           <CardMedia
             component='img'
-            height='250'
+            height='280'
             image={imageSrc}
             alt={title}
           />
-          <CardContent>
-            <Typography variant='h5' gutterBottom>
+          <CardContent sx={{ p: { xs: 3, md: 4 } }}>
+            <Typography variant='h4' gutterBottom>
               {title}
             </Typography>
-            <Typography variant='body2' color='textSecondary' component='p'>
+            <Typography variant='body1' color='text.secondary' component='p'>
               {description}
             </Typography>
-            <Typography variant='h6'>Ingredients</Typography>
+            <Typography variant='h6' sx={{ mt: 3 }}>
+              Ingredients
+            </Typography>
             <List>
               {ingredients.map((ingredient: string, idx: number) => (
                 <ListItem key={idx}>{ingredient}</ListItem>
@@ -232,7 +252,9 @@ function OdinRecipes() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Box>{renderRecipe()}</Box>
+      <Box sx={{ minHeight: '100vh', backgroundColor: 'background.default' }}>
+        {renderRecipe()}
+      </Box>
     </ThemeProvider>
   );
 }
