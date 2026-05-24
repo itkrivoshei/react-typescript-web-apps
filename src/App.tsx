@@ -47,7 +47,11 @@ const AppRoutes = () => {
   return (
     <>
       {showAppsLink && (
-        <Link className='apps-home-link' to='/' aria-label='Back to app chooser'>
+        <Link
+          className='apps-home-link'
+          to='/'
+          aria-label='Back to app chooser'
+        >
           Apps
         </Link>
       )}
