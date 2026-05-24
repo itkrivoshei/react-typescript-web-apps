@@ -116,35 +116,46 @@ const TicTacToe: React.FC = () => {
 
   return (
     <div className='tic-tac-toe-container'>
-      <h1>Tic Tac Toe</h1>
-      <div>
-        <button
-          className={aiGame === true ? 'active-mod' : ''}
-          onClick={() => startGame(true)}
-        >
-          Play against AI
-        </button>
-        <button
-          className={aiGame === false ? 'active-mod' : ''}
-          onClick={() => startGame(false)}
-        >
-          2 Player Game
-        </button>
-      </div>
-      <div id='gameboard' className={boardVisible ? 'visible' : ''}>
-        {board.map((cell, index) => (
-          <div
-            key={index}
-            onClick={() => playTurn(index)}
-            className={
-              winningCells.includes(index) ? 'winner' : isTie ? 'tie' : ''
-            }
+      <section className='game-panel' aria-label='Tic Tac Toe game'>
+        <p className='eyebrow'>Classic grid game</p>
+        <h1>Tic Tac Toe</h1>
+        <div className='mode-controls'>
+          <button
+            type='button'
+            className={aiGame === true ? 'active-mod' : ''}
+            onClick={() => startGame(true)}
           >
-            {cell}
-          </div>
-        ))}
-      </div>
-      {boardVisible && <button onClick={resetGame}>Reset Game</button>}{' '}
+            Play against AI
+          </button>
+          <button
+            type='button'
+            className={aiGame === false ? 'active-mod' : ''}
+            onClick={() => startGame(false)}
+          >
+            2 Player Game
+          </button>
+        </div>
+        <div id='gameboard' className={boardVisible ? 'visible' : ''}>
+          {board.map((cell, index) => (
+            <button
+              key={index}
+              type='button'
+              onClick={() => playTurn(index)}
+              className={
+                winningCells.includes(index) ? 'winner' : isTie ? 'tie' : ''
+              }
+              aria-label={`Cell ${index + 1}${cell ? ` marked ${cell}` : ''}`}
+            >
+              {cell}
+            </button>
+          ))}
+        </div>
+        {boardVisible && (
+          <button type='button' onClick={resetGame}>
+            Reset Game
+          </button>
+        )}
+      </section>
     </div>
   );
 };
