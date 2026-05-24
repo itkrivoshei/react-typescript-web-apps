@@ -37,6 +37,16 @@ interface WeatherState {
   error: string | null;
 }
 
+interface GiphyResponse {
+  data: Array<{
+    images: {
+      fixed_height: {
+        url: string;
+      };
+    };
+  }>;
+}
+
 const initialState: WeatherState = {
   weatherData: null,
   region: Region.EU,
@@ -70,7 +80,7 @@ export const fetchWeather = createAsyncThunk<
       return rejectWithValue('Failed to fetch weather data');
     }
 
-    return await response.json();
+    return (await response.json()) as WeatherData;
   } catch {
     return rejectWithValue('Failed to fetch weather data');
   }
@@ -99,8 +109,8 @@ export const fetchGif = createAsyncThunk<
       return rejectWithValue('Failed to fetch GIF');
     }
 
-    const data = await response.json();
-    return data.data.length > 0 ? data.data[0].images.fixed_height.url : null;
+    const data = (await response.json()) as GiphyResponse;
+    return data.data[0]?.images.fixed_height.url ?? null;
   } catch {
     return rejectWithValue('Failed to fetch GIF');
   }
