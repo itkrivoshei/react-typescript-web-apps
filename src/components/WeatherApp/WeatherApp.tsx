@@ -16,16 +16,15 @@ const WeatherApp = () => {
   return (
     <ThemeProvider theme={theme}>
       <Box
+        component='main'
         sx={{
-          backgroundImage: `url(${cosmosImage})`,
+          width: '100vw',
+          minHeight: '100vh',
+          position: 'relative',
+          overflow: 'auto',
+          backgroundImage: `linear-gradient(135deg, rgba(10, 15, 34, 0.78), rgba(26, 26, 46, 0.55)), url(${cosmosImage})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          width: '100vw',
-          height: '100vh',
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          zIndex: -1,
         }}
       >
         <SettingsMenu />
