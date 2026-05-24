@@ -1,37 +1,42 @@
 .landing-container {
-  $primary-color: #3882f6;
+  $primary-color: #2563eb;
   $bg-gray: #e5e7eb;
-  $bg-black: #1f2937;
-  $text-gray: #e5e7eb;
-  $text-dark: #474d55;
-  $text-black: #1f2937;
-  $text-white: #f9faf8;
+  $bg-black: #111827;
+  $text-gray: #d1d5db;
+  $text-dark: #374151;
+  $text-black: #111827;
+  $text-white: #f9fafb;
+
   * {
     margin: 0;
     padding: 0;
     text-decoration: none;
     list-style-type: none;
+    box-sizing: border-box;
   }
 
   .normal-width {
-    width: 1200px;
+    width: min(100% - 32px, 1120px);
     margin: 0 auto;
-  }
-
-  body {
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
   }
 
   .button,
   .button-blue {
     border: none;
-    padding: 10px;
-    border-radius: 8px;
+    padding: 10px 18px;
+    border-radius: 999px;
     background-color: $primary-color;
+    color: $text-white;
+    font-weight: 700;
+    cursor: pointer;
+    transition:
+      transform 0.2s ease,
+      background-color 0.2s ease;
+
+    &:hover {
+      transform: translateY(-1px);
+      background-color: #1d4ed8;
+    }
   }
 
   .button-blue {
@@ -54,16 +59,20 @@
 
   .header-tabs {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
+    gap: 6px;
+    padding: 14px 0;
 
     .logo-text {
       margin-right: auto;
       color: $text-white;
       font-size: 24px;
+      font-weight: 800;
+      letter-spacing: -0.04em;
     }
 
     li {
-      margin-top: 24px;
       padding: 10px;
     }
   }
@@ -71,12 +80,14 @@
   .plain-text {
     color: $text-gray;
     font-size: 18px;
+    line-height: 1.6;
   }
 
   .quote-text {
     color: $text-dark;
-    font-size: 36px;
+    font-size: clamp(2rem, 5vw, 3rem);
     font-style: italic;
+    line-height: 1.25;
   }
 
   .quote-text-ps {
@@ -88,77 +99,101 @@
 
   .header-white-text {
     color: $text-white;
-    font-size: 48px;
+    font-size: clamp(2.6rem, 7vw, 4.8rem);
+    line-height: 0.98;
+    letter-spacing: -0.06em;
+  }
 
-    .header-black-text {
-      font-weight: bolder;
-    }
+  .header-black-text {
+    color: $text-black;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 800;
+    letter-spacing: -0.04em;
   }
 
   .normal-width.first-main {
     display: flex;
-    padding: 64px 0;
+    padding: 72px 0;
     align-items: center;
-    gap: 36px;
+    gap: 48px;
   }
 
   .text-block {
     flex: 1;
 
     .plain-text {
-      margin: 12px 0;
+      margin: 18px 0;
+      max-width: 540px;
     }
   }
 
   .first-main img {
     flex: auto;
+    border-radius: 24px;
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.34);
   }
 
   .second-main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 64px 0;
+    padding: 72px 0;
     text-align: center;
     color: $text-white;
 
     .img-bar ul {
-      margin-top: 24px;
-      display: flex;
+      margin-top: 32px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       justify-content: center;
-      gap: 46px;
+      gap: 28px;
+      width: 100%;
 
       li {
         display: flex;
-        gap: 10px;
+        gap: 12px;
         flex-direction: column;
         align-items: center;
-        flex: 0;
+        color: $text-dark;
 
         img {
-          border-radius: 15px;
+          width: 100%;
+          border: 2px solid rgba(37, 99, 235, 0.18);
+          border-radius: 18px;
         }
       }
     }
   }
 
   .gray-block {
-    padding: 64px;
+    padding: 72px 32px;
     max-width: 900px;
   }
 
   .blue-block {
-    border-radius: 20px;
-    padding: 40px 120px;
-    margin: 64px;
-    background-color: $primary-color;
+    border-radius: 24px;
+    padding: 40px clamp(24px, 7vw, 96px);
+    margin: 64px 0;
+    background:
+      radial-gradient(circle at top left, rgba(255, 255, 255, 0.22), transparent 18rem),
+      $primary-color;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 24px;
+    box-shadow: 0 24px 70px rgba(37, 99, 235, 0.28);
   }
 
   .footer {
     padding: 25px;
     text-align: center;
+  }
+
+  @media (max-width: 760px) {
+    .normal-width.first-main,
+    .blue-block {
+      flex-direction: column;
+      text-align: center;
+    }
   }
 }
