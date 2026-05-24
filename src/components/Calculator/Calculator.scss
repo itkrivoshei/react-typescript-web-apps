@@ -40,24 +40,32 @@
   padding: 24px;
 
   .statusPanel {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     width: min(100%, 400px);
-    min-height: 105px;
+    min-height: 96px;
     margin-top: 10px;
+    overflow: hidden;
     background-color: #b7a081;
     color: #2e2d28;
-    border-radius: 6px;
+    border: 8px solid #36352e;
+    border-radius: 10px;
     box-shadow: 0 20px 60px rgba(46, 45, 40, 0.24);
   }
 
-  .statusPanel > :first-child {
-    border-radius: 6px 0 0 6px;
+  .statusPanel > * {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px;
+    border-right: 8px solid #36352e;
+    line-height: 1.18;
   }
 
   .statusPanel > :last-child {
-    border-radius: 0 6px 6px 0;
+    border-right: 0;
   }
 
   .light {
@@ -70,20 +78,6 @@
   .light.flash {
     background: linear-gradient(to right, #00a524, #10de3c, #00a524);
     box-shadow: 0 0 12px rgba(16, 222, 60, 0.6);
-  }
-
-  .statusPanel > * {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 8px;
-    border: 10px solid #36352e;
-    width: 100%;
-    height: 100%;
-  }
-
-  .statusPanel > :not(:last-child) {
-    border-right: 0;
   }
 
   @keyframes lockToFade {
