@@ -255,7 +255,12 @@ const RecipeList: React.FC<RecipeListProps> = ({ recipes, onSelectRecipe }) => {
 const RecipeDetail: React.FC<RecipeDetailProps> = ({ recipe, onBack }) => {
   return (
     <Container component='main' maxWidth='md' sx={{ py: { xs: 3, md: 6 } }}>
-      <Button variant='outlined' color='primary' onClick={onBack} sx={{ mb: 3 }}>
+      <Button
+        variant='outlined'
+        color='primary'
+        onClick={onBack}
+        sx={{ mb: 3 }}
+      >
         Back to Recipes
       </Button>
 
