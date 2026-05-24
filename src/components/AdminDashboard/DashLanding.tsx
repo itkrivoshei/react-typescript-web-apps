@@ -20,7 +20,11 @@ import {
   FaTasks,
 } from 'react-icons/fa';
 
-const projects = ['Infrastructure cleanup', 'Release checklist', 'Metrics panel'];
+const projects = [
+  'Infrastructure cleanup',
+  'Release checklist',
+  'Metrics panel',
+];
 
 const DashLanding = () => {
   return (

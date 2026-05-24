@@ -145,7 +145,9 @@ const Library: React.FC = () => {
                     <Typography color='primary' variant='h6'>
                       {book.title}
                     </Typography>
-                    <Typography color='text.secondary'>{book.author}</Typography>
+                    <Typography color='text.secondary'>
+                      {book.author}
+                    </Typography>
                     <Typography>{book.pages} pages</Typography>
                     <FormGroup>
                       <FormControlLabel

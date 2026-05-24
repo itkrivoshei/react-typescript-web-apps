@@ -1,7 +1,10 @@
 .etch-a-sketch-container {
-  font-family: "Courier New", Courier, monospace;
-  background:
-    radial-gradient(circle at 20% 10%, rgba(255, 121, 198, 0.18), transparent 26rem),
+  font-family: 'Courier New', Courier, monospace;
+  background: radial-gradient(
+      circle at 20% 10%,
+      rgba(255, 121, 198, 0.18),
+      transparent 26rem
+    ),
     #282a36;
   color: #f8f8f2;
   padding: 24px;

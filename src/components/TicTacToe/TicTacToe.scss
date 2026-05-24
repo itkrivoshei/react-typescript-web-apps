@@ -5,8 +5,11 @@
   align-items: center;
   min-height: 100vh;
   padding: 24px;
-  background:
-    radial-gradient(circle at top left, rgba(255, 121, 198, 0.22), transparent 28rem),
+  background: radial-gradient(
+      circle at top left,
+      rgba(255, 121, 198, 0.22),
+      transparent 28rem
+    ),
     #282a36;
   font-family:
     Inter,
@@ -14,7 +17,7 @@
     system-ui,
     -apple-system,
     BlinkMacSystemFont,
-    "Segoe UI",
+    'Segoe UI',
     sans-serif;
 
   .game-panel {

@@ -76,7 +76,9 @@ function OdinRecipes() {
         </Typography>
         <List sx={{ width: '100%' }}>
           <ListItem disablePadding>
-            <ListItemButton onClick={() => setSelectedRecipe('HomemadeLasagna')}>
+            <ListItemButton
+              onClick={() => setSelectedRecipe('HomemadeLasagna')}
+            >
               Homemade Lasagna
             </ListItemButton>
           </ListItem>
