@@ -527,7 +527,11 @@ const StatCard: React.FC<StatCardProps> = ({ label, value }) => {
       <Typography
         variant='caption'
         color='text.secondary'
-        sx={{ fontWeight: 900, letterSpacing: '0.12em', textTransform: 'uppercase' }}
+        sx={{
+          fontWeight: 900,
+          letterSpacing: '0.12em',
+          textTransform: 'uppercase',
+        }}
       >
         {label}
       </Typography>
