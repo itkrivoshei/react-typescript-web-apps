@@ -1,6 +1,6 @@
 import React, { useState, ChangeEvent, FC, FormEvent } from 'react';
 import { useDispatch } from 'react-redux';
-import { Box, IconButton, TextField, Button } from '@mui/material';
+import { Box, IconButton, TextField, Button, Stack } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 
 import { AppDispatch } from '../../redux/store';
@@ -8,6 +8,19 @@ import {
   toggleRegionFormat,
   fetchWeather,
 } from '../../redux/slices/weatherSlice';
+
+const panelSx = {
+  position: 'absolute',
+  top: 16,
+  left: 16,
+  right: { xs: 16, sm: 'auto' },
+  zIndex: 1,
+  p: 1.5,
+  border: '1px solid rgba(76, 201, 240, 0.32)',
+  borderRadius: 2,
+  backgroundColor: 'rgba(10, 15, 34, 0.72)',
+  backdropFilter: 'blur(10px)',
+};
 
 const SettingsMenu: FC = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -30,17 +43,27 @@ const SettingsMenu: FC = () => {
   };
 
   return (
-    <Box component='section' position='absolute' top={0} margin={2}>
+    <Box component='section' sx={panelSx}>
       <form onSubmit={handleSubmit}>
-        <Box display='flex' alignItems='center' gap={1} marginY={2}>
+        <Stack direction='row' spacing={1} alignItems='center'>
           <TextField
             type='search'
             value={city}
             onChange={handleCityChange}
-            label='Enter City'
+            label='City'
             variant='outlined'
             size='small'
-            sx={{ label: { color: '#4cc9f0' } }}
+            sx={{
+              minWidth: { xs: 0, sm: 220 },
+              flex: 1,
+              label: { color: '#4cc9f0' },
+              '& .MuiOutlinedInput-root': {
+                color: '#f8fafc',
+                '& fieldset': {
+                  borderColor: 'rgba(76, 201, 240, 0.4)',
+                },
+              },
+            }}
           />
           <IconButton
             aria-label='Search weather by city'
@@ -49,16 +72,16 @@ const SettingsMenu: FC = () => {
           >
             <SearchIcon />
           </IconButton>
-        </Box>
+          <Button
+            onClick={handleToggleRegion}
+            variant='outlined'
+            size='small'
+            sx={{ color: '#4cc9f0', borderColor: 'rgba(76, 201, 240, 0.4)' }}
+          >
+            Unit
+          </Button>
+        </Stack>
       </form>
-      <Button
-        onClick={handleToggleRegion}
-        variant='outlined'
-        size='small'
-        sx={{ color: '#4cc9f0' }}
-      >
-        Unit
-      </Button>
     </Box>
   );
 };
