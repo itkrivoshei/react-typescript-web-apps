@@ -5,7 +5,6 @@ import clapSound from '../../assets/DrumKit/sounds/clap.wav';
 import hihatSound from '../../assets/DrumKit/sounds/hihat.wav';
 import kickSound from '../../assets/DrumKit/sounds/kick.wav';
 import openhatSound from '../../assets/DrumKit/sounds/openhat.wav';
-import boomSound from '../../assets/DrumKit/sounds/boom.wav';
 import rideSound from '../../assets/DrumKit/sounds/ride.wav';
 import snareSound from '../../assets/DrumKit/sounds/snare.wav';
 import tomSound from '../../assets/DrumKit/sounds/tom.wav';
@@ -16,6 +15,8 @@ type DrumPad = {
   soundName: string;
   keyCode: number;
   sound: string;
+  volume?: number;
+  playbackRate?: number;
 };
 
 const drumPads: DrumPad[] = [
@@ -23,7 +24,14 @@ const drumPads: DrumPad[] = [
   { keyChar: 'S', soundName: 'hihat', keyCode: 83, sound: hihatSound },
   { keyChar: 'D', soundName: 'kick', keyCode: 68, sound: kickSound },
   { keyChar: 'F', soundName: 'openhat', keyCode: 70, sound: openhatSound },
-  { keyChar: 'G', soundName: 'boom', keyCode: 71, sound: boomSound },
+  {
+    keyChar: 'G',
+    soundName: 'low kick',
+    keyCode: 71,
+    sound: kickSound,
+    volume: 0.6,
+    playbackRate: 0.82,
+  },
   { keyChar: 'H', soundName: 'ride', keyCode: 72, sound: rideSound },
   { keyChar: 'J', soundName: 'snare', keyCode: 74, sound: snareSound },
   { keyChar: 'K', soundName: 'tom', keyCode: 75, sound: tomSound },
@@ -41,9 +49,14 @@ const DrumKey: React.FC<DrumKeyProps> = ({ pad }) => {
   const playSound = () => {
     if (!keyRef.current || !audioRef.current) return;
 
+    const audio = audioRef.current;
+
     keyRef.current.classList.add('playing');
-    audioRef.current.currentTime = 0;
-    audioRef.current.play().catch((err: unknown) => {
+    audio.pause();
+    audio.currentTime = 0;
+    audio.volume = pad.volume ?? 0.82;
+    audio.playbackRate = pad.playbackRate ?? 1;
+    audio.play().catch((err: unknown) => {
       console.error('Failed to play drum sample:', err);
     });
   };
@@ -92,6 +105,7 @@ const DrumKey: React.FC<DrumKeyProps> = ({ pad }) => {
         ref={audioRef}
         data-key={pad.keyCode}
         src={pad.sound}
+        preload='auto'
         onError={(event) => {
           const target = event.target as HTMLAudioElement;
           console.error(
