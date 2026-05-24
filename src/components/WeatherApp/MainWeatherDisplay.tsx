@@ -1,10 +1,26 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Box, Typography, Divider, Paper } from '@mui/material';
+import { Box, Typography, Divider, Paper, Stack } from '@mui/material';
 
 import { RootState, AppDispatch } from '../../redux/store';
 import { fetchWeather } from '../../redux/slices/weatherSlice';
 import WeatherMeme from './WeatherMeme';
+
+const cardSx = {
+  width: 'min(92vw, 460px)',
+  p: { xs: 2.5, md: 3 },
+  mt: { xs: 12, sm: 8 },
+  border: '1px solid rgba(76, 201, 240, 0.22)',
+  borderRadius: 4,
+  backgroundColor: 'rgba(10, 15, 34, 0.78)',
+  boxShadow: '0 24px 80px rgba(0, 0, 0, 0.45)',
+  backdropFilter: 'blur(12px)',
+};
+
+const dividerSx = {
+  my: 2,
+  backgroundColor: 'rgba(114, 9, 183, 0.75)',
+};
 
 const MainWeatherDisplay: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -28,48 +44,32 @@ const MainWeatherDisplay: React.FC = () => {
     }
   }, [dispatch]);
 
-  if (error) {
-    return (
-      <Box
-        display='flex'
-        justifyContent='center'
-        alignItems='center'
-        height='100vh'
-      >
-        <Paper
-          sx={{
-            p: 2,
-            backgroundColor: 'rgba(26, 26, 46, 0.8)',
-          }}
+  const renderStatusCard = (message: string, tone: 'info' | 'error' = 'info') => (
+    <Box
+      display='flex'
+      justifyContent='center'
+      alignItems='center'
+      minHeight='100vh'
+      px={2}
+    >
+      <Paper sx={cardSx}>
+        <Typography
+          variant='h4'
+          textAlign='center'
+          color={tone === 'error' ? '#fb7185' : '#4cc9f0'}
         >
-          <Typography variant='h3' color='error'>
-            ERROR: {error}
-          </Typography>
-        </Paper>
-      </Box>
-    );
+          {message}
+        </Typography>
+      </Paper>
+    </Box>
+  );
+
+  if (error) {
+    return renderStatusCard(`Error: ${error}`, 'error');
   }
 
   if (!weatherData) {
-    return (
-      <Box
-        display='flex'
-        justifyContent='center'
-        alignItems='center'
-        height='100vh'
-      >
-        <Paper
-          sx={{
-            p: 2,
-            backgroundColor: 'rgba(26, 26, 46, 0.8)',
-          }}
-        >
-          <Typography variant='h3' color='#4cc9f0'>
-            Enter City
-          </Typography>
-        </Paper>
-      </Box>
-    );
+    return renderStatusCard('Search by city or allow location access');
   }
 
   const displayTemperature = (temp: number) =>
@@ -94,55 +94,30 @@ const MainWeatherDisplay: React.FC = () => {
       justifyContent='center'
       alignItems='center'
       minHeight='100vh'
+      px={2}
     >
-      <Paper
-        elevation={3}
-        sx={{
-          p: 2,
-          mt: 2,
-          minWidth: 300,
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
-          backgroundColor: 'rgba(26, 26, 46, 0.8)',
-        }}
-      >
-        <Box sx={{ mt: 2 }}>
-          <Typography variant='h3' color={'#f72585'}>
-            {weatherData.location.name}, {weatherData.location.country}
-          </Typography>
-          <Typography variant='body1' color={'#4cc9f0'}>
-            {formatLocalTime(weatherData.location.localtime)}
-          </Typography>
+      <Paper elevation={3} sx={cardSx}>
+        <Stack spacing={2} alignItems='center' textAlign='center'>
+          <Box>
+            <Typography variant='h4' color='#f72585'>
+              {weatherData.location.name}, {weatherData.location.country}
+            </Typography>
+            <Typography variant='body2' color='#4cc9f0'>
+              {formatLocalTime(weatherData.location.localtime)}
+            </Typography>
+          </Box>
 
-          <Divider
-            sx={{
-              my: 2,
-              backgroundColor: '#7209b7',
-            }}
-          />
+          <Divider flexItem sx={dividerSx} />
 
-          <Box
-            sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
-          >
-            <Typography variant='h3' color={'#f72585'}>
+          <Box>
+            <Typography variant='h2' color='#f72585'>
               {displayTemperature(
                 region === 'EU'
                   ? weatherData.current.temp_c
                   : weatherData.current.temp_f
               )}
             </Typography>
-            <Typography
-              variant='body2'
-              color={'#4cc9f0'}
-              sx={{ fontWeight: 'light' }}
-            >
+            <Typography variant='body2' color='#4cc9f0'>
               Feels:{' '}
               {displayTemperature(
                 region === 'EU'
@@ -152,14 +127,9 @@ const MainWeatherDisplay: React.FC = () => {
             </Typography>
           </Box>
 
-          <Divider
-            sx={{
-              my: 2,
-              backgroundColor: '#7209b7',
-            }}
-          />
+          <Divider flexItem sx={dividerSx} />
 
-          <Box color={'#4cc9f0'}>
+          <Box color='#4cc9f0'>
             <Typography variant='body1'>
               Wind:{' '}
               {displayWindSpeed(
@@ -177,14 +147,14 @@ const MainWeatherDisplay: React.FC = () => {
             </Typography>
           </Box>
 
-          <Divider sx={{ my: 2, backgroundColor: '#7209b7' }} />
+          <Divider flexItem sx={dividerSx} />
 
           <WeatherMeme />
 
-          <Typography variant='body2' color={'#4cc9f0'}>
+          <Typography variant='body2' color='#4cc9f0'>
             Condition: {weatherData.current.condition.text}
           </Typography>
-        </Box>
+        </Stack>
       </Paper>
     </Box>
   );
