@@ -32,6 +32,7 @@ type Project = {
   title: string;
   description: string;
   status: string;
+  href: string;
 };
 
 type Metric = {
@@ -39,6 +40,9 @@ type Metric = {
   value: string;
   icon: React.ReactNode;
 };
+
+const githubProfileUrl = 'https://github.com/itkrivoshei';
+const repositoryUrl = 'https://github.com/itkrivoshei/react-typescript-web-apps';
 
 const navigationItems: MenuItem[] = [
   { icon: <FaHome />, label: 'Overview' },
@@ -61,18 +65,21 @@ const projects: Project[] = [
     description:
       'Review config files, remove unused assets, and keep scripts predictable.',
     status: 'In review',
+    href: `${repositoryUrl}/actions`,
   },
   {
     title: 'Release checklist',
     description:
       'Validate build, formatting, linting, tests, and deployment readiness.',
     status: 'Active',
+    href: repositoryUrl,
   },
   {
     title: 'Metrics panel',
     description:
       'Summarize useful project signals in a compact dashboard surface.',
     status: 'Queued',
+    href: githubProfileUrl,
   },
 ];
 
@@ -103,13 +110,13 @@ const Sidebar = () => {
 
 const Logo = () => {
   return (
-    <div className='logo'>
+    <a className='logo' href={repositoryUrl} target='_blank' rel='noreferrer'>
       <FaTachometerAlt />
       <div>
         <h2>Control</h2>
         <span>Dashboard UI</span>
       </div>
-    </div>
+    </a>
   );
 };
 
@@ -132,8 +139,10 @@ type SidebarItemProps = {
 const SidebarItem: React.FC<SidebarItemProps> = ({ item }) => {
   return (
     <li>
-      {item.icon}
-      <span>{item.label}</span>
+      <button type='button' aria-label={`${item.label} demo section`}>
+        {item.icon}
+        <span>{item.label}</span>
+      </button>
     </li>
   );
 };
@@ -180,17 +189,28 @@ const TopBar = () => {
         />
         <FaSearch />
       </div>
-      <button type='button' className='icon-button' aria-label='Notifications'>
+      <a
+        className='icon-button'
+        href={`${repositoryUrl}/actions`}
+        target='_blank'
+        rel='noreferrer'
+        aria-label='Open repository actions'
+      >
         <FaBell />
-      </button>
-      <div className='user-info'>
+      </a>
+      <a
+        className='user-info'
+        href={githubProfileUrl}
+        target='_blank'
+        rel='noreferrer'
+      >
         <img
           src='https://api.dicebear.com/6.x/notionists-neutral/svg?seed=Salem'
           alt='User avatar'
           className='avatar-small'
         />
         <span className='nickname'>Operator</span>
-      </div>
+      </a>
     </div>
   );
 };
@@ -210,15 +230,15 @@ const LowerBar = () => {
         </div>
       </div>
       <div className='actions' aria-label='Dashboard actions'>
-        <button type='button'>
-          <FaPlus /> New
-        </button>
-        <button type='button'>
-          <FaCloudUploadAlt /> Upload
-        </button>
-        <button type='button'>
-          <FaShareAlt /> Share
-        </button>
+        <a href={`${repositoryUrl}/issues`} target='_blank' rel='noreferrer'>
+          <FaPlus /> Issues
+        </a>
+        <a href={`${repositoryUrl}/actions`} target='_blank' rel='noreferrer'>
+          <FaCloudUploadAlt /> Actions
+        </a>
+        <a href={repositoryUrl} target='_blank' rel='noreferrer'>
+          <FaShareAlt /> Repo
+        </a>
       </div>
     </div>
   );
@@ -287,12 +307,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
       <h3>{project.title}</h3>
       <p>{project.description}</p>
       <div className='card-actions'>
-        <button type='button' aria-label={`Share ${project.title}`}>
-          <FaShareAlt />
-        </button>
-        <button type='button' aria-label={`View ${project.title}`}>
+        <a
+          href={project.href}
+          target='_blank'
+          rel='noreferrer'
+          aria-label={`Open ${project.title}`}
+        >
           <FaEye />
-        </button>
+        </a>
       </div>
     </article>
   );
