@@ -43,7 +43,9 @@ const Landing = () => {
           <div className='normal-width first-main'>
             <div className='text-block'>
               <p className='eyebrow'>Service landing page</p>
-              <h1 className='header-white-text'>Simple digital services, clearly presented</h1>
+              <h1 className='header-white-text'>
+                Simple digital services, clearly presented
+              </h1>
               <p className='plain-text'>
                 A compact landing page demo with a modern blue visual system,
                 cleaner content hierarchy, and responsive sections.
@@ -74,7 +76,9 @@ const Landing = () => {
         <section id='services' className='normal-width second-main'>
           <div className='section-heading'>
             <p className='eyebrow'>Services</p>
-            <h2 className='header-black-text'>Focused support without extra noise</h2>
+            <h2 className='header-black-text'>
+              Focused support without extra noise
+            </h2>
           </div>
 
           <div className='service-grid'>
@@ -104,9 +108,14 @@ const Landing = () => {
           <div className='blue-block'>
             <div>
               <p className='cta-label'>Ready to continue?</p>
-              <p className='plain-text'>Use the contact section as the next action point.</p>
+              <p className='plain-text'>
+                Use the contact section as the next action point.
+              </p>
             </div>
-            <a className='button-blue plain-text' href='mailto:contact@example.com'>
+            <a
+              className='button-blue plain-text'
+              href='mailto:contact@example.com'
+            >
               Get in Touch
             </a>
           </div>
