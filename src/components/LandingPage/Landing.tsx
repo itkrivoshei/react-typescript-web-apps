@@ -1,87 +1,123 @@
 import React from 'react';
 import './Landing.scss';
 
+const serviceCards = [
+  {
+    title: 'Planning',
+    text: 'Clear scope, practical milestones, and simple project structure before implementation starts.',
+  },
+  {
+    title: 'Delivery',
+    text: 'Focused execution with clean handoff points and maintainable working outputs.',
+  },
+  {
+    title: 'Support',
+    text: 'Small follow-up improvements, issue review, and documentation where it matters.',
+  },
+];
+
+const navigationItems = ['Home', 'Services', 'Process', 'Contact'];
+
 const Landing = () => {
   return (
     <div className='landing-container'>
-      <div className='bg-full-black'>
-        <div className='normal-width'>
-          <ul className='header-tabs'>
-            <li className='logo-text'>Welcome!</li>
-            <li className='plain-text'>Home</li>
-            <li className='plain-text'>About Us</li>
-            <li className='plain-text'>Contact</li>
+      <header className='bg-full-black site-header'>
+        <nav className='normal-width header-tabs' aria-label='Landing sections'>
+          <a className='logo-text' href='#top'>
+            Northline
+          </a>
+          <ul>
+            {navigationItems.map((item) => (
+              <li key={item}>
+                <a href={`#${item.toLowerCase()}`} className='nav-link'>
+                  {item}
+                </a>
+              </li>
+            ))}
           </ul>
-        </div>
-      </div>
+        </nav>
+      </header>
 
-      <div className='main'>
-        <div className='bg-full-black'>
+      <main id='top' className='main'>
+        <section id='home' className='bg-full-black hero-section'>
           <div className='normal-width first-main'>
             <div className='text-block'>
-              <h1 className='header-white-text'>Discover Our Services</h1>
+              <p className='eyebrow'>Service landing page</p>
+              <h1 className='header-white-text'>Simple digital services, clearly presented</h1>
               <p className='plain-text'>
-                Explore a wide range of solutions tailored to meet your needs.
+                A compact landing page demo with a modern blue visual system,
+                cleaner content hierarchy, and responsive sections.
               </p>
-              <button className='button'>Learn More</button>
+              <div className='hero-actions'>
+                <a className='button' href='#services'>
+                  View Services
+                </a>
+                <a className='secondary-link' href='#process'>
+                  See Process
+                </a>
+              </div>
             </div>
-            <img
-              width='220px'
-              src='https://images.pexels.com/photos/3938023/pexels-photo-3938023.jpeg?cs=srgb&dl=pexels-chokniti-khongchum-3938023.jpg&fm=jpg'
-              alt='Service Image'
-            />
-          </div>
-        </div>
 
-        <div className='normal-width second-main'>
-          <h2 className='header-black-text'>Our Commitment to Quality</h2>
-          <div className='img-bar'>
-            <ul>
-              {Array(4)
-                .fill('')
-                .map((_, idx) => (
-                  <li key={idx}>
-                    <img
-                      width='220px'
-                      src='https://images.pexels.com/photos/3938023/pexels-photo-3938023.jpeg?cs=srgb&dl=pexels-chokniti-khongchum-3938023.jpg&fm=jpg'
-                      alt='Quality Image'
-                    />
-                    <p>Quality Service {idx + 1}</p>
-                  </li>
-                ))}
-            </ul>
+            <div className='hero-card' aria-label='Project delivery summary'>
+              <img
+                src='https://images.pexels.com/photos/3938023/pexels-photo-3938023.jpeg?cs=srgb&dl=pexels-chokniti-khongchum-3938023.jpg&fm=jpg'
+                alt='Workspace desk with digital equipment'
+              />
+              <div className='hero-card-footer'>
+                <span>3 service areas</span>
+                <span>Clean delivery flow</span>
+              </div>
+            </div>
           </div>
-        </div>
+        </section>
 
-        <div className='bg-full-gray'>
+        <section id='services' className='normal-width second-main'>
+          <div className='section-heading'>
+            <p className='eyebrow'>Services</p>
+            <h2 className='header-black-text'>Focused support without extra noise</h2>
+          </div>
+
+          <div className='service-grid'>
+            {serviceCards.map((card, index) => (
+              <article className='service-card' key={card.title}>
+                <span className='service-number'>0{index + 1}</span>
+                <h3>{card.title}</h3>
+                <p>{card.text}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section id='process' className='bg-full-gray'>
           <div className='normal-width gray-block'>
             <p className='quote-text'>
-              We prioritize customer satisfaction and innovative solutions.
+              Good service pages do not need heavy decoration. They need a clear
+              promise, readable structure, and one obvious next step.
             </p>
             <p className='quote-text-ps'>
-              <strong>Commitment to Excellence</strong>
+              <strong>Structure first, style second.</strong>
             </p>
           </div>
-        </div>
+        </section>
 
-        <div className='normal-width'>
+        <section id='contact' className='normal-width'>
           <div className='blue-block'>
             <div>
-              <p className='plain-text'>
-                <strong>Contact Us Today</strong>
-              </p>
-              <p className='plain-text'>We are here to help!</p>
+              <p className='cta-label'>Ready to continue?</p>
+              <p className='plain-text'>Use the contact section as the next action point.</p>
             </div>
-            <button className='button-blue plain-text'>Get in Touch</button>
+            <a className='button-blue plain-text' href='mailto:contact@example.com'>
+              Get in Touch
+            </a>
           </div>
-        </div>
-      </div>
+        </section>
+      </main>
 
-      <div className='bg-full-black'>
+      <footer className='bg-full-black'>
         <div className='normal-width footer'>
-          <p className='plain-text'>Copyright © Your Company Name 2024</p>
+          <p className='plain-text'>Copyright © Northline 2024</p>
         </div>
-      </div>
+      </footer>
     </div>
   );
 };
