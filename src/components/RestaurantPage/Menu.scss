@@ -1,37 +1,97 @@
 .menu-container {
   display: grid;
-  gap: 18px;
+  gap: 22px;
+
+  .menu-header {
+    padding: 28px;
+    border: 1px solid rgba(250, 245, 255, 0.12);
+    border-radius: 28px;
+    background: rgba(250, 245, 255, 0.08);
+    color: #faf5ff;
+    text-align: center;
+    backdrop-filter: blur(10px);
+
+    .menu-kicker {
+      margin: 0 0 8px;
+      color: #d8b4fe;
+      font-size: 0.75rem;
+      font-weight: 900;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin: 0;
+      font-family: 'Pacifico', cursive;
+      font-size: clamp(2.4rem, 7vw, 4rem);
+      font-weight: 400;
+      line-height: 1;
+    }
+  }
+
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 18px;
+  }
 
   .menu-item {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    background: rgba(230, 230, 250, 0.96);
+    min-height: 220px;
+    background: rgba(250, 245, 255, 0.96);
     padding: 22px;
-    border: 1px solid rgba(138, 43, 226, 0.14);
-    border-radius: 20px;
-    box-shadow: 0 18px 48px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(168, 85, 247, 0.16);
+    border-radius: 24px;
+    box-shadow: 0 18px 48px rgba(0, 0, 0, 0.22);
+  }
 
-    .menu-item-name {
-      color: blueviolet;
-      font-size: 1.55em;
-      margin: 0 0 0.5em;
-      line-height: 1.1;
-    }
+  .menu-item-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: 12px;
+    margin-bottom: 18px;
+  }
 
-    .menu-item-description {
-      color: #333;
-      text-align: left;
-      margin-bottom: 1em;
-      font-family: Inter, ui-sans-serif, system-ui, sans-serif;
-      line-height: 1.6;
-    }
+  .menu-item-tag {
+    padding: 7px 10px;
+    border-radius: 999px;
+    background: rgba(147, 51, 234, 0.1);
+    color: #6b21a8;
+    font-size: 0.75rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
 
-    .menu-item-price {
-      align-self: flex-end;
-      color: blueviolet;
-      font-size: 1.2em;
-      font-weight: 700;
-    }
+  .menu-item-name {
+    color: #581c87;
+    font-family: 'Pacifico', cursive;
+    font-size: 1.8em;
+    font-weight: 400;
+    margin: 0 0 0.55em;
+    line-height: 1.12;
+  }
+
+  .menu-item-description {
+    color: #4c1d95;
+    text-align: left;
+    margin: 0 0 1em;
+    font-family:
+      Inter,
+      ui-sans-serif,
+      system-ui,
+      sans-serif;
+    line-height: 1.7;
+  }
+
+  .menu-item-price {
+    margin: 0;
+    color: #9333ea;
+    font-size: 1.1em;
+    font-weight: 900;
   }
 }
