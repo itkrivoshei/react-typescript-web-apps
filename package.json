@@ -6,7 +6,6 @@
   "repository": "https://github.com/itkrivoshei/react-typescript-web-apps",
   "private": true,
   "homepage": "https://itkrivoshei.github.io/react-typescript-web-apps/",
-  "proxy": "http://api.weatherapi.com",
   "dependencies": {
     "@chakra-ui/icons": "^2.1.1",
     "@chakra-ui/react": "^2.8.2",
@@ -36,12 +35,16 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --watchAll=false",
-    "eject": "react-scripts eject",
-    "pretty": "prettier --write .",
-    "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}' --fix",
+    "test": "react-scripts test --watchAll=false --passWithNoTests",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",
+    "lint:fix": "eslint \"src/**/*.{js,jsx,ts,tsx}\" --fix",
+    "format": "prettier --write \"src/**/*.{ts,tsx,scss}\" \"public/**/*.html\" \"*.{json,js,mjs}\"",
+    "format:check": "prettier --check \"src/**/*.{ts,tsx,scss}\" \"public/**/*.html\" \"*.{json,js,mjs}\"",
+    "pretty": "npm run format",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "eject": "react-scripts eject"
   },
   "browserslist": {
     "production": [
