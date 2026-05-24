@@ -32,7 +32,8 @@ interface WeatherState {
   weatherData: WeatherData | null;
   region: Region;
   gifUrl: string | null;
-  loading: boolean;
+  weatherLoading: boolean;
+  gifLoading: boolean;
   error: string | null;
 }
 
@@ -40,45 +41,70 @@ const initialState: WeatherState = {
   weatherData: null,
   region: Region.EU,
   gifUrl: null,
-  loading: false,
+  weatherLoading: false,
+  gifLoading: false,
   error: null,
 };
 
 export const fetchWeather = createAsyncThunk<
-  WeatherData, // Success type (the data structure you'll return)
-  { city?: string; latitude?: number; longitude?: number }, // Input type
-  { rejectValue: string } // Error type for rejectWithValue
+  WeatherData,
+  { city?: string; latitude?: number; longitude?: number },
+  { rejectValue: string }
 >('weather/fetchWeather', async (location, { rejectWithValue }) => {
-  try {
-    const query = location.city || `${location.latitude},${location.longitude}`;
-    const apiUrl = `https://api.weatherapi.com/v1/current.json?key=${process.env.REACT_APP_WEATHER_API_KEY}&q=${query}&aqi=yes`;
-    const response = await fetch(apiUrl);
+  const query = location.city || `${location.latitude},${location.longitude}`;
+  const apiKey = process.env.REACT_APP_WEATHER_API_KEY;
 
-    if (!response.ok) throw new Error('Failed to fetch weather data');
+  if (!apiKey) {
+    return rejectWithValue('Weather API key is not configured');
+  }
+
+  try {
+    const apiUrl = new URL('https://api.weatherapi.com/v1/current.json');
+    apiUrl.searchParams.set('key', apiKey);
+    apiUrl.searchParams.set('q', query);
+    apiUrl.searchParams.set('aqi', 'yes');
+
+    const response = await fetch(apiUrl.toString());
+
+    if (!response.ok) {
+      return rejectWithValue('Failed to fetch weather data');
+    }
 
     return await response.json();
   } catch {
-    return rejectWithValue('Failed to fetch weather data'); // Properly return rejected value as a string
+    return rejectWithValue('Failed to fetch weather data');
   }
 });
 
-export const fetchGif = createAsyncThunk(
-  'weather/fetchGif',
-  async (condition: string, { rejectWithValue }) => {
-    try {
-      const response = await fetch(
-        `https://api.giphy.com/v1/gifs/search?api_key=${process.env.REACT_APP_GIPHY_API_KEY}&q=${condition} weather&limit=1`
-      );
+export const fetchGif = createAsyncThunk<
+  string | null,
+  string,
+  { rejectValue: string }
+>('weather/fetchGif', async (condition, { rejectWithValue }) => {
+  const apiKey = process.env.REACT_APP_GIPHY_API_KEY;
 
-      if (!response.ok) throw new Error('Failed to fetch GIF');
+  if (!apiKey) {
+    return null;
+  }
 
-      const data = await response.json();
-      return data.data.length > 0 ? data.data[0].images.fixed_height.url : null;
-    } catch {
+  try {
+    const apiUrl = new URL('https://api.giphy.com/v1/gifs/search');
+    apiUrl.searchParams.set('api_key', apiKey);
+    apiUrl.searchParams.set('q', `${condition} weather`);
+    apiUrl.searchParams.set('limit', '1');
+
+    const response = await fetch(apiUrl.toString());
+
+    if (!response.ok) {
       return rejectWithValue('Failed to fetch GIF');
     }
+
+    const data = await response.json();
+    return data.data.length > 0 ? data.data[0].images.fixed_height.url : null;
+  } catch {
+    return rejectWithValue('Failed to fetch GIF');
   }
-);
+});
 
 const weatherSlice = createSlice({
   name: 'weather',
@@ -91,28 +117,26 @@ const weatherSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchWeather.pending, (state) => {
-        state.loading = true;
+        state.weatherLoading = true;
         state.error = null;
       })
       .addCase(fetchWeather.fulfilled, (state, action) => {
         state.weatherData = action.payload;
-        state.loading = false;
+        state.weatherLoading = false;
       })
       .addCase(fetchWeather.rejected, (state, action) => {
-        state.error = action.error.message ?? 'Failed to fetch weather data';
-        state.loading = false;
+        state.error = action.payload ?? 'Failed to fetch weather data';
+        state.weatherLoading = false;
       })
       .addCase(fetchGif.pending, (state) => {
-        state.loading = true;
-        state.error = null;
+        state.gifLoading = true;
       })
       .addCase(fetchGif.fulfilled, (state, action) => {
         state.gifUrl = action.payload;
-        state.loading = false;
+        state.gifLoading = false;
       })
-      .addCase(fetchGif.rejected, (state, action) => {
-        state.error = action.error.message ?? 'Failed to fetch GIF';
-        state.loading = false;
+      .addCase(fetchGif.rejected, (state) => {
+        state.gifLoading = false;
       });
   },
 });
