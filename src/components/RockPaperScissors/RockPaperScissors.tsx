@@ -94,7 +94,10 @@ const getComputerChoice = (): Weapon => {
   return weapons[weaponIndex].value;
 };
 
-const getRoundResult = (playerWeapon: Weapon, computerWeapon: Weapon): Outcome => {
+const getRoundResult = (
+  playerWeapon: Weapon,
+  computerWeapon: Weapon
+): Outcome => {
   if (computerWeapon === playerWeapon) {
     return 'tie';
   }
@@ -271,7 +274,11 @@ export const RockPaperScissors: React.FC = () => {
                   background: 'rgba(40, 42, 54, 0.7)',
                 }}
               >
-                <Stack direction='row' justifyContent='space-between' spacing={2}>
+                <Stack
+                  direction='row'
+                  justifyContent='space-between'
+                  spacing={2}
+                >
                   <Typography variant='overline' color='text.secondary'>
                     Round status
                   </Typography>
