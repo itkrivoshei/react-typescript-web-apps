@@ -18,97 +18,74 @@ interface Project {
   imageUrl: string;
 }
 
+const mediaBaseUrl =
+  'https://github.com/itkrivoshei/react-typescript-web-apps/blob/main/media';
+
 const projects: Project[] = [
   {
     path: '/WeatherApp',
     name: 'Weather App',
-
-    imageUrl:
-      'https://github.com/itkrivoshei/OdinMonoWebApps/blob/main/media/WeatherApp.gif?raw=true',
+    imageUrl: `${mediaBaseUrl}/WeatherApp.gif?raw=true`,
   },
   {
     path: '/TodoApp',
     name: 'Todo App',
-
-    imageUrl:
-      'https://github.com/itkrivoshei/OdinMonoWebApps/blob/main/media/TodoList.gif?raw=true',
+    imageUrl: `${mediaBaseUrl}/TodoList.gif?raw=true`,
   },
   {
     path: '/Calculator',
     name: 'Calculator',
-
-    imageUrl:
-      'https://github.com/itkrivoshei/OdinMonoWebApps/blob/main/media/Calculator.gif?raw=true',
+    imageUrl: `${mediaBaseUrl}/Calculator.gif?raw=true`,
   },
   {
     path: '/TicTacToe',
     name: 'Tic Tac Toe',
-
-    imageUrl:
-      'https://github.com/itkrivoshei/OdinMonoWebApps/blob/main/media/TicTacToe.gif?raw=true',
+    imageUrl: `${mediaBaseUrl}/TicTacToe.gif?raw=true`,
   },
   {
     path: '/EtchASketch',
     name: 'Etch a Sketch',
-
-    imageUrl:
-      'https://github.com/itkrivoshei/OdinMonoWebApps/blob/main/media/EtchASketch.gif?raw=true',
+    imageUrl: `${mediaBaseUrl}/EtchASketch.gif?raw=true`,
   },
   {
     path: '/BookLibrary',
     name: 'Book Library',
-
-    imageUrl:
-      'https://github.com/itkrivoshei/OdinMonoWebApps/blob/main/media/Library.gif?raw=true',
+    imageUrl: `${mediaBaseUrl}/Library.gif?raw=true`,
   },
   {
     path: '/SignUpForm',
     name: 'Sign-up Form',
-
-    imageUrl:
-      'https://github.com/itkrivoshei/OdinMonoWebApps/blob/main/media/SignUpForm.gif?raw=true',
+    imageUrl: `${mediaBaseUrl}/SignUpForm.gif?raw=true`,
   },
   {
     path: '/DrumKit',
     name: 'Drum Kit',
-
-    imageUrl:
-      'https://github.com/itkrivoshei/OdinMonoWebApps/blob/main/media/DrumKit.gif?raw=true',
+    imageUrl: `${mediaBaseUrl}/DrumKit.gif?raw=true`,
   },
   {
     path: '/RockPaperScissors',
     name: 'Rock Paper Scissors',
-
-    imageUrl:
-      'https://github.com/itkrivoshei/OdinMonoWebApps/blob/main/media/RockPaperScissors.gif?raw=true',
+    imageUrl: `${mediaBaseUrl}/RockPaperScissors.gif?raw=true`,
   },
   {
     path: '/DashLanding',
     name: 'Dashboard',
-
-    imageUrl:
-      'https://github.com/itkrivoshei/OdinMonoWebApps/blob/main/media/Dashboard.gif?raw=true',
+    imageUrl: `${mediaBaseUrl}/Dashboard.gif?raw=true`,
   },
   {
     path: '/Landing',
     name: 'Landing',
-
-    imageUrl:
-      'https://github.com/itkrivoshei/OdinMonoWebApps/blob/main/media/Landing.gif?raw=true',
+    imageUrl: `${mediaBaseUrl}/Landing.gif?raw=true`,
   },
   {
     path: '/Restaurant',
     name: 'Restaurant',
-
-    imageUrl:
-      'https://github.com/itkrivoshei/OdinMonoWebApps/blob/main/media/Restaurant.gif?raw=true',
+    imageUrl: `${mediaBaseUrl}/Restaurant.gif?raw=true`,
   },
   {
     path: '/OdinRecipes',
     name: 'Recipes',
-
-    imageUrl:
-      'https://github.com/itkrivoshei/OdinMonoWebApps/blob/main/media/Recipes.gif?raw=true',
+    imageUrl: `${mediaBaseUrl}/Recipes.gif?raw=true`,
   },
 ];
 
@@ -141,7 +118,7 @@ const Dashboard: React.FunctionComponent = () => {
             color: 'primary.main',
           }}
         >
-          Odin Projects
+          React TypeScript Web Apps
         </Typography>
         <Grid container spacing={4} justifyContent='center'>
           {projects.map((project) => (
