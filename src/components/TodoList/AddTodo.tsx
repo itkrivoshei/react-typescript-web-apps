@@ -20,13 +20,14 @@ const AddTodo: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleAddTodo}>
+    <Box component='form' onSubmit={handleAddTodo} sx={{ width: '100%' }}>
       <Box
         sx={{
           display: 'flex',
-          flexDirection: 'column',
-          gap: 2,
-          maxWidth: 300,
+          flexDirection: { xs: 'column', sm: 'row' },
+          gap: 1.5,
+          width: '100%',
+          maxWidth: 520,
           margin: 'auto',
         }}
       >
@@ -38,10 +39,10 @@ const AddTodo: React.FC = () => {
           fullWidth
         />
         <Button variant='contained' color='primary' type='submit'>
-          Add Todo
+          Add
         </Button>
       </Box>
-    </form>
+    </Box>
   );
 };
 
