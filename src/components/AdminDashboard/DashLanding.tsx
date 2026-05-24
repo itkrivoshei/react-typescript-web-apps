@@ -18,12 +18,65 @@ import {
   FaEye,
   FaStar,
   FaTasks,
+  FaCheckCircle,
+  FaCodeBranch,
+  FaServer,
 } from 'react-icons/fa';
 
-const projects = [
-  'Infrastructure cleanup',
-  'Release checklist',
-  'Metrics panel',
+type MenuItem = {
+  icon: React.ReactNode;
+  label: string;
+};
+
+type Project = {
+  title: string;
+  description: string;
+  status: string;
+};
+
+type Metric = {
+  label: string;
+  value: string;
+  icon: React.ReactNode;
+};
+
+const navigationItems: MenuItem[] = [
+  { icon: <FaHome />, label: 'Overview' },
+  { icon: <FaUserCircle />, label: 'Profile' },
+  { icon: <FaEnvelope />, label: 'Messages' },
+  { icon: <FaHistory />, label: 'Activity' },
+  { icon: <FaTasks />, label: 'Tasks' },
+  { icon: <FaUsers />, label: 'Team' },
+];
+
+const settingsItems: MenuItem[] = [
+  { icon: <FaCog />, label: 'Settings' },
+  { icon: <FaQuestionCircle />, label: 'Support' },
+  { icon: <FaLock />, label: 'Privacy' },
+];
+
+const projects: Project[] = [
+  {
+    title: 'Infrastructure cleanup',
+    description: 'Review config files, remove unused assets, and keep scripts predictable.',
+    status: 'In review',
+  },
+  {
+    title: 'Release checklist',
+    description: 'Validate build, formatting, linting, tests, and deployment readiness.',
+    status: 'Active',
+  },
+  {
+    title: 'Metrics panel',
+    description: 'Summarize useful project signals in a compact dashboard surface.',
+    status: 'Queued',
+  },
+];
+
+const metrics: Metric[] = [
+  { label: 'Checks', value: '4', icon: <FaCheckCircle /> },
+  { label: 'Branches', value: '2', icon: <FaCodeBranch /> },
+  { label: 'Services', value: '3', icon: <FaServer /> },
 ];
 
 const DashLanding = () => {
@@ -49,35 +102,35 @@ const Logo = () => {
   return (
     <div className='logo'>
       <FaTachometerAlt />
-      <h2>Dashboard</h2>
+      <div>
+        <h2>Control</h2>
+        <span>Dashboard UI</span>
+      </div>
     </div>
   );
 };
 
 const Navigation = () => {
   return (
-    <nav className='nav'>
+    <nav className='nav' aria-label='Dashboard navigation'>
       <ul>
-        <MenuItem icon={<FaHome />} label='Home' />
-        <MenuItem icon={<FaUserCircle />} label='Profile' />
-        <MenuItem icon={<FaEnvelope />} label='Messages' />
-        <MenuItem icon={<FaHistory />} label='History' />
-        <MenuItem icon={<FaTasks />} label='Tasks' />
-        <MenuItem icon={<FaUsers />} label='Communities' />
+        {navigationItems.map((item) => (
+          <SidebarItem key={item.label} item={item} />
+        ))}
       </ul>
     </nav>
   );
 };
 
-type MenuItemProps = {
-  icon: React.ReactNode;
-  label: string;
+type SidebarItemProps = {
+  item: MenuItem;
 };
 
-const MenuItem: React.FC<MenuItemProps> = ({ icon, label }) => {
+const SidebarItem: React.FC<SidebarItemProps> = ({ item }) => {
   return (
     <li>
-      {icon} {label}
+      {item.icon}
+      <span>{item.label}</span>
     </li>
   );
 };
@@ -86,9 +139,9 @@ const Settings = () => {
   return (
     <div className='settings'>
       <ul>
-        <MenuItem icon={<FaCog />} label='Settings' />
-        <MenuItem icon={<FaQuestionCircle />} label='Support' />
-        <MenuItem icon={<FaLock />} label='Privacy' />
+        {settingsItems.map((item) => (
+          <SidebarItem key={item.label} item={item} />
+        ))}
       </ul>
     </div>
   );
@@ -116,19 +169,24 @@ const TopBar = () => {
   return (
     <div className='top-bar'>
       <div className='search-bar'>
-        <input id='search-input' type='text' aria-label='Search dashboard' />
+        <input
+          id='search-input'
+          type='text'
+          aria-label='Search dashboard'
+          placeholder='Search tasks, checks, or services'
+        />
         <FaSearch />
       </div>
-      <div className='notifications'>
+      <button type='button' className='icon-button' aria-label='Notifications'>
         <FaBell />
-      </div>
+      </button>
       <div className='user-info'>
         <img
           src='https://api.dicebear.com/6.x/notionists-neutral/svg?seed=Salem'
-          alt='User Avatar'
+          alt='User avatar'
           className='avatar-small'
         />
-        <span className='nickname'>Username</span>
+        <span className='nickname'>Operator</span>
       </div>
     </div>
   );
@@ -140,18 +198,24 @@ const LowerBar = () => {
       <div className='user'>
         <img
           src='https://api.dicebear.com/6.x/notionists-neutral/svg?seed=Salem'
-          alt='User Avatar'
+          alt='User avatar'
           className='avatar-large'
         />
         <div className='greeting'>
-          <h4>Hi there!</h4>
-          <span className='nickname'>Username</span>
+          <p>Project workspace</p>
+          <h1>Operations dashboard</h1>
         </div>
       </div>
-      <div className='actions'>
-        <FaPlus />
-        <FaCloudUploadAlt />
-        <FaShareAlt />
+      <div className='actions' aria-label='Dashboard actions'>
+        <button type='button'>
+          <FaPlus /> New
+        </button>
+        <button type='button'>
+          <FaCloudUploadAlt /> Upload
+        </button>
+        <button type='button'>
+          <FaShareAlt /> Share
+        </button>
       </div>
     </div>
   );
@@ -169,30 +233,65 @@ const Content = () => {
 const MainContentSection = () => {
   return (
     <div className='main-content'>
-      <h2>My Projects</h2>
-      <div className='my-projects'>
-        {projects.map((project) => (
-          <ProjectCard key={project} title={project} />
+      <section className='metrics-grid' aria-label='Dashboard metrics'>
+        {metrics.map((metric) => (
+          <MetricCard key={metric.label} metric={metric} />
         ))}
-      </div>
+      </section>
+
+      <section className='project-section'>
+        <div className='section-title'>
+          <p>Workspace</p>
+          <h2>Active cards</h2>
+        </div>
+        <div className='my-projects'>
+          {projects.map((project) => (
+            <ProjectCard key={project.title} project={project} />
+          ))}
+        </div>
+      </section>
     </div>
   );
 };
 
-type ProjectCardProps = {
-  title: string;
+type MetricCardProps = {
+  metric: Metric;
 };
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ title }) => {
+const MetricCard: React.FC<MetricCardProps> = ({ metric }) => {
   return (
-    <div className='card'>
-      <h3>{title}</h3>
-      <div className='card-actions'>
-        <FaShareAlt />
-        <FaEye />
+    <article className='metric-card'>
+      <span>{metric.icon}</span>
+      <div>
+        <p>{metric.label}</p>
+        <strong>{metric.value}</strong>
+      </div>
+    </article>
+  );
+};
+
+type ProjectCardProps = {
+  project: Project;
+};
+
+const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
+  return (
+    <article className='card'>
+      <div className='card-header'>
+        <span>{project.status}</span>
         <FaStar />
       </div>
-    </div>
+      <h3>{project.title}</h3>
+      <p>{project.description}</p>
+      <div className='card-actions'>
+        <button type='button' aria-label={`Share ${project.title}`}>
+          <FaShareAlt />
+        </button>
+        <button type='button' aria-label={`View ${project.title}`}>
+          <FaEye />
+        </button>
+      </div>
+    </article>
   );
 };
 
@@ -207,21 +306,35 @@ const RightSidebar = () => {
 
 const Announcements = () => {
   return (
-    <div className='announcements'>
+    <section className='announcements'>
+      <p className='side-label'>Updates</p>
       <h3>Announcements</h3>
-      <p>CI checks now run on every push to main.</p>
-      <p>Review pending tasks before the next release.</p>
-    </div>
+      <ul>
+        <li>Verification runs cover typecheck, lint, format, test, and build.</li>
+        <li>Deployment should stay tied to a successful main branch check.</li>
+      </ul>
+    </section>
   );
 };
 
 const Statistics = () => {
   return (
-    <div className='statistics'>
+    <section className='statistics'>
+      <p className='side-label'>Summary</p>
       <h3>Statistics</h3>
-      <p>3 active cards</p>
-      <p>2 pending reviews</p>
-    </div>
+      <div className='stat-row'>
+        <span>Active cards</span>
+        <strong>3</strong>
+      </div>
+      <div className='stat-row'>
+        <span>Pending reviews</span>
+        <strong>2</strong>
+      </div>
+      <div className='stat-row'>
+        <span>Open notes</span>
+        <strong>5</strong>
+      </div>
+    </section>
   );
 };
 
