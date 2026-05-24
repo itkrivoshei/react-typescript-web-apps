@@ -1,4 +1,10 @@
 node_modules
 build
+dist
+coverage
+.cache
+.eslintcache
 .env
+.env.*
+!.env.example
 .DS_*
