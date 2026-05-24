@@ -17,7 +17,6 @@ import OdinRecipes from './components/Recipes/OdinRecipes';
 import Landing from './components/LandingPage/Landing';
 import DashLanding from './components/AdminDashboard/DashLanding';
 import WeatherApp from './components/WeatherApp/WeatherApp';
-import Counter from './components/Counter/Counter';
 
 const config = {
   initialColorMode: 'dark',
@@ -55,7 +54,6 @@ function App() {
           <Route path='/RockPaperScissors' element={<RockPaperScissors />} />
           <Route path='/OdinRecipes' element={<OdinRecipes />} />
           <Route path='/WeatherApp' element={<WeatherApp />} />
-          <Route path='/Counter' element={<Counter />} />
         </Routes>
       </Router>
     </ChakraProvider>
