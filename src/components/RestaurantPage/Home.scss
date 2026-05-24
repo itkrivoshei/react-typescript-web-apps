@@ -1,37 +1,92 @@
 .home-container {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1.1fr);
   align-items: center;
+  gap: 28px;
   padding: 28px;
-  background: rgba(230, 230, 250, 0.96);
-  border: 1px solid rgba(138, 43, 226, 0.14);
-  border-radius: 24px;
-  color: blueviolet;
-  text-align: center;
-  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+  background: rgba(250, 245, 255, 0.96);
+  border: 1px solid rgba(168, 85, 247, 0.16);
+  border-radius: 32px;
+  color: #3b0764;
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.28);
+
+  .home-copy {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .home-kicker {
+    margin: 0 0 10px;
+    color: #9333ea;
+    font-size: 0.75rem;
+    font-weight: 900;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
 
   .home-title {
-    font-size: clamp(2rem, 6vw, 3.4rem);
-    font-weight: bold;
-    margin-bottom: 20px;
+    margin: 0;
+    color: #581c87;
+    font-family: 'Pacifico', cursive;
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    font-weight: 400;
     line-height: 1.05;
   }
 
   .home-subtitle {
-    font-size: 1.5em;
-    margin-bottom: 20px;
+    max-width: 520px;
+    margin: 18px 0 22px;
+    color: #4c1d95;
+    font-size: 1rem;
+    line-height: 1.8;
+  }
+
+  .home-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    span {
+      padding: 8px 12px;
+      border: 1px solid rgba(147, 51, 234, 0.18);
+      border-radius: 999px;
+      background: rgba(147, 51, 234, 0.08);
+      color: #581c87;
+      font-size: 0.82rem;
+      font-weight: 800;
+    }
   }
 
   .home-img-container {
+    position: relative;
     width: 100%;
-    max-width: 620px;
+    min-height: 420px;
     overflow: hidden;
-    border-radius: 20px;
+    border-radius: 26px;
+    box-shadow: 0 22px 60px rgba(88, 28, 135, 0.24);
+
+    &::after {
+      position: absolute;
+      inset: 0;
+      content: '';
+      background: linear-gradient(180deg, transparent 45%, rgba(59, 7, 100, 0.28));
+    }
 
     .home-img {
       width: 100%;
-      height: auto;
+      height: 100%;
       display: block;
+      object-fit: cover;
+    }
+  }
+
+  @media (max-width: 820px) {
+    grid-template-columns: 1fr;
+
+    .home-img-container {
+      min-height: 300px;
     }
   }
 }
