@@ -7,29 +7,30 @@ import SaveIcon from '@mui/icons-material/Save';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import {
   Project,
+  defaultProjectId,
   setActiveProject,
   deleteProject,
   editProject,
 } from '../../redux/slices/toDoSlice';
 
 const ProjectList: React.FC = () => {
-  const [isEditing, setIsEditing] = useState<number | string | null>(null);
+  const [editingProjectId, setEditingProjectId] = useState<string | null>(null);
   const [newName, setNewName] = useState('');
 
   const projects = useAppSelector((state) => state.todo.projects);
   const activeProjectId = useAppSelector((state) => state.todo.activeProject);
   const dispatch = useAppDispatch();
 
-  const handleProjectClick = (projectId: number | string) => {
+  const handleProjectClick = (projectId: string) => {
     dispatch(setActiveProject(projectId));
   };
 
-  const handleProjectDelete = (projectId: number | string) => {
+  const handleProjectDelete = (projectId: string) => {
     dispatch(deleteProject(projectId));
   };
 
-  const handleEditClick = (projectId: number | string, currentName: string) => {
-    setIsEditing(projectId);
+  const handleEditClick = (projectId: string, currentName: string) => {
+    setEditingProjectId(projectId);
     setNewName(currentName);
   };
 
@@ -37,13 +38,13 @@ const ProjectList: React.FC = () => {
     setNewName(event.target.value);
   };
 
-  const handleSaveClick = (projectId: number | string) => {
+  const handleSaveClick = (projectId: string) => {
     const trimmedName = newName.trim();
 
     if (!trimmedName) return;
 
     dispatch(editProject({ projectId, newName: trimmedName }));
-    setIsEditing(null);
+    setEditingProjectId(null);
     setNewName('');
   };
 
@@ -79,7 +80,7 @@ const ProjectList: React.FC = () => {
           }}
           onClick={() => handleProjectClick(project.id)}
         >
-          {isEditing === project.id ? (
+          {editingProjectId === project.id ? (
             <Box
               sx={{
                 width: '100%',
@@ -113,7 +114,7 @@ const ProjectList: React.FC = () => {
               {project.title}
             </Typography>
           )}
-          {!isEditing && (
+          {!editingProjectId && (
             <Box sx={{ ml: 'auto', display: 'flex' }}>
               <IconButton
                 onClick={(event) => {
@@ -124,7 +125,7 @@ const ProjectList: React.FC = () => {
               >
                 <EditIcon />
               </IconButton>
-              {project.id !== 'default' && (
+              {project.id !== defaultProjectId && (
                 <IconButton
                   onClick={(event) => {
                     event.stopPropagation();
