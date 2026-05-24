@@ -1,16 +1,16 @@
 import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { Box } from '@mui/material';
+import { Box, Skeleton } from '@mui/material';
 
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { fetchGif } from '../../redux/slices/weatherSlice';
-import { RootState, AppDispatch } from '../../redux/store';
 
 const WeatherMeme: React.FC = () => {
-  const dispatch: AppDispatch = useDispatch();
-  const currentCondition = useSelector(
-    (state: RootState) => state.weather.weatherData?.current.condition.text
+  const dispatch = useAppDispatch();
+  const currentCondition = useAppSelector(
+    (state) => state.weather.weatherData?.current.condition.text
   );
-  const gifUrl = useSelector((state: RootState) => state.weather.gifUrl);
+  const gifUrl = useAppSelector((state) => state.weather.gifUrl);
+  const gifLoading = useAppSelector((state) => state.weather.gifLoading);
 
   useEffect(() => {
     if (currentCondition) {
@@ -18,18 +18,24 @@ const WeatherMeme: React.FC = () => {
     }
   }, [currentCondition, dispatch]);
 
+  if (gifLoading) {
+    return <Skeleton variant='rounded' width='100%' height={160} />;
+  }
+
+  if (!gifUrl) {
+    return null;
+  }
+
   return (
     <Box display='flex' justifyContent='center' alignItems='center' p={2}>
-      {gifUrl && (
-        <img
-          src={gifUrl}
-          alt={`Weather reaction for ${currentCondition}`}
-          loading='lazy'
-          style={{ maxWidth: '100%', height: 'auto' }}
-        />
-      )}
+      <img
+        src={gifUrl}
+        alt={`Weather reaction for ${currentCondition}`}
+        loading='lazy'
+        style={{ maxWidth: '100%', height: 'auto', borderRadius: 12 }}
+      />
     </Box>
   );
 };
 
-export default WeatherMeme;
+export default React.memo(WeatherMeme);
