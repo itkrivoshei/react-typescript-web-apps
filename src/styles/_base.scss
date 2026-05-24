@@ -52,3 +52,51 @@ img,
 svg {
   display: block;
 }
+
+.apps-home-link {
+  position: fixed;
+  z-index: 2000;
+  top: 18px;
+  left: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 38px;
+  padding: 8px 14px;
+  border: 1px solid rgba(248, 250, 252, 0.18);
+  border-radius: 12px;
+  background: rgba(15, 23, 42, 0.76);
+  box-shadow: 0 14px 38px rgba(0, 0, 0, 0.28);
+  color: #f8fafc;
+  font-size: 0.9rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  backdrop-filter: blur(12px);
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+
+  &:hover {
+    transform: translateY(-1px);
+    border-color: rgba(94, 234, 212, 0.5);
+    background: rgba(15, 23, 42, 0.92);
+  }
+
+  &:focus-visible {
+    outline: 3px solid rgba(94, 234, 212, 0.42);
+    outline-offset: 3px;
+  }
+}
+
+@media (max-width: 560px) {
+  .apps-home-link {
+    top: 12px;
+    left: 12px;
+    min-height: 34px;
+    padding: 7px 11px;
+    border-radius: 10px;
+    font-size: 0.78rem;
+  }
+}
