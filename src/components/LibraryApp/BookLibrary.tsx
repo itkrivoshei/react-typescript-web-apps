@@ -32,14 +32,14 @@ const darkTheme = createTheme({
   palette: {
     mode: 'dark',
     primary: {
-      main: '#8be9fd',
+      main: '#a7f3d0',
     },
     secondary: {
-      main: '#bd93f9',
+      main: '#c4b5fd',
     },
     background: {
-      default: '#1f2335',
-      paper: '#282a36',
+      default: '#111827',
+      paper: '#1f2937',
     },
     text: {
       secondary: '#cbd5e1',
@@ -151,7 +151,7 @@ const Library: React.FC = () => {
           minHeight: '100vh',
           py: { xs: 4, md: 6 },
           background:
-            'radial-gradient(circle at 15% 0, rgba(139, 233, 253, 0.16), transparent 32rem), radial-gradient(circle at 90% 10%, rgba(189, 147, 249, 0.12), transparent 28rem), #1f2335',
+            'radial-gradient(circle at 15% 0, rgba(167, 243, 208, 0.16), transparent 32rem), radial-gradient(circle at 90% 10%, rgba(196, 181, 253, 0.12), transparent 28rem), #111827',
         }}
       >
         <Container component='main' maxWidth='lg'>
@@ -160,10 +160,10 @@ const Library: React.FC = () => {
             sx={{
               p: { xs: 3, md: 4 },
               width: '100%',
-              border: '1px solid rgba(139, 233, 253, 0.14)',
+              border: '1px solid rgba(167, 243, 208, 0.14)',
               borderRadius: 5,
               background:
-                'linear-gradient(145deg, rgba(40, 42, 54, 0.96), rgba(31, 35, 53, 0.98))',
+                'linear-gradient(145deg, rgba(31, 41, 55, 0.96), rgba(17, 24, 39, 0.98))',
               boxShadow: '0 30px 100px rgba(0, 0, 0, 0.34)',
             }}
           >
@@ -190,14 +190,14 @@ const Library: React.FC = () => {
                     lineHeight: 0.95,
                   }}
                 >
-                  My Library
+                  Book Library
                 </Typography>
                 <Typography
                   color='text.secondary'
-                  sx={{ mt: 2, maxWidth: 620 }}
+                  sx={{ mt: 2, maxWidth: 620, lineHeight: 1.8 }}
                 >
-                  Keep a compact list of books, reading status, and page count
-                  without extra navigation or storage complexity.
+                  Track books, reading status, and page count in a compact
+                  library board without extra routing or storage complexity.
                 </Typography>
               </Box>
 
@@ -260,9 +260,10 @@ const Library: React.FC = () => {
                         minHeight: 210,
                         borderRadius: 4,
                         borderColor: book.read
-                          ? 'rgba(80, 250, 123, 0.28)'
-                          : 'rgba(255, 121, 198, 0.22)',
-                        background: 'rgba(68, 71, 90, 0.45)',
+                          ? 'rgba(167, 243, 208, 0.28)'
+                          : 'rgba(196, 181, 253, 0.22)',
+                        background:
+                          'linear-gradient(180deg, rgba(55, 65, 81, 0.56), rgba(31, 41, 55, 0.72))',
                       }}
                     >
                       <Stack
@@ -328,8 +329,8 @@ const Library: React.FC = () => {
                   sx={{
                     p: 2.5,
                     borderRadius: 4,
-                    borderColor: 'rgba(139, 233, 253, 0.14)',
-                    background: 'rgba(40, 42, 54, 0.72)',
+                    borderColor: 'rgba(167, 243, 208, 0.14)',
+                    background: 'rgba(31, 41, 55, 0.72)',
                   }}
                 >
                   <Typography variant='h6' color='primary' gutterBottom>
@@ -398,8 +399,8 @@ const StatCard: React.FC<StatCardProps> = ({ label, value }) => {
       sx={{
         p: 2,
         borderRadius: 3,
-        borderColor: 'rgba(139, 233, 253, 0.14)',
-        background: 'rgba(139, 233, 253, 0.05)',
+        borderColor: 'rgba(167, 243, 208, 0.14)',
+        background: 'rgba(167, 243, 208, 0.05)',
       }}
     >
       <Typography variant='caption' color='text.secondary'>
