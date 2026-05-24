@@ -20,10 +20,13 @@ import lofiImage from '../../assets/TodoList/images/lofi_image.jpg';
 const todoTheme = createTheme({
   palette: {
     primary: {
-      main: '#7161ef',
+      main: '#6d5dfc',
     },
     secondary: {
-      main: '#cdb4dbff',
+      main: '#d8c7ff',
+    },
+    text: {
+      primary: '#282a36',
     },
   },
   typography: {
@@ -49,42 +52,45 @@ const TodoApp: React.FC = () => {
           minHeight: '100vh',
           justifyContent: 'center',
           alignItems: 'center',
-          backgroundImage: `url(${lofiImage})`,
-          p: 2,
+          backgroundImage: `linear-gradient(135deg, rgba(40, 42, 54, 0.3), rgba(40, 42, 54, 0.12)), url(${lofiImage})`,
+          p: { xs: 1.5, sm: 3 },
         }}
       >
         <Paper
           component='main'
-          elevation={3}
+          elevation={6}
           sx={{
             display: 'flex',
             flexDirection: { xs: 'column', md: 'row' },
-            maxWidth: 900,
+            maxWidth: 940,
             width: '100%',
-            minHeight: 480,
-            backgroundColor: '#9381ff',
-            opacity: 0.93,
-            p: 2,
+            minHeight: 500,
+            borderRadius: 4,
+            overflow: 'hidden',
+            backgroundColor: 'rgba(147, 129, 255, 0.9)',
+            border: '1px solid rgba(255, 255, 255, 0.28)',
+            boxShadow: '0 24px 80px rgba(40, 42, 54, 0.28)',
           }}
         >
           <Box
             component='aside'
             sx={{
               width: { xs: '100%', md: '35%' },
-              backgroundColor: 'secondary.main',
-              p: 2,
+              backgroundColor: 'rgba(216, 199, 255, 0.92)',
+              p: { xs: 2, md: 3 },
               gap: 2,
               display: 'flex',
               flexDirection: 'column',
-              justifyContent: 'space-evenly',
-              alignItems: 'center',
+              alignItems: 'stretch',
             }}
           >
             <Typography
               variant='h2'
               sx={{
-                mb: 2,
-                color: '#282A36',
+                mb: 1,
+                color: '#282a36',
+                textAlign: 'center',
+                fontSize: 'clamp(2rem, 7vw, 3.2rem)',
               }}
             >
               Todo App
@@ -100,12 +106,11 @@ const TodoApp: React.FC = () => {
               flexDirection: 'column',
               justifyContent: 'center',
               alignItems: 'center',
-              pl: { xs: 0, md: 2 },
-              pt: { xs: 2, md: 0 },
+              p: { xs: 2, md: 3 },
               gap: 2,
             }}
           >
-            <Typography variant='h3' color={'#282A36'}>
+            <Typography variant='h3' color='#282a36'>
               Todos
             </Typography>
             <AddTodo />
