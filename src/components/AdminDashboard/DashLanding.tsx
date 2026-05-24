@@ -20,6 +20,8 @@ import {
   FaTasks,
 } from 'react-icons/fa';
 
+const projects = ['Infrastructure cleanup', 'Release checklist', 'Metrics panel'];
+
 const DashLanding = () => {
   return (
     <div className='dash-landing-container'>
@@ -110,7 +112,7 @@ const TopBar = () => {
   return (
     <div className='top-bar'>
       <div className='search-bar'>
-        <input id='search-input' type='text' />
+        <input id='search-input' type='text' aria-label='Search dashboard' />
         <FaSearch />
       </div>
       <div className='notifications'>
@@ -165,20 +167,22 @@ const MainContentSection = () => {
     <div className='main-content'>
       <h2>My Projects</h2>
       <div className='my-projects'>
-        {/* This can be further optimized by using .map and an array of projects */}
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
-        {/* ... other cards ... */}
+        {projects.map((project) => (
+          <ProjectCard key={project} title={project} />
+        ))}
       </div>
     </div>
   );
 };
 
-const ProjectCard = () => {
+type ProjectCardProps = {
+  title: string;
+};
+
+const ProjectCard: React.FC<ProjectCardProps> = ({ title }) => {
   return (
     <div className='card'>
-      <h3>Project Name</h3>
+      <h3>{title}</h3>
       <div className='card-actions'>
         <FaShareAlt />
         <FaEye />
@@ -201,12 +205,8 @@ const Announcements = () => {
   return (
     <div className='announcements'>
       <h3>Announcements</h3>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed malesuada
-        commodo turpis, sed facilisis diam feugiat a. Pellentesque malesuada
-        dictum purus.
-      </p>
-      <p>Lorem ipsum...</p>
+      <p>CI checks now run on every push to main.</p>
+      <p>Review pending tasks before the next release.</p>
     </div>
   );
 };
@@ -215,12 +215,8 @@ const Statistics = () => {
   return (
     <div className='statistics'>
       <h3>Statistics</h3>
-      <p>Lorem ipsum...</p>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed malesuada
-        commodo turpis, sed facilisis diam feugiat a. Pellentesque malesuada
-        dictum purus.
-      </p>
+      <p>3 active cards</p>
+      <p>2 pending reviews</p>
     </div>
   );
 };
