@@ -1,12 +1,8 @@
 import React from 'react';
 import { List } from '@mui/material';
-import TodoItem from './TodoItem';
 
-interface Todo {
-  id: number;
-  text: string;
-  completed: boolean;
-}
+import { Todo } from '../../redux/slices/toDoSlice';
+import TodoItem from './TodoItem';
 
 interface TodoListProps {
   todos: Todo[];
@@ -29,4 +25,4 @@ const TodoList: React.FC<TodoListProps> = ({ todos }) => {
   );
 };
 
-export default TodoList;
+export default React.memo(TodoList);
