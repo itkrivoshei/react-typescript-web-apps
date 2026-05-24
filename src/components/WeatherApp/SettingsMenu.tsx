@@ -19,47 +19,46 @@ const SettingsMenu: FC = () => {
     setCity(event.target.value);
   };
 
-  const handleFetchWeather = () => {
-    dispatch(fetchWeather({ city }));
-  };
-
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    handleFetchWeather();
+
+    const trimmedCity = city.trim();
+
+    if (trimmedCity) {
+      dispatch(fetchWeather({ city: trimmedCity }));
+    }
   };
 
   return (
-    <Box position='absolute' top={0} margin={2}>
-      <Box>
-        <form onSubmit={handleSubmit}>
-          <Box display='flex' alignItems='center' gap={1} marginY={2}>
-            <TextField
-              type='text'
-              value={city}
-              onChange={handleCityChange}
-              label='Enter City'
-              variant='outlined'
-              size='small'
-              sx={{ label: { color: '#4cc9f0' } }}
-            />
-            <IconButton
-              aria-label='search'
-              type='submit'
-              sx={{ color: '#4cc9f0' }}
-            >
-              <SearchIcon />
-            </IconButton>
-          </Box>
-        </form>
-        <Button
-          onClick={handleToggleRegion}
-          variant='outlined'
-          size='small'
-          sx={{ color: '#4cc9f0' }}
-        >
-          UNIT
-        </Button>
-      </Box>
+    <Box component='section' position='absolute' top={0} margin={2}>
+      <form onSubmit={handleSubmit}>
+        <Box display='flex' alignItems='center' gap={1} marginY={2}>
+          <TextField
+            type='search'
+            value={city}
+            onChange={handleCityChange}
+            label='Enter City'
+            variant='outlined'
+            size='small'
+            sx={{ label: { color: '#4cc9f0' } }}
+          />
+          <IconButton
+            aria-label='Search weather by city'
+            type='submit'
+            sx={{ color: '#4cc9f0' }}
+          >
+            <SearchIcon />
+          </IconButton>
+        </Box>
+      </form>
+      <Button
+        onClick={handleToggleRegion}
+        variant='outlined'
+        size='small'
+        sx={{ color: '#4cc9f0' }}
+      >
+        Unit
+      </Button>
     </Box>
   );
 };
