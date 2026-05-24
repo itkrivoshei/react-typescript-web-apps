@@ -1,23 +1,23 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, nanoid, PayloadAction } from '@reduxjs/toolkit';
 
 export interface Todo {
-  id: number;
+  id: string;
   text: string;
   completed: boolean;
 }
 
 export interface Project {
-  id: number | string;
+  id: string;
   title: string;
   todos: Todo[];
 }
 
 interface TodoState {
   projects: Project[];
-  activeProject: string | number;
+  activeProject: string;
 }
 
-const defaultProjectId = 'default';
+export const defaultProjectId = 'default';
 
 const initialState: TodoState = {
   projects: [
@@ -37,19 +37,24 @@ const toDoSlice = createSlice({
   name: 'todo',
   initialState,
   reducers: {
-    addTodo: (state, action: PayloadAction<string>) => {
-      const project = findActiveProject(state);
+    addTodo: {
+      reducer: (state, action: PayloadAction<Todo>) => {
+        const project = findActiveProject(state);
 
-      if (!project) return;
+        if (!project) return;
 
-      project.todos.push({
-        id: Date.now(),
-        text: action.payload,
-        completed: false,
-      });
+        project.todos.push(action.payload);
+      },
+      prepare: (text: string) => ({
+        payload: {
+          id: nanoid(),
+          text,
+          completed: false,
+        },
+      }),
     },
 
-    deleteTodo: (state, action: PayloadAction<number>) => {
+    deleteTodo: (state, action: PayloadAction<string>) => {
       const project = findActiveProject(state);
 
       if (!project) return;
@@ -57,15 +62,31 @@ const toDoSlice = createSlice({
       project.todos = project.todos.filter((todo) => todo.id !== action.payload);
     },
 
-    addProject: (state, action: PayloadAction<string>) => {
-      state.projects.push({ id: Date.now(), title: action.payload, todos: [] });
+    addProject: {
+      reducer: (state, action: PayloadAction<Project>) => {
+        state.projects.push(action.payload);
+        state.activeProject = action.payload.id;
+      },
+      prepare: (title: string) => ({
+        payload: {
+          id: nanoid(),
+          title,
+          todos: [],
+        },
+      }),
     },
 
-    setActiveProject: (state, action: PayloadAction<string | number>) => {
-      state.activeProject = action.payload;
+    setActiveProject: (state, action: PayloadAction<string>) => {
+      const projectExists = state.projects.some(
+        (project) => project.id === action.payload
+      );
+
+      if (projectExists) {
+        state.activeProject = action.payload;
+      }
     },
 
-    deleteProject: (state, action: PayloadAction<string | number>) => {
+    deleteProject: (state, action: PayloadAction<string>) => {
       if (action.payload === defaultProjectId) return;
 
       state.projects = state.projects.filter(
@@ -79,7 +100,7 @@ const toDoSlice = createSlice({
 
     editProject: (
       state,
-      action: PayloadAction<{ projectId: string | number; newName: string }>
+      action: PayloadAction<{ projectId: string; newName: string }>
     ) => {
       const project = state.projects.find(
         (item) => item.id === action.payload.projectId
@@ -92,7 +113,7 @@ const toDoSlice = createSlice({
 
     editTodo: (
       state,
-      action: PayloadAction<{ todoId: number; newText: string }>
+      action: PayloadAction<{ todoId: string; newText: string }>
     ) => {
       const project = findActiveProject(state);
       const todo = project?.todos.find(
@@ -104,7 +125,7 @@ const toDoSlice = createSlice({
       }
     },
 
-    toggleTodo: (state, action: PayloadAction<number>) => {
+    toggleTodo: (state, action: PayloadAction<string>) => {
       const project = findActiveProject(state);
       const todo = project?.todos.find((item) => item.id === action.payload);
 
