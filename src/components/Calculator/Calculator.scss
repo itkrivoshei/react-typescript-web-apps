@@ -1,6 +1,10 @@
 .calculator-container {
   background:
-    radial-gradient(circle at top, rgba(255, 255, 255, 0.22), transparent 28rem),
+    radial-gradient(
+      circle at top,
+      rgba(255, 255, 255, 0.22),
+      transparent 28rem
+    ),
     linear-gradient(135deg, #9d8b73, #e2d1ba 48%, #b9a58b);
 
   *,
