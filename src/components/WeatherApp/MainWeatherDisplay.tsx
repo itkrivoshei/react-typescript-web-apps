@@ -76,7 +76,7 @@ const MainWeatherDisplay: React.FC = () => {
   );
 
   if (error) {
-    return renderStatusCard(`Error: ${error}`, 'error');
+    return renderStatusCard(error, 'error');
   }
 
   if (weatherLoading) {
@@ -105,7 +105,10 @@ const MainWeatherDisplay: React.FC = () => {
         <Stack spacing={2} alignItems='center' textAlign='center'>
           <Box>
             <Typography variant='h4' color='#f72585'>
-              {weatherData.location.name}, {weatherData.location.country}
+              {weatherData.location.name}
+              {weatherData.location.country
+                ? `, ${weatherData.location.country}`
+                : ''}
             </Typography>
             <Typography variant='body2' color='#4cc9f0'>
               {formatLocalTime(weatherData.location.localtime)}
