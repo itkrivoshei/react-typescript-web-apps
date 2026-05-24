@@ -16,6 +16,16 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 const darkTheme = createTheme({
   palette: {
     mode: 'dark',
+    primary: {
+      main: '#8be9fd',
+    },
+    secondary: {
+      main: '#bd93f9',
+    },
+    background: {
+      default: '#1f2335',
+      paper: '#282a36',
+    },
   },
 });
 
@@ -55,25 +65,25 @@ const Library: React.FC = () => {
     setMyLibrary([...myLibrary, book]);
   };
 
-  const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     addBookToLibrary(formData);
     setShowForm(false);
     setFormData({ title: '', author: '', pages: 0, read: false });
   };
 
   const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    if (e.target instanceof HTMLInputElement) {
-      const { name, value, type, checked } = e.target;
+    if (event.target instanceof HTMLInputElement) {
+      const { name, value, type, checked } = event.target;
       if (type === 'checkbox') {
         setFormData({ ...formData, [name]: checked });
       } else {
         setFormData({ ...formData, [name]: value });
       }
-    } else if (e.target instanceof HTMLTextAreaElement) {
-      const { name, value } = e.target;
+    } else if (event.target instanceof HTMLTextAreaElement) {
+      const { name, value } = event.target;
       setFormData({ ...formData, [name]: value });
     }
   };
@@ -91,65 +101,87 @@ const Library: React.FC = () => {
 
   return (
     <ThemeProvider theme={darkTheme}>
-      <Container component='main' maxWidth='md'>
-        <Box
-          display='flex'
-          flexDirection='column'
-          alignItems='center'
-          justifyContent='center'
-          height='100vh'
-        >
+      <Box
+        sx={{
+          minHeight: '100vh',
+          py: 4,
+          background:
+            'radial-gradient(circle at top, rgba(139, 233, 253, 0.12), transparent 32rem), #1f2335',
+        }}
+      >
+        <Container component='main' maxWidth='md'>
           <Paper
-            elevation={3}
-            style={{
-              padding: '20px',
+            elevation={8}
+            sx={{
+              p: { xs: 3, md: 4 },
               width: '100%',
+              border: '1px solid rgba(139, 233, 253, 0.14)',
+              borderRadius: 4,
             }}
           >
-            <Typography variant='h4' color='#bd93f9' gutterBottom>
+            <Typography
+              variant='overline'
+              color='primary'
+              sx={{ letterSpacing: '0.18em' }}
+            >
+              Reading tracker
+            </Typography>
+            <Typography variant='h3' color='secondary' gutterBottom>
               My Library
             </Typography>
-            <Grid container spacing={3}>
+            <Grid container spacing={2.5}>
               {myLibrary.map((book, index) => (
-                <Grid item xs={12} key={index}>
-                  <Typography color='#8BE9FD' variant='h6'>
-                    {book.title}
-                  </Typography>
-                  <Typography>{book.author}</Typography>
-                  <Typography>{book.pages} pages</Typography>
-                  <FormGroup>
-                    <FormControlLabel
-                      control={
-                        <Checkbox
-                          checked={book.read}
-                          onChange={() => toggleRead(index)}
-                        />
-                      }
-                      label='Read'
-                    />
-                  </FormGroup>
-                  <Button
-                    variant='contained'
-                    color='error'
-                    onClick={() => removeBook(index)}
-                    style={{ marginTop: '10px' }}
+                <Grid item xs={12} key={`${book.title}-${book.author}`}>
+                  <Paper
+                    variant='outlined'
+                    sx={{
+                      p: 2,
+                      borderRadius: 3,
+                      borderColor: book.read
+                        ? 'rgba(80, 250, 123, 0.28)'
+                        : 'rgba(255, 121, 198, 0.22)',
+                    }}
                   >
-                    Remove
-                  </Button>
+                    <Typography color='primary' variant='h6'>
+                      {book.title}
+                    </Typography>
+                    <Typography color='text.secondary'>{book.author}</Typography>
+                    <Typography>{book.pages} pages</Typography>
+                    <FormGroup>
+                      <FormControlLabel
+                        control={
+                          <Checkbox
+                            checked={book.read}
+                            onChange={() => toggleRead(index)}
+                          />
+                        }
+                        label='Read'
+                      />
+                    </FormGroup>
+                    <Button
+                      variant='outlined'
+                      color='error'
+                      onClick={() => removeBook(index)}
+                      sx={{ mt: 1 }}
+                    >
+                      Remove
+                    </Button>
+                  </Paper>
                 </Grid>
               ))}
             </Grid>
 
             <Button
               variant='contained'
+              color='secondary'
               onClick={() => setShowForm(!showForm)}
-              style={{ marginTop: '20px', width: '100%' }}
+              sx={{ mt: 3, width: '100%' }}
             >
-              ADD BOOK
+              Add Book
             </Button>
 
             {showForm && (
-              <form onSubmit={handleFormSubmit} style={{ marginTop: '20px' }}>
+              <Box component='form' onSubmit={handleFormSubmit} sx={{ mt: 3 }}>
                 <TextField
                   name='title'
                   placeholder='Title'
@@ -193,11 +225,11 @@ const Library: React.FC = () => {
                 <Button type='submit' variant='contained' color='primary'>
                   Submit
                 </Button>
-              </form>
+              </Box>
             )}
           </Paper>
-        </Box>
-      </Container>
+        </Container>
+      </Box>
     </ThemeProvider>
   );
 };
