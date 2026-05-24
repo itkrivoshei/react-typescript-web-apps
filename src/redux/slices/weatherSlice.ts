@@ -125,7 +125,9 @@ const kphToMph = (speed: number) => Math.round(speed * 0.621371 * 10) / 10;
 const getWeatherCondition = (weatherCode: number) =>
   weatherCodeLabels[weatherCode] ?? 'Current weather';
 
-const getCoordinatesFromCity = async (city: string): Promise<GeocodingResult> => {
+const getCoordinatesFromCity = async (
+  city: string
+): Promise<GeocodingResult> => {
   const apiUrl = new URL('https://geocoding-api.open-meteo.com/v1/search');
   apiUrl.searchParams.set('name', city);
   apiUrl.searchParams.set('count', '1');
