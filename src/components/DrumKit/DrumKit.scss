@@ -1,11 +1,15 @@
 .drum-kit-container {
-  font-size: 10px;
-  background:
-    linear-gradient(rgba(8, 13, 23, 0.36), rgba(8, 13, 23, 0.72)),
-    url('./background.jpg') bottom center;
-  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
   margin: 0;
   padding: 32px;
+  background:
+    radial-gradient(circle at 20% 10%, rgba(255, 198, 0, 0.22), transparent 24rem),
+    linear-gradient(rgba(8, 13, 23, 0.42), rgba(8, 13, 23, 0.78)),
+    url('./background.jpg') bottom center;
+  background-size: cover;
   font-family:
     Inter,
     ui-sans-serif,
@@ -14,36 +18,96 @@
     BlinkMacSystemFont,
     'Segoe UI',
     sans-serif;
-  min-height: 100vh;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  align-items: center;
-  justify-content: center;
+  font-size: 10px;
+
+  * {
+    box-sizing: border-box;
+  }
+
+  .drum-kit-panel {
+    width: min(100%, 980px);
+    padding: clamp(24px, 5vw, 44px);
+    border: 1px solid rgba(255, 198, 0, 0.22);
+    border-radius: 32px;
+    background: rgba(8, 13, 23, 0.62);
+    box-shadow: 0 34px 110px rgba(0, 0, 0, 0.46);
+    backdrop-filter: blur(12px);
+  }
+
+  .drum-kit-heading {
+    margin-bottom: 32px;
+    text-align: center;
+
+    p {
+      margin: 0 0 10px;
+      color: #ffc600;
+      font-size: 0.78rem;
+      font-weight: 900;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      color: #fff;
+      font-size: clamp(3rem, 8vw, 5.6rem);
+      line-height: 0.95;
+      letter-spacing: -0.08em;
+      text-shadow: 0 18px 55px rgba(0, 0, 0, 0.5);
+    }
+
+    span {
+      display: inline-flex;
+      margin-top: 14px;
+      padding: 8px 12px;
+      border: 1px solid rgba(255, 198, 0, 0.24);
+      border-radius: 999px;
+      background: rgba(255, 198, 0, 0.08);
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 0.9rem;
+      font-weight: 800;
+    }
+  }
+
+  .keys {
+    display: grid;
+    grid-template-columns: repeat(9, minmax(0, 1fr));
+    gap: 12px;
+  }
 
   .key {
-    border: 1px solid rgba(255, 198, 0, 0.44);
-    border-radius: 1rem;
-    margin: 0;
-    font-size: 1.5rem;
+    min-height: 116px;
+    border: 1px solid rgba(255, 198, 0, 0.34);
+    border-radius: 18px;
     padding: 1rem 0.5rem;
+    background: rgba(0, 0, 0, 0.48);
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.28);
+    color: white;
+    text-align: center;
+    text-shadow: 0 0 0.5rem black;
+    cursor: pointer;
+    backdrop-filter: blur(6px);
     transition:
       transform 0.07s ease,
       box-shadow 0.07s ease,
       border-color 0.07s ease,
       background-color 0.07s ease;
-    width: 9.5rem;
-    text-align: center;
-    color: white;
-    background: rgba(0, 0, 0, 0.48);
-    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.28);
-    text-shadow: 0 0 0.5rem black;
-    backdrop-filter: blur(6px);
+
+    &:hover,
+    &:focus-visible {
+      border-color: rgba(255, 198, 0, 0.78);
+      background: rgba(255, 198, 0, 0.1);
+      outline: none;
+    }
+
+    &:focus-visible {
+      box-shadow: 0 0 0 3px rgba(255, 198, 0, 0.28);
+    }
 
     &.playing {
       transform: scale(1.06) translateY(-2px);
       border-color: #ffc600;
-      background: rgba(255, 198, 0, 0.12);
+      background: rgba(255, 198, 0, 0.14);
       box-shadow: 0 0 1.6rem rgba(255, 198, 0, 0.85);
     }
 
@@ -54,10 +118,37 @@
     }
 
     .sound {
-      font-size: 1rem;
-      text-transform: uppercase;
-      letter-spacing: 0.14rem;
       color: #ffc600;
+      font-size: 0.88rem;
+      font-weight: 900;
+      letter-spacing: 0.14rem;
+      text-transform: uppercase;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .keys {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 520px) {
+    padding: 18px;
+
+    .drum-kit-panel {
+      border-radius: 24px;
+    }
+
+    .keys {
+      gap: 10px;
+    }
+
+    .key {
+      min-height: 94px;
+
+      kbd {
+        font-size: 2.8rem;
+      }
     }
   }
 }
