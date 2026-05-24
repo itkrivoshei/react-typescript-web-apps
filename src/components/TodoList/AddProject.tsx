@@ -21,12 +21,12 @@ const AddProject: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <Box component='form' onSubmit={handleSubmit} sx={{ width: '100%' }}>
       <Box
         sx={{
           display: 'flex',
           flexDirection: 'column',
-          gap: 2,
+          gap: 1.5,
           margin: 'auto',
         }}
       >
@@ -41,7 +41,7 @@ const AddProject: React.FC = () => {
           Add Project
         </Button>
       </Box>
-    </form>
+    </Box>
   );
 };
 
