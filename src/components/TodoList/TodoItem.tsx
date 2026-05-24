@@ -53,6 +53,7 @@ const TodoItem: React.FC<TodoItemProps> = ({ todo }) => {
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
+            gap: 1,
             margin: 'auto',
           }}
         >
@@ -72,11 +73,16 @@ const TodoItem: React.FC<TodoItemProps> = ({ todo }) => {
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
-            backgroundColor: '#c8b6ff',
-            opacity: todo.completed ? 0.5 : 1,
+            gap: 1,
+            minHeight: 52,
+            px: 1,
+            borderRadius: 2,
+            border: '1px solid rgba(40, 42, 54, 0.12)',
+            backgroundColor: 'rgba(200, 182, 255, 0.88)',
+            opacity: todo.completed ? 0.58 : 1,
           }}
         >
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
             <Checkbox
               checked={!!todo.completed}
               onChange={handleToggleCompletion}
@@ -92,7 +98,7 @@ const TodoItem: React.FC<TodoItemProps> = ({ todo }) => {
               {todo.text}
             </Typography>
           </Box>
-          <Box>
+          <Box sx={{ display: 'flex' }}>
             <IconButton onClick={handleEdit} aria-label={`Edit ${todo.text}`}>
               <EditIcon />
             </IconButton>
