@@ -1,9 +1,12 @@
 .calculator-container {
-  background: radial-gradient(
-      circle at top,
-      rgba(255, 255, 255, 0.22),
-      transparent 28rem
-    ),
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  place-items: center;
+  padding: 24px;
+  background:
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.24), transparent 28rem),
     linear-gradient(135deg, #9d8b73, #e2d1ba 48%, #b9a58b);
 
   *,
@@ -32,24 +35,17 @@
     outline-offset: 3px;
   }
 
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  place-items: center;
-  min-height: 100vh;
-  padding: 24px;
-
   .statusPanel {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     width: min(100%, 400px);
-    min-height: 96px;
-    margin-top: 10px;
+    min-height: 92px;
+    margin: 0 0 22px;
     overflow: hidden;
-    background-color: #b7a081;
-    color: #2e2d28;
     border: 8px solid #36352e;
     border-radius: 10px;
+    background-color: #b7a081;
+    color: #2e2d28;
     box-shadow: 0 20px 60px rgba(46, 45, 40, 0.24);
   }
 
@@ -71,8 +67,8 @@
   .light {
     width: 17px;
     height: 8px;
-    background: #3f3e36;
     border-radius: 1px;
+    background: #3f3e36;
   }
 
   .light.flash {
@@ -85,6 +81,7 @@
       background: #292828;
       color: #292828;
     }
+
     to {
       background: linear-gradient(to right, #019120, #338946, #019120);
       color: #22c722;
@@ -96,6 +93,7 @@
       background: linear-gradient(to right, #019120, #338946, #019120);
       color: #22c722;
     }
+
     to {
       background: #292828;
       color: #292828;
@@ -103,20 +101,20 @@
   }
 
   .display {
-    width: min(100%, 400px);
-    height: 60px;
     display: flex;
     align-items: center;
-    justify-content: right;
+    justify-content: flex-end;
+    width: min(100%, 400px);
+    height: 60px;
+    margin: 0 0 24px;
     overflow: hidden;
-    font-weight: bold;
-    font-size: 20px;
     animation: lockToFade 0.5s forwards;
-    padding: 10px;
     border: 1px solid #222;
     border-radius: 10px;
-    margin: 24px;
+    padding: 10px;
     box-shadow: inset 0 0 16px rgba(0, 0, 0, 0.38);
+    font-size: 20px;
+    font-weight: bold;
     transition:
       background 0.5s,
       color 0.2s;
@@ -128,20 +126,15 @@
 
   .loading-screen {
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     height: 100%;
-    font-size: 1.5rem;
     color: #36352e;
+    font-size: 1.5rem;
   }
 
   .buttons {
-    width: min(100%, 400px);
-    border: 10px solid #36352e;
-    border-radius: 10px;
     display: grid;
-    gap: 0 5px;
-    place-items: center;
     grid-template-areas:
       'ac c vol git'
       'numLock divide multiply minus'
@@ -149,13 +142,18 @@
       'four five six plus'
       'one two three enter'
       'zero zero dot enter';
+    gap: 0 5px;
+    place-items: center;
+    width: min(100%, 400px);
+    border: 10px solid #36352e;
+    border-radius: 10px;
     background: #36352e;
     box-shadow: 0 24px 70px rgba(46, 45, 40, 0.32);
   }
 
   .buttons * {
-    height: 100%;
     width: 100%;
+    height: 100%;
   }
 
   .active,
@@ -168,63 +166,83 @@
   #one {
     grid-area: one;
   }
+
   #two {
     grid-area: two;
   }
+
   #three {
     grid-area: three;
   }
+
   #four {
     grid-area: four;
   }
+
   #five {
     grid-area: five;
   }
+
   #six {
     grid-area: six;
   }
+
   #seven {
     grid-area: seven;
   }
+
   #eight {
     grid-area: eight;
   }
+
   #nine {
     grid-area: nine;
   }
+
   #zero {
     grid-area: zero;
   }
+
   #plus {
     grid-area: plus;
   }
+
   #minus {
     grid-area: minus;
   }
+
   #enter {
     grid-area: enter;
   }
+
   #ac {
     grid-area: ac;
   }
+
   #c {
     grid-area: c;
   }
+
   #dot {
     grid-area: dot;
   }
+
   #git {
     grid-area: git;
   }
+
   #vol {
     grid-area: vol;
   }
+
   #divide {
     grid-area: divide;
   }
+
   #numLock {
     grid-area: numLock;
   }
+
   #multiply {
     grid-area: multiply;
   }
