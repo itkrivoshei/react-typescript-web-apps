@@ -1,9 +1,16 @@
 .etch-a-sketch-container {
   min-height: 100vh;
   padding: 32px;
-  background:
-    radial-gradient(circle at 15% 5%, rgba(99, 102, 241, 0.28), transparent 28rem),
-    radial-gradient(circle at 90% 0, rgba(20, 184, 166, 0.18), transparent 24rem),
+  background: radial-gradient(
+      circle at 15% 5%,
+      rgba(99, 102, 241, 0.28),
+      transparent 28rem
+    ),
+    radial-gradient(
+      circle at 90% 0,
+      rgba(20, 184, 166, 0.18),
+      transparent 24rem
+    ),
     #0f172a;
   color: #f8fafc;
   font-family:
