@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
-
 import { Button, TextField, Box } from '@mui/material';
 
-import { useDispatch } from 'react-redux';
+import { useAppDispatch } from '../../redux/hooks';
 import { addTodo } from '../../redux/slices/toDoSlice';
 
 const AddTodo: React.FC = () => {
   const [input, setInput] = useState('');
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const handleAddTodo = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -35,7 +34,7 @@ const AddTodo: React.FC = () => {
           label='Enter Todo'
           variant='outlined'
           value={input}
-          onChange={(e) => setInput(e.target.value)}
+          onChange={(event) => setInput(event.target.value)}
           fullWidth
         />
         <Button variant='contained' color='primary' type='submit'>
