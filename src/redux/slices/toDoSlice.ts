@@ -59,7 +59,9 @@ const toDoSlice = createSlice({
 
       if (!project) return;
 
-      project.todos = project.todos.filter((todo) => todo.id !== action.payload);
+      project.todos = project.todos.filter(
+        (todo) => todo.id !== action.payload
+      );
     },
 
     addProject: {
