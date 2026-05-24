@@ -29,8 +29,15 @@ export default [
     rules: {
       ...tsPlugin.configs.recommended.rules,
       ...reactPlugin.configs.recommended.rules,
+      'no-undef': 'off',
       'react/react-in-jsx-scope': 'off',
-      '@typescript-eslint/no-unused-vars': 'error',
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        {
+          argsIgnorePattern: '^_',
+          varsIgnorePattern: '^React$',
+        },
+      ],
     },
     settings: {
       react: {
