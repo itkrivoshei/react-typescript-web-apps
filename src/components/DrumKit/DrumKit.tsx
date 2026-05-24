@@ -11,97 +11,115 @@ import snareSound from '../../assets/DrumKit/sounds/snare.wav';
 import tomSound from '../../assets/DrumKit/sounds/tom.wav';
 import tinkSound from '../../assets/DrumKit/sounds/tink.wav';
 
-const soundMap: Record<string, string> = {
-  clap: clapSound,
-  hihat: hihatSound,
-  kick: kickSound,
-  openhat: openhatSound,
-  boom: boomSound,
-  ride: rideSound,
-  snare: snareSound,
-  tom: tomSound,
-  tink: tinkSound,
-};
-
-type DrumKeyProps = {
+type DrumPad = {
   keyChar: string;
   soundName: string;
   keyCode: number;
+  sound: string;
 };
 
-const DrumKey: React.FC<DrumKeyProps> = ({ keyChar, soundName, keyCode }) => {
+const drumPads: DrumPad[] = [
+  { keyChar: 'A', soundName: 'clap', keyCode: 65, sound: clapSound },
+  { keyChar: 'S', soundName: 'hihat', keyCode: 83, sound: hihatSound },
+  { keyChar: 'D', soundName: 'kick', keyCode: 68, sound: kickSound },
+  { keyChar: 'F', soundName: 'openhat', keyCode: 70, sound: openhatSound },
+  { keyChar: 'G', soundName: 'boom', keyCode: 71, sound: boomSound },
+  { keyChar: 'H', soundName: 'ride', keyCode: 72, sound: rideSound },
+  { keyChar: 'J', soundName: 'snare', keyCode: 74, sound: snareSound },
+  { keyChar: 'K', soundName: 'tom', keyCode: 75, sound: tomSound },
+  { keyChar: 'L', soundName: 'tink', keyCode: 76, sound: tinkSound },
+];
+
+type DrumKeyProps = {
+  pad: DrumPad;
+};
+
+const DrumKey: React.FC<DrumKeyProps> = ({ pad }) => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  const keyRef = useRef<HTMLDivElement | null>(null);
+  const keyRef = useRef<HTMLButtonElement | null>(null);
+
+  const playSound = () => {
+    if (!keyRef.current || !audioRef.current) return;
+
+    keyRef.current.classList.add('playing');
+    audioRef.current.currentTime = 0;
+    audioRef.current.play().catch((err: unknown) => {
+      console.error('Failed to play drum sample:', err);
+    });
+  };
 
   useEffect(() => {
-    const playSound = (event: KeyboardEvent) => {
-      if (event.keyCode !== keyCode) return;
-
-      if (keyRef.current && audioRef.current) {
-        keyRef.current.classList.add('playing');
-        audioRef.current.currentTime = 0;
-        audioRef.current.play().catch((err) => {
-          console.error('Failed to play:', err);
-        });
-      }
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.keyCode !== pad.keyCode) return;
+      playSound();
     };
 
-    window.addEventListener('keydown', playSound);
+    window.addEventListener('keydown', handleKeyDown);
 
     return () => {
-      window.removeEventListener('keydown', playSound);
+      window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [keyCode]);
+  }, [pad.keyCode]);
 
   useEffect(() => {
+    const keyElement = keyRef.current;
+
     const removeTransition = (event: TransitionEvent) => {
       if (event.propertyName !== 'transform') return;
-
-      if (keyRef.current) {
-        keyRef.current.classList.remove('playing');
-      }
+      keyElement?.classList.remove('playing');
     };
 
-    keyRef.current?.addEventListener('transitionend', removeTransition);
+    keyElement?.addEventListener('transitionend', removeTransition);
     return () => {
-      keyRef.current?.removeEventListener('transitionend', removeTransition);
+      keyElement?.removeEventListener('transitionend', removeTransition);
     };
   }, []);
 
   return (
     <>
-      <div ref={keyRef} data-key={keyCode} className='key'>
-        <kbd>{keyChar}</kbd>
-        <span className='sound'>{soundName}</span>
-      </div>
+      <button
+        ref={keyRef}
+        type='button'
+        data-key={pad.keyCode}
+        className='key'
+        aria-label={`Play ${pad.soundName}`}
+        onClick={playSound}
+      >
+        <kbd>{pad.keyChar}</kbd>
+        <span className='sound'>{pad.soundName}</span>
+      </button>
       <audio
         ref={audioRef}
-        data-key={keyCode}
-        src={soundMap[soundName]}
-        onError={(e) => {
-          const target = e.target as HTMLAudioElement;
+        data-key={pad.keyCode}
+        src={pad.sound}
+        onError={(event) => {
+          const target = event.target as HTMLAudioElement;
           console.error(
             `Error playing ${target.src}: ${target.error?.message}`
           );
         }}
-      ></audio>
+      />
     </>
   );
 };
 
 const DrumKit: React.FC = () => {
   return (
-    <div className='drum-kit-container'>
-      <DrumKey keyChar='A' soundName='clap' keyCode={65} />
-      <DrumKey keyChar='S' soundName='hihat' keyCode={83} />
-      <DrumKey keyChar='D' soundName='kick' keyCode={68} />
-      <DrumKey keyChar='F' soundName='openhat' keyCode={70} />
-      <DrumKey keyChar='G' soundName='boom' keyCode={71} />
-      <DrumKey keyChar='H' soundName='ride' keyCode={72} />
-      <DrumKey keyChar='J' soundName='snare' keyCode={74} />
-      <DrumKey keyChar='K' soundName='tom' keyCode={75} />
-      <DrumKey keyChar='L' soundName='tink' keyCode={76} />
-    </div>
+    <main className='drum-kit-container'>
+      <section className='drum-kit-panel' aria-label='Keyboard drum kit'>
+        <div className='drum-kit-heading'>
+          <p>Keyboard sampler</p>
+          <h1>Drum Kit</h1>
+          <span>Use A–L keys or click pads</span>
+        </div>
+
+        <div className='keys'>
+          {drumPads.map((pad) => (
+            <DrumKey key={pad.keyChar} pad={pad} />
+          ))}
+        </div>
+      </section>
+    </main>
   );
 };
 
