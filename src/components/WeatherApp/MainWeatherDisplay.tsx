@@ -44,7 +44,10 @@ const MainWeatherDisplay: React.FC = () => {
     }
   }, [dispatch]);
 
-  const renderStatusCard = (message: string, tone: 'info' | 'error' = 'info') => (
+  const renderStatusCard = (
+    message: string,
+    tone: 'info' | 'error' = 'info'
+  ) => (
     <Box
       display='flex'
       justifyContent='center'
