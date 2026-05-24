@@ -1,9 +1,8 @@
 import React, { useState, ChangeEvent, FC, FormEvent } from 'react';
-import { useDispatch } from 'react-redux';
 import { Box, IconButton, TextField, Button, Stack } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 
-import { AppDispatch } from '../../redux/store';
+import { useAppDispatch } from '../../redux/hooks';
 import {
   toggleRegionFormat,
   fetchWeather,
@@ -23,8 +22,8 @@ const panelSx = {
 };
 
 const SettingsMenu: FC = () => {
-  const dispatch: AppDispatch = useDispatch();
-  const [city, setCity] = useState<string>('');
+  const dispatch = useAppDispatch();
+  const [city, setCity] = useState('');
 
   const handleToggleRegion = () => dispatch(toggleRegionFormat());
 
@@ -86,4 +85,4 @@ const SettingsMenu: FC = () => {
   );
 };
 
-export default SettingsMenu;
+export default React.memo(SettingsMenu);
