@@ -4,9 +4,16 @@
   justify-content: center;
   min-height: 100vh;
   padding: 32px;
-  background:
-    radial-gradient(circle at 20% 0, rgba(168, 85, 247, 0.24), transparent 30rem),
-    radial-gradient(circle at 90% 10%, rgba(236, 72, 153, 0.12), transparent 24rem),
+  background: radial-gradient(
+      circle at 20% 0,
+      rgba(168, 85, 247, 0.24),
+      transparent 30rem
+    ),
+    radial-gradient(
+      circle at 90% 10%,
+      rgba(236, 72, 153, 0.12),
+      transparent 24rem
+    ),
     #1f1724;
   font-family:
     Inter,
@@ -95,7 +102,11 @@
 
     &:hover,
     &.active {
-      background: linear-gradient(135deg, rgba(168, 85, 247, 0.85), rgba(147, 51, 234, 0.75));
+      background: linear-gradient(
+        135deg,
+        rgba(168, 85, 247, 0.85),
+        rgba(147, 51, 234, 0.75)
+      );
       color: #fff;
       transform: translateY(-1px);
     }

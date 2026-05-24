@@ -71,7 +71,11 @@
       position: absolute;
       inset: 0;
       content: '';
-      background: linear-gradient(180deg, transparent 45%, rgba(59, 7, 100, 0.28));
+      background: linear-gradient(
+        180deg,
+        transparent 45%,
+        rgba(59, 7, 100, 0.28)
+      );
     }
 
     .home-img {
