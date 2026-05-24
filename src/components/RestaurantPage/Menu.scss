@@ -1,33 +1,41 @@
 .menu-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2em;
+  display: grid;
+  gap: 18px;
 
   .menu-item {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    background: #e6e6fa;
-    padding: 1em;
-    border-radius: 10px;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
+    align-items: flex-start;
+    background: rgba(230, 230, 250, 0.96);
+    padding: 22px;
+    border: 1px solid rgba(138, 43, 226, 0.14);
+    border-radius: 20px;
+    box-shadow: 0 18px 48px rgba(0, 0, 0, 0.2);
 
     .menu-item-name {
       color: blueviolet;
-      font-size: 1.5em;
-      margin-bottom: 0.5em;
+      font-size: 1.55em;
+      margin: 0 0 0.5em;
+      line-height: 1.1;
     }
 
     .menu-item-description {
       color: #333;
-      text-align: center;
+      text-align: left;
       margin-bottom: 1em;
+      font-family:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        sans-serif;
+      line-height: 1.6;
     }
 
     .menu-item-price {
+      align-self: flex-end;
       color: blueviolet;
       font-size: 1.2em;
+      font-weight: 700;
     }
   }
 }
