@@ -19,73 +19,73 @@ interface Project {
 }
 
 const mediaBaseUrl =
-  'https://github.com/itkrivoshei/react-typescript-web-apps/blob/main/media';
+  'https://raw.githubusercontent.com/itkrivoshei/react-typescript-web-apps/main/media';
 
 const projects: Project[] = [
   {
     path: '/WeatherApp',
     name: 'Weather App',
-    imageUrl: `${mediaBaseUrl}/WeatherApp.gif?raw=true`,
+    imageUrl: `${mediaBaseUrl}/WeatherApp.gif`,
   },
   {
     path: '/TodoApp',
     name: 'Todo App',
-    imageUrl: `${mediaBaseUrl}/TodoList.gif?raw=true`,
+    imageUrl: `${mediaBaseUrl}/TodoList.gif`,
   },
   {
     path: '/Calculator',
     name: 'Calculator',
-    imageUrl: `${mediaBaseUrl}/Calculator.gif?raw=true`,
+    imageUrl: `${mediaBaseUrl}/Calculator.gif`,
   },
   {
     path: '/TicTacToe',
     name: 'Tic Tac Toe',
-    imageUrl: `${mediaBaseUrl}/TicTacToe.gif?raw=true`,
+    imageUrl: `${mediaBaseUrl}/TicTacToe.gif`,
   },
   {
     path: '/EtchASketch',
     name: 'Etch a Sketch',
-    imageUrl: `${mediaBaseUrl}/EtchASketch.gif?raw=true`,
+    imageUrl: `${mediaBaseUrl}/EtchASketch.gif`,
   },
   {
     path: '/BookLibrary',
     name: 'Book Library',
-    imageUrl: `${mediaBaseUrl}/Library.gif?raw=true`,
+    imageUrl: `${mediaBaseUrl}/Library.gif`,
   },
   {
     path: '/SignUpForm',
     name: 'Sign-up Form',
-    imageUrl: `${mediaBaseUrl}/SignUpForm.gif?raw=true`,
+    imageUrl: `${mediaBaseUrl}/SignUpForm.gif`,
   },
   {
     path: '/DrumKit',
     name: 'Drum Kit',
-    imageUrl: `${mediaBaseUrl}/DrumKit.gif?raw=true`,
+    imageUrl: `${mediaBaseUrl}/DrumKit.gif`,
   },
   {
     path: '/RockPaperScissors',
     name: 'Rock Paper Scissors',
-    imageUrl: `${mediaBaseUrl}/RockPaperScissors.gif?raw=true`,
+    imageUrl: `${mediaBaseUrl}/RockPaperScissors.gif`,
   },
   {
     path: '/DashLanding',
     name: 'Dashboard',
-    imageUrl: `${mediaBaseUrl}/Dashboard.gif?raw=true`,
+    imageUrl: `${mediaBaseUrl}/Dashboard.gif`,
   },
   {
     path: '/Landing',
     name: 'Landing',
-    imageUrl: `${mediaBaseUrl}/Landing.gif?raw=true`,
+    imageUrl: `${mediaBaseUrl}/Landing.gif`,
   },
   {
     path: '/Restaurant',
     name: 'Restaurant',
-    imageUrl: `${mediaBaseUrl}/Restaurant.gif?raw=true`,
+    imageUrl: `${mediaBaseUrl}/Restaurant.gif`,
   },
   {
     path: '/OdinRecipes',
     name: 'Recipes',
-    imageUrl: `${mediaBaseUrl}/Recipes.gif?raw=true`,
+    imageUrl: `${mediaBaseUrl}/Recipes.gif`,
   },
 ];
 
@@ -96,7 +96,7 @@ const darkTheme = createTheme({
       default: '#111827',
     },
     primary: {
-      main: '#ffffff',
+      main: '#f8fafc',
     },
   },
   typography: {
@@ -108,14 +108,16 @@ const Dashboard: React.FunctionComponent = () => {
   return (
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
-      <Container maxWidth='lg' sx={{ padding: '48px 0' }}>
+      <Container component='main' maxWidth='lg' sx={{ py: 6 }}>
         <Typography
           variant='h1'
           gutterBottom
           align='center'
           sx={{
-            marginBottom: '42px',
+            mb: 5,
             color: 'primary.main',
+            fontSize: 'clamp(2.75rem, 8vw, 6rem)',
+            letterSpacing: '0.04em',
           }}
         >
           React TypeScript Web Apps
@@ -125,45 +127,39 @@ const Dashboard: React.FunctionComponent = () => {
             <Grid item key={project.path} xs={12} sm={6} md={4} lg={3}>
               <Card
                 sx={{
-                  height: '200px',
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  backgroundImage: `url(${project.imageUrl})`,
+                  height: 200,
+                  backgroundImage: `linear-gradient(180deg, rgba(17, 24, 39, 0.1), rgba(17, 24, 39, 0.82)), url(${project.imageUrl})`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
-                  transition: 'transform 0.15s ease-in-out',
+                  border: '1px solid rgba(248, 250, 252, 0.12)',
+                  transition: 'transform 0.15s ease-in-out, box-shadow 0.15s ease-in-out',
                   '&:hover': {
-                    transform: 'scale(1.03)',
+                    transform: 'translateY(-4px)',
                     boxShadow: 6,
                   },
-                  position: 'relative',
                   overflow: 'hidden',
                 }}
               >
                 <CardActionArea
                   component={RouterLink}
                   to={project.path}
+                  aria-label={`Open ${project.name}`}
                   sx={{
                     height: '100%',
                     width: '100%',
                     display: 'flex',
                     justifyContent: 'center',
-                    alignItems: 'center',
+                    alignItems: 'flex-end',
+                    p: 2,
                   }}
                 >
                   <Typography
                     variant='h3'
                     sx={{
-                      position: 'absolute',
-                      top: '50%',
-                      left: '50%',
-                      transform: 'translate(-50%, -50%)',
                       width: '100%',
-                      backgroundColor: 'rgba(0, 0, 0, 0.6)',
                       color: 'primary.main',
-                      padding: '8px 0',
                       textAlign: 'center',
+                      textShadow: '0 2px 14px rgba(0, 0, 0, 0.8)',
                     }}
                   >
                     {project.name}
