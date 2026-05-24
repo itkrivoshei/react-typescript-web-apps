@@ -6,7 +6,11 @@
   margin: 0;
   padding: 32px;
   background:
-    radial-gradient(circle at 20% 10%, rgba(255, 198, 0, 0.22), transparent 24rem),
+    radial-gradient(
+      circle at 20% 10%,
+      rgba(255, 198, 0, 0.22),
+      transparent 24rem
+    ),
     linear-gradient(rgba(8, 13, 23, 0.42), rgba(8, 13, 23, 0.78)),
     url('./background.jpg') bottom center;
   background-size: cover;
