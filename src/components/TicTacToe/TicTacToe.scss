@@ -21,7 +21,7 @@
     sans-serif;
 
   .game-panel {
-    width: min(100%, 420px);
+    width: min(100%, 440px);
     padding: 28px;
     border: 1px solid rgba(248, 248, 242, 0.1);
     border-radius: 24px;
@@ -45,18 +45,20 @@
 
   #gameboard.visible {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    gap: 10px;
-    width: min(100%, 320px);
-    aspect-ratio: 1;
-    margin: 24px auto;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    width: min(100%, 312px);
+    margin: 30px auto;
   }
 
   #gameboard button {
+    aspect-ratio: 1;
     display: flex;
     justify-content: center;
     align-items: center;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
     border: 1px solid rgba(248, 248, 242, 0.12);
     border-radius: 16px;
     background: rgba(68, 71, 90, 0.72);
@@ -76,11 +78,19 @@
     background: rgba(68, 71, 90, 0.95);
   }
 
+  .mode-controls,
+  .reset-controls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
   button {
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    margin: 10px;
+    margin: 0;
     padding: 10px 18px;
     border: 1px solid rgba(189, 147, 249, 0.6);
     border-radius: 999px;
@@ -113,13 +123,6 @@
     font-size: clamp(2.4rem, 8vw, 4rem);
     letter-spacing: -0.06em;
     line-height: 0.95;
-  }
-
-  .mode-controls {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 8px;
   }
 
   #gameboard button.winner {
