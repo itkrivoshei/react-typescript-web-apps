@@ -23,7 +23,8 @@ const WeatherMeme: React.FC = () => {
       {gifUrl && (
         <img
           src={gifUrl}
-          alt='Weather Meme'
+          alt={`Weather reaction for ${currentCondition}`}
+          loading='lazy'
           style={{ maxWidth: '100%', height: 'auto' }}
         />
       )}
