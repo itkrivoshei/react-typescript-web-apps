@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
-
 import { Button, TextField, Box } from '@mui/material';
 
-import { useDispatch } from 'react-redux';
+import { useAppDispatch } from '../../redux/hooks';
 import { addProject } from '../../redux/slices/toDoSlice';
 
 const AddProject: React.FC = () => {
   const [title, setTitle] = useState('');
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
