@@ -77,6 +77,13 @@ type WeatherLocation = {
   longitude?: number;
 };
 
+type ResolvedLocation = {
+  latitude: number;
+  longitude: number;
+  name: string;
+  country: string;
+};
+
 const initialState: WeatherState = {
   weatherData: null,
   region: Region.EU,
@@ -150,7 +157,39 @@ const getCoordinatesFromCity = async (
   return result;
 };
 
-const resolveLocation = async (location: WeatherLocation) => {
+const getPlaceFromCoordinates = async (
+  latitude: number,
+  longitude: number
+): Promise<Pick<ResolvedLocation, 'name' | 'country'>> => {
+  const apiUrl = new URL('https://geocoding-api.open-meteo.com/v1/reverse');
+  apiUrl.searchParams.set('latitude', String(latitude));
+  apiUrl.searchParams.set('longitude', String(longitude));
+  apiUrl.searchParams.set('count', '1');
+  apiUrl.searchParams.set('language', 'en');
+  apiUrl.searchParams.set('format', 'json');
+
+  const response = await fetch(apiUrl.toString());
+
+  if (!response.ok) {
+    throw new Error('Failed to resolve current location');
+  }
+
+  const data = (await response.json()) as GeocodingResponse;
+  const result = data.results?.[0];
+
+  if (!result) {
+    throw new Error('Current location was not found');
+  }
+
+  return {
+    name: result.name,
+    country: result.country ?? '',
+  };
+};
+
+const resolveLocation = async (
+  location: WeatherLocation
+): Promise<ResolvedLocation> => {
   const city = location.city?.trim();
 
   if (city) {
@@ -167,17 +206,31 @@ const resolveLocation = async (location: WeatherLocation) => {
     throw new Error('Location is missing');
   }
 
-  return {
-    latitude: location.latitude,
-    longitude: location.longitude,
-    name: 'Current location',
-    country: '',
-  };
+  try {
+    const place = await getPlaceFromCoordinates(
+      location.latitude,
+      location.longitude
+    );
+
+    return {
+      latitude: location.latitude,
+      longitude: location.longitude,
+      name: place.name,
+      country: place.country,
+    };
+  } catch {
+    return {
+      latitude: location.latitude,
+      longitude: location.longitude,
+      name: 'Current location',
+      country: '',
+    };
+  }
 };
 
 const mapOpenMeteoToWeatherData = (
   data: OpenMeteoResponse,
-  location: Awaited<ReturnType<typeof resolveLocation>>
+  location: ResolvedLocation
 ): WeatherData => {
   const current = data.current;
 
