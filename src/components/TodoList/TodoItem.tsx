@@ -34,14 +34,16 @@ const TodoItem: React.FC<TodoItemProps> = ({ todo }) => {
   const handleToggleCompletion = () => dispatch(toggleTodo(todo.id));
 
   const handleSave = () => {
-    if (newName.trim()) {
-      dispatch(editTodo({ todoId: todo.id, newText: newName }));
+    const trimmedName = newName.trim();
+
+    if (trimmedName) {
+      dispatch(editTodo({ todoId: todo.id, newText: trimmedName }));
       setIsEditing(false);
     }
   };
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) =>
-    setNewName(e.target.value);
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) =>
+    setNewName(event.target.value);
 
   return (
     <Box component='li'>
@@ -60,7 +62,7 @@ const TodoItem: React.FC<TodoItemProps> = ({ todo }) => {
             onChange={handleChange}
             fullWidth
           />
-          <IconButton onClick={handleSave} aria-label='save'>
+          <IconButton onClick={handleSave} aria-label='Save todo'>
             <SaveIcon />
           </IconButton>
         </Box>
@@ -78,11 +80,12 @@ const TodoItem: React.FC<TodoItemProps> = ({ todo }) => {
             <Checkbox
               checked={!!todo.completed}
               onChange={handleToggleCompletion}
+              inputProps={{ 'aria-label': `Mark ${todo.text} as complete` }}
             />
             <Typography
               variant='body1'
-              sx={{ wordBreak: 'break-word' }}
-              style={{
+              sx={{
+                wordBreak: 'break-word',
                 textDecoration: todo.completed ? 'line-through' : 'none',
               }}
             >
@@ -90,10 +93,13 @@ const TodoItem: React.FC<TodoItemProps> = ({ todo }) => {
             </Typography>
           </Box>
           <Box>
-            <IconButton onClick={handleEdit} aria-label='edit'>
+            <IconButton onClick={handleEdit} aria-label={`Edit ${todo.text}`}>
               <EditIcon />
             </IconButton>
-            <IconButton onClick={handleDelete} aria-label='delete'>
+            <IconButton
+              onClick={handleDelete}
+              aria-label={`Delete ${todo.text}`}
+            >
               <DeleteIcon />
             </IconButton>
           </Box>
