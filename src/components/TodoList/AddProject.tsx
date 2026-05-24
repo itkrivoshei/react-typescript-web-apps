@@ -9,10 +9,13 @@ const AddProject: React.FC = () => {
   const [title, setTitle] = useState('');
   const dispatch = useDispatch();
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (title) {
-      dispatch(addProject(title));
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const trimmedTitle = title.trim();
+
+    if (trimmedTitle) {
+      dispatch(addProject(trimmedTitle));
       setTitle('');
     }
   };
@@ -31,7 +34,7 @@ const AddProject: React.FC = () => {
           label='Project Title'
           variant='outlined'
           value={title}
-          onChange={(e) => setTitle(e.target.value)}
+          onChange={(event) => setTitle(event.target.value)}
           fullWidth
         />
         <Button variant='contained' color='primary' type='submit'>
