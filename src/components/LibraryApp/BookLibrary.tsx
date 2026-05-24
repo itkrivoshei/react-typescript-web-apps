@@ -185,11 +185,17 @@ const Library: React.FC = () => {
                 <Typography
                   variant='h1'
                   color='secondary'
-                  sx={{ fontSize: { xs: '3rem', md: '4.8rem' }, lineHeight: 0.95 }}
+                  sx={{
+                    fontSize: { xs: '3rem', md: '4.8rem' },
+                    lineHeight: 0.95,
+                  }}
                 >
                   My Library
                 </Typography>
-                <Typography color='text.secondary' sx={{ mt: 2, maxWidth: 620 }}>
+                <Typography
+                  color='text.secondary'
+                  sx={{ mt: 2, maxWidth: 620 }}
+                >
                   Keep a compact list of books, reading status, and page count
                   without extra navigation or storage complexity.
                 </Typography>
@@ -287,7 +293,11 @@ const Library: React.FC = () => {
 
                       <Divider sx={{ mt: 'auto' }} />
 
-                      <Stack direction='row' justifyContent='space-between' spacing={1}>
+                      <Stack
+                        direction='row'
+                        justifyContent='space-between'
+                        spacing={1}
+                      >
                         <FormControlLabel
                           control={
                             <Checkbox
