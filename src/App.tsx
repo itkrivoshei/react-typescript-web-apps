@@ -1,6 +1,12 @@
 import React from 'react';
 import { ChakraProvider, extendTheme, ColorModeScript } from '@chakra-ui/react';
-import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import {
+  HashRouter as Router,
+  Routes,
+  Route,
+  Link,
+  useLocation,
+} from 'react-router-dom';
 
 import './styles/main.scss';
 import Dashboard from './components/Dashboard';
@@ -34,27 +40,43 @@ const theme = extendTheme({
   },
 });
 
+const AppRoutes = () => {
+  const location = useLocation();
+  const showAppsLink = location.pathname !== '/';
+
+  return (
+    <>
+      {showAppsLink && (
+        <Link className='apps-home-link' to='/' aria-label='Back to app chooser'>
+          Apps
+        </Link>
+      )}
+      <Routes>
+        <Route path='/' element={<Dashboard />} />
+        <Route path='/Restaurant' element={<Restaurant />} />
+        <Route path='/TodoApp' element={<TodoApp />} />
+        <Route path='/TicTacToe' element={<TicTacToe />} />
+        <Route path='/BookLibrary' element={<BookLibrary />} />
+        <Route path='/SignUpForm' element={<SignUpForm />} />
+        <Route path='/Calculator' element={<Calculator />} />
+        <Route path='/EtchASketch' element={<EtchASketch />} />
+        <Route path='/DrumKit' element={<DrumKit />} />
+        <Route path='/Landing' element={<Landing />} />
+        <Route path='/DashLanding' element={<DashLanding />} />
+        <Route path='/RockPaperScissors' element={<RockPaperScissors />} />
+        <Route path='/OdinRecipes' element={<OdinRecipes />} />
+        <Route path='/WeatherApp' element={<WeatherApp />} />
+      </Routes>
+    </>
+  );
+};
+
 function App() {
   return (
     <ChakraProvider theme={theme}>
       <ColorModeScript initialColorMode={theme.config.initialColorMode} />
       <Router>
-        <Routes>
-          <Route path='/' element={<Dashboard />} />
-          <Route path='/Restaurant' element={<Restaurant />} />
-          <Route path='/TodoApp' element={<TodoApp />} />
-          <Route path='/TicTacToe' element={<TicTacToe />} />
-          <Route path='/BookLibrary' element={<BookLibrary />} />
-          <Route path='/SignUpForm' element={<SignUpForm />} />
-          <Route path='/Calculator' element={<Calculator />} />
-          <Route path='/EtchASketch' element={<EtchASketch />} />
-          <Route path='/DrumKit' element={<DrumKit />} />
-          <Route path='/Landing' element={<Landing />} />
-          <Route path='/DashLanding' element={<DashLanding />} />
-          <Route path='/RockPaperScissors' element={<RockPaperScissors />} />
-          <Route path='/OdinRecipes' element={<OdinRecipes />} />
-          <Route path='/WeatherApp' element={<WeatherApp />} />
-        </Routes>
+        <AppRoutes />
       </Router>
     </ChakraProvider>
   );
