@@ -53,6 +53,18 @@ svg {
   display: block;
 }
 
+.MuiPaper-root {
+  border-radius: 12px !important;
+}
+
+.MuiButton-root {
+  border-radius: 10px !important;
+}
+
+.MuiChip-root {
+  border-radius: 8px !important;
+}
+
 .apps-home-link {
   position: fixed;
   z-index: 2000;
