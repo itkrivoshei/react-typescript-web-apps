@@ -42,7 +42,8 @@ type Metric = {
 };
 
 const githubProfileUrl = 'https://github.com/itkrivoshei';
-const repositoryUrl = 'https://github.com/itkrivoshei/react-typescript-web-apps';
+const repositoryUrl =
+  'https://github.com/itkrivoshei/react-typescript-web-apps';
 
 const navigationItems: MenuItem[] = [
   { icon: <FaHome />, label: 'Overview' },
