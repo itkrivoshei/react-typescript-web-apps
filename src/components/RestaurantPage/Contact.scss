@@ -2,30 +2,86 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2em;
 
   .contact-item {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    width: min(100%, 520px);
-    background: rgba(230, 230, 250, 0.96);
-    padding: 28px;
-    border: 1px solid rgba(138, 43, 226, 0.14);
-    border-radius: 24px;
-    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.22);
+    align-items: stretch;
+    width: min(100%, 640px);
+    background: rgba(250, 245, 255, 0.96);
+    padding: 30px;
+    border: 1px solid rgba(168, 85, 247, 0.16);
+    border-radius: 28px;
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.24);
+  }
 
-    .contact-header {
-      color: blueviolet;
-      font-size: 2em;
-      margin-bottom: 0.5em;
+  .contact-kicker {
+    margin: 0 0 8px;
+    color: #9333ea;
+    font-size: 0.75rem;
+    font-weight: 900;
+    letter-spacing: 0.16em;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .contact-header {
+    color: #581c87;
+    font-family: 'Pacifico', cursive;
+    font-size: clamp(2.4rem, 7vw, 4rem);
+    font-weight: 400;
+    line-height: 1;
+    margin: 0 0 24px;
+    text-align: center;
+  }
+
+  .contact-list {
+    display: grid;
+    gap: 12px;
+  }
+
+  .contact-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 18px;
+    padding: 16px 18px;
+    border: 1px solid rgba(147, 51, 234, 0.14);
+    border-radius: 18px;
+    background: rgba(147, 51, 234, 0.06);
+
+    span {
+      color: #6b21a8;
+      font-size: 0.78rem;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
     }
 
     p {
-      color: #333;
-      text-align: center;
-      margin-bottom: 0.5em;
-      font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+      color: #3b0764;
+      text-align: right;
+      margin: 0;
+      font-family:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        sans-serif;
+      font-weight: 700;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .contact-item {
+      padding: 24px;
+    }
+
+    .contact-row {
+      flex-direction: column;
+      gap: 6px;
+
+      p {
+        text-align: left;
+      }
     }
   }
 }
