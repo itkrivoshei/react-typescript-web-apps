@@ -7,11 +7,11 @@ import SaveIcon from '@mui/icons-material/Save';
 
 import { RootState } from '../../redux/store';
 import {
+  Project,
   setActiveProject,
   deleteProject,
   editProject,
 } from '../../redux/slices/toDoSlice';
-import { Project } from '../../redux/slices/toDoSlice';
 
 const ProjectList: React.FC = () => {
   const [isEditing, setIsEditing] = useState<number | string | null>(null);
@@ -36,13 +36,15 @@ const ProjectList: React.FC = () => {
     setNewName(currentName);
   };
 
-  const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setNewName(e.target.value);
+  const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setNewName(event.target.value);
   };
 
   const handleSaveClick = (projectId: number | string) => {
-    if (newName.trim()) {
-      dispatch(editProject({ projectId, newName }));
+    const trimmedName = newName.trim();
+
+    if (trimmedName) {
+      dispatch(editProject({ projectId, newName: trimmedName }));
       setIsEditing(null);
       setNewName('');
     }
@@ -83,14 +85,14 @@ const ProjectList: React.FC = () => {
                 value={newName}
                 onChange={handleNameChange}
                 size='small'
-                onClick={(e) => e.stopPropagation()}
+                onClick={(event) => event.stopPropagation()}
               />
               <IconButton
-                onClick={(e) => {
-                  e.stopPropagation();
+                onClick={(event) => {
+                  event.stopPropagation();
                   handleSaveClick(project.id);
                 }}
-                aria-label='save'
+                aria-label='Save project name'
               >
                 <SaveIcon />
               </IconButton>
@@ -106,21 +108,21 @@ const ProjectList: React.FC = () => {
           {!isEditing && (
             <Box sx={{ ml: 'auto' }}>
               <IconButton
-                onClick={(e) => {
-                  e.stopPropagation();
+                onClick={(event) => {
+                  event.stopPropagation();
                   handleEditClick(project.id, project.title);
                 }}
-                aria-label='edit'
+                aria-label={`Edit ${project.title}`}
               >
                 <EditIcon />
               </IconButton>
               {project.id !== 'default' && (
                 <IconButton
-                  onClick={(e) => {
-                    e.stopPropagation();
+                  onClick={(event) => {
+                    event.stopPropagation();
                     handleProjectDelete(project.id);
                   }}
-                  aria-label='delete'
+                  aria-label={`Delete ${project.title}`}
                 >
                   <DeleteIcon />
                 </IconButton>
