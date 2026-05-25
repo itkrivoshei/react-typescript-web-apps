@@ -66,9 +66,19 @@ const MainWeatherDisplay: React.FC = () => {
     message: string,
     tone: 'info' | 'error' = 'info'
   ) => (
-    <Box display='flex' justifyContent='center' alignItems='center' minHeight='100vh' px={2}>
+    <Box
+      display='flex'
+      justifyContent='center'
+      alignItems='center'
+      minHeight='100vh'
+      px={2}
+    >
       <Paper sx={cardSx}>
-        <Typography variant='h4' textAlign='center' color={tone === 'error' ? '#fb7185' : '#4cc9f0'}>
+        <Typography
+          variant='h4'
+          textAlign='center'
+          color={tone === 'error' ? '#fb7185' : '#4cc9f0'}
+        >
           {message}
         </Typography>
       </Paper>
@@ -77,21 +87,38 @@ const MainWeatherDisplay: React.FC = () => {
 
   if (error) return renderStatusCard(error, 'error');
   if (weatherLoading) return renderStatusCard('Loading weather data');
-  if (!weatherData) return renderStatusCard('Search by city or allow location access');
+  if (!weatherData)
+    return renderStatusCard('Search by city or allow location access');
 
-  const displayTemperature = (temp: number) => `${temp}°${region === 'EU' ? 'C' : 'F'}`;
-  const displayWindSpeed = (speed: number) => `${speed} ${region === 'EU' ? 'kph' : 'mph'}`;
-  const windSpeed = region === 'EU' ? weatherData.current.wind_kph : weatherData.current.wind_mph;
-  const windGust = region === 'EU' ? weatherData.current.wind_gust_kph : weatherData.current.wind_gust_mph;
+  const displayTemperature = (temp: number) =>
+    `${temp}°${region === 'EU' ? 'C' : 'F'}`;
+  const displayWindSpeed = (speed: number) =>
+    `${speed} ${region === 'EU' ? 'kph' : 'mph'}`;
+  const windSpeed =
+    region === 'EU'
+      ? weatherData.current.wind_kph
+      : weatherData.current.wind_mph;
+  const windGust =
+    region === 'EU'
+      ? weatherData.current.wind_gust_kph
+      : weatherData.current.wind_gust_mph;
 
   return (
-    <Box display='flex' justifyContent='center' alignItems='center' minHeight='100vh' px={2}>
+    <Box
+      display='flex'
+      justifyContent='center'
+      alignItems='center'
+      minHeight='100vh'
+      px={2}
+    >
       <Paper elevation={3} sx={cardSx}>
         <Stack spacing={2} alignItems='center' textAlign='center'>
           <Box>
             <Typography variant='h4' color='#f72585'>
               {weatherData.location.name}
-              {weatherData.location.country ? `, ${weatherData.location.country}` : ''}
+              {weatherData.location.country
+                ? `, ${weatherData.location.country}`
+                : ''}
             </Typography>
             <Typography variant='body2' color='#4cc9f0'>
               {formatLocalTime(weatherData.location.localtime)}
@@ -102,22 +129,50 @@ const MainWeatherDisplay: React.FC = () => {
 
           <Box>
             <Typography variant='h2' color='#f72585'>
-              {displayTemperature(region === 'EU' ? weatherData.current.temp_c : weatherData.current.temp_f)}
+              {displayTemperature(
+                region === 'EU'
+                  ? weatherData.current.temp_c
+                  : weatherData.current.temp_f
+              )}
             </Typography>
             <Typography variant='body2' color='#4cc9f0'>
-              Feels: {displayTemperature(region === 'EU' ? weatherData.current.feelslike_c : weatherData.current.feelslike_f)}
+              Feels:{' '}
+              {displayTemperature(
+                region === 'EU'
+                  ? weatherData.current.feelslike_c
+                  : weatherData.current.feelslike_f
+              )}
             </Typography>
           </Box>
 
           <Divider flexItem sx={dividerSx} />
 
-          <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr 1fr', sm: 'repeat(3, 1fr)' }, gap: 1, width: '100%' }}>
+          <Box
+            sx={{
+              display: 'grid',
+              gridTemplateColumns: { xs: '1fr 1fr', sm: 'repeat(3, 1fr)' },
+              gap: 1,
+              width: '100%',
+            }}
+          >
             <WeatherMetric label='Wind' value={displayWindSpeed(windSpeed)} />
             <WeatherMetric label='Gusts' value={displayWindSpeed(windGust)} />
-            <WeatherMetric label='Humidity' value={`${weatherData.current.humidity}%`} />
-            <WeatherMetric label='Clouds' value={`${weatherData.current.cloud_cover}%`} />
-            <WeatherMetric label='Pressure' value={`${Math.round(weatherData.current.pressure_mb)} mb`} />
-            <WeatherMetric label='Precipitation' value={`${weatherData.current.precipitation_mm} mm`} />
+            <WeatherMetric
+              label='Humidity'
+              value={`${weatherData.current.humidity}%`}
+            />
+            <WeatherMetric
+              label='Clouds'
+              value={`${weatherData.current.cloud_cover}%`}
+            />
+            <WeatherMetric
+              label='Pressure'
+              value={`${Math.round(weatherData.current.pressure_mb)} mb`}
+            />
+            <WeatherMetric
+              label='Precipitation'
+              value={`${weatherData.current.precipitation_mm} mm`}
+            />
           </Box>
 
           <Divider flexItem sx={dividerSx} />
