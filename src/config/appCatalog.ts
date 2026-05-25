@@ -1,90 +1,124 @@
-const mediaBaseUrl =
-  'https://raw.githubusercontent.com/itkrivoshei/react-typescript-web-apps/main/media';
+export type AppGroup = 'featured' | 'solid' | 'practice' | 'legacy';
 
 export interface DashboardApp {
   path: string;
   name: string;
-  imageUrl: string;
   accent: string;
+  group: AppGroup;
+  summary: string;
+  stack: string[];
 }
+
+export const appGroupLabels: Record<AppGroup, string> = {
+  featured: 'Favorite / stronger apps',
+  solid: 'Structured practice apps',
+  practice: 'Classic interaction exercises',
+  legacy: 'Early layout demos',
+};
 
 export const dashboardApps: DashboardApp[] = [
   {
     path: '/WeatherApp',
     name: 'Weather App',
-    imageUrl: `${mediaBaseUrl}/WeatherApp.gif`,
     accent: '#4cc9f0',
-  },
-  {
-    path: '/TodoApp',
-    name: 'Todo App',
-    imageUrl: `${mediaBaseUrl}/TodoList.gif`,
-    accent: '#c8b6ff',
+    group: 'featured',
+    summary: 'Weather lookup with geolocation, city search, and live metrics.',
+    stack: ['Redux', 'API', 'MUI'],
   },
   {
     path: '/Calculator',
     name: 'Calculator',
-    imageUrl: `${mediaBaseUrl}/Calculator.gif`,
     accent: '#d6c4a8',
+    group: 'featured',
+    summary: 'Retro calculator with keyboard-style UI and stricter input handling.',
+    stack: ['React', 'SCSS'],
   },
   {
-    path: '/TicTacToe',
-    name: 'Tic Tac Toe',
-    imageUrl: `${mediaBaseUrl}/TicTacToe.gif`,
-    accent: '#f97316',
-  },
-  {
-    path: '/EtchASketch',
-    name: 'Etch a Sketch',
-    imageUrl: `${mediaBaseUrl}/EtchASketch.gif`,
-    accent: '#ef4444',
-  },
-  {
-    path: '/BookLibrary',
-    name: 'Book Library',
-    imageUrl: `${mediaBaseUrl}/Library.gif`,
-    accent: '#facc15',
+    path: '/TodoApp',
+    name: 'Todo App',
+    accent: '#c8b6ff',
+    group: 'solid',
+    summary: 'Project-based task board with Redux state management.',
+    stack: ['Redux', 'MUI'],
   },
   {
     path: '/SignUpForm',
     name: 'Sign-up Form',
-    imageUrl: `${mediaBaseUrl}/SignUpForm.gif`,
     accent: '#38bdf8',
+    group: 'solid',
+    summary: 'Terminal-themed form with validation and responsive layout.',
+    stack: ['React', 'Validation'],
   },
   {
-    path: '/DrumKit',
-    name: 'Drum Kit',
-    imageUrl: `${mediaBaseUrl}/DrumKit.gif`,
-    accent: '#fb7185',
+    path: '/TicTacToe',
+    name: 'Tic Tac Toe',
+    accent: '#f97316',
+    group: 'solid',
+    summary: 'Small game implementation with simple state transitions.',
+    stack: ['React', 'Game'],
+  },
+  {
+    path: '/EtchASketch',
+    name: 'Etch a Sketch',
+    accent: '#ef4444',
+    group: 'practice',
+    summary: 'Interactive drawing grid with classic controls.',
+    stack: ['React', 'Canvas-like UI'],
+  },
+  {
+    path: '/BookLibrary',
+    name: 'Book Library',
+    accent: '#facc15',
+    group: 'practice',
+    summary: 'Book list interface with modal-style add flow.',
+    stack: ['React', 'Forms'],
   },
   {
     path: '/RockPaperScissors',
     name: 'Rock Paper Scissors',
-    imageUrl: `${mediaBaseUrl}/RockPaperScissors.gif`,
     accent: '#22c55e',
+    group: 'practice',
+    summary: 'Classic game with scoreboard and result state.',
+    stack: ['React', 'Game'],
   },
   {
-    path: '/DashLanding',
-    name: 'Dashboard',
-    imageUrl: `${mediaBaseUrl}/Dashboard.gif`,
-    accent: '#a78bfa',
-  },
-  {
-    path: '/Landing',
-    name: 'Landing',
-    imageUrl: `${mediaBaseUrl}/Landing.gif`,
-    accent: '#60a5fa',
-  },
-  {
-    path: '/Restaurant',
-    name: 'Restaurant',
-    imageUrl: `${mediaBaseUrl}/Restaurant.gif`,
-    accent: '#f59e0b',
+    path: '/DrumKit',
+    name: 'Drum Kit',
+    accent: '#fb7185',
+    group: 'practice',
+    summary: 'Keyboard-triggered sound pad with visual feedback.',
+    stack: ['React', 'Audio'],
   },
   {
     path: '/OdinRecipes',
     name: 'Recipes',
-    imageUrl: `${mediaBaseUrl}/Recipes.gif`,
     accent: '#84cc16',
+    group: 'legacy',
+    summary: 'Early recipe layout exercise with refreshed styling.',
+    stack: ['React', 'Layout'],
+  },
+  {
+    path: '/DashLanding',
+    name: 'Dashboard',
+    accent: '#a78bfa',
+    group: 'legacy',
+    summary: 'Admin dashboard landing page layout exercise.',
+    stack: ['React', 'Layout'],
+  },
+  {
+    path: '/Restaurant',
+    name: 'Restaurant',
+    accent: '#f59e0b',
+    group: 'legacy',
+    summary: 'Restaurant page layout with menu/contact sections.',
+    stack: ['React', 'Layout'],
+  },
+  {
+    path: '/Landing',
+    name: 'Landing',
+    accent: '#60a5fa',
+    group: 'legacy',
+    summary: 'Landing page layout exercise with responsive sections.',
+    stack: ['React', 'Layout'],
   },
 ];
