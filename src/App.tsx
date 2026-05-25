@@ -40,21 +40,33 @@ const theme = extendTheme({
   },
 });
 
+const AppNavigationMenu = () => {
+  return (
+    <details className='apps-nav-menu'>
+      <summary aria-label='Open app navigation'>
+        <span aria-hidden='true'>↙</span>
+      </summary>
+      <div className='apps-nav-menu-panel'>
+        <Link to='/'>Apps</Link>
+        <a
+          href='https://github.com/itkrivoshei/react-typescript-web-apps'
+          target='_blank'
+          rel='noreferrer'
+        >
+          Repo
+        </a>
+      </div>
+    </details>
+  );
+};
+
 const AppRoutes = () => {
   const location = useLocation();
   const showAppsLink = location.pathname !== '/';
 
   return (
     <>
-      {showAppsLink && (
-        <Link
-          className='apps-home-link'
-          to='/'
-          aria-label='Back to app chooser'
-        >
-          Apps
-        </Link>
-      )}
+      {showAppsLink && <AppNavigationMenu />}
       <Routes>
         <Route path='/' element={<Dashboard />} />
         <Route path='/Restaurant' element={<Restaurant />} />
