@@ -163,7 +163,9 @@ const getPlaceFromCoordinates = async (
   latitude: number,
   longitude: number
 ): Promise<Pick<ResolvedLocation, 'name' | 'country'>> => {
-  const url = new URL('https://api.bigdatacloud.net/data/reverse-geocode-client');
+  const url = new URL(
+    'https://api.bigdatacloud.net/data/reverse-geocode-client'
+  );
   url.searchParams.set('latitude', String(latitude));
   url.searchParams.set('longitude', String(longitude));
   url.searchParams.set('localityLanguage', 'en');
