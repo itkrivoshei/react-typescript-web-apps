@@ -1,3 +1,4 @@
+import React from 'react';
 import { ChakraProvider, ColorModeScript } from '@chakra-ui/react';
 import { HashRouter as Router } from 'react-router-dom';
 
