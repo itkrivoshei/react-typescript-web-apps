@@ -8,8 +8,11 @@
   position: relative;
   min-height: 100vh;
   justify-content: space-between;
-  background:
-    radial-gradient(circle at 20% 0%, rgba(32, 255, 114, 0.12), transparent 32rem),
+  background: radial-gradient(
+      circle at 20% 0%,
+      rgba(32, 255, 114, 0.12),
+      transparent 32rem
+    ),
     linear-gradient(135deg, #010302, #020806 56%, #00170c);
 
   * {
@@ -22,9 +25,16 @@
     inset: 0;
     z-index: 1;
     pointer-events: none;
-    background:
-      linear-gradient(rgba(32, 255, 114, 0.03) 50%, rgba(0, 0, 0, 0.08) 50%),
-      linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02));
+    background: linear-gradient(
+        rgba(32, 255, 114, 0.03) 50%,
+        rgba(0, 0, 0, 0.08) 50%
+      ),
+      linear-gradient(
+        90deg,
+        rgba(255, 0, 0, 0.02),
+        rgba(0, 255, 0, 0.01),
+        rgba(0, 0, 255, 0.02)
+      );
     background-size:
       100% 4px,
       6px 100%;
