@@ -46,8 +46,9 @@ const TodoApp: React.FC = () => {
       (project) => project.id === state.todo.activeProject
     )
   );
-  const completedCount = activeProject?.todos.filter((todo) => todo.completed)
-    .length;
+  const completedCount = activeProject?.todos.filter(
+    (todo) => todo.completed
+  ).length;
 
   return (
     <ThemeProvider theme={todoTheme}>
