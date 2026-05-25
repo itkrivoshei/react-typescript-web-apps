@@ -31,12 +31,11 @@ interface GameState {
   outcome: Outcome;
 }
 
-const weapons: { value: Weapon; label: string; icon: string; hint: string }[] =
-  [
-    { value: 'ROCK', label: 'Rock', icon: '✊', hint: 'Breaks scissors' },
-    { value: 'PAPER', label: 'Paper', icon: '✋', hint: 'Covers rock' },
-    { value: 'SCISSORS', label: 'Scissors', icon: '✌️', hint: 'Cuts paper' },
-  ];
+const weapons: { value: Weapon; label: string; icon: string }[] = [
+  { value: 'ROCK', label: 'Rock', icon: '✊' },
+  { value: 'PAPER', label: 'Paper', icon: '✋' },
+  { value: 'SCISSORS', label: 'Scissors', icon: '✌️' },
+];
 
 const initialGameState: GameState = {
   gamesPlayed: 0,
@@ -220,14 +219,15 @@ export const RockPaperScissors: React.FC = () => {
                       color='primary'
                       onClick={() => playOneRound(weapon.value)}
                       sx={{
-                        minHeight: 112,
-                        alignItems: 'flex-start',
-                        justifyContent: 'space-between',
+                        minHeight: 116,
+                        alignItems: 'center',
+                        justifyContent: 'center',
                         flexDirection: 'column',
+                        gap: 1.25,
                         p: 2,
                         borderRadius: 2,
                         color: '#0f172a',
-                        textAlign: 'left',
+                        textAlign: 'center',
                         boxShadow: '0 16px 36px rgba(56, 189, 248, 0.16)',
                         '&:hover': {
                           transform: 'translateY(-2px)',
@@ -235,13 +235,12 @@ export const RockPaperScissors: React.FC = () => {
                         },
                       }}
                     >
-                      <Typography sx={{ fontSize: '2rem', lineHeight: 1 }}>
+                      <Typography sx={{ fontSize: '2.3rem', lineHeight: 1 }}>
                         {weapon.icon}
                       </Typography>
-                      <Box>
-                        <Typography variant='h6'>{weapon.label}</Typography>
-                        <Typography variant='caption'>{weapon.hint}</Typography>
-                      </Box>
+                      <Typography variant='h6' sx={{ lineHeight: 1 }}>
+                        {weapon.label}
+                      </Typography>
                     </Button>
                   ))}
                 </Box>
