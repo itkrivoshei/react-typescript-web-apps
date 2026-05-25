@@ -59,6 +59,13 @@ interface GeocodingResponse {
   results?: GeocodingResult[];
 }
 
+interface ReverseGeocodingResponse {
+  city?: string;
+  locality?: string;
+  principalSubdivision?: string;
+  countryName?: string;
+}
+
 interface OpenMeteoResponse {
   timezone?: string;
   current: {
@@ -75,6 +82,8 @@ type WeatherLocation = {
   city?: string;
   latitude?: number;
   longitude?: number;
+  name?: string;
+  country?: string;
 };
 
 type ResolvedLocation = {
@@ -161,12 +170,12 @@ const getPlaceFromCoordinates = async (
   latitude: number,
   longitude: number
 ): Promise<Pick<ResolvedLocation, 'name' | 'country'>> => {
-  const apiUrl = new URL('https://geocoding-api.open-meteo.com/v1/reverse');
+  const apiUrl = new URL(
+    'https://api.bigdatacloud.net/data/reverse-geocode-client'
+  );
   apiUrl.searchParams.set('latitude', String(latitude));
   apiUrl.searchParams.set('longitude', String(longitude));
-  apiUrl.searchParams.set('count', '1');
-  apiUrl.searchParams.set('language', 'en');
-  apiUrl.searchParams.set('format', 'json');
+  apiUrl.searchParams.set('localityLanguage', 'en');
 
   const response = await fetch(apiUrl.toString());
 
@@ -174,16 +183,12 @@ const getPlaceFromCoordinates = async (
     throw new Error('Failed to resolve current location');
   }
 
-  const data = (await response.json()) as GeocodingResponse;
-  const result = data.results?.[0];
-
-  if (!result) {
-    throw new Error('Current location was not found');
-  }
+  const data = (await response.json()) as ReverseGeocodingResponse;
+  const name = data.city || data.locality || data.principalSubdivision;
 
   return {
-    name: result.name,
-    country: result.country ?? '',
+    name: name || 'Current location',
+    country: data.countryName ?? '',
   };
 };
 
@@ -204,6 +209,17 @@ const resolveLocation = async (
 
   if (location.latitude === undefined || location.longitude === undefined) {
     throw new Error('Location is missing');
+  }
+
+  const providedName = location.name?.trim();
+
+  if (providedName) {
+    return {
+      latitude: location.latitude,
+      longitude: location.longitude,
+      name: providedName,
+      country: location.country?.trim() ?? '',
+    };
   }
 
   try {
