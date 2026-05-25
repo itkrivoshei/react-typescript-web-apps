@@ -2,12 +2,13 @@
   $primary-color: #2563eb;
   $primary-dark: #1d4ed8;
   $accent-color: #38bdf8;
-  $bg-gray: #e5e7eb;
+  $bg-gray: #111827;
   $bg-black: #0f172a;
   $surface-black: #111827;
+  $surface-dark: #1e293b;
   $text-gray: #cbd5e1;
-  $text-dark: #334155;
-  $text-black: #0f172a;
+  $text-dark: #cbd5e1;
+  $text-black: #f8fafc;
   $text-white: #f8fafc;
 
   * {
@@ -19,7 +20,7 @@
   }
 
   min-height: 100vh;
-  background: $text-white;
+  background: $bg-black;
   font-family:
     Inter,
     ui-sans-serif,
@@ -41,7 +42,7 @@
     justify-content: center;
     border: none;
     padding: 12px 20px;
-    border-radius: 999px;
+    border-radius: 12px;
     background-color: $primary-color;
     color: $text-white;
     font-size: 0.95rem;
@@ -65,8 +66,8 @@
   }
 
   .button-blue {
-    border: 1px solid rgba(255, 255, 255, 0.68);
-    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    background: rgba(15, 23, 42, 0.42);
   }
 
   .secondary-link {
@@ -90,7 +91,7 @@
   .bg-full-gray {
     background: radial-gradient(
         circle at top left,
-        rgba(37, 99, 235, 0.12),
+        rgba(37, 99, 235, 0.14),
         transparent 28rem
       ),
       $bg-gray;
@@ -139,7 +140,7 @@
   .nav-link {
     display: inline-flex;
     padding: 9px 12px;
-    border-radius: 999px;
+    border-radius: 10px;
     color: $text-gray;
     font-size: 0.92rem;
     font-weight: 700;
@@ -168,7 +169,7 @@
   }
 
   .quote-text {
-    color: $text-dark;
+    color: $text-gray;
     font-size: clamp(2rem, 5vw, 3rem);
     font-style: italic;
     line-height: 1.22;
@@ -176,7 +177,7 @@
   }
 
   .quote-text-ps {
-    color: $text-black;
+    color: $text-white;
     padding-top: 18px;
     font-size: 1.25rem;
     text-align: right;
@@ -190,7 +191,7 @@
   }
 
   .header-black-text {
-    color: $text-black;
+    color: $text-white;
     font-size: clamp(2.25rem, 5vw, 3.8rem);
     font-weight: 900;
     line-height: 1;
@@ -221,6 +222,9 @@
   }
 
   .text-block {
+    position: relative;
+    z-index: 1;
+
     .plain-text {
       margin: 22px 0;
       max-width: 590px;
@@ -235,12 +239,12 @@
   }
 
   .hero-card {
+    position: relative;
     overflow: hidden;
     border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 32px;
+    border-radius: 18px;
     background: rgba(17, 24, 39, 0.78);
     box-shadow: 0 30px 100px rgba(0, 0, 0, 0.42);
-    transform: rotate(1deg);
 
     img {
       display: block;
@@ -256,10 +260,11 @@
     justify-content: space-between;
     gap: 10px;
     padding: 18px;
+    background: rgba(15, 23, 42, 0.82);
 
     span {
       padding: 8px 10px;
-      border-radius: 999px;
+      border-radius: 10px;
       background: rgba(37, 99, 235, 0.14);
       color: $text-gray;
       font-size: 0.8rem;
@@ -271,7 +276,7 @@
     display: flex;
     flex-direction: column;
     padding: 78px 0;
-    color: $text-black;
+    color: $text-white;
   }
 
   .section-heading {
@@ -288,18 +293,18 @@
   .service-card {
     min-height: 260px;
     padding: 24px;
-    border: 1px solid rgba(37, 99, 235, 0.12);
-    border-radius: 28px;
+    border: 1px solid rgba(148, 163, 184, 0.16);
+    border-radius: 18px;
     background: radial-gradient(
         circle at top right,
-        rgba(37, 99, 235, 0.1),
+        rgba(37, 99, 235, 0.12),
         transparent 16rem
       ),
-      #fff;
-    box-shadow: 0 22px 70px rgba(15, 23, 42, 0.08);
+      $surface-dark;
+    box-shadow: 0 22px 70px rgba(0, 0, 0, 0.16);
 
     .service-number {
-      color: $primary-color;
+      color: $accent-color;
       font-size: 0.8rem;
       font-weight: 900;
       letter-spacing: 0.16em;
@@ -307,13 +312,13 @@
 
     h3 {
       margin: 46px 0 12px;
-      color: $text-black;
+      color: $text-white;
       font-size: 1.45rem;
       letter-spacing: -0.04em;
     }
 
     p {
-      color: $text-dark;
+      color: $text-gray;
       line-height: 1.7;
     }
   }
@@ -324,24 +329,31 @@
   }
 
   .blue-block {
-    border-radius: 32px;
+    border-radius: 18px;
     padding: 42px clamp(24px, 7vw, 86px);
     margin: 70px 0;
     background: radial-gradient(
         circle at top left,
-        rgba(255, 255, 255, 0.24),
+        rgba(255, 255, 255, 0.16),
         transparent 18rem
       ),
-      linear-gradient(135deg, $primary-color, $primary-dark);
+      linear-gradient(135deg, #1e40af, #1e3a8a);
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 24px;
-    box-shadow: 0 26px 80px rgba(37, 99, 235, 0.28);
+    box-shadow: 0 26px 80px rgba(37, 99, 235, 0.22);
 
     .plain-text {
       color: $text-white;
     }
+  }
+
+  .cta-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 10px;
   }
 
   .cta-label {
@@ -362,10 +374,6 @@
     .service-grid {
       grid-template-columns: 1fr;
     }
-
-    .hero-card {
-      transform: none;
-    }
   }
 
   @media (max-width: 680px) {
@@ -385,6 +393,10 @@
     .blue-block {
       flex-direction: column;
       align-items: flex-start;
+    }
+
+    .cta-actions {
+      justify-content: flex-start;
     }
   }
 }
