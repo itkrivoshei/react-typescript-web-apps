@@ -30,7 +30,8 @@ export const dashboardApps: DashboardApp[] = [
     name: 'Calculator',
     accent: '#d6c4a8',
     group: 'featured',
-    summary: 'Retro calculator with keyboard-style UI and stricter input handling.',
+    summary:
+      'Retro calculator with keyboard-style UI and stricter input handling.',
     stack: ['React', 'SCSS'],
   },
   {
