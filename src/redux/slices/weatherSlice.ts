@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-import { getWeatherGifUrl } from '../../components/WeatherApp/weatherGif';
+import { getWeatherGifUrl } from '../../features/weather/weatherGif';
 
 export enum Region {
   EU = 'EU',
