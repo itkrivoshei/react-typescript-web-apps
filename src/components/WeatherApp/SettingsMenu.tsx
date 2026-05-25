@@ -1,4 +1,4 @@
-import React, { useEffect, useState, ChangeEvent, FC, FormEvent } from 'react';
+import React, { useEffect, useState, FC, FormEvent } from 'react';
 import {
   Box,
   IconButton,
@@ -101,7 +101,10 @@ const SettingsMenu: FC = () => {
 
   const handleToggleRegion = () => dispatch(toggleRegionFormat());
 
-  const handleCityInputChange = (_event: ChangeEvent<{}>, value: string) => {
+  const handleCityInputChange = (
+    _event: React.SyntheticEvent,
+    value: string
+  ) => {
     setCity(value);
 
     if (selectedCity && value !== getCityLabel(selectedCity)) {
