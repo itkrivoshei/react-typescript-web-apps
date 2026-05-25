@@ -104,8 +104,7 @@ const validateFormData = (formData: FormData) => {
 
 const SignUpForm: React.FC = () => {
   const [formData, setFormData] = useState<FormData>(initialFormData);
-  const [formErrors, setFormErrors] =
-    useState<FormErrors>(initialFormErrors);
+  const [formErrors, setFormErrors] = useState<FormErrors>(initialFormErrors);
   const [submitMessage, setSubmitMessage] = useState('');
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
