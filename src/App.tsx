@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ChakraProvider, extendTheme, ColorModeScript } from '@chakra-ui/react';
 import {
   HashRouter as Router,
@@ -41,22 +41,34 @@ const theme = extendTheme({
 });
 
 const AppNavigationMenu = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <details className='apps-nav-menu'>
-      <summary aria-label='Open app navigation'>
+    <nav className='apps-nav-menu' aria-label='App navigation'>
+      <button
+        type='button'
+        className='apps-nav-menu-toggle'
+        aria-expanded={isOpen}
+        aria-controls='apps-nav-menu-panel'
+        onClick={() => setIsOpen((current) => !current)}
+      >
         <span aria-hidden='true'>↙</span>
-      </summary>
-      <div className='apps-nav-menu-panel'>
-        <Link to='/'>Apps</Link>
-        <a
-          href='https://github.com/itkrivoshei/react-typescript-web-apps'
-          target='_blank'
-          rel='noreferrer'
-        >
-          Repo
-        </a>
-      </div>
-    </details>
+      </button>
+      {isOpen && (
+        <div id='apps-nav-menu-panel' className='apps-nav-menu-panel'>
+          <Link to='/' onClick={() => setIsOpen(false)}>
+            Apps
+          </Link>
+          <a
+            href='https://github.com/itkrivoshei/react-typescript-web-apps'
+            target='_blank'
+            rel='noreferrer'
+          >
+            Repo
+          </a>
+        </div>
+      )}
+    </nav>
   );
 };
 
