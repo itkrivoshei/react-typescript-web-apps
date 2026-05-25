@@ -50,21 +50,22 @@ const AppNavigationMenu = () => {
         className='apps-nav-menu-toggle'
         aria-expanded={isOpen}
         aria-controls='apps-nav-menu-panel'
+        aria-label={isOpen ? 'Close app navigation' : 'Open app navigation'}
         onClick={() => setIsOpen((current) => !current)}
       >
-        <span aria-hidden='true'>↙</span>
+        <span aria-hidden='true'>›</span>
       </button>
       {isOpen && (
         <div id='apps-nav-menu-panel' className='apps-nav-menu-panel'>
           <Link to='/' onClick={() => setIsOpen(false)}>
-            Apps
+            Back to Apps
           </Link>
           <a
             href='https://github.com/itkrivoshei/react-typescript-web-apps'
             target='_blank'
             rel='noreferrer'
           >
-            Repo
+            Repository
           </a>
         </div>
       )}
