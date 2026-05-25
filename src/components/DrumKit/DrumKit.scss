@@ -81,16 +81,22 @@
 
   .key {
     min-height: 116px;
-    border: 1px solid rgba(255, 198, 0, 0.34);
+    border: 1px solid rgba(255, 198, 0, 0.32);
     border-radius: 18px;
     padding: 1rem 0.5rem;
-    background: rgba(0, 0, 0, 0.48);
-    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.28);
+    background:
+      linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.08),
+        rgba(255, 255, 255, 0.02)
+      ),
+      rgba(8, 13, 23, 0.34);
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.24);
     color: white;
     text-align: center;
     text-shadow: 0 0 0.5rem black;
     cursor: pointer;
-    backdrop-filter: blur(6px);
+    backdrop-filter: blur(8px);
     transition:
       transform 0.07s ease,
       box-shadow 0.07s ease,
