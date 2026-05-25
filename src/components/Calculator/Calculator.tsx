@@ -272,7 +272,10 @@ const Calculator: React.FC = () => {
       return;
     }
 
-    if (currentVal.length <= 1 || (currentVal.length === 2 && currentVal[0] === '-')) {
+    if (
+      currentVal.length <= 1 ||
+      (currentVal.length === 2 && currentVal[0] === '-')
+    ) {
       setCurrentVal('0');
       return;
     }
@@ -431,7 +434,15 @@ const Calculator: React.FC = () => {
       window.removeEventListener('keydown', handleKeyDown);
       window.removeEventListener('keyup', handleKeyUp);
     };
-  }, [sound, isKeyDown, power, audioInitialized, currentVal, operator, storedVal]);
+  }, [
+    sound,
+    isKeyDown,
+    power,
+    audioInitialized,
+    currentVal,
+    operator,
+    storedVal,
+  ]);
 
   return (
     <div className='calculator-container'>
