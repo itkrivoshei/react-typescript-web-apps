@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './Calculator.scss';
-import { Howl } from 'howler';
+import { Howl, Howler } from 'howler';
 import Button from './Button';
 
 import pressGeneric from '../../assets/Calculator/audio/pressGeneric.mp3';
@@ -30,108 +30,202 @@ import { ReactComponent as TwoSvg } from '../../assets/Calculator/svg/two.svg';
 import { ReactComponent as VolSvg } from '../../assets/Calculator/svg/vol.svg';
 import { ReactComponent as ZeroSvg } from '../../assets/Calculator/svg/zero.svg';
 
+type Operator = '+' | '-' | '*' | '/';
+
+type LastOperation = {
+  operand: number;
+  operator: Operator;
+};
+
+const MAX_INPUT_DIGITS = 12;
+const MAX_DISPLAY_CHARS = 16;
+
+const supportedKeys = new Set([
+  '+',
+  '-',
+  '*',
+  '/',
+  '=',
+  '.',
+  'dot',
+  'g',
+  'v',
+  'n',
+  'c',
+  'Enter',
+  'Escape',
+  'Backspace',
+  'Delete',
+  'NumLock',
+  'Clear',
+  'ac',
+  '1',
+  '2',
+  '3',
+  '4',
+  '5',
+  '6',
+  '7',
+  '8',
+  '9',
+  '0',
+]);
+
+const calculatorButtons = [
+  { id: 'ac', dataValue: 'Delete', SvgComponent: AcSvg },
+  { id: 'c', dataValue: 'Clear', SvgComponent: Csvg },
+  { id: 'divide', dataValue: '/', SvgComponent: DivideSvg },
+  { id: 'dot', dataValue: '.', SvgComponent: DotSvg },
+  { id: 'eight', dataValue: '8', SvgComponent: EightSvg },
+  {
+    id: 'enter',
+    dataValue: '=',
+    SvgComponent: EnterSvg,
+    isLongKey: true,
+  },
+  { id: 'five', dataValue: '5', SvgComponent: FiveSvg },
+  { id: 'four', dataValue: '4', SvgComponent: FourSvg },
+  { id: 'git', dataValue: 'g', SvgComponent: GitSvg },
+  { id: 'minus', dataValue: '-', SvgComponent: MinusSvg },
+  { id: 'multiply', dataValue: '*', SvgComponent: MultiplySvg },
+  { id: 'nine', dataValue: '9', SvgComponent: NineSvg },
+  { id: 'numLock', dataValue: 'NumLock', SvgComponent: NumLockSvg },
+  { id: 'one', dataValue: '1', SvgComponent: OneSvg },
+  {
+    id: 'plus',
+    dataValue: '+',
+    SvgComponent: PlusSvg,
+    isLongKey: true,
+  },
+  { id: 'seven', dataValue: '7', SvgComponent: SevenSvg },
+  { id: 'six', dataValue: '6', SvgComponent: SixSvg },
+  { id: 'three', dataValue: '3', SvgComponent: ThreeSvg },
+  { id: 'two', dataValue: '2', SvgComponent: TwoSvg },
+  { id: 'vol', dataValue: 'v', SvgComponent: VolSvg },
+  {
+    id: 'zero',
+    dataValue: '0',
+    SvgComponent: ZeroSvg,
+    isLongKey: true,
+  },
+];
+
+const isDigit = (value: string) => /^\d$/.test(value);
+const isOperator = (value: string): value is Operator =>
+  ['+', '-', '*', '/'].includes(value);
+
+const getDigitCount = (value: string) => value.replace(/[-.]/g, '').length;
+
+const parseDisplayValue = (value: string) => {
+  if (value === 'Error' || value === '-') return null;
+
+  const parsedValue = Number(value);
+  return Number.isFinite(parsedValue) ? parsedValue : null;
+};
+
+const formatResult = (value: number) => {
+  if (!Number.isFinite(value)) return 'Error';
+
+  const normalizedValue = Math.abs(value) < Number.EPSILON ? 0 : value;
+  const roundedValue = Number(normalizedValue.toPrecision(12));
+  let output = String(roundedValue);
+
+  if (output.length > MAX_DISPLAY_CHARS) {
+    output = roundedValue.toExponential(8).replace(/\.0+e/, 'e');
+  }
+
+  return output.length > MAX_DISPLAY_CHARS
+    ? roundedValue.toExponential(6)
+    : output;
+};
+
+const performCalculation = (a: number, b: number, op: Operator) => {
+  switch (op) {
+    case '+':
+      return formatResult(a + b);
+    case '-':
+      return formatResult(a - b);
+    case '*':
+      return formatResult(a * b);
+    case '/':
+      return b === 0 ? 'Error' : formatResult(a / b);
+    default:
+      return 'Error';
+  }
+};
+
+const normalizeKeyboardKey = (key: string) => {
+  switch (key) {
+    case 'c':
+    case 'Backspace':
+      return 'Clear';
+    case 'Enter':
+      return '=';
+    case 'Escape':
+    case 'n':
+      return 'NumLock';
+    default:
+      return key;
+  }
+};
+
 const Calculator: React.FC = () => {
   const [currentVal, setCurrentVal] = useState('0');
-  const [previousVal, setPreviousVal] = useState('');
-  const [operator, setOperator] = useState('');
+  const [storedVal, setStoredVal] = useState<number | null>(null);
+  const [operator, setOperator] = useState<Operator | null>(null);
+  const [waitingForOperand, setWaitingForOperand] = useState(false);
   const [isKeyDown, setIsKeyDown] = useState(false);
   const [git, setGit] = useState(false);
   const [sound, setSound] = useState(false);
   const [power, setPower] = useState(true);
   const [lastKeyPressed, setLastKeyPressed] = useState<string | null>(null);
   const [audioInitialized, setAudioInitialized] = useState(false);
-  const [lastOperation, setLastOperation] = useState<{
-    operand: string;
-    operator: string;
-  } | null>(null);
+  const [lastOperation, setLastOperation] = useState<LastOperation | null>(
+    null
+  );
 
   const pGenericButton = useRef<Howl | null>(null);
   const rGenericButton = useRef<Howl | null>(null);
   const pLongButton = useRef<Howl | null>(null);
   const rLongButton = useRef<Howl | null>(null);
 
-  const keys = [
-    '+',
-    '-',
-    '*',
-    '/',
-    '=',
-    '.',
-    'dot',
-    'g',
-    'v',
-    'n',
-    'c',
-    'Enter',
-    'Escape',
-    'Backspace',
-    'Delete',
-    'NumLock',
-    'Clear',
-    'ac',
-    'g',
-    '1',
-    '2',
-    '3',
-    '4',
-    '5',
-    '6',
-    '7',
-    '8',
-    '9',
-    '0',
-  ];
-
   const initializeAudio = () => {
     if (audioInitialized) return;
 
-    pGenericButton.current = new Howl({
-      src: [pressGeneric],
-    });
-    rGenericButton.current = new Howl({
-      src: [releaseGeneric],
-    });
-    pLongButton.current = new Howl({
-      src: [pressLongKey],
-    });
-    rLongButton.current = new Howl({
-      src: [releaseLongKey],
-    });
+    pGenericButton.current = new Howl({ src: [pressGeneric], volume: 0.72 });
+    rGenericButton.current = new Howl({ src: [releaseGeneric], volume: 0.72 });
+    pLongButton.current = new Howl({ src: [pressLongKey], volume: 0.72 });
+    rLongButton.current = new Howl({ src: [releaseLongKey], volume: 0.72 });
 
-    if (Howler.ctx?.state && Howler.ctx.state === 'suspended') {
+    if (Howler.ctx?.state === 'suspended') {
       Howler.ctx.resume();
     }
 
     setAudioInitialized(true);
   };
 
-  const handleMultiKeys = (key: string) => {
-    switch (key) {
-      case 'c':
-      case 'Backspace':
-        return 'Clear';
-      case 'Enter':
-        return '=';
-      case 'Escape':
-      case 'n':
-        return 'NumLock';
-      default:
-        return key;
-    }
+  const resetCalculator = () => {
+    setCurrentVal('0');
+    setStoredVal(null);
+    setOperator(null);
+    setWaitingForOperand(false);
+    setLastOperation(null);
   };
+
+  const isClickValid = (value: string) => supportedKeys.has(value);
 
   const handleSound = (key: string, direction: string) => {
     if (!audioInitialized) return;
 
-    if (direction === 'down' && !isKeyDown && keys.includes(key)) {
+    if (direction === 'down' && !isKeyDown && supportedKeys.has(key)) {
       if (['0', '+', 'Enter', '='].includes(key)) {
         pLongButton.current?.play();
       } else {
         pGenericButton.current?.play();
       }
       setIsKeyDown(true);
-    } else if (direction === 'up' && keys.includes(key)) {
-      if (['0', '+', 'Enter'].includes(key)) {
+    } else if (direction === 'up' && supportedKeys.has(key)) {
+      if (['0', '+', 'Enter', '='].includes(key)) {
         rLongButton.current?.play();
       } else {
         rGenericButton.current?.play();
@@ -140,157 +234,155 @@ const Calculator: React.FC = () => {
     }
   };
 
-  const isClickValid = (value: string) => {
-    return keys.includes(value);
+  const appendDigit = (value: string) => {
+    setCurrentVal((currentValue) => {
+      if (currentValue === 'Error' || waitingForOperand) {
+        setWaitingForOperand(false);
+        return value;
+      }
+
+      if (getDigitCount(currentValue) >= MAX_INPUT_DIGITS) {
+        return currentValue;
+      }
+
+      if (currentValue === '0') return value;
+      if (currentValue === '-0') return `-${value}`;
+
+      return `${currentValue}${value}`;
+    });
+  };
+
+  const appendDecimal = () => {
+    setCurrentVal((currentValue) => {
+      if (currentValue === 'Error' || waitingForOperand) {
+        setWaitingForOperand(false);
+        return '0.';
+      }
+
+      if (currentValue.includes('.')) return currentValue;
+
+      return `${currentValue}.`;
+    });
+  };
+
+  const handleBackspace = () => {
+    if (currentVal === 'Error' || waitingForOperand) {
+      setCurrentVal('0');
+      setWaitingForOperand(false);
+      return;
+    }
+
+    if (currentVal.length <= 1 || (currentVal.length === 2 && currentVal[0] === '-')) {
+      setCurrentVal('0');
+      return;
+    }
+
+    setCurrentVal((currentValue) => currentValue.slice(0, -1));
+  };
+
+  const handleOperator = (value: Operator | '=') => {
+    if (value === '-' && operator && waitingForOperand) {
+      setCurrentVal('-');
+      setWaitingForOperand(false);
+      return;
+    }
+
+    if (value !== '=' && currentVal === 'Error') {
+      resetCalculator();
+      setOperator(value);
+      setWaitingForOperand(true);
+      return;
+    }
+
+    const inputValue = parseDisplayValue(currentVal);
+
+    if (inputValue === null) return;
+
+    if (value === '=') {
+      if (operator && storedVal !== null) {
+        const result = performCalculation(storedVal, inputValue, operator);
+        setCurrentVal(result);
+        setLastOperation(
+          result === 'Error' ? null : { operand: inputValue, operator }
+        );
+        setStoredVal(null);
+        setOperator(null);
+        setWaitingForOperand(true);
+        return;
+      }
+
+      if (lastOperation) {
+        const result = performCalculation(
+          inputValue,
+          lastOperation.operand,
+          lastOperation.operator
+        );
+        setCurrentVal(result);
+        setWaitingForOperand(true);
+      }
+
+      return;
+    }
+
+    if (operator && storedVal !== null && !waitingForOperand) {
+      const result = performCalculation(storedVal, inputValue, operator);
+      setCurrentVal(result);
+      setStoredVal(result === 'Error' ? null : Number(result));
+      setOperator(result === 'Error' ? null : value);
+      setWaitingForOperand(true);
+      setLastOperation(null);
+      return;
+    }
+
+    setStoredVal(inputValue);
+    setOperator(value);
+    setWaitingForOperand(true);
+    setLastOperation(null);
   };
 
   const handleInput = (value: string) => {
-    switch (value) {
-      case 'Clear':
-        if (power) {
-          setCurrentVal((prev) => (prev.length > 1 ? prev.slice(0, -1) : '0'));
-        }
-        break;
-      case 'Delete':
-        if (power) {
-          setCurrentVal('0');
-          setPreviousVal('');
-          setOperator('');
-          setLastOperation(null);
-        }
-        break;
-      default:
-        if (isOperator(value) && power) {
-          handleOperator(value);
-        } else if (
-          (parseInt(value) || parseInt(value) === 0 || value === '.') &&
-          power
-        ) {
-          setCurrentVal((prev) => {
-            if (prev === '0' && value !== '.') {
-              return value;
-            } else if (prev === '0' && value === '.') {
-              return '0.';
-            } else if (value === '.' && prev.includes('.')) {
-              return prev;
-            } else {
-              return prev + value;
-            }
-          });
-        }
-        break;
+    if (!power || value === 'NumLock' || value === 'g' || value === 'v') return;
+
+    if (value === 'Clear') {
+      handleBackspace();
+      return;
+    }
+
+    if (value === 'Delete') {
+      resetCalculator();
+      return;
+    }
+
+    if (isOperator(value) || value === '=') {
+      handleOperator(value);
+      return;
+    }
+
+    if (isDigit(value)) {
+      appendDigit(value);
+      return;
+    }
+
+    if (value === '.') {
+      appendDecimal();
     }
   };
-
-  const handleOperator = (value: string) => {
-    if (value === '=') {
-      if (previousVal && currentVal && operator) {
-        const result = calculate();
-        setCurrentVal(result);
-        setPreviousVal('');
-        setOperator('');
-        setLastOperation({ operand: currentVal, operator });
-      } else if (lastOperation) {
-        const result = calculateWithLastOperation();
-        setCurrentVal(result);
-        setPreviousVal('');
-        setOperator('');
-      }
-    } else if (operator && !currentVal) {
-      setOperator(value);
-    } else {
-      if (previousVal && currentVal && operator) {
-        const result = calculate();
-        setCurrentVal('');
-        setPreviousVal(result);
-      } else {
-        setPreviousVal(currentVal);
-        setCurrentVal('');
-      }
-      setOperator(value);
-      setLastOperation(null);
-    }
-  };
-
-  const isOperator = (value: string) => {
-    return ['+', '-', '*', '/', '=', 'Enter'].includes(value);
-  };
-
-  const calculate = () => {
-    const current = parseFloat(currentVal);
-    const previous = parseFloat(previousVal);
-    return performCalculation(previous, current, operator);
-  };
-
-  const calculateWithLastOperation = () => {
-    const current = parseFloat(currentVal);
-    const last = parseFloat(lastOperation?.operand ?? '0');
-    return performCalculation(current, last, lastOperation?.operator ?? '+');
-  };
-
-  const performCalculation = (a: number, b: number, op: string) => {
-    switch (op) {
-      case '+':
-        return String(a + b);
-      case '-':
-        return String(a - b);
-      case '*':
-        return String(a * b);
-      case '/':
-        if (b === 0) {
-          window.open('https://www.youtube.com/watch?v=NKmGVE85GUU');
-          return 'Error';
-        } else {
-          return String(a / b);
-        }
-      default:
-        return 'Error';
-    }
-  };
-
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (!isClickValid(e.key)) return;
-      const finalKey = handleMultiKeys(e.key);
-      if (sound || e.key === 'v') handleSound(e.key, 'down');
-      handleInput(finalKey);
-      if (['g', 'NumLock', 'v'].includes(finalKey))
-        handleCommandButtons(finalKey);
-      setLastKeyPressed(finalKey);
-    };
-
-    const handleKeyUp = (e: KeyboardEvent) => {
-      if (!isClickValid(e.key)) return;
-      if (sound || e.key === 'v') handleSound(e.key, 'up');
-      setLastKeyPressed(null);
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-    window.addEventListener('keyup', handleKeyUp);
-
-    initializeAudio();
-
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-      window.removeEventListener('keyup', handleKeyUp);
-    };
-  }, [sound, isKeyDown, power, audioInitialized]);
 
   const handleCommandButtons = (value: string) => {
     switch (value) {
       case 'g':
         setGit(true);
-        window.open('https://github.com/itkrivoshei');
+        window.open('https://github.com/itkrivoshei', '_blank', 'noreferrer');
         break;
       case 'v':
         initializeAudio();
-        setSound(!sound);
+        setSound((currentSound) => !currentSound);
         break;
       case 'NumLock':
-        setPower(!power);
-        setCurrentVal('0');
-        setPreviousVal('');
-        setOperator('');
+        setPower((currentPower) => {
+          if (currentPower) resetCalculator();
+          return !currentPower;
+        });
         break;
       default:
         break;
@@ -304,84 +396,80 @@ const Calculator: React.FC = () => {
 
   const handleMouseUp = (dataValue: string) => {
     if (sound || dataValue === 'v') handleSound(dataValue, 'up');
-    if (['g', 'NumLock', 'v'].includes(dataValue))
+    if (['g', 'NumLock', 'v'].includes(dataValue)) {
       handleCommandButtons(dataValue);
+    }
   };
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.repeat || !isClickValid(event.key)) return;
+
+      const finalKey = normalizeKeyboardKey(event.key);
+      if (sound || event.key === 'v') handleSound(event.key, 'down');
+      handleInput(finalKey);
+
+      if (['g', 'NumLock', 'v'].includes(finalKey)) {
+        handleCommandButtons(finalKey);
+      }
+
+      setLastKeyPressed(finalKey);
+    };
+
+    const handleKeyUp = (event: KeyboardEvent) => {
+      if (!isClickValid(event.key)) return;
+      if (sound || event.key === 'v') handleSound(event.key, 'up');
+      setLastKeyPressed(null);
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener('keyup', handleKeyUp);
+
+    initializeAudio();
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('keyup', handleKeyUp);
+    };
+  }, [sound, isKeyDown, power, audioInitialized, currentVal, operator, storedVal]);
 
   return (
     <div className='calculator-container'>
-      <>
-        <div className='statusPanel'>
-          <div>
-            Num
-            <br />
-            Lock
-            <div className={`light ${power ? 'flash' : ''}`} />
-          </div>
-          <div>
-            Volume
-            <div className={`light ${sound ? 'flash' : ''}`} />
-          </div>
-          <div>
-            Git
-            <br />
-            Check
-            <div className={`light ${git ? 'flash' : ''}`} />
-          </div>
+      <div className='statusPanel'>
+        <div>
+          Num
+          <br />
+          Lock
+          <div className={`light ${power ? 'flash' : ''}`} />
         </div>
-        <div className={`display ${power ? '' : 'lock'}`}>{currentVal}</div>
-        <div className='buttons'>
-          {[
-            { id: 'ac', dataValue: 'Delete', SvgComponent: AcSvg },
-            { id: 'c', dataValue: 'Clear', SvgComponent: Csvg },
-            { id: 'divide', dataValue: '/', SvgComponent: DivideSvg },
-            { id: 'dot', dataValue: '.', SvgComponent: DotSvg },
-            { id: 'eight', dataValue: '8', SvgComponent: EightSvg },
-            {
-              id: 'enter',
-              dataValue: '=',
-              SvgComponent: EnterSvg,
-              isLongKey: true,
-            },
-            { id: 'five', dataValue: '5', SvgComponent: FiveSvg },
-            { id: 'four', dataValue: '4', SvgComponent: FourSvg },
-            { id: 'git', dataValue: 'g', SvgComponent: GitSvg },
-            { id: 'minus', dataValue: '-', SvgComponent: MinusSvg },
-            { id: 'multiply', dataValue: '*', SvgComponent: MultiplySvg },
-            { id: 'nine', dataValue: '9', SvgComponent: NineSvg },
-            { id: 'numLock', dataValue: 'NumLock', SvgComponent: NumLockSvg },
-            { id: 'one', dataValue: '1', SvgComponent: OneSvg },
-            {
-              id: 'plus',
-              dataValue: '+',
-              SvgComponent: PlusSvg,
-              isLongKey: true,
-            },
-            { id: 'seven', dataValue: '7', SvgComponent: SevenSvg },
-            { id: 'six', dataValue: '6', SvgComponent: SixSvg },
-            { id: 'three', dataValue: '3', SvgComponent: ThreeSvg },
-            { id: 'two', dataValue: '2', SvgComponent: TwoSvg },
-            { id: 'vol', dataValue: 'v', SvgComponent: VolSvg },
-            {
-              id: 'zero',
-              dataValue: '0',
-              SvgComponent: ZeroSvg,
-              isLongKey: true,
-            },
-          ].map((button) => (
-            <Button
-              key={button.id}
-              id={button.id}
-              dataValue={button.dataValue}
-              SvgComponent={button.SvgComponent}
-              isLongKey={button.isLongKey}
-              onMouseDown={handleMouseDown}
-              onMouseUp={handleMouseUp}
-              isActive={button.dataValue === lastKeyPressed}
-            />
-          ))}
+        <div>
+          Volume
+          <div className={`light ${sound ? 'flash' : ''}`} />
         </div>
-      </>
+        <div>
+          Git
+          <br />
+          Check
+          <div className={`light ${git ? 'flash' : ''}`} />
+        </div>
+      </div>
+      <div className={`display ${power ? '' : 'lock'}`} title={currentVal}>
+        {currentVal}
+      </div>
+      <div className='buttons'>
+        {calculatorButtons.map((button) => (
+          <Button
+            key={button.id}
+            id={button.id}
+            dataValue={button.dataValue}
+            SvgComponent={button.SvgComponent}
+            isLongKey={button.isLongKey}
+            onMouseDown={handleMouseDown}
+            onMouseUp={handleMouseUp}
+            isActive={button.dataValue === lastKeyPressed}
+          />
+        ))}
+      </div>
     </div>
   );
 };
