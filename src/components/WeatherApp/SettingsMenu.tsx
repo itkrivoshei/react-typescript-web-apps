@@ -135,6 +135,8 @@ const SettingsMenu: FC = () => {
         fetchWeather({
           latitude: selectedCity.latitude,
           longitude: selectedCity.longitude,
+          name: selectedCity.name,
+          country: selectedCity.country,
         })
       );
       return;
