@@ -1,13 +1,14 @@
 import React from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 
+import AppNavigationMenu from './AppNavigationMenu';
 import Dashboard from '../features/dashboard/Dashboard';
+import Calculator from '../features/calculator';
 import Restaurant from '../components/RestaurantPage/Restaurant';
 import TodoApp from '../components/TodoList/TodoApp';
 import TicTacToe from '../components/TicTacToe/TicTacToe';
 import BookLibrary from '../components/LibraryApp/BookLibrary';
 import SignUpForm from '../components/SignUpForm/SignUpForm';
-import Calculator from '../components/Calculator/Calculator';
 import EtchASketch from '../components/EtchASketch/EtchASketch';
 import DrumKit from '../components/DrumKit/DrumKit';
 import RockPaperScissors from '../components/RockPaperScissors/RockPaperScissors';
@@ -15,7 +16,6 @@ import OdinRecipes from '../components/Recipes/OdinRecipes';
 import Landing from '../components/LandingPage/Landing';
 import DashLanding from '../components/AdminDashboard/DashLanding';
 import WeatherApp from '../components/WeatherApp/WeatherApp';
-import AppNavigationMenu from './AppNavigationMenu';
 
 const AppRoutes = () => {
   const location = useLocation();
