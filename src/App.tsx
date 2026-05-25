@@ -44,7 +44,10 @@ const AppNavigationMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className='apps-nav-menu' aria-label='App navigation'>
+    <nav
+      className={`apps-nav-menu${isOpen ? ' apps-nav-menu--open' : ''}`}
+      aria-label='App navigation'
+    >
       <button
         type='button'
         className='apps-nav-menu-toggle'
@@ -55,29 +58,25 @@ const AppNavigationMenu = () => {
       >
         <span aria-hidden='true'>›</span>
       </button>
-      {isOpen && (
-        <div id='apps-nav-menu-panel' className='apps-nav-menu-panel'>
-          <Link to='/' onClick={() => setIsOpen(false)}>
-            Back to Apps
-          </Link>
-          <a
-            href='https://github.com/itkrivoshei/react-typescript-web-apps'
-            target='_blank'
-            rel='noreferrer'
-          >
-            Repository
-          </a>
-        </div>
-      )}
+      <div id='apps-nav-menu-panel' className='apps-nav-menu-panel'>
+        <Link to='/' onClick={() => setIsOpen(false)}>
+          Back to Apps
+        </Link>
+        <a
+          href='https://github.com/itkrivoshei/react-typescript-web-apps'
+          target='_blank'
+          rel='noreferrer'
+        >
+          Repository
+        </a>
+      </div>
     </nav>
   );
 };
 
-const routesWithSideNavigation = ['/Landing', '/DashLanding'];
-
 const AppRoutes = () => {
   const location = useLocation();
-  const showAppsLink = routesWithSideNavigation.includes(location.pathname);
+  const showAppsLink = location.pathname !== '/';
 
   return (
     <>
