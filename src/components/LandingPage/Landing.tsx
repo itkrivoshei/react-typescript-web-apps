@@ -109,15 +109,25 @@ const Landing = () => {
             <div>
               <p className='cta-label'>Ready to continue?</p>
               <p className='plain-text'>
-                Use the contact section as the next action point.
+                Open the source repository or contact the maintainer directly.
               </p>
             </div>
-            <a
-              className='button-blue plain-text'
-              href='mailto:contact@example.com'
-            >
-              Get in Touch
-            </a>
+            <div className='cta-actions'>
+              <a
+                className='button-blue plain-text'
+                href='https://github.com/itkrivoshei/react-typescript-web-apps'
+                target='_blank'
+                rel='noreferrer'
+              >
+                View Repository
+              </a>
+              <a
+                className='button-blue plain-text'
+                href='mailto:nikitakrivoshei@gmail.com'
+              >
+                Contact
+              </a>
+            </div>
           </div>
         </section>
       </main>
