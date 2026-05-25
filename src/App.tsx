@@ -48,16 +48,6 @@ const AppNavigationMenu = () => {
       className={`apps-nav-menu${isOpen ? ' apps-nav-menu--open' : ''}`}
       aria-label='App navigation'
     >
-      <button
-        type='button'
-        className='apps-nav-menu-toggle'
-        aria-expanded={isOpen}
-        aria-controls='apps-nav-menu-panel'
-        aria-label={isOpen ? 'Close app navigation' : 'Open app navigation'}
-        onClick={() => setIsOpen((current) => !current)}
-      >
-        <span aria-hidden='true'>›</span>
-      </button>
       <div id='apps-nav-menu-panel' className='apps-nav-menu-panel'>
         <Link to='/' onClick={() => setIsOpen(false)}>
           Back to Apps
@@ -70,6 +60,16 @@ const AppNavigationMenu = () => {
           Repository
         </a>
       </div>
+      <button
+        type='button'
+        className='apps-nav-menu-toggle'
+        aria-expanded={isOpen}
+        aria-controls='apps-nav-menu-panel'
+        aria-label={isOpen ? 'Close app navigation' : 'Open app navigation'}
+        onClick={() => setIsOpen((current) => !current)}
+      >
+        <span aria-hidden='true'>›</span>
+      </button>
     </nav>
   );
 };
