@@ -13,11 +13,7 @@ import {
   Chip,
 } from '@mui/material';
 
-import {
-  appGroupLabels,
-  dashboardApps,
-  AppGroup,
-} from '../config/appCatalog';
+import { appGroupLabels, dashboardApps, AppGroup } from '../config/appCatalog';
 
 const dashboardFontFamily = [
   'Inter',
@@ -286,7 +282,8 @@ const Dashboard: React.FunctionComponent = () => {
                                   label={tag}
                                   sx={{
                                     height: 24,
-                                    border: '1px solid rgba(226, 232, 240, 0.12)',
+                                    border:
+                                      '1px solid rgba(226, 232, 240, 0.12)',
                                     backgroundColor: 'rgba(15, 23, 42, 0.72)',
                                     color: 'rgba(226, 232, 240, 0.76)',
                                     fontSize: '0.68rem',
