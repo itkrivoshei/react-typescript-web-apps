@@ -10,6 +10,7 @@ import {
   ThemeProvider,
   createTheme,
   Box,
+  Stack,
 } from '@mui/material';
 
 import { dashboardApps } from '../config/appCatalog';
@@ -53,14 +54,14 @@ const Dashboard: React.FunctionComponent = () => {
         sx={{
           minHeight: '100vh',
           background:
-            'radial-gradient(circle at 12% 8%, rgba(76, 201, 240, 0.18), transparent 26rem), radial-gradient(circle at 88% 18%, rgba(167, 139, 250, 0.16), transparent 28rem), #0f172a',
+            'radial-gradient(circle at 12% 8%, rgba(76, 201, 240, 0.18), transparent 26rem), radial-gradient(circle at 88% 18%, rgba(167, 139, 250, 0.16), transparent 28rem), linear-gradient(135deg, #0f172a, #111827 58%, #020617)',
         }}
       >
         <Container component='main' maxWidth='lg' sx={{ py: { xs: 4, md: 7 } }}>
           <Box
             component='header'
             sx={{
-              maxWidth: 780,
+              maxWidth: 860,
               mx: 'auto',
               mb: { xs: 4, md: 6 },
               textAlign: 'center',
@@ -104,6 +105,32 @@ const Dashboard: React.FunctionComponent = () => {
               A compact launcher for small frontend apps, each with its own
               visual direction and shared React/TypeScript setup.
             </Typography>
+            <Stack
+              direction={{ xs: 'column', sm: 'row' }}
+              spacing={1}
+              justifyContent='center'
+              sx={{ mt: 3 }}
+            >
+              {['UI demos', 'Shared CI', 'GitHub Pages'].map((item) => (
+                <Box
+                  key={item}
+                  sx={{
+                    px: 1.5,
+                    py: 0.75,
+                    border: '1px solid rgba(226, 232, 240, 0.14)',
+                    borderRadius: 2,
+                    background: 'rgba(15, 23, 42, 0.52)',
+                    color: 'rgba(226, 232, 240, 0.76)',
+                    fontSize: '0.78rem',
+                    fontWeight: 800,
+                    letterSpacing: '0.08em',
+                    textTransform: 'uppercase',
+                  }}
+                >
+                  {item}
+                </Box>
+              ))}
+            </Stack>
           </Box>
 
           <Grid container spacing={3} justifyContent='center'>
@@ -112,8 +139,8 @@ const Dashboard: React.FunctionComponent = () => {
                 <Card
                   sx={{
                     position: 'relative',
-                    height: 212,
-                    backgroundImage: `linear-gradient(180deg, rgba(15, 23, 42, 0.18), rgba(15, 23, 42, 0.92)), url(${project.imageUrl})`,
+                    height: 226,
+                    backgroundImage: `linear-gradient(180deg, rgba(15, 23, 42, 0.1), rgba(15, 23, 42, 0.44) 34%, rgba(15, 23, 42, 0.94)), url(${project.imageUrl})`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                     border: '1px solid rgba(226, 232, 240, 0.12)',
@@ -156,7 +183,7 @@ const Dashboard: React.FunctionComponent = () => {
                         variant='h3'
                         sx={{
                           color: 'primary.main',
-                          fontSize: '1.35rem',
+                          fontSize: '1.28rem',
                           letterSpacing: '-0.02em',
                           lineHeight: 1.12,
                           textShadow: '0 2px 14px rgba(0, 0, 0, 0.82)',
@@ -166,12 +193,33 @@ const Dashboard: React.FunctionComponent = () => {
                       </Typography>
                       <Box
                         sx={{
-                          width: 36,
-                          height: 2,
-                          mt: 1.2,
-                          backgroundColor: project.accent,
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'space-between',
+                          gap: 1,
+                          mt: 1.4,
                         }}
-                      />
+                      >
+                        <Box
+                          sx={{
+                            width: 36,
+                            height: 2,
+                            backgroundColor: project.accent,
+                          }}
+                        />
+                        <Typography
+                          component='span'
+                          sx={{
+                            color: 'rgba(226, 232, 240, 0.72)',
+                            fontSize: '0.72rem',
+                            fontWeight: 900,
+                            letterSpacing: '0.08em',
+                            textTransform: 'uppercase',
+                          }}
+                        >
+                          Open
+                        </Typography>
+                      </Box>
                     </Box>
                   </CardActionArea>
                 </Card>
