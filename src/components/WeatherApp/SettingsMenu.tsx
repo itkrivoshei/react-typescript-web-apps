@@ -1,10 +1,4 @@
-import React, {
-  useEffect,
-  useState,
-  ChangeEvent,
-  FC,
-  FormEvent,
-} from 'react';
+import React, { useEffect, useState, ChangeEvent, FC, FormEvent } from 'react';
 import {
   Box,
   IconButton,
