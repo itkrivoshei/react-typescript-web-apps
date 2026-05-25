@@ -37,16 +37,6 @@ interface WeatherState {
   error: string | null;
 }
 
-interface GiphyResponse {
-  data: Array<{
-    images: {
-      fixed_height: {
-        url: string;
-      };
-    };
-  }>;
-}
-
 interface GeocodingResult {
   name: string;
   latitude: number;
@@ -139,18 +129,21 @@ const celsiusToFahrenheit = (temperature: number) =>
 const kphToMph = (speed: number) => Math.round(speed * 0.621371 * 10) / 10;
 
 const getWeatherCondition = (weatherCode: number) =>
-  weatherCodeLabels[weatherCode] ?? 'Current weather';
+  weatherCodeLabels[weatherCode] ?? 'Weather conditions';
+
+const getCoordinateLabel = (latitude: number, longitude: number) =>
+  `${latitude.toFixed(2)}, ${longitude.toFixed(2)}`;
 
 const getCoordinatesFromCity = async (
   city: string
 ): Promise<GeocodingResult> => {
-  const apiUrl = new URL('https://geocoding-api.open-meteo.com/v1/search');
-  apiUrl.searchParams.set('name', city);
-  apiUrl.searchParams.set('count', '1');
-  apiUrl.searchParams.set('language', 'en');
-  apiUrl.searchParams.set('format', 'json');
+  const url = new URL('https://geocoding-api.open-meteo.com/v1/search');
+  url.searchParams.set('name', city);
+  url.searchParams.set('count', '1');
+  url.searchParams.set('language', 'en');
+  url.searchParams.set('format', 'json');
 
-  const response = await fetch(apiUrl.toString());
+  const response = await fetch(url.toString());
 
   if (!response.ok) {
     throw new Error('Failed to find city');
@@ -170,24 +163,26 @@ const getPlaceFromCoordinates = async (
   latitude: number,
   longitude: number
 ): Promise<Pick<ResolvedLocation, 'name' | 'country'>> => {
-  const apiUrl = new URL(
-    'https://api.bigdatacloud.net/data/reverse-geocode-client'
-  );
-  apiUrl.searchParams.set('latitude', String(latitude));
-  apiUrl.searchParams.set('longitude', String(longitude));
-  apiUrl.searchParams.set('localityLanguage', 'en');
+  const url = new URL('https://api.bigdatacloud.net/data/reverse-geocode-client');
+  url.searchParams.set('latitude', String(latitude));
+  url.searchParams.set('longitude', String(longitude));
+  url.searchParams.set('localityLanguage', 'en');
 
-  const response = await fetch(apiUrl.toString());
+  const response = await fetch(url.toString());
 
   if (!response.ok) {
-    throw new Error('Failed to resolve current location');
+    throw new Error('Failed to resolve location name');
   }
 
   const data = (await response.json()) as ReverseGeocodingResponse;
   const name = data.city || data.locality || data.principalSubdivision;
 
+  if (!name) {
+    throw new Error('Location name was not found');
+  }
+
   return {
-    name: name || 'Current location',
+    name,
     country: data.countryName ?? '',
   };
 };
@@ -238,7 +233,7 @@ const resolveLocation = async (
     return {
       latitude: location.latitude,
       longitude: location.longitude,
-      name: 'Current location',
+      name: getCoordinateLabel(location.latitude, location.longitude),
       country: '',
     };
   }
@@ -281,17 +276,17 @@ export const fetchWeather = createAsyncThunk<
 >('weather/fetchWeather', async (location, { rejectWithValue }) => {
   try {
     const resolvedLocation = await resolveLocation(location);
-    const apiUrl = new URL('https://api.open-meteo.com/v1/forecast');
+    const url = new URL('https://api.open-meteo.com/v1/forecast');
 
-    apiUrl.searchParams.set('latitude', String(resolvedLocation.latitude));
-    apiUrl.searchParams.set('longitude', String(resolvedLocation.longitude));
-    apiUrl.searchParams.set(
+    url.searchParams.set('latitude', String(resolvedLocation.latitude));
+    url.searchParams.set('longitude', String(resolvedLocation.longitude));
+    url.searchParams.set(
       'current',
       'temperature_2m,relative_humidity_2m,apparent_temperature,weather_code,wind_speed_10m'
     );
-    apiUrl.searchParams.set('timezone', 'auto');
+    url.searchParams.set('timezone', 'auto');
 
-    const response = await fetch(apiUrl.toString());
+    const response = await fetch(url.toString());
 
     if (!response.ok) {
       return rejectWithValue('Failed to fetch weather data');
@@ -310,31 +305,7 @@ export const fetchGif = createAsyncThunk<
   string | null,
   string,
   { rejectValue: string }
->('weather/fetchGif', async (condition, { rejectWithValue }) => {
-  const apiKey = process.env.REACT_APP_GIPHY_API_KEY;
-
-  if (!apiKey) {
-    return null;
-  }
-
-  try {
-    const apiUrl = new URL('https://api.giphy.com/v1/gifs/search');
-    apiUrl.searchParams.set('api_key', apiKey);
-    apiUrl.searchParams.set('q', `${condition} weather`);
-    apiUrl.searchParams.set('limit', '1');
-
-    const response = await fetch(apiUrl.toString());
-
-    if (!response.ok) {
-      return rejectWithValue('Failed to fetch GIF');
-    }
-
-    const data = (await response.json()) as GiphyResponse;
-    return data.data[0]?.images.fixed_height.url ?? null;
-  } catch {
-    return rejectWithValue('Failed to fetch GIF');
-  }
-});
+>('weather/fetchGif', async () => null);
 
 const weatherSlice = createSlice({
   name: 'weather',
