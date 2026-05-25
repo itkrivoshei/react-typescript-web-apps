@@ -1,5 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
+import { getWeatherGifUrl } from '../../components/WeatherApp/weatherGif';
+
 export enum Region {
   EU = 'EU',
   US = 'US',
@@ -18,10 +20,12 @@ export interface WeatherData {
     feelslike_f: number;
     wind_kph: number;
     wind_mph: number;
+    wind_gust_kph: number;
+    wind_gust_mph: number;
     humidity: number;
-    air_quality: {
-      'us-epa-index': number;
-    };
+    pressure_mb: number;
+    precipitation_mm: number;
+    cloud_cover: number;
     condition: {
       text: string;
     };
@@ -63,7 +67,11 @@ interface OpenMeteoResponse {
     temperature_2m: number;
     apparent_temperature: number;
     relative_humidity_2m: number;
+    precipitation: number;
+    cloud_cover: number;
+    surface_pressure: number;
     wind_speed_10m: number;
+    wind_gusts_10m: number;
     weather_code: number;
   };
 }
@@ -260,10 +268,12 @@ const mapOpenMeteoToWeatherData = (
       feelslike_f: celsiusToFahrenheit(current.apparent_temperature),
       wind_kph: current.wind_speed_10m,
       wind_mph: kphToMph(current.wind_speed_10m),
+      wind_gust_kph: current.wind_gusts_10m,
+      wind_gust_mph: kphToMph(current.wind_gusts_10m),
       humidity: current.relative_humidity_2m,
-      air_quality: {
-        'us-epa-index': 0,
-      },
+      pressure_mb: current.surface_pressure,
+      precipitation_mm: current.precipitation,
+      cloud_cover: current.cloud_cover,
       condition: {
         text: getWeatherCondition(current.weather_code),
       },
@@ -284,7 +294,7 @@ export const fetchWeather = createAsyncThunk<
     url.searchParams.set('longitude', String(resolvedLocation.longitude));
     url.searchParams.set(
       'current',
-      'temperature_2m,relative_humidity_2m,apparent_temperature,weather_code,wind_speed_10m'
+      'temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,weather_code,cloud_cover,surface_pressure,wind_speed_10m,wind_gusts_10m'
     );
     url.searchParams.set('timezone', 'auto');
 
@@ -307,7 +317,13 @@ export const fetchGif = createAsyncThunk<
   string | null,
   string,
   { rejectValue: string }
->('weather/fetchGif', async () => null);
+>('weather/fetchGif', async (condition, { rejectWithValue }) => {
+  try {
+    return await getWeatherGifUrl(condition);
+  } catch {
+    return rejectWithValue('Failed to fetch GIF');
+  }
+});
 
 const weatherSlice = createSlice({
   name: 'weather',
@@ -332,6 +348,7 @@ const weatherSlice = createSlice({
         state.weatherLoading = false;
       })
       .addCase(fetchGif.pending, (state) => {
+        state.gifUrl = null;
         state.gifLoading = true;
       })
       .addCase(fetchGif.fulfilled, (state, action) => {
@@ -339,6 +356,7 @@ const weatherSlice = createSlice({
         state.gifLoading = false;
       })
       .addCase(fetchGif.rejected, (state) => {
+        state.gifUrl = null;
         state.gifLoading = false;
       });
   },
