@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
+import './AppNavigationMenu.scss';
+
 const AppNavigationMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
 
