@@ -136,10 +136,10 @@ const SignUpForm: React.FC = () => {
     };
 
     const drawMatrix = () => {
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+      ctx.fillStyle = 'rgba(0, 4, 2, 0.08)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      ctx.fillStyle = '#0f0';
+      ctx.fillStyle = 'rgba(32, 255, 114, 0.72)';
       ctx.font = `${fontSize}px 'VT323', monospace`;
 
       drops.forEach((drop, index) => {
@@ -163,7 +163,7 @@ const SignUpForm: React.FC = () => {
     resizeCanvas();
     drawMatrix();
 
-    const matrixInterval = window.setInterval(drawMatrix, 50);
+    const matrixInterval = window.setInterval(drawMatrix, 58);
     window.addEventListener('resize', handleResize);
 
     return () => {
@@ -198,12 +198,24 @@ const SignUpForm: React.FC = () => {
     <div className='sign-up-form-container'>
       <canvas ref={canvasRef} id='canvas' aria-hidden='true' />
       <div className='left-side'>
-        <div className='logo'>
-          <img
-            src='https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExMWFmOGFiODQxZWY0N2Q5ODNhYmIzZGZmMDk5NTg5ZTJhNzQwNjcwMSZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/2p1ng5ek9qIR8wzPn5/giphy.gif'
-            alt='Animated matrix-style logo'
-          />
-          <h1 className='logo-text'>Sign-up Form</h1>
+        <div className='terminal-card'>
+          <div className='terminal-bar' aria-hidden='true'>
+            <span />
+            <span />
+            <span />
+          </div>
+          <div className='logo'>
+            <img
+              src='https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExMWFmOGFiODQxZWY0N2Q5ODNhYmIzZGZmMDk5NTg5ZTJhNzQwNjcwMSZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/2p1ng5ek9qIR8wzPn5/giphy.gif'
+              alt='Animated matrix-style logo'
+            />
+            <h1 className='logo-text'>Sign-up Form</h1>
+          </div>
+          <div className='terminal-lines' aria-hidden='true'>
+            <span>$ validate --fields required</span>
+            <span>$ encrypt --password-check enabled</span>
+            <span className='terminal-ready'>status: ready</span>
+          </div>
         </div>
       </div>
       <div className='right-side'>
