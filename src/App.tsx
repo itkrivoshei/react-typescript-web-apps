@@ -73,9 +73,11 @@ const AppNavigationMenu = () => {
   );
 };
 
+const routesWithSideNavigation = ['/Landing', '/DashLanding'];
+
 const AppRoutes = () => {
   const location = useLocation();
-  const showAppsLink = location.pathname !== '/';
+  const showAppsLink = routesWithSideNavigation.includes(location.pathname);
 
   return (
     <>
