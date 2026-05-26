@@ -10,44 +10,44 @@ export interface DashboardApp {
 }
 
 export const appGroupLabels: Record<AppGroup, string> = {
-  featured: 'Favorite / stronger apps',
+  featured: 'Favorite apps',
   solid: 'Structured practice apps',
-  practice: 'Classic interaction exercises',
+  practice: 'Classic interaction apps',
   legacy: 'Early layout demos',
 };
 
 export const dashboardApps: DashboardApp[] = [
   {
     path: '/WeatherApp',
-    name: 'Weather App',
+    name: 'WeatherUp',
     accent: '#4cc9f0',
     group: 'featured',
-    summary: 'Weather lookup with geolocation, city search, and live metrics.',
+    summary: 'Weather dashboard with city search, geolocation, live metrics, and GIF reactions.',
     stack: ['Redux', 'API', 'MUI'],
   },
   {
     path: '/Calculator',
-    name: 'Calculator',
+    name: 'Calculator — IBM Numpad',
     accent: '#d6c4a8',
     group: 'featured',
     summary:
-      'Retro calculator with keyboard-style UI and stricter input handling.',
-    stack: ['React', 'SCSS'],
+      'Calculator styled like an old IBM numpad keyboard with tactile sound feedback.',
+    stack: ['React', 'SCSS', 'Audio'],
   },
   {
     path: '/TodoApp',
-    name: 'Todo App',
+    name: 'Todo Command Board',
     accent: '#c8b6ff',
     group: 'solid',
-    summary: 'Project-based task board with Redux state management.',
+    summary: 'Project-based task board with Redux state management and a lofi dashboard layout.',
     stack: ['Redux', 'MUI'],
   },
   {
     path: '/SignUpForm',
-    name: 'Sign-up Form',
+    name: 'Terminal Sign-up Form',
     accent: '#38bdf8',
     group: 'solid',
-    summary: 'Terminal-themed form with validation and responsive layout.',
+    summary: 'Terminal-themed form with validation, phone formatting, and animated canvas background.',
     stack: ['React', 'Validation'],
   },
   {
@@ -55,16 +55,16 @@ export const dashboardApps: DashboardApp[] = [
     name: 'Tic Tac Toe',
     accent: '#f97316',
     group: 'solid',
-    summary: 'Small game implementation with simple state transitions.',
+    summary: 'Compact game implementation with turn handling, AI mode, and result states.',
     stack: ['React', 'Game'],
   },
   {
     path: '/EtchASketch',
-    name: 'Etch a Sketch',
+    name: 'Etch A Sketch',
     accent: '#ef4444',
     group: 'practice',
-    summary: 'Interactive drawing grid with classic controls.',
-    stack: ['React', 'Canvas-like UI'],
+    summary: 'Interactive drawing grid with size controls, color tools, and brush modes.',
+    stack: ['React', 'Grid UI'],
   },
   {
     path: '/BookLibrary',
@@ -100,7 +100,7 @@ export const dashboardApps: DashboardApp[] = [
   },
   {
     path: '/DashLanding',
-    name: 'Dashboard',
+    name: 'Dashboard Layout',
     accent: '#a78bfa',
     group: 'legacy',
     summary: 'Admin dashboard landing page layout exercise.',
@@ -108,15 +108,15 @@ export const dashboardApps: DashboardApp[] = [
   },
   {
     path: '/Restaurant',
-    name: 'Restaurant',
+    name: 'Restaurant Page',
     accent: '#f59e0b',
     group: 'legacy',
-    summary: 'Restaurant page layout with menu/contact sections.',
+    summary: 'Restaurant page layout with menu and contact sections.',
     stack: ['React', 'Layout'],
   },
   {
     path: '/Landing',
-    name: 'Landing',
+    name: 'Landing Page',
     accent: '#60a5fa',
     group: 'legacy',
     summary: 'Landing page layout exercise with responsive sections.',
