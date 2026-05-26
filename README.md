@@ -14,23 +14,23 @@ A routed React app gallery with weather lookup, calculator, todo board, games, a
 
 ## App Gallery
 
-The dashboard is served with `HashRouter`, so every app title opens a direct GitHub Pages route. Use the **Source & README** links to view each app folder, source files, and project notes.
+The dashboard is served with `HashRouter`, so every app title opens a direct GitHub Pages route. Use the **Source & README** links to open each app folder with its source files and README preview.
 
 | App | Source & README | Focus |
 | --- | --- | --- |
-| ⭐ [WeatherUp — GIF Weather Dashboard](https://itkrivoshei.github.io/react-typescript-web-apps/#/WeatherApp) | [Source files & README](src/components/WeatherApp/README.md) | Weather search with geolocation, live metrics, and a GIF API layer that makes the forecast feel more visual and interactive |
-| ⭐ [Calculator — IBM Numpad Edition](https://itkrivoshei.github.io/react-typescript-web-apps/#/Calculator) | [Source files & README](src/components/Calculator/README.md) | Calculator styled like an old IBM numpad keyboard, with tactile button layout, strict input handling, and sound feedback |
-| [Redux Todo Command Board](https://itkrivoshei.github.io/react-typescript-web-apps/#/TodoApp) | [Source files & README](src/components/TodoList/README.md) | Project-based task board with Redux state management |
-| ⭐ [Terminal Sign-up Form](https://itkrivoshei.github.io/react-typescript-web-apps/#/SignUpForm) | [Source files & README](src/components/SignUpForm/README.md) | Responsive form validation wrapped in a terminal-style interface |
-| ✦ [Tic-Tac-Toe Mini Game](https://itkrivoshei.github.io/react-typescript-web-apps/#/TicTacToe) | [Source files & README](src/components/TicTacToe/README.md) | Compact game flow with turn handling, state updates, and win/draw result logic |
-| ✦ [Etch-a-Sketch Drawing Grid](https://itkrivoshei.github.io/react-typescript-web-apps/#/EtchASketch) | [Source files & README](src/components/EtchASketch/README.md) | Interactive drawing grid with classic browser controls and quick visual feedback |
-| [Book Library Shelf](https://itkrivoshei.github.io/react-typescript-web-apps/#/BookLibrary) | [Source files & README](src/components/LibraryApp/README.md) | Book list UI with add flow |
-| [Rock Paper Scissors Arena](https://itkrivoshei.github.io/react-typescript-web-apps/#/RockPaperScissors) | [Source files & README](src/components/RockPaperScissors/README.md) | Scoreboard and result state |
-| [Drum Kit Sound Pad](https://itkrivoshei.github.io/react-typescript-web-apps/#/DrumKit) | [Source files & README](src/components/DrumKit/README.md) | Keyboard-triggered audio pads |
-| [Recipe Cards](https://itkrivoshei.github.io/react-typescript-web-apps/#/OdinRecipes) | [Source files & README](src/components/Recipes/README.md) | Static recipe page |
-| [Admin Dashboard Layout](https://itkrivoshei.github.io/react-typescript-web-apps/#/DashLanding) | [Source files & README](src/components/AdminDashboard/README.md) | Admin dashboard layout |
-| [Restaurant Menu Page](https://itkrivoshei.github.io/react-typescript-web-apps/#/Restaurant) | [Source files & README](src/components/RestaurantPage/README.md) | Menu, contact, and home sections |
-| [Landing Page Demo](https://itkrivoshei.github.io/react-typescript-web-apps/#/Landing) | [Source files & README](src/components/LandingPage/README.md) | Responsive marketing-style layout |
+| ⭐ [WeatherUp — GIF Weather Dashboard](https://itkrivoshei.github.io/react-typescript-web-apps/#/WeatherApp) | [Source files & README](src/features/weather) | Weather search with geolocation, live metrics, and a GIF API layer that makes the forecast feel more visual and interactive |
+| ⭐ [Calculator — IBM Numpad Edition](https://itkrivoshei.github.io/react-typescript-web-apps/#/Calculator) | [Source files & README](src/features/calculator) | Calculator styled like an old IBM numpad keyboard, with tactile button layout, strict input handling, and sound feedback |
+| [Redux Todo Command Board](https://itkrivoshei.github.io/react-typescript-web-apps/#/TodoApp) | [Source files & README](src/components/TodoList) | Project-based task board with Redux state management |
+| ⭐ [Terminal Sign-up Form](https://itkrivoshei.github.io/react-typescript-web-apps/#/SignUpForm) | [Source files & README](src/features/signup) | Responsive form validation wrapped in a terminal-style interface |
+| ✦ [Tic-Tac-Toe Mini Game](https://itkrivoshei.github.io/react-typescript-web-apps/#/TicTacToe) | [Source files & README](src/components/TicTacToe) | Compact game flow with turn handling, state updates, and win/draw result logic |
+| ✦ [Etch-a-Sketch Drawing Grid](https://itkrivoshei.github.io/react-typescript-web-apps/#/EtchASketch) | [Source files & README](src/components/EtchASketch) | Interactive drawing grid with classic browser controls and quick visual feedback |
+| [Book Library Shelf](https://itkrivoshei.github.io/react-typescript-web-apps/#/BookLibrary) | [Source files & README](src/components/LibraryApp) | Book list UI with add flow |
+| [Rock Paper Scissors Arena](https://itkrivoshei.github.io/react-typescript-web-apps/#/RockPaperScissors) | [Source files & README](src/components/RockPaperScissors) | Scoreboard and result state |
+| [Drum Kit Sound Pad](https://itkrivoshei.github.io/react-typescript-web-apps/#/DrumKit) | [Source files & README](src/components/DrumKit) | Keyboard-triggered audio pads |
+| [Recipe Cards](https://itkrivoshei.github.io/react-typescript-web-apps/#/OdinRecipes) | [Source files & README](src/components/Recipes) | Static recipe page |
+| [Admin Dashboard Layout](https://itkrivoshei.github.io/react-typescript-web-apps/#/DashLanding) | [Source files & README](src/components/AdminDashboard) | Admin dashboard layout |
+| [Restaurant Menu Page](https://itkrivoshei.github.io/react-typescript-web-apps/#/Restaurant) | [Source files & README](src/components/RestaurantPage) | Menu, contact, and home sections |
+| [Landing Page Demo](https://itkrivoshei.github.io/react-typescript-web-apps/#/Landing) | [Source files & README](src/components/LandingPage) | Responsive marketing-style layout |
 
 ## Stack
 
@@ -85,8 +85,8 @@ The app can build without exposing secrets in the repository. GitHub Actions inj
 ```text
 src/
 ├── app/          # router, navigation, theme
-├── components/   # routed app components
-├── features/     # newer feature folders
+├── components/   # legacy routed app folders
+├── features/     # migrated feature folders
 ├── redux/        # store and slices
 └── styles/       # global SCSS
 ```
