@@ -12,25 +12,29 @@ A routed React app gallery with weather lookup, calculator, todo board, games, a
 
 </div>
 
-## App Catalog
+## App Ranking
 
-The dashboard is served with `HashRouter`, so every app can be opened directly from GitHub Pages.
+The dashboard is served with `HashRouter`, so every app title opens a direct GitHub Pages route. Rankings move from favorite builds to structured practice apps, classic interaction apps, and early layout demos. Use the **Project README** links for deeper notes inside each app folder.
 
-| App | Route | Highlights |
-| --- | --- | --- |
-| Weather App | [`#/WeatherApp`](https://itkrivoshei.github.io/react-typescript-web-apps/#/WeatherApp) | City search, geolocation, weather metrics, optional GIF layer |
-| Calculator | [`#/Calculator`](https://itkrivoshei.github.io/react-typescript-web-apps/#/Calculator) | Retro keypad UI, strict input handling, sound assets |
-| Todo App | [`#/TodoApp`](https://itkrivoshei.github.io/react-typescript-web-apps/#/TodoApp) | Project-based task board with Redux state |
-| Tic Tac Toe | [`#/TicTacToe`](https://itkrivoshei.github.io/react-typescript-web-apps/#/TicTacToe) | Game state and result flow |
-| Book Library | [`#/BookLibrary`](https://itkrivoshei.github.io/react-typescript-web-apps/#/BookLibrary) | Book list UI with add flow |
-| Sign-up Form | [`#/SignUpForm`](https://itkrivoshei.github.io/react-typescript-web-apps/#/SignUpForm) | Responsive form validation |
-| Etch a Sketch | [`#/EtchASketch`](https://itkrivoshei.github.io/react-typescript-web-apps/#/EtchASketch) | Interactive drawing grid |
-| Drum Kit | [`#/DrumKit`](https://itkrivoshei.github.io/react-typescript-web-apps/#/DrumKit) | Keyboard-triggered audio pads |
-| Rock Paper Scissors | [`#/RockPaperScissors`](https://itkrivoshei.github.io/react-typescript-web-apps/#/RockPaperScissors) | Scoreboard and result state |
-| Recipes | [`#/OdinRecipes`](https://itkrivoshei.github.io/react-typescript-web-apps/#/OdinRecipes) | Static recipe page |
-| Landing Page | [`#/Landing`](https://itkrivoshei.github.io/react-typescript-web-apps/#/Landing) | Responsive marketing-style layout |
-| Restaurant | [`#/Restaurant`](https://itkrivoshei.github.io/react-typescript-web-apps/#/Restaurant) | Menu, contact, and home sections |
-| Dashboard | [`#/DashLanding`](https://itkrivoshei.github.io/react-typescript-web-apps/#/DashLanding) | Admin dashboard layout |
+| Rank | App | Project README | Focus |
+| --- | --- | --- | --- |
+| **Favorite Builds** |  |  | Stronger apps with the most polished interaction work |
+| Top 1 | [Weather Pulse — Live Weather Dashboard](https://itkrivoshei.github.io/react-typescript-web-apps/#/WeatherApp) | [Project README](src/components/WeatherApp/README.md) | City search, geolocation, weather metrics, optional GIF layer |
+| Top 2 | [Retro Sound Calculator](https://itkrivoshei.github.io/react-typescript-web-apps/#/Calculator) | [Project README](src/components/Calculator/README.md) | Retro keypad UI, strict input handling, sound assets |
+| **Structured Practice Apps** |  |  | Bigger practice apps with clearer state, forms, or game flow |
+| Top 3 | [Redux Todo Command Board](https://itkrivoshei.github.io/react-typescript-web-apps/#/TodoApp) | [Project README](src/components/TodoList/README.md) | Project-based task board with Redux state |
+| Top 4 | [Terminal Sign-up Form](https://itkrivoshei.github.io/react-typescript-web-apps/#/SignUpForm) | [Project README](src/components/SignUpForm/README.md) | Responsive form validation with a terminal-style UI |
+| Top 5 | [Tic-Tac-Toe Mini Game](https://itkrivoshei.github.io/react-typescript-web-apps/#/TicTacToe) | [Project README](src/components/TicTacToe/README.md) | Game state, turns, and result flow |
+| **Classic Interaction Apps** |  |  | Smaller interactive builds focused on classic browser UI patterns |
+| Top 6 | [Etch-a-Sketch Drawing Grid](https://itkrivoshei.github.io/react-typescript-web-apps/#/EtchASketch) | [Project README](src/components/EtchASketch/README.md) | Interactive drawing grid with classic controls |
+| Top 7 | [Book Library Shelf](https://itkrivoshei.github.io/react-typescript-web-apps/#/BookLibrary) | [Project README](src/components/LibraryApp/README.md) | Book list UI with add flow |
+| Top 8 | [Rock Paper Scissors Arena](https://itkrivoshei.github.io/react-typescript-web-apps/#/RockPaperScissors) | [Project README](src/components/RockPaperScissors/README.md) | Scoreboard and result state |
+| Top 9 | [Drum Kit Sound Pad](https://itkrivoshei.github.io/react-typescript-web-apps/#/DrumKit) | [Project README](src/components/DrumKit/README.md) | Keyboard-triggered audio pads |
+| **Early Layout Demos** |  |  | Earlier layout-focused pages and static UI exercises |
+| Top 10 | [Recipe Cards](https://itkrivoshei.github.io/react-typescript-web-apps/#/OdinRecipes) | [Project README](src/components/Recipes/README.md) | Static recipe page |
+| Top 11 | [Admin Dashboard Layout](https://itkrivoshei.github.io/react-typescript-web-apps/#/DashLanding) | [Project README](src/components/AdminDashboard/README.md) | Admin dashboard layout |
+| Top 12 | [Restaurant Menu Page](https://itkrivoshei.github.io/react-typescript-web-apps/#/Restaurant) | [Project README](src/components/RestaurantPage/README.md) | Menu, contact, and home sections |
+| Top 13 | [Landing Page Demo](https://itkrivoshei.github.io/react-typescript-web-apps/#/Landing) | [Project README](src/components/LandingPage/README.md) | Responsive marketing-style layout |
 
 ## Stack
 
