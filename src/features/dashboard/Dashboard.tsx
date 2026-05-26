@@ -26,6 +26,7 @@ const dashboardFontFamily = [
 ].join(', ');
 
 const appGroups: AppGroup[] = ['featured', 'solid', 'practice', 'legacy'];
+const projectBadges = ['Live demos', 'TypeScript', 'GitHub Pages'];
 
 const darkTheme = createTheme({
   palette: {
@@ -107,8 +108,8 @@ const Dashboard: React.FunctionComponent = () => {
                 lineHeight: 1.7,
               }}
             >
-              A compact launcher for small React/TypeScript apps, grouped by
-              current polish and implementation complexity.
+              A compact launcher for React and TypeScript apps, organized by
+              polish, interaction depth, and implementation complexity.
             </Typography>
             <Stack
               direction={{ xs: 'column', sm: 'row' }}
@@ -116,7 +117,7 @@ const Dashboard: React.FunctionComponent = () => {
               justifyContent='center'
               sx={{ mt: 3 }}
             >
-              {['No preview GIFs', 'Shared CI', 'GitHub Pages'].map((item) => (
+              {projectBadges.map((item) => (
                 <Box
                   key={item}
                   sx={{
