@@ -1,6 +1,6 @@
 # 🔢 Counter Component
 
-The [Counter Component](https://itkrivoshei.github.io/OdinMonoWebApps/#/Counter) is a reusable, interactive component that allows users to increment a counter value with a button click. The current counter value is displayed, and a styled toast notification shows the updated value upon each increment. Built with React, Chakra UI, and TypeScript, designed for flexibility and ease of integration into other components.
+The [Counter Component](https://itkrivoshei.github.io/react-typescript-web-apps/#/Counter) is a reusable, interactive component that allows users to increment a counter value with a button click. The current counter value is displayed, and a styled toast notification shows the updated value upon each increment. Built with React, Chakra UI, and TypeScript, designed for flexibility and ease of integration into other components.
 
 ## 🌟 Key Features
 
@@ -15,4 +15,4 @@ The [Counter Component](https://itkrivoshei.github.io/OdinMonoWebApps/#/Counter)
 
 ## 📜 License
 
-This project is open source, licensed under the [MIT License](https://github.com/itkrivoshei/OdinMonoWebApps/blob/master/LICENSE).
+This project is open source, licensed under the [MIT License](https://github.com/itkrivoshei/react-typescript-web-apps/blob/master/LICENSE).

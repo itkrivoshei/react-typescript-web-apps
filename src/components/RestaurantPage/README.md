@@ -1,10 +1,10 @@
 # 🍽️ Restaurant Page
 
 <p align="center">
-  <img src="https://github.com/itkrivoshei/OdinMonoWebApps/blob/main/media/Restaurant.gif?raw=true" height="600">
+  <img src="https://github.com/itkrivoshei/react-typescript-web-apps/blob/main/media/Restaurant.gif?raw=true" height="600">
 </p>
 
-The [Restaurant Page](https://itkrivoshei.github.io/OdinMonoWebApps/#/Restaurant) project, inspired by [The Odin Project's JavaScript course](https://www.theodinproject.com/lessons/node-path-javascript-todo-list), is a React-based web application showcasing a virtual restaurant. It features a simple landing page with navigation options to explore different sections of the restaurant, including Home, Menu, and Contact.
+The [Restaurant Page](https://itkrivoshei.github.io/react-typescript-web-apps/#/Restaurant) project, inspired by [The Odin Project's JavaScript course](https://www.theodinproject.com/lessons/node-path-javascript-todo-list), is a React-based web application showcasing a virtual restaurant. It features a simple landing page with navigation options to explore different sections of the restaurant, including Home, Menu, and Contact.
 
 - **Dynamic Content Rendering**: Each section of the restaurant - Home, Menu, and Contact - is rendered dynamically using React.
 - **Tabbed Navigation**: Users can easily navigate between the Home, Menu, and Contact tabs.

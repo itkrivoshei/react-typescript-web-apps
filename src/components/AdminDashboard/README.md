@@ -1,10 +1,10 @@
 # 📊 Admin Dashboard
 
 <p align="center">
-  <img src="https://github.com/itkrivoshei/OdinMonoWebApps/blob/main/media/Dashboard.gif?raw=true" height="600">
+  <img src="https://github.com/itkrivoshei/react-typescript-web-apps/blob/main/media/Dashboard.gif?raw=true" height="600">
 </p>
 
-This [React Admin Dashboard](https://itkrivoshei.github.io/OdinMonoWebApps/#/DashLanding) is a robust web application crafted as a part of the assignment from [The Odin Project](https://www.theodinproject.com/lessons/node-path-intermediate-html-and-css-admin-dashboard). It leverages React for building dynamic user interfaces, SCSS for styling, and Material Icons with a Dracula color theme.
+This [React Admin Dashboard](https://itkrivoshei.github.io/react-typescript-web-apps/#/DashLanding) is a robust web application crafted as a part of the assignment from [The Odin Project](https://www.theodinproject.com/lessons/node-path-intermediate-html-and-css-admin-dashboard). It leverages React for building dynamic user interfaces, SCSS for styling, and Material Icons with a Dracula color theme.
 
 ## 🌟 Key Features
 
@@ -30,11 +30,11 @@ This [React Admin Dashboard](https://itkrivoshei.github.io/OdinMonoWebApps/#/Das
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/itkrivoshei/OdinMonoWebApps.git
+   git clone https://github.com/itkrivoshei/react-typescript-web-apps.git
    ```
 2. Navigate to the Dashboard directory:
    ```bash
-   cd OdinMonoWebApps
+   cd react-typescript-web-apps
    ```
 3. Install the required dependencies:
    ```bash
@@ -49,18 +49,18 @@ This [React Admin Dashboard](https://itkrivoshei.github.io/OdinMonoWebApps/#/Das
 
 Contributions to enhance the Admin Dashboard are welcome:
 
-1. Fork the [main repository](https://github.com/itkrivoshei/OdinMonoWebApps).
+1. Fork the [main repository](https://github.com/itkrivoshei/react-typescript-web-apps).
 2. Create a feature branch (`git checkout -b feature/NewFeature`).
 3. Make your changes.
 4. Commit your changes (`git commit -m 'Add NewFeature'`).
 5. Push to the branch (`git push origin feature/NewFeature`).
 6. Open a pull request.
 
-For more details, see the [CONTRIBUTING.md](https://github.com/itkrivoshei/OdinMonoWebApps/blob/master/CONTRIBUTING.md) in the main repository.
+For more details, see the [CONTRIBUTING.md](https://github.com/itkrivoshei/react-typescript-web-apps/blob/master/CONTRIBUTING.md) in the main repository.
 
 ## 📜 License
 
-This project is open source, licensed under the [MIT License](https://github.com/itkrivoshei/OdinMonoWebApps/blob/master/LICENSE).
+This project is open source, licensed under the [MIT License](https://github.com/itkrivoshei/react-typescript-web-apps/blob/master/LICENSE).
 
 ## 🌟 Acknowledgments
 

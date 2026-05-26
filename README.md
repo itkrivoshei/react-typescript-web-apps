@@ -1,87 +1,104 @@
-# 🌐 OdinMonoWebApps
+<div align="center">
 
-<p align="center">
-  <img src="https://github.com/itkrivoshei/OdinMonoWebApps/blob/main/media/OdinMonoWebApps.gif?raw=true" height="600">
-</p>
+# React TypeScript Web Apps
 
-Welcome to [OdinMonoWebApps](https://itkrivoshei.github.io/OdinMonoWebApps), a collection of web-based projects. Crafted with React, TypeScript, and Redux, as part of the educational journey with [The Odin Project](https://www.theodinproject.com), a leading open-source coding curriculum.
+A routed React app gallery with weather lookup, calculator, todo board, games, audio UI, forms, and layout pages.
 
-## 📚 Project List
+[![Live app](https://img.shields.io/badge/live-GitHub%20Pages-2ea44f?style=for-the-badge&logo=githubpages&logoColor=white)](https://itkrivoshei.github.io/react-typescript-web-apps/)
+[![CI](https://img.shields.io/github/actions/workflow/status/itkrivoshei/react-typescript-web-apps/ci.yml?branch=main&style=for-the-badge&label=ci&logo=githubactions&logoColor=white)](https://github.com/itkrivoshei/react-typescript-web-apps/actions/workflows/ci.yml)
+[![Deploy](https://img.shields.io/github/actions/workflow/status/itkrivoshei/react-typescript-web-apps/deploy.yml?branch=main&style=for-the-badge&label=deploy&logo=githubactions&logoColor=white)](https://github.com/itkrivoshei/react-typescript-web-apps/actions/workflows/deploy.yml)
+[![React](https://img.shields.io/badge/React-19-61dafb?style=for-the-badge&logo=react&logoColor=111)](package.json)
+[![TypeScript](https://img.shields.io/badge/TypeScript-4.9-3178c6?style=for-the-badge&logo=typescript&logoColor=white)](tsconfig.json)
 
-Here are the projects, ranked from the most interesting to simplest ones:
+### [Open App Gallery ->](https://itkrivoshei.github.io/react-typescript-web-apps/)
 
-| Number | Project                    | Live Preview                                                                      | Code                                                                                              | Requirements                                                                                                               |
-| ------ | -------------------------- | --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| 1.     | 🌦️ Weather App             | [Live Preview](https://itkrivoshei.github.io/OdinMonoWebApps/#/WeatherApp)        | [Code](https://github.com/itkrivoshei/OdinMonoWebApps/tree/main/src/components/WeatherApp)        | [Weather App Requirements](https://www.theodinproject.com/lessons/node-path-javascript-weather-app)                        |
-| 2.     | 📝 Todo List               | [Live Preview](https://itkrivoshei.github.io/OdinMonoWebApps/#/TodoApp)           | [Code](https://github.com/itkrivoshei/OdinMonoWebApps/tree/main/src/components/TodoList)          | [Todo List Requirements](https://www.theodinproject.com/lessons/node-path-javascript-todo-list)                            |
-| 3.     | 🧮 Calculator              | [Live Preview](https://itkrivoshei.github.io/OdinMonoWebApps/#/Calculator)        | [Code](https://github.com/itkrivoshei/OdinMonoWebApps/tree/main/src/components/Calculator)        | [Calculator Requirements](https://www.theodinproject.com/lessons/foundations-calculator)                                   |
-| 4.     | 📚 Library                 | [Live Preview](https://itkrivoshei.github.io/OdinMonoWebApps/#/BookLibrary)       | [Code](https://github.com/itkrivoshei/OdinMonoWebApps/tree/main/src/components/LibraryApp)        | [Library Requirements](https://www.theodinproject.com/lessons/node-path-javascript-library)                                |
-| 5.     | ❌⭕ Tic Tac Toe           | [Live Preview](https://itkrivoshei.github.io/OdinMonoWebApps/#/TicTacToe)         | [Code](https://github.com/itkrivoshei/OdinMonoWebApps/tree/main/src/components/TicTacToe)         | [Tic Tac Toe Requirements](https://www.theodinproject.com/lessons/node-path-javascript-tic-tac-toe)                        |
-| 6.     | 🎨 Etch-a-Sketch           | [Live Preview](https://itkrivoshei.github.io/OdinMonoWebApps/#/EtchASketch)       | [Code](https://github.com/itkrivoshei/OdinMonoWebApps/tree/main/src/components/EtchASketch)       | [Etch-a-Sketch Requirements](https://www.theodinproject.com/lessons/foundations-etch-a-sketch)                             |
-| 7.     | ✍️ Sign-up Form            | [Live Preview](https://itkrivoshei.github.io/OdinMonoWebApps/#/SignUpForm)        | [Code](https://github.com/itkrivoshei/OdinMonoWebApps/tree/main/src/components/SignUpForm)        | [Sign-up Form Requirements](https://www.theodinproject.com/lessons/node-path-intermediate-html-and-css-sign-up-form)       |
-| 8.     | 🥁 DrumKit                 | [Live Preview](https://itkrivoshei.github.io/OdinMonoWebApps/#/DrumKit)           | [Code](https://github.com/itkrivoshei/OdinMonoWebApps/tree/main/src/components/DrumKit)           | [DrumKit Requirements](https://www.youtube.com/watch?v=VuN8qwZoego)                                                        |
-| 9.     | 🖥️ Admin Dashboard         | [Live Preview](https://itkrivoshei.github.io/OdinMonoWebApps/#/DashLanding)       | [Code](https://github.com/itkrivoshei/OdinMonoWebApps/tree/main/src/components/AdminDashboard)    | [Admin Dashboard Requirements](https://www.theodinproject.com/lessons/node-path-intermediate-html-and-css-admin-dashboard) |
-| 10.    | ✊✋✌️ Rock Paper Scissors | [Live Preview](https://itkrivoshei.github.io/OdinMonoWebApps/#/RockPaperScissors) | [Code](https://github.com/itkrivoshei/OdinMonoWebApps/tree/main/src/components/RockPaperScissors) | [Rock Paper Scissors Requirements](https://www.theodinproject.com/lessons/foundations-rock-paper-scissors)                 |
-| 11.    | 🚀 Landing Page            | [Live Preview](https://itkrivoshei.github.io/OdinMonoWebApps/#/Landing)           | [Code](https://github.com/itkrivoshei/OdinMonoWebApps/tree/main/src/components/LandingPage)       | [Landing Page Requirements](https://www.theodinproject.com/lessons/foundations-landing-page)                               |
-| 12.    | 🍽️ Restaurant Landing      | [Live Preview](https://itkrivoshei.github.io/OdinMonoWebApps/#/Restaurant)        | [Code](https://github.com/itkrivoshei/OdinMonoWebApps/tree/main/src/components/RestaurantPage)    | [Restaurant Landing Requirements](https://www.theodinproject.com/lessons/node-path-javascript-restaurant-page)             |
-| 13.    | 🍳 Recipes Landing         | [Live Preview](https://itkrivoshei.github.io/OdinMonoWebApps/#/OdinRecipes)       | [Code](https://github.com/itkrivoshei/OdinMonoWebApps/tree/main/src/components/Recipes)           | [Recipes Landing Requirements](https://www.theodinproject.com/lessons/foundations-recipes)                                 |
+</div>
 
-## 📁 Repository Structure
+## App Catalog
 
-The repository is thoughtfully organized for easy navigation and development:
+The dashboard is served with `HashRouter`, so every app can be opened directly from GitHub Pages.
 
-- `📂media`: Contains all media files, including GIFs for each project.
-- `📂public`: Holds public assets, including HTML and favicon.
-- `📂src`: The source directory.
-  - `📂assets`: All static assets like images and sounds for projects.
-  - `📂components`: Individual project directories with their components.
-  - `📂redux`: Redux setup, including actions and reducers.
+| App | Route | Highlights |
+| --- | --- | --- |
+| Weather App | [`#/WeatherApp`](https://itkrivoshei.github.io/react-typescript-web-apps/#/WeatherApp) | City search, geolocation, weather metrics, optional GIF layer |
+| Calculator | [`#/Calculator`](https://itkrivoshei.github.io/react-typescript-web-apps/#/Calculator) | Retro keypad UI, strict input handling, sound assets |
+| Todo App | [`#/TodoApp`](https://itkrivoshei.github.io/react-typescript-web-apps/#/TodoApp) | Project-based task board with Redux state |
+| Tic Tac Toe | [`#/TicTacToe`](https://itkrivoshei.github.io/react-typescript-web-apps/#/TicTacToe) | Game state and result flow |
+| Book Library | [`#/BookLibrary`](https://itkrivoshei.github.io/react-typescript-web-apps/#/BookLibrary) | Book list UI with add flow |
+| Sign-up Form | [`#/SignUpForm`](https://itkrivoshei.github.io/react-typescript-web-apps/#/SignUpForm) | Responsive form validation |
+| Etch a Sketch | [`#/EtchASketch`](https://itkrivoshei.github.io/react-typescript-web-apps/#/EtchASketch) | Interactive drawing grid |
+| Drum Kit | [`#/DrumKit`](https://itkrivoshei.github.io/react-typescript-web-apps/#/DrumKit) | Keyboard-triggered audio pads |
+| Rock Paper Scissors | [`#/RockPaperScissors`](https://itkrivoshei.github.io/react-typescript-web-apps/#/RockPaperScissors) | Scoreboard and result state |
+| Recipes | [`#/OdinRecipes`](https://itkrivoshei.github.io/react-typescript-web-apps/#/OdinRecipes) | Static recipe page |
+| Landing Page | [`#/Landing`](https://itkrivoshei.github.io/react-typescript-web-apps/#/Landing) | Responsive marketing-style layout |
+| Restaurant | [`#/Restaurant`](https://itkrivoshei.github.io/react-typescript-web-apps/#/Restaurant) | Menu, contact, and home sections |
+| Dashboard | [`#/DashLanding`](https://itkrivoshei.github.io/react-typescript-web-apps/#/DashLanding) | Admin dashboard layout |
 
-## 🚀 Getting Started
+## Stack
 
-To dive into these projects:
+| Area | Tools |
+| --- | --- |
+| App shell | React, React Router, Create React App |
+| Language | TypeScript |
+| State | Redux Toolkit, React Redux, redux-persist |
+| UI libraries | Chakra UI, Material UI, React Icons |
+| Motion/audio | Framer Motion, Howler |
+| Styling | SCSS, component styles |
+| Quality | ESLint, Prettier, TypeScript, Jest |
+| Delivery | GitHub Actions, GitHub Pages |
 
-1. **Clone the Repository**:
-   ```bash
-   git clone https://github.com/itkrivoshei/OdinMonoWebApps.git
-   ```
-2. **Navigate to the App Directory**:
-   ```bash
-   cd OdinMonoWebApps
-   ```
-3. **Install Dependencies**:
-   ```bash
-   npm install
-   ```
-4. **Launch the Projects**:
-   ```bash
-   npm start
-   ```
+## Run Locally
 
-## 💻 Development Tools and Scripts
+```bash
+git clone https://github.com/itkrivoshei/react-typescript-web-apps.git
+cd react-typescript-web-apps
+nvm use
+npm ci
+npm start
+```
 
-- **Prettier**: Enforces consistent code formatting (`.prettierrc`).
-- **ESLint**: Enhances code quality (`eslint-config-prettier`).
-- **TypeScript**: Strong typing with `tsconfig.json`.
-- **Scripts**:
-  - `start`: Development server.
-  - `build`: Production build.
-  - `test`: Test suite.
-  - `pretty`: Formats code.
-  - `lint`: Code linting.
-  - `deploy`: Deploys to GitHub Pages.
-  - `eject`: Custom build configuration.
+Open `http://localhost:3000`.
 
-## ⚙️ Configuration Files
+## Environment Variables
 
-- **Prettier** (`.prettierrc`): Code formatting rules.
-- **TypeScript** (`tsconfig.json`): Compiler options.
-- **ESLint** (`.eslintrc.json`): Linting rules.
+Create `.env` from `.env.example` when using the API-backed apps:
 
-## 🤝 Contributing
+```text
+REACT_APP_WEATHER_API_KEY=
+REACT_APP_GIPHY_API_KEY=
+```
 
-Eager to contribute? Fantastic! Please follow our [Contribution Guidelines](CONTRIBUTING.md) for a smooth collaboration process.
+The app can build without exposing secrets in the repository. GitHub Actions injects production values from repository secrets.
 
-## 📜 License
+## Commands
 
-OdinMonoWebApps is open-source, licensed under the [MIT License](LICENSE). Check out the LICENSE file for more details.
+| Command | Description |
+| --- | --- |
+| `npm start` | Start the dev server |
+| `npm run build` | Build static assets |
+| `npm test` | Run tests once |
+| `npm run typecheck` | Run TypeScript checks |
+| `npm run lint` | Run ESLint |
+| `npm run format:check` | Check Prettier formatting |
+| `npm run verify` | Type-check, lint, format-check, test, and build |
+
+## Structure
+
+```text
+src/
+├── app/          # router, navigation, theme
+├── components/   # routed app components
+├── features/     # newer feature folders
+├── redux/        # store and slices
+└── styles/       # global SCSS
+```
+
+## Deployment
+
+CI runs on pushes and pull requests to `main`. A successful `CI` workflow triggers the `Deploy` workflow, which builds the app and publishes the `build/` artifact to GitHub Pages.
+
+Live app: https://itkrivoshei.github.io/react-typescript-web-apps/
+
+## License
+
+[MIT](LICENSE)

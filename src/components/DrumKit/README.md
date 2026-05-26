@@ -1,10 +1,10 @@
 # 🥁 Drum Kit App
 
 <p align="center">
-  <img src="https://github.com/itkrivoshei/OdinMonoWebApps/blob/main/media/DrumKit.gif?raw=true" height="600">
+  <img src="https://github.com/itkrivoshei/react-typescript-web-apps/blob/main/media/DrumKit.gif?raw=true" height="600">
 </p>
 
-The [Drum Kit App](https://itkrivoshei.github.io/OdinMonoWebApps/#/DrumKit) is a vibrant and interactive web application allowing users to create drum sounds using their keyboard. This project is a modern React/TypeScript/SCSS rendition of the Vanilla JavaScript tutorial ["Make a JavaScript Drum Kit in Vanilla JS! #JavaScript30 1/30"](https://www.youtube.com/watch?v=VuN8qwZoego) by Wes Bos.
+The [Drum Kit App](https://itkrivoshei.github.io/react-typescript-web-apps/#/DrumKit) is a vibrant and interactive web application allowing users to create drum sounds using their keyboard. This project is a modern React/TypeScript/SCSS rendition of the Vanilla JavaScript tutorial ["Make a JavaScript Drum Kit in Vanilla JS! #JavaScript30 1/30"](https://www.youtube.com/watch?v=VuN8qwZoego) by Wes Bos.
 
 ## 🌟 Key Features
 
@@ -35,11 +35,11 @@ This project demonstrates the use of React hooks and TypeScript for efficient an
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/itkrivoshei/OdinMonoWebApps.git
+   git clone https://github.com/itkrivoshei/react-typescript-web-apps.git
    ```
 2. Navigate to the App directory:
    ```bash
-   cd OdinMonoWebApps
+   cd react-typescript-web-apps
    ```
 3. Install dependencies:
    ```bash
@@ -54,18 +54,18 @@ This project demonstrates the use of React hooks and TypeScript for efficient an
 
 Contributions are welcome to enhance the Drum Kit App:
 
-1. Fork the [main repository](https://github.com/itkrivoshei/OdinMonoWebApps).
+1. Fork the [main repository](https://github.com/itkrivoshei/react-typescript-web-apps).
 2. Create a feature branch (`git checkout -b feature/AmazingFeature`).
 3. Make changes.
 4. Commit (`git commit -m 'Add AmazingFeature'`).
 5. Push to the branch (`git push origin feature/AmazingFeature`).
 6. Open a pull request.
 
-For more details, see the [CONTRIBUTING.md](https://github.com/itkrivoshei/OdinMonoWebApps/blob/master/CONTRIBUTING.md) in the main repository.
+For more details, see the [CONTRIBUTING.md](https://github.com/itkrivoshei/react-typescript-web-apps/blob/master/CONTRIBUTING.md) in the main repository.
 
 ## 📜 License
 
-This project is open source, licensed under the [MIT License](https://github.com/itkrivoshei/OdinMonoWebApps/blob/master/LICENSE).
+This project is open source, licensed under the [MIT License](https://github.com/itkrivoshei/react-typescript-web-apps/blob/master/LICENSE).
 
 ## 🌟 Acknowledgments
 

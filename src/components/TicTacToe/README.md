@@ -1,10 +1,10 @@
 # 🎮 Tic Tac Toe
 
 <p align="center">
-  <img src="https://github.com/itkrivoshei/OdinMonoWebApps/blob/main/media/TicTacToe.gif?raw=true" height="600">
+  <img src="https://github.com/itkrivoshei/react-typescript-web-apps/blob/main/media/TicTacToe.gif?raw=true" height="600">
 </p>
 
-The [Tic Tac Toe](https://itkrivoshei.github.io/OdinMonoWebApps/#/TicTacToe) is a classic game created as a React project for [The Odin Project](https://www.theodinproject.com/lessons/node-path-javascript-tic-tac-toe). This version of Tic Tac Toe is built using React, showcasing the ability to handle state and UI updates dynamically. Players can engage in a game against an AI opponent or opt for a traditional 2-player game. The game includes features like win detection, score tracking, and a reset function.
+The [Tic Tac Toe](https://itkrivoshei.github.io/react-typescript-web-apps/#/TicTacToe) is a classic game created as a React project for [The Odin Project](https://www.theodinproject.com/lessons/node-path-javascript-tic-tac-toe). This version of Tic Tac Toe is built using React, showcasing the ability to handle state and UI updates dynamically. Players can engage in a game against an AI opponent or opt for a traditional 2-player game. The game includes features like win detection, score tracking, and a reset function.
 
 ## 🌟 Key Features
 
@@ -30,11 +30,11 @@ The [Tic Tac Toe](https://itkrivoshei.github.io/OdinMonoWebApps/#/TicTacToe) is 
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/itkrivoshei/OdinMonoWebApps.git
+   git clone https://github.com/itkrivoshei/react-typescript-web-apps.git
    ```
 2. Navigate to the App directory:
    ```bash
-   cd OdinMonoWebApps
+   cd react-typescript-web-apps
    ```
 3. Install the required dependencies:
    ```bash
@@ -49,22 +49,22 @@ The [Tic Tac Toe](https://itkrivoshei.github.io/OdinMonoWebApps/#/TicTacToe) is 
 
 We welcome contributions to the Tic Tac Toe game. To contribute:
 
-1. Fork the [main repository](https://github.com/itkrivoshei/OdinMonoWebApps).
+1. Fork the [main repository](https://github.com/itkrivoshei/react-typescript-web-apps).
 2. Create a feature branch (`git checkout -b feature/AmazingFeature`).
 3. Make your changes.
 4. Commit your changes (`git commit -m 'Add AmazingFeature'`).
 5. Push to the branch (`git push origin feature/AmazingFeature`).
 6. Open a pull request.
 
-For more details, see the [CONTRIBUTING.md](https://github.com/itkrivoshei/OdinMonoWebApps/blob/master/CONTRIBUTING.md) in the main repository.
+For more details, see the [CONTRIBUTING.md](https://github.com/itkrivoshei/react-typescript-web-apps/blob/master/CONTRIBUTING.md) in the main repository.
 
 ## 📜 License
 
-This project is open source, available under the [MIT License](https://github.com/itkrivoshei/OdinMonoWebApps/blob/master/LICENSE).
+This project is open source, available under the [MIT License](https://github.com/itkrivoshei/react-typescript-web-apps/blob/master/LICENSE).
 
 ## 🌟 Acknowledgments
 
-- This project was built as part of the JavaScript course from [The Odin Project](https://www.theodinproject.com/lessons/node-path-javascript-tic-tac-toe), with a focus on learning to structure and manage game logic in React.
+- This project follows the JavaScript course requirements from [The Odin Project](https://www.theodinproject.com/lessons/node-path-javascript-tic-tac-toe), with a focus on structuring and managing game logic in React.
 
 ## 📚 Assignment Details
 

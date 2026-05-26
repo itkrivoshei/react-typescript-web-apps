@@ -1,10 +1,10 @@
 # 📝 Sign-up Form App
 
 <p align="center">
-  <img src="https://github.com/itkrivoshei/OdinMonoWebApps/blob/main/media/SignUpForm.gif?raw=true" height="600">
+  <img src="https://github.com/itkrivoshei/react-typescript-web-apps/blob/main/media/SignUpForm.gif?raw=true" height="600">
 </p>
 
-The [Sign-up Form App](https://itkrivoshei.github.io/OdinMonoWebApps/#/SignUpForm) is a robust and interactive sign-up interface. It's a modern re-implementation of a project from [The Odin Project](https://www.theodinproject.com/lessons/node-path-intermediate-html-and-css-sign-up-form), now developed using React and TypeScript. This app offers an immersive experience with dynamic form validation, a matrix-style background animation, and a clean, user-friendly layout. It's designed to handle user inputs efficiently, with detailed validation for each field, including custom phone number formatting and password strength checks.
+The [Sign-up Form App](https://itkrivoshei.github.io/react-typescript-web-apps/#/SignUpForm) is a robust and interactive sign-up interface. It's a modern re-implementation of a project from [The Odin Project](https://www.theodinproject.com/lessons/node-path-intermediate-html-and-css-sign-up-form), now developed using React and TypeScript. This app offers an immersive experience with dynamic form validation, a matrix-style background animation, and a clean, user-friendly layout. It's designed to handle user inputs efficiently, with detailed validation for each field, including custom phone number formatting and password strength checks.
 
 ## 🌟 Key Features
 
@@ -31,11 +31,11 @@ The [Sign-up Form App](https://itkrivoshei.github.io/OdinMonoWebApps/#/SignUpFor
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/itkrivoshei/OdinMonoWebApps.git
+   git clone https://github.com/itkrivoshei/react-typescript-web-apps.git
    ```
 2. Navigate to the Sign-up Form directory:
    ```bash
-   cd OdinMonoWebApps
+   cd react-typescript-web-apps
    ```
 3. Install dependencies:
    ```bash
@@ -50,18 +50,18 @@ The [Sign-up Form App](https://itkrivoshei.github.io/OdinMonoWebApps/#/SignUpFor
 
 Contributions to the Sign-up Form App are welcome:
 
-1. Fork the [main repository](https://github.com/itkrivoshei/OdinMonoWebApps).
+1. Fork the [main repository](https://github.com/itkrivoshei/react-typescript-web-apps).
 2. Create a feature branch (`git checkout -b feature/AmazingFeature`).
 3. Make changes.
 4. Commit (`git commit -m 'Add AmazingFeature'`).
 5. Push to the branch (`git push origin feature/AmazingFeature`).
 6. Open a pull request.
 
-For more details, see the [CONTRIBUTING.md](https://github.com/itkrivoshei/OdinMonoWebApps/blob/master/CONTRIBUTING.md) in the main repository.
+For more details, see the [CONTRIBUTING.md](https://github.com/itkrivoshei/react-typescript-web-apps/blob/master/CONTRIBUTING.md) in the main repository.
 
 ## 📜 License
 
-This project is open source, available under the [MIT License](https://github.com/itkrivoshei/OdinMonoWebApps/blob/master/LICENSE).
+This project is open source, available under the [MIT License](https://github.com/itkrivoshei/react-typescript-web-apps/blob/master/LICENSE).
 
 ## 🌟 Acknowledgments
 

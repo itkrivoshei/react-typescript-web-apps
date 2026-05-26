@@ -1,10 +1,10 @@
 # 🌦️ Weather App
 
 <p align="center">
-  <img src="https://github.com/itkrivoshei/OdinMonoWebApps/blob/main/media/WeatherApp.gif?raw=true" height="600">
+  <img src="https://github.com/itkrivoshei/react-typescript-web-apps/blob/main/media/WeatherApp.gif?raw=true" height="600">
 </p>
 
-The [Weather App](https://itkrivoshei.github.io/OdinMonoWebApps/#/WeatherApp) is a dynamic web application providing real-time weather forecasts, developed as part of an assignment for [The Odin Project](https://www.theodinproject.com/lessons/node-path-javascript-weather-app). Using React, TypeScript, and Redux Toolkit, it features a user-friendly interface with Material UI components and a custom CyberPunk Font. The app uses the [Weather API](https://www.weatherapi.com/) and [Giphy API](https://developers.giphy.com/) to display weather data and related GIFs. Users can search for weather forecasts by city and experience an adaptive UI.
+The [Weather App](https://itkrivoshei.github.io/react-typescript-web-apps/#/WeatherApp) is a dynamic web application providing real-time weather forecasts, developed as part of an assignment for [The Odin Project](https://www.theodinproject.com/lessons/node-path-javascript-weather-app). Using React, TypeScript, and Redux Toolkit, it features a user-friendly interface with Material UI components and a custom CyberPunk Font. The app uses the [Weather API](https://www.weatherapi.com/) and [Giphy API](https://developers.giphy.com/) to display weather data and related GIFs. Users can search for weather forecasts by city and experience an adaptive UI.
 
 ## 🌟 Key Features
 
@@ -38,11 +38,11 @@ The [Weather App](https://itkrivoshei.github.io/OdinMonoWebApps/#/WeatherApp) is
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/itkrivoshei/OdinMonoWebApps.git
+   git clone https://github.com/itkrivoshei/react-typescript-web-apps.git
    ```
 2. Navigate to the App directory:
    ```bash
-   cd OdinMonoWebApps
+   cd react-typescript-web-apps
    ```
 3. Install dependencies:
    ```bash
@@ -57,18 +57,18 @@ The [Weather App](https://itkrivoshei.github.io/OdinMonoWebApps/#/WeatherApp) is
 
 Contributions to the Weather App are welcome:
 
-1. Fork the [main repository](https://github.com/itkrivoshei/OdinMonoWebApps).
+1. Fork the [main repository](https://github.com/itkrivoshei/react-typescript-web-apps).
 2. Create a feature branch (`git checkout -b feature/AmazingFeature`).
 3. Make your changes.
 4. Commit your changes (`git commit -m 'Add AmazingFeature'`).
 5. Push to the branch (`git push origin feature/AmazingFeature`).
 6. Open a pull request.
 
-For more details, refer to the [CONTRIBUTING.md](https://github.com/itkrivoshei/OdinMonoWebApps/blob/master/CONTRIBUTING.md) in the main repository.
+For more details, refer to the [CONTRIBUTING.md](https://github.com/itkrivoshei/react-typescript-web-apps/blob/master/CONTRIBUTING.md) in the main repository.
 
 ## 📜 License
 
-This project is open source, licensed under the [MIT License](https://github.com/itkrivoshei/OdinMonoWebApps/blob/master/LICENSE).
+This project is open source, licensed under the [MIT License](https://github.com/itkrivoshei/react-typescript-web-apps/blob/master/LICENSE).
 
 ## 🌟 Acknowledgments
 

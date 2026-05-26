@@ -1,10 +1,10 @@
 # 📝 Todo Management App
 
 <p align="center">
-  <img src="https://github.com/itkrivoshei/OdinMonoWebApps/blob/main/media/TodoList.gif?raw=true" height="600">
+  <img src="https://github.com/itkrivoshei/react-typescript-web-apps/blob/main/media/TodoList.gif?raw=true" height="600">
 </p>
 
-The [Todo Management App](https://itkrivoshei.github.io/OdinMonoWebApps/#/TodoApp), an app for task and project organization, is developed as part of an assignment for [The Odin Project](https://www.theodinproject.com/lessons/node-path-javascript-todo-list). This application, created using React and TypeScript, features a modern and interactive user interface enhanced by Material UI components. It allows users to efficiently create, edit, and manage tasks and projects, offering an intuitive design and a smooth user experience. The app's aesthetics are uniquely complemented by a lo-fi theme background and a monospace font.
+The [Todo Management App](https://itkrivoshei.github.io/react-typescript-web-apps/#/TodoApp), an app for task and project organization, is developed as part of an assignment for [The Odin Project](https://www.theodinproject.com/lessons/node-path-javascript-todo-list). This application, created using React and TypeScript, features a modern and interactive user interface enhanced by Material UI components. It allows users to efficiently create, edit, and manage tasks and projects, offering an intuitive design and a smooth user experience. The app's aesthetics are uniquely complemented by a lo-fi theme background and a monospace font.
 
 ## 🌟 Key Features
 
@@ -32,11 +32,11 @@ The [Todo Management App](https://itkrivoshei.github.io/OdinMonoWebApps/#/TodoAp
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/itkrivoshei/OdinMonoWebApps.git
+   git clone https://github.com/itkrivoshei/react-typescript-web-apps.git
    ```
 2. Navigate to the App directory:
    ```bash
-   cd OdinMonoWebApps
+   cd react-typescript-web-apps
    ```
 3. Install required dependencies:
    ```bash
@@ -51,23 +51,23 @@ The [Todo Management App](https://itkrivoshei.github.io/OdinMonoWebApps/#/TodoAp
 
 Contributions to the Todo Management App are welcomed:
 
-1. Fork the [main repository](https://github.com/itkrivoshei/OdinMonoWebApps).
+1. Fork the [main repository](https://github.com/itkrivoshei/react-typescript-web-apps).
 2. Create a feature branch (`git checkout -b feature/AmazingFeature`).
 3. Implement your changes.
 4. Commit your updates (`git commit -m 'Add AmazingFeature'`).
 5. Push to the branch (`git push origin feature/AmazingFeature`).
 6. Initiate a pull request.
 
-Refer to the [CONTRIBUTING.md](https://github.com/itkrivoshei/OdinMonoWebApps/blob/master/CONTRIBUTING.md) in the main repository for more details.
+Refer to the [CONTRIBUTING.md](https://github.com/itkrivoshei/react-typescript-web-apps/blob/master/CONTRIBUTING.md) in the main repository for more details.
 
 ## 📜 License
 
-This project is open source, licensed under the [MIT License](https://github.com/itkrivoshei/OdinMonoWebApps/blob/master/LICENSE).
+This project is open source, licensed under the [MIT License](https://github.com/itkrivoshei/react-typescript-web-apps/blob/master/LICENSE).
 
 ## 👏 Acknowledgments
 
 - This application was inspired by and developed as part of the assignment for [The Odin Project's JavaScript course](https://www.theodinproject.com/lessons/node-path-javascript-todo-list).
-- Special recognition to The Odin Project for providing the educational framework and project guidelines.
+- Special recognition to The Odin Project for providing the reference requirements and implementation guidelines.
 
 ## 📚 Assignment from The Odin Project
 

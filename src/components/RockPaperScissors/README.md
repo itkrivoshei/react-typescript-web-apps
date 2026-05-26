@@ -1,10 +1,10 @@
 # 🪨✂️📜 Rock Paper Scissors
 
 <p align="center">
-  <img src="https://github.com/itkrivoshei/OdinMonoWebApps/blob/main/media/RockPaperScissors.gif?raw=true" height="600">
+  <img src="https://github.com/itkrivoshei/react-typescript-web-apps/blob/main/media/RockPaperScissors.gif?raw=true" height="600">
 </p>
 
-The [Rock Paper Scissors](https://itkrivoshei.github.io/OdinMonoWebApps/#/RockPaperScissors) is a web-based adaptation of the classic game, developed as part of an assignment for [The Odin Project](https://www.theodinproject.com/lessons/foundations-rock-paper-scissors). This version is built with React, TypeScript, and SCSS, featuring a sleek and interactive user interface. The game pits the player against a computer opponent in a series of Rock, Paper, Scissors matches, with a live score tracker and playful icons representing game outcomes.
+The [Rock Paper Scissors](https://itkrivoshei.github.io/react-typescript-web-apps/#/RockPaperScissors) is a web-based adaptation of the classic game, developed as part of an assignment for [The Odin Project](https://www.theodinproject.com/lessons/foundations-rock-paper-scissors). This version is built with React, TypeScript, and SCSS, featuring a sleek and interactive user interface. The game pits the player against a computer opponent in a series of Rock, Paper, Scissors matches, with a live score tracker and playful icons representing game outcomes.
 
 ## 🌟 Key Features
 
@@ -36,11 +36,11 @@ This project is a modern reinterpretation of the assignment from [The Odin Proje
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/itkrivoshei/OdinMonoWebApps.git
+   git clone https://github.com/itkrivoshei/react-typescript-web-apps.git
    ```
 2. Navigate to the Rock Paper Scissors directory:
    ```bash
-   cd OdinMonoWebApps
+   cd react-typescript-web-apps
    ```
 3. Install the required dependencies:
    ```bash
@@ -55,18 +55,18 @@ This project is a modern reinterpretation of the assignment from [The Odin Proje
 
 Interested in contributing? Here's how:
 
-1. Fork the [main repository](https://github.com/itkrivoshei/OdinMonoWebApps).
+1. Fork the [main repository](https://github.com/itkrivoshei/react-typescript-web-apps).
 2. Create a new feature branch (`git checkout -b feature/YourFeature`).
 3. Implement your feature or improvement.
 4. Commit your changes (`git commit -m 'Add YourFeature'`).
 5. Push to the branch (`git push origin feature/YourFeature`).
 6. Create a new Pull Request.
 
-For more details, check the [CONTRIBUTING.md](https://github.com/itkrivoshei/OdinMonoWebApps/blob/master/CONTRIBUTING.md) in the main repository.
+For more details, check the [CONTRIBUTING.md](https://github.com/itkrivoshei/react-typescript-web-apps/blob/master/CONTRIBUTING.md) in the main repository.
 
 ## 📜 License
 
-This project is open source, available under the [MIT License](https://github.com/itkrivoshei/OdinMonoWebApps/blob/master/LICENSE).
+This project is open source, available under the [MIT License](https://github.com/itkrivoshei/react-typescript-web-apps/blob/master/LICENSE).
 
 ## 👏 Acknowledgments
 

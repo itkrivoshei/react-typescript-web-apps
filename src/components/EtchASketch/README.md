@@ -1,10 +1,10 @@
 # 🎨 Etch-A-Sketch App
 
 <p align="center">
-  <img src="https://github.com/itkrivoshei/OdinMonoWebApps/blob/main/media/EtchASketch.gif?raw=true" height="600">
+  <img src="https://github.com/itkrivoshei/react-typescript-web-apps/blob/main/media/EtchASketch.gif?raw=true" height="600">
 </p>
 
-The [Etch-A-Sketch App](https://itkrivoshei.github.io/OdinMonoWebApps/#/EtchASketch) is a creative and interactive web application inspired by the classic drawing toy. This project was developed as part of [The Odin Project's Foundations Course](https://www.theodinproject.com/lessons/foundations-etch-a-sketch), redesigned using React, TypeScript, and SCSS for a modern and responsive user experience. Users can create pixelated artwork by moving their mouse over a grid, with customizable grid sizes and colors, including a unique rainbow and shadow mode.
+The [Etch-A-Sketch App](https://itkrivoshei.github.io/react-typescript-web-apps/#/EtchASketch) is a creative and interactive web application inspired by the classic drawing toy. This project was developed as part of [The Odin Project's Foundations Course](https://www.theodinproject.com/lessons/foundations-etch-a-sketch), redesigned using React, TypeScript, and SCSS for a modern and responsive user experience. Users can create pixelated artwork by moving their mouse over a grid, with customizable grid sizes and colors, including a unique rainbow and shadow mode.
 
 ## 🌟 Key Features
 
@@ -30,11 +30,11 @@ The [Etch-A-Sketch App](https://itkrivoshei.github.io/OdinMonoWebApps/#/EtchASke
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/itkrivoshei/OdinMonoWebApps.git
+   git clone https://github.com/itkrivoshei/react-typescript-web-apps.git
    ```
 2. Navigate to the App directory:
    ```bash
-   cd OdinMonoWebApps
+   cd react-typescript-web-apps
    ```
 3. Install the required dependencies:
    ```bash
@@ -49,7 +49,7 @@ The [Etch-A-Sketch App](https://itkrivoshei.github.io/OdinMonoWebApps/#/EtchASke
 
 Contributions are welcome. To contribute:
 
-1. Fork the [main repository](https://github.com/itkrivoshei/OdinMonoWebApps).
+1. Fork the [main repository](https://github.com/itkrivoshei/react-typescript-web-apps).
 2. Create a feature branch (`git checkout -b feature/CoolFeature`).
 3. Make changes.
 4. Commit your changes (`git commit -m 'Add CoolFeature'`).
@@ -58,12 +58,12 @@ Contributions are welcome. To contribute:
 
 ## 📜 License
 
-This project is open source, licensed under the [MIT License](https://github.com/itkrivoshei/OdinMonoWebApps/blob/master/LICENSE).
+This project is open source, licensed under the [MIT License](https://github.com/itkrivoshei/react-typescript-web-apps/blob/master/LICENSE).
 
 ## 🌟 Acknowledgments
 
 - This app was created as a project for [The Odin Project's Foundations Course](https://www.theodinproject.com/lessons/foundations-etch-a-sketch).
-- Special thanks to The Odin Project for providing the learning resources and project guidelines.
+- Special thanks to The Odin Project for providing the reference resources and implementation guidelines.
 
 ## 📚 Assignment Details
 
