@@ -22,7 +22,8 @@ export const dashboardApps: DashboardApp[] = [
     name: 'WeatherUp',
     accent: '#4cc9f0',
     group: 'featured',
-    summary: 'Weather dashboard with city search, geolocation, live metrics, and GIF reactions.',
+    summary:
+      'Weather dashboard with city search, geolocation, live metrics, and GIF reactions.',
     stack: ['Redux', 'API', 'MUI'],
   },
   {
@@ -39,7 +40,8 @@ export const dashboardApps: DashboardApp[] = [
     name: 'Todo Command Board',
     accent: '#c8b6ff',
     group: 'solid',
-    summary: 'Project-based task board with Redux state management and a lofi dashboard layout.',
+    summary:
+      'Project-based task board with Redux state management and a lofi dashboard layout.',
     stack: ['Redux', 'MUI'],
   },
   {
@@ -47,7 +49,8 @@ export const dashboardApps: DashboardApp[] = [
     name: 'Terminal Sign-up Form',
     accent: '#38bdf8',
     group: 'solid',
-    summary: 'Terminal-themed form with validation, phone formatting, and animated canvas background.',
+    summary:
+      'Terminal-themed form with validation, phone formatting, and animated canvas background.',
     stack: ['React', 'Validation'],
   },
   {
@@ -55,7 +58,8 @@ export const dashboardApps: DashboardApp[] = [
     name: 'Tic Tac Toe',
     accent: '#f97316',
     group: 'solid',
-    summary: 'Compact game implementation with turn handling, AI mode, and result states.',
+    summary:
+      'Compact game implementation with turn handling, AI mode, and result states.',
     stack: ['React', 'Game'],
   },
   {
@@ -63,7 +67,8 @@ export const dashboardApps: DashboardApp[] = [
     name: 'Etch A Sketch',
     accent: '#ef4444',
     group: 'practice',
-    summary: 'Interactive drawing grid with size controls, color tools, and brush modes.',
+    summary:
+      'Interactive drawing grid with size controls, color tools, and brush modes.',
     stack: ['React', 'Grid UI'],
   },
   {
