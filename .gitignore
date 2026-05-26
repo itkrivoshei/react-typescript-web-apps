@@ -27,3 +27,7 @@ pnpm-debug.log*
 coverage/
 .cache/
 .eslintcache
+.env.local
+__pycache__/
+*.pyc
+.pytest_cache/
