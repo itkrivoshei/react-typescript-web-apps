@@ -10,8 +10,6 @@ A routed React app gallery with weather lookup, calculator, todo board, games, a
 [![React](https://img.shields.io/badge/React-19-61dafb?style=for-the-badge&logo=react&logoColor=111)](package.json)
 [![TypeScript](https://img.shields.io/badge/TypeScript-4.9-3178c6?style=for-the-badge&logo=typescript&logoColor=white)](tsconfig.json)
 
-### [Open App Gallery ->](https://itkrivoshei.github.io/react-typescript-web-apps/)
-
 </div>
 
 ## App Catalog
@@ -96,8 +94,6 @@ src/
 ## Deployment
 
 CI runs on pushes and pull requests to `main`. A successful `CI` workflow triggers the `Deploy` workflow, which builds the app and publishes the `build/` artifact to GitHub Pages.
-
-Live app: https://itkrivoshei.github.io/react-typescript-web-apps/
 
 ## License
 
