@@ -32,7 +32,12 @@ const dashboardFontFamily = [
   'sans-serif',
 ].join(', ');
 
-const groupOrder: AppGroup[] = ['featured', 'advanced', 'interaction', 'layout'];
+const groupOrder: AppGroup[] = [
+  'featured',
+  'advanced',
+  'interaction',
+  'layout',
+];
 const repoUrl = 'https://github.com/itkrivoshei/react-typescript-web-apps';
 const liveUrl = 'https://itkrivoshei.github.io/react-typescript-web-apps/';
 
@@ -121,7 +126,13 @@ const HeroSection: React.FC = () => (
         justifyContent='space-between'
       >
         <Box sx={{ maxWidth: 820 }}>
-          <Stack direction='row' spacing={1} useFlexGap flexWrap='wrap' sx={{ mb: 2 }}>
+          <Stack
+            direction='row'
+            spacing={1}
+            useFlexGap
+            flexWrap='wrap'
+            sx={{ mb: 2 }}
+          >
             {['React 19', 'TypeScript', 'Feature folders', 'GitHub Pages'].map(
               (label) => (
                 <Chip
