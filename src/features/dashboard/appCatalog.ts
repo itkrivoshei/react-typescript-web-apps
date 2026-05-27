@@ -1,4 +1,4 @@
-export type AppGroup = 'featured' | 'solid' | 'practice' | 'legacy';
+export type AppGroup = 'featured' | 'advanced' | 'interaction' | 'layout';
 
 export interface DashboardApp {
   path: string;
@@ -7,117 +7,159 @@ export interface DashboardApp {
   group: AppGroup;
   summary: string;
   stack: string[];
+  sourcePath: string;
+  badge: string;
 }
+
+export const appGroupLabels: Record<AppGroup, string> = {
+  featured: 'Featured builds',
+  advanced: 'Stateful applications',
+  interaction: 'Interaction exercises',
+  layout: 'Layout demos',
+};
 
 export const dashboardApps: DashboardApp[] = [
   {
     path: '/WeatherApp',
-    name: '⭐ WeatherUp',
+    name: 'WeatherUp',
     accent: '#4cc9f0',
     group: 'featured',
     summary:
-      'Weather dashboard with city search, geolocation, live metrics, and GIF reactions.',
+      'Weather dashboard with city search, browser geolocation, live metrics, and a GIF reaction layer.',
     stack: ['Redux', 'API', 'MUI'],
+    sourcePath: 'src/features/weather',
+    badge: 'API dashboard',
   },
   {
     path: '/Calculator',
-    name: '⭐ Calculator — IBM Numpad',
+    name: 'Calculator — IBM Numpad',
     accent: '#d6c4a8',
     group: 'featured',
     summary:
-      'Calculator styled like an old IBM numpad keyboard with tactile sound feedback.',
+      'Calculator styled around an old IBM numpad keyboard with tactile layout and sound feedback.',
     stack: ['React', 'SCSS', 'Audio'],
+    sourcePath: 'src/features/calculator',
+    badge: 'Favorite UI',
+  },
+  {
+    path: '/SignUpForm',
+    name: 'Terminal Sign-up Form',
+    accent: '#38bdf8',
+    group: 'featured',
+    summary:
+      'Terminal-themed form with validation, phone formatting, password rules, and animated canvas background.',
+    stack: ['React', 'Validation', 'Canvas'],
+    sourcePath: 'src/features/signup',
+    badge: 'Form UX',
   },
   {
     path: '/TodoApp',
     name: 'Todo Command Board',
     accent: '#c8b6ff',
-    group: 'solid',
+    group: 'advanced',
     summary:
-      'Project-based task board with Redux state management and a lofi dashboard layout.',
-    stack: ['Redux', 'MUI'],
-  },
-  {
-    path: '/SignUpForm',
-    name: '⭐ Terminal Sign-up Form',
-    accent: '#38bdf8',
-    group: 'solid',
-    summary:
-      'Terminal-themed form with validation, phone formatting, and animated canvas background.',
-    stack: ['React', 'Validation'],
+      'Project-based task board with Redux state management, project switching, and editable todos.',
+    stack: ['Redux', 'MUI', 'State'],
+    sourcePath: 'src/features/todo',
+    badge: 'State app',
   },
   {
     path: '/TicTacToe',
-    name: '✦ Tic Tac Toe',
+    name: 'Tic Tac Toe',
     accent: '#f97316',
-    group: 'solid',
+    group: 'advanced',
     summary:
-      'Compact game implementation with turn handling, AI mode, and result states.',
-    stack: ['React', 'Game'],
+      'Compact game implementation with turn handling, AI mode, win detection, and reset flow.',
+    stack: ['React', 'Game', 'Logic'],
+    sourcePath: 'src/features/tic-tac-toe',
+    badge: 'Game logic',
   },
   {
     path: '/EtchASketch',
-    name: '✦ Etch A Sketch',
+    name: 'Etch A Sketch',
     accent: '#ef4444',
-    group: 'practice',
+    group: 'interaction',
     summary:
-      'Interactive drawing grid with size controls, color tools, and brush modes.',
-    stack: ['React', 'Grid UI'],
+      'Interactive drawing grid with size controls, brush modes, color tools, and quick visual feedback.',
+    stack: ['React', 'Grid UI', 'SCSS'],
+    sourcePath: 'src/features/etch-a-sketch',
+    badge: 'Creative UI',
   },
   {
     path: '/BookLibrary',
     name: 'Book Library',
     accent: '#facc15',
-    group: 'practice',
-    summary: 'Book list interface with modal-style add flow.',
-    stack: ['React', 'Forms'],
+    group: 'interaction',
+    summary:
+      'Reading tracker with book creation, read status, progress metrics, and total page count.',
+    stack: ['React', 'Forms', 'MUI'],
+    sourcePath: 'src/features/book-library',
+    badge: 'CRUD UI',
   },
   {
     path: '/RockPaperScissors',
     name: 'Rock Paper Scissors',
     accent: '#22c55e',
-    group: 'practice',
-    summary: 'Classic game with scoreboard and result state.',
-    stack: ['React', 'Game'],
+    group: 'interaction',
+    summary:
+      'Arcade-style game with round outcomes, scoreboard state, reset flow, and clear result feedback.',
+    stack: ['React', 'Game', 'MUI'],
+    sourcePath: 'src/features/rock-paper-scissors',
+    badge: 'Arcade game',
   },
   {
     path: '/DrumKit',
     name: 'Drum Kit',
     accent: '#fb7185',
-    group: 'practice',
-    summary: 'Keyboard-triggered sound pad with visual feedback.',
-    stack: ['React', 'Audio'],
+    group: 'interaction',
+    summary:
+      'Keyboard-triggered audio pad with clickable drum samples, visual key states, and playback tuning.',
+    stack: ['React', 'Audio', 'SCSS'],
+    sourcePath: 'src/features/drum-kit',
+    badge: 'Audio UI',
   },
   {
     path: '/OdinRecipes',
     name: 'Recipes',
     accent: '#84cc16',
-    group: 'legacy',
-    summary: 'Early recipe layout exercise with refreshed styling.',
+    group: 'layout',
+    summary:
+      'Recipe page exercise focused on content layout, visual hierarchy, and refreshed styling.',
     stack: ['React', 'Layout'],
+    sourcePath: 'src/features/odin-recipes',
+    badge: 'Content page',
   },
   {
     path: '/DashLanding',
     name: 'Dashboard Layout',
     accent: '#a78bfa',
-    group: 'legacy',
-    summary: 'Admin dashboard landing page layout exercise.',
+    group: 'layout',
+    summary:
+      'Admin dashboard layout exercise with panels, navigation structure, and responsive sections.',
     stack: ['React', 'Layout'],
+    sourcePath: 'src/features/admin-dashboard',
+    badge: 'Admin UI',
   },
   {
     path: '/Restaurant',
     name: 'Restaurant Page',
     accent: '#f59e0b',
-    group: 'legacy',
-    summary: 'Restaurant page layout with menu and contact sections.',
+    group: 'layout',
+    summary:
+      'Restaurant page layout with menu, home, and contact sections wrapped in a cohesive theme.',
     stack: ['React', 'Layout'],
+    sourcePath: 'src/features/restaurant-page',
+    badge: 'Marketing page',
   },
   {
     path: '/Landing',
     name: 'Landing Page',
     accent: '#60a5fa',
-    group: 'legacy',
-    summary: 'Landing page layout exercise with responsive sections.',
+    group: 'layout',
+    summary:
+      'Responsive landing page exercise with marketing sections, spacing, and call-to-action structure.',
     stack: ['React', 'Layout'],
+    sourcePath: 'src/features/landing-page',
+    badge: 'Landing UI',
   },
 ];
