@@ -9,13 +9,13 @@ import TodoApp from '../features/todo';
 import SignUpForm from '../features/signup/SignUpForm';
 import TicTacToe from '../features/tic-tac-toe';
 import EtchASketch from '../features/etch-a-sketch';
-import Restaurant from '../components/RestaurantPage/Restaurant';
-import BookLibrary from '../components/LibraryApp/BookLibrary';
-import DrumKit from '../components/DrumKit/DrumKit';
-import RockPaperScissors from '../components/RockPaperScissors/RockPaperScissors';
-import OdinRecipes from '../components/Recipes/OdinRecipes';
-import Landing from '../components/LandingPage/Landing';
-import DashLanding from '../components/AdminDashboard/DashLanding';
+import Restaurant from '../features/restaurant-page';
+import BookLibrary from '../features/book-library';
+import DrumKit from '../features/drum-kit';
+import RockPaperScissors from '../features/rock-paper-scissors';
+import OdinRecipes from '../features/odin-recipes';
+import Landing from '../features/landing-page';
+import DashLanding from '../features/admin-dashboard';
 
 const AppRoutes = () => {
   const location = useLocation();

@@ -9,17 +9,10 @@ export interface DashboardApp {
   stack: string[];
 }
 
-export const appGroupLabels: Record<AppGroup, string> = {
-  featured: 'Favorite apps',
-  solid: 'Structured practice apps',
-  practice: 'Classic interaction apps',
-  legacy: 'Early layout demos',
-};
-
 export const dashboardApps: DashboardApp[] = [
   {
     path: '/WeatherApp',
-    name: 'WeatherUp',
+    name: '⭐ WeatherUp',
     accent: '#4cc9f0',
     group: 'featured',
     summary:
@@ -28,7 +21,7 @@ export const dashboardApps: DashboardApp[] = [
   },
   {
     path: '/Calculator',
-    name: 'Calculator — IBM Numpad',
+    name: '⭐ Calculator — IBM Numpad',
     accent: '#d6c4a8',
     group: 'featured',
     summary:
@@ -46,7 +39,7 @@ export const dashboardApps: DashboardApp[] = [
   },
   {
     path: '/SignUpForm',
-    name: 'Terminal Sign-up Form',
+    name: '⭐ Terminal Sign-up Form',
     accent: '#38bdf8',
     group: 'solid',
     summary:
@@ -55,7 +48,7 @@ export const dashboardApps: DashboardApp[] = [
   },
   {
     path: '/TicTacToe',
-    name: 'Tic Tac Toe',
+    name: '✦ Tic Tac Toe',
     accent: '#f97316',
     group: 'solid',
     summary:
@@ -64,7 +57,7 @@ export const dashboardApps: DashboardApp[] = [
   },
   {
     path: '/EtchASketch',
-    name: 'Etch A Sketch',
+    name: '✦ Etch A Sketch',
     accent: '#ef4444',
     group: 'practice',
     summary:

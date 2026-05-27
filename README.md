@@ -24,13 +24,13 @@ The dashboard is served with `HashRouter`, so every app title opens a direct Git
 | ⭐ [Terminal Sign-up Form](https://itkrivoshei.github.io/react-typescript-web-apps/#/SignUpForm) | [Source files & README](src/features/signup) | Responsive form validation wrapped in a terminal-style interface |
 | ✦ [Tic-Tac-Toe Mini Game](https://itkrivoshei.github.io/react-typescript-web-apps/#/TicTacToe) | [Source files & README](src/features/tic-tac-toe) | Compact game flow with turn handling, state updates, and win/draw result logic |
 | ✦ [Etch-a-Sketch Drawing Grid](https://itkrivoshei.github.io/react-typescript-web-apps/#/EtchASketch) | [Source files & README](src/features/etch-a-sketch) | Interactive drawing grid with classic browser controls and quick visual feedback |
-| [Book Library Shelf](https://itkrivoshei.github.io/react-typescript-web-apps/#/BookLibrary) | [Source files & README](src/components/LibraryApp) | Book list UI with add flow |
-| [Rock Paper Scissors Arena](https://itkrivoshei.github.io/react-typescript-web-apps/#/RockPaperScissors) | [Source files & README](src/components/RockPaperScissors) | Scoreboard and result state |
-| [Drum Kit Sound Pad](https://itkrivoshei.github.io/react-typescript-web-apps/#/DrumKit) | [Source files & README](src/components/DrumKit) | Keyboard-triggered audio pads |
-| [Recipe Cards](https://itkrivoshei.github.io/react-typescript-web-apps/#/OdinRecipes) | [Source files & README](src/components/Recipes) | Static recipe page |
-| [Admin Dashboard Layout](https://itkrivoshei.github.io/react-typescript-web-apps/#/DashLanding) | [Source files & README](src/components/AdminDashboard) | Admin dashboard layout |
-| [Restaurant Menu Page](https://itkrivoshei.github.io/react-typescript-web-apps/#/Restaurant) | [Source files & README](src/components/RestaurantPage) | Menu, contact, and home sections |
-| [Landing Page Demo](https://itkrivoshei.github.io/react-typescript-web-apps/#/Landing) | [Source files & README](src/components/LandingPage) | Responsive marketing-style layout |
+| [Book Library Shelf](https://itkrivoshei.github.io/react-typescript-web-apps/#/BookLibrary) | [Source files & README](src/features/book-library) | Book list UI with add flow |
+| [Rock Paper Scissors Arena](https://itkrivoshei.github.io/react-typescript-web-apps/#/RockPaperScissors) | [Source files & README](src/features/rock-paper-scissors) | Scoreboard and result state |
+| [Drum Kit Sound Pad](https://itkrivoshei.github.io/react-typescript-web-apps/#/DrumKit) | [Source files & README](src/features/drum-kit) | Keyboard-triggered audio pads |
+| [Recipe Cards](https://itkrivoshei.github.io/react-typescript-web-apps/#/OdinRecipes) | [Source files & README](src/features/odin-recipes) | Static recipe page |
+| [Admin Dashboard Layout](https://itkrivoshei.github.io/react-typescript-web-apps/#/DashLanding) | [Source files & README](src/features/admin-dashboard) | Admin dashboard layout |
+| [Restaurant Menu Page](https://itkrivoshei.github.io/react-typescript-web-apps/#/Restaurant) | [Source files & README](src/features/restaurant-page) | Menu, contact, and home sections |
+| [Landing Page Demo](https://itkrivoshei.github.io/react-typescript-web-apps/#/Landing) | [Source files & README](src/features/landing-page) | Responsive marketing-style layout |
 
 ## Stack
 
@@ -85,8 +85,7 @@ The app can build without exposing secrets in the repository. GitHub Actions inj
 ```text
 src/
 ├── app/          # router, navigation, theme
-├── components/   # legacy routed app folders
-├── features/     # migrated feature folders
+├── features/     # routed apps and feature folders
 ├── redux/        # store and slices
 └── styles/       # global SCSS
 ```

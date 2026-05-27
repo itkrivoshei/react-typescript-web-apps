@@ -13,7 +13,7 @@ import {
   Chip,
 } from '@mui/material';
 
-import { appGroupLabels, dashboardApps, AppGroup } from './appCatalog';
+import { dashboardApps } from './appCatalog';
 
 const dashboardFontFamily = [
   'Inter',
@@ -25,7 +25,6 @@ const dashboardFontFamily = [
   'sans-serif',
 ].join(', ');
 
-const appGroups: AppGroup[] = ['featured', 'solid', 'practice', 'legacy'];
 const projectBadges = ['Live demos', 'TypeScript', 'GitHub Pages'];
 
 const darkTheme = createTheme({
@@ -140,180 +139,167 @@ const Dashboard: React.FunctionComponent = () => {
           </Box>
 
           <Stack spacing={4.5}>
-            {appGroups.map((group) => {
-              const apps = dashboardApps.filter((app) => app.group === group);
-              const isFeatured = group === 'featured';
+            <Box component='section'>
+              <Box sx={{ mb: 1.8 }}>
+                <Typography
+                  variant='h2'
+                  sx={{
+                    color: '#f8fafc',
+                    fontSize: '1.5rem',
+                    letterSpacing: '-0.03em',
+                  }}
+                >
+                  Web Apps Collection
+                </Typography>
+                <Typography
+                  component='p'
+                  sx={{
+                    color: 'rgba(226, 232, 240, 0.52)',
+                    fontSize: '0.88rem',
+                  }}
+                >
+                  A single sorted launcher for every app in the collection.
+                  Favorites are marked with stars.
+                </Typography>
+              </Box>
 
-              return (
-                <Box component='section' key={group}>
-                  <Stack
-                    direction={{ xs: 'column', sm: 'row' }}
-                    alignItems={{ xs: 'flex-start', sm: 'end' }}
-                    justifyContent='space-between'
-                    spacing={1}
-                    sx={{ mb: 1.8 }}
-                  >
-                    <Box>
-                      <Typography
-                        variant='h2'
-                        sx={{
-                          color: '#f8fafc',
-                          fontSize: isFeatured ? '1.7rem' : '1.18rem',
-                          letterSpacing: '-0.03em',
-                        }}
-                      >
-                        {appGroupLabels[group]}
-                      </Typography>
-                      <Typography
-                        component='p'
-                        sx={{
-                          color: 'rgba(226, 232, 240, 0.52)',
-                          fontSize: '0.88rem',
-                        }}
-                      >
-                        {apps.length} {apps.length === 1 ? 'app' : 'apps'}
-                      </Typography>
-                    </Box>
-                  </Stack>
+              <Box
+                sx={{
+                  display: 'grid',
+                  gridTemplateColumns: {
+                    xs: '1fr',
+                    sm: 'repeat(2, minmax(0, 1fr))',
+                    md: 'repeat(3, minmax(0, 1fr))',
+                  },
+                  gap: 2,
+                }}
+              >
+                {dashboardApps.map((project) => {
+                  const isFeatured = project.group === 'featured';
 
-                  <Box
-                    sx={{
-                      display: 'grid',
-                      gridTemplateColumns: {
-                        xs: '1fr',
-                        sm: 'repeat(2, minmax(0, 1fr))',
-                        md: isFeatured
-                          ? 'repeat(2, minmax(0, 1fr))'
-                          : 'repeat(3, minmax(0, 1fr))',
-                      },
-                      gap: 2,
-                    }}
-                  >
-                    {apps.map((project) => (
-                      <Card
-                        key={project.path}
+                  return (
+                    <Card
+                      key={project.path}
+                      sx={{
+                        position: 'relative',
+                        minHeight: isFeatured ? 210 : 176,
+                        border: '1px solid rgba(226, 232, 240, 0.12)',
+                        borderRadius: 3,
+                        background:
+                          'linear-gradient(145deg, rgba(15, 23, 42, 0.92), rgba(2, 6, 23, 0.82))',
+                        boxShadow: '0 18px 52px rgba(2, 6, 23, 0.28)',
+                        overflow: 'hidden',
+                        transition:
+                          'transform 0.15s ease-in-out, box-shadow 0.15s ease-in-out, border-color 0.15s ease-in-out',
+                        '&::before': {
+                          content: '""',
+                          position: 'absolute',
+                          inset: 0,
+                          background: `radial-gradient(circle at 16% 0%, ${project.accent}33, transparent 16rem)`,
+                          pointerEvents: 'none',
+                        },
+                        '&:hover': {
+                          transform: 'translateY(-4px)',
+                          borderColor: `${project.accent}80`,
+                          boxShadow: `0 24px 70px rgba(2, 6, 23, 0.44), 0 0 0 1px ${project.accent}66`,
+                        },
+                      }}
+                    >
+                      <CardActionArea
+                        component={RouterLink}
+                        to={project.path}
+                        aria-label={`Open ${project.name}`}
                         sx={{
                           position: 'relative',
+                          zIndex: 1,
+                          height: '100%',
                           minHeight: isFeatured ? 210 : 176,
-                          border: '1px solid rgba(226, 232, 240, 0.12)',
-                          borderRadius: 3,
-                          background:
-                            'linear-gradient(145deg, rgba(15, 23, 42, 0.92), rgba(2, 6, 23, 0.82))',
-                          boxShadow: '0 18px 52px rgba(2, 6, 23, 0.28)',
-                          overflow: 'hidden',
-                          transition:
-                            'transform 0.15s ease-in-out, box-shadow 0.15s ease-in-out, border-color 0.15s ease-in-out',
-                          '&::before': {
-                            content: '""',
-                            position: 'absolute',
-                            inset: 0,
-                            background: `radial-gradient(circle at 16% 0%, ${project.accent}33, transparent 16rem)`,
-                            pointerEvents: 'none',
-                          },
-                          '&:hover': {
-                            transform: 'translateY(-4px)',
-                            borderColor: `${project.accent}80`,
-                            boxShadow: `0 24px 70px rgba(2, 6, 23, 0.44), 0 0 0 1px ${project.accent}66`,
-                          },
+                          display: 'flex',
+                          alignItems: 'stretch',
+                          p: isFeatured ? 2.5 : 2,
                         }}
                       >
-                        <CardActionArea
-                          component={RouterLink}
-                          to={project.path}
-                          aria-label={`Open ${project.name}`}
-                          sx={{
-                            position: 'relative',
-                            zIndex: 1,
-                            height: '100%',
-                            minHeight: isFeatured ? 210 : 176,
-                            display: 'flex',
-                            alignItems: 'stretch',
-                            p: isFeatured ? 2.5 : 2,
-                          }}
+                        <Stack
+                          spacing={1.5}
+                          justifyContent='space-between'
+                          sx={{ width: '100%' }}
                         >
+                          <Box>
+                            <Box
+                              sx={{
+                                width: 38,
+                                height: 3,
+                                mb: 1.8,
+                                backgroundColor: project.accent,
+                              }}
+                            />
+                            <Typography
+                              variant='h3'
+                              sx={{
+                                color: '#f8fafc',
+                                fontSize: isFeatured ? '1.65rem' : '1.25rem',
+                                letterSpacing: '-0.03em',
+                                lineHeight: 1.08,
+                              }}
+                            >
+                              {project.name}
+                            </Typography>
+                            <Typography
+                              component='p'
+                              sx={{
+                                mt: 1,
+                                color: 'rgba(226, 232, 240, 0.66)',
+                                fontSize: '0.88rem',
+                                lineHeight: 1.55,
+                              }}
+                            >
+                              {project.summary}
+                            </Typography>
+                          </Box>
+
                           <Stack
-                            spacing={1.5}
-                            justifyContent='space-between'
-                            sx={{ width: '100%' }}
+                            direction='row'
+                            spacing={0.75}
+                            useFlexGap
+                            flexWrap='wrap'
+                            alignItems='center'
                           >
-                            <Box>
-                              <Box
+                            {project.stack.map((tag) => (
+                              <Chip
+                                key={tag}
+                                size='small'
+                                label={tag}
                                 sx={{
-                                  width: 38,
-                                  height: 3,
-                                  mb: 1.8,
-                                  backgroundColor: project.accent,
+                                  height: 24,
+                                  border: '1px solid rgba(226, 232, 240, 0.12)',
+                                  backgroundColor: 'rgba(15, 23, 42, 0.72)',
+                                  color: 'rgba(226, 232, 240, 0.76)',
+                                  fontSize: '0.68rem',
+                                  fontWeight: 800,
                                 }}
                               />
-                              <Typography
-                                variant='h3'
-                                sx={{
-                                  color: '#f8fafc',
-                                  fontSize: isFeatured ? '1.65rem' : '1.25rem',
-                                  letterSpacing: '-0.03em',
-                                  lineHeight: 1.08,
-                                }}
-                              >
-                                {project.name}
-                              </Typography>
-                              <Typography
-                                component='p'
-                                sx={{
-                                  mt: 1,
-                                  color: 'rgba(226, 232, 240, 0.66)',
-                                  fontSize: '0.88rem',
-                                  lineHeight: 1.55,
-                                }}
-                              >
-                                {project.summary}
-                              </Typography>
-                            </Box>
-
-                            <Stack
-                              direction='row'
-                              spacing={0.75}
-                              useFlexGap
-                              flexWrap='wrap'
-                              alignItems='center'
+                            ))}
+                            <Typography
+                              component='span'
+                              sx={{
+                                ml: 'auto',
+                                color: project.accent,
+                                fontSize: '0.72rem',
+                                fontWeight: 900,
+                                letterSpacing: '0.08em',
+                                textTransform: 'uppercase',
+                              }}
                             >
-                              {project.stack.map((tag) => (
-                                <Chip
-                                  key={tag}
-                                  size='small'
-                                  label={tag}
-                                  sx={{
-                                    height: 24,
-                                    border:
-                                      '1px solid rgba(226, 232, 240, 0.12)',
-                                    backgroundColor: 'rgba(15, 23, 42, 0.72)',
-                                    color: 'rgba(226, 232, 240, 0.76)',
-                                    fontSize: '0.68rem',
-                                    fontWeight: 800,
-                                  }}
-                                />
-                              ))}
-                              <Typography
-                                component='span'
-                                sx={{
-                                  ml: 'auto',
-                                  color: project.accent,
-                                  fontSize: '0.72rem',
-                                  fontWeight: 900,
-                                  letterSpacing: '0.08em',
-                                  textTransform: 'uppercase',
-                                }}
-                              >
-                                Open
-                              </Typography>
-                            </Stack>
+                              Open
+                            </Typography>
                           </Stack>
-                        </CardActionArea>
-                      </Card>
-                    ))}
-                  </Box>
-                </Box>
-              );
-            })}
+                        </Stack>
+                      </CardActionArea>
+                    </Card>
+                  );
+                })}
+              </Box>
+            </Box>
           </Stack>
         </Container>
       </Box>
