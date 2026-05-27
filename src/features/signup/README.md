@@ -1,23 +1,37 @@
-# Terminal Sign-up Form
+# ⌨️ Terminal Sign-up Form
 
-Terminal Sign-up Form is a React and TypeScript form experience with validation, custom phone formatting, password rules, and a canvas-based terminal background.
+Terminal-style sign-up form with validation and animated background.
 
-## Highlights
+- Live demo: https://itkrivoshei.github.io/react-typescript-web-apps/#/SignUpForm
+- View source & README: https://github.com/itkrivoshei/react-typescript-web-apps/tree/main/src/features/signup
 
-- Typed form data and validation errors.
-- Required-field, email, phone, password, and confirm-password validation.
-- Auto-formatting phone number input.
-- Canvas animation for the terminal-style background.
-- Responsive form layout with accessible labels and error messages.
+Short description
+---------------
+Form with client-side validation, phone formatting, password rules, and a canvas background effect.
 
-## Source structure
+Features
+--------
+- Field validation (email, phone, password)
+- Auto-format phone input
+- Canvas background animation
 
-```text
-src/features/signup/
-├── SignUpForm.scss
-└── SignUpForm.tsx
+Tech
+----
+- React
+- TypeScript
+- SCSS
+
+Run locally
+-----------
+```bash
+npm ci
+npm start
 ```
 
-## Stack
+Contributing
+------------
+Follow the repository CONTRIBUTING.md and open a PR.
 
-React, TypeScript, SCSS, Canvas API.
+License
+-------
+MIT — see the repository LICENSE.

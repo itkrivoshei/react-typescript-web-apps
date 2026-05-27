@@ -1,24 +1,37 @@
-# Tic Tac Toe
+# ❌ Tic Tac Toe
 
-Tic Tac Toe is a compact React and TypeScript game with player turns, AI mode, win detection, tie state, and reset flow.
+Classic Tic‑Tac‑Toe game with optional simple AI.
 
-## Highlights
+- Live demo: https://itkrivoshei.github.io/react-typescript-web-apps/#/TicTacToe
+- View source & README: https://github.com/itkrivoshei/react-typescript-web-apps/tree/main/src/features/tic-tac-toe
 
-- Two-player and simple AI modes.
-- Board state stored with React state hooks.
-- Win and tie detection with highlighted result cells.
-- Responsive 3 × 3 grid layout.
-- Focus-visible button states for keyboard users.
+Short description
+---------------
+3×3 grid game with turn management, win/tie detection, and reset.
 
-## Source structure
+Features
+--------
+- Two-player and AI modes
+- Win/tie detection
+- Responsive layout
 
-```text
-src/features/tic-tac-toe/
-├── TicTacToe.scss
-├── TicTacToe.tsx
-└── index.ts
+Tech
+----
+- React
+- TypeScript
+- SCSS
+
+Run locally
+-----------
+```bash
+npm ci
+npm start
 ```
 
-## Stack
+Contributing
+------------
+Follow the repository CONTRIBUTING.md and open a PR.
 
-React, TypeScript, SCSS.
+License
+-------
+MIT — see the repository LICENSE.

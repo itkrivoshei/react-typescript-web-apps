@@ -1,76 +1,36 @@
 # 📄 Landing Page
 
-<p align="center">
-  <img src="https://github.com/itkrivoshei/react-typescript-web-apps/blob/main/media/Landing.gif?raw=true" height="600">
-</p>
+Marketing-style landing page built with React and SCSS.
 
-The [React/TypeScript Landing Page](https://itkrivoshei.github.io/react-typescript-web-apps/#/Landing) is an elegant, modern web page built as part of the [Foundations Course from The Odin Project](https://www.theodinproject.com/lessons/foundations-landing-page). This project demonstrates the ability to translate a provided design into a functional website using React, TypeScript, and SCSS. The layout, styled using custom SCSS, and includes various sections such as a hero area, about us, services, and contact information.
+- Live demo: https://itkrivoshei.github.io/react-typescript-web-apps/#/Landing
+- View source & README: https://github.com/itkrivoshei/react-typescript-web-apps/tree/main/src/features/landing-page
 
-## 🌟 Key Features
+Short description
+---------------
+Responsive landing page layout with hero, about, services, and contact sections.
 
-- **Responsive Design**: Fluid layout that adjusts to screen sizes.
-- **Custom Styling**: Utilizes SCSS for sophisticated styling and theming.
-- **React Components**: Built with reusable and maintainable React components.
-- **TypeScript Integration**: Ensures type safety and enhances code quality.
-- **Multiple Sections**: Includes hero area, about, services, and contact sections.
+Features
+--------
+- Hero and info sections
+- Responsive styling with SCSS
 
-## 💻 Technologies
+Tech
+----
+- React
+- TypeScript
+- SCSS
 
-- **React**: For building a dynamic and interactive user interface.
-- **TypeScript**: Adds type safety and improves code maintainability.
-- **SCSS**: For advanced styling capabilities and easier theming.
+Run locally
+-----------
+```bash
+npm ci
+npm start
+```
 
-## 🚀 Usage
+Contributing
+------------
+Follow the repository CONTRIBUTING.md and open a PR.
 
-- **Navigating Sections**: Easily navigate through different sections of the landing page.
-- **Interacting with Elements**: Interactive elements like buttons and links for enhanced user engagement.
-
-## ⚙️ Setup and Installation
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/itkrivoshei/react-typescript-web-apps.git
-   ```
-2. Navigate to the Landing Page directory:
-   ```bash
-   cd react-typescript-web-apps
-   ```
-3. Install the required dependencies:
-   ```bash
-   npm install
-   ```
-4. Start the application:
-   ```bash
-   npm start
-   ```
-
-## 🤝 How to Contribute
-
-Contributions to the Landing Page project are welcome:
-
-1. Fork the [main repository](https://github.com/itkrivoshei/react-typescript-web-apps).
-2. Create a feature branch (`git checkout -b feature/YourFeature`).
-3. Make your changes.
-4. Commit your changes (`git commit -m 'Add YourFeature'`).
-5. Push to the branch (`git push origin feature/YourFeature`).
-6. Open a pull request.
-
-For more details, see the [CONTRIBUTING.md](https://github.com/itkrivoshei/react-typescript-web-apps/blob/master/CONTRIBUTING.md) in the main repository.
-
-## 📜 License
-
-This project is open source, available under the [MIT License](https://github.com/itkrivoshei/react-typescript-web-apps/blob/master/LICENSE).
-
-## 🌟 Acknowledgments
-
-- Developed as part of the [Foundations Course assignment from The Odin Project](https://www.theodinproject.com/lessons/foundations-landing-page).
-- Special thanks to the creators of the original design provided in the assignment.
-
-## 📚 Assignment Overview
-
-This Landing Page was developed as a challenge from [The Odin Project's Foundations Course](https://www.theodinproject.com/lessons/foundations-landing-page). The assignment included:
-
-- Creating a web page from a provided design, incorporating custom content.
-- Using HTML and CSS (SCSS in this project) to match the design closely, but not pixel-perfect.
-- Utilizing the React library and TypeScript for a more dynamic and type-safe implementation.
-- Adapting the design into a responsive web layout suitable for various devices.
+License
+-------
+MIT — see the repository LICENSE.

@@ -1,24 +1,42 @@
-# Etch A Sketch
+# ✏️ Etch-a-Sketch
 
-Etch A Sketch is an interactive React and TypeScript drawing grid with configurable board size, canvas color, brush color, and multiple drawing modes.
+Lightweight drawing grid (Etch-a-Sketch) implemented with React and TypeScript.
 
-## Highlights
+- Live demo: https://itkrivoshei.github.io/react-typescript-web-apps/#/EtchASketch
+- View source & README: https://github.com/itkrivoshei/react-typescript-web-apps/tree/main/src/features/etch-a-sketch
 
-- Adjustable grid size with safe min and max limits.
-- Color picker controls for canvas and brush colors.
-- Brush modes for fixed color, rainbow color, and shadow drawing.
-- Clear and reset actions.
-- Responsive control panel and drawing workspace.
+## Short description
 
-## Source structure
+Interactive drawing grid with configurable size and simple controls.
 
-```text
-src/features/etch-a-sketch/
-├── EtchASketch.scss
-├── EtchASketch.tsx
-└── index.ts
+## Features
+
+- Adjustable grid size
+- Color picker controls for canvas and brush colors
+- Multiple brush modes (fixed, rainbow, shadow)
+- Clear and reset actions
+
+## Tech
+
+- React
+- TypeScript
+- SCSS
+
+## Run locally
+
+From the repository root:
+
+```bash
+npm ci
+npm start
 ```
 
-## Stack
+Open the Etch-a-Sketch route from the dashboard.
 
-React, TypeScript, SCSS.
+## Contributing
+
+Follow the repository CONTRIBUTING.md and open a PR.
+
+## License
+
+MIT — see the repository LICENSE.

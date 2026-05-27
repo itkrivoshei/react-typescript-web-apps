@@ -1,74 +1,43 @@
 # 🪨✂️📜 Rock Paper Scissors
 
-<p align="center">
-  <img src="https://github.com/itkrivoshei/react-typescript-web-apps/blob/main/media/RockPaperScissors.gif?raw=true" height="600">
-</p>
+Simple, interactive Rock–Paper–Scissors implemented with React and TypeScript.
 
-The [Rock Paper Scissors](https://itkrivoshei.github.io/react-typescript-web-apps/#/RockPaperScissors) is a web-based adaptation of the classic game, developed as part of an assignment for [The Odin Project](https://www.theodinproject.com/lessons/foundations-rock-paper-scissors). This version is built with React, TypeScript, and SCSS, featuring a sleek and interactive user interface. The game pits the player against a computer opponent in a series of Rock, Paper, Scissors matches, with a live score tracker and playful icons representing game outcomes.
+- Live demo: https://itkrivoshei.github.io/react-typescript-web-apps/#/RockPaperScissors
+- View source & README: https://github.com/itkrivoshei/react-typescript-web-apps/tree/main/src/features/rock-paper-scissors
 
-## 🌟 Key Features
+## Short description
 
-- **Versus Computer Gameplay**: Engage in the classic Rock, Paper, Scissors game against a computer.
-- **Interactive UI**: Responsive buttons for selecting Rock, Paper, or Scissors.
-- **Live Score Tracking**: Real-time updates of games played, ties, player score, and computer score.
-- **Colorful Feedback**: Visual feedback for wins, losses, and ties with fun icons and color changes.
-- **Reset Functionality**: Option to reset the game and start a new series of matches.
+This small game pits a player against a computer with live score tracking, round results, and reset functionality. It’s a compact self-contained feature inside the monorepo.
 
-## 💻 Technologies
+## Features
 
-- **React**: For building a dynamic and interactive web application.
-- **TypeScript**: Ensures type safety and code maintainability.
-- **SCSS**: For styling components and enhancing the visual appeal.
-- **Material UI**: Utilized for modern, responsive components.
-- **React Hooks**: For state management and interactive features.
+- Play versus computer
+- Live score and round results
+- Responsive UI and simple animations
 
-## 🚀 Usage
+## Tech
 
-- **Choose Your Weapon**: Click on Rock, Paper, or Scissors buttons to make your choice.
-- **Play and Watch**: Engage in rounds against the computer and watch the score update.
-- **Reset and Replay**: Reset the game at any point to start a new series of matches.
+- React
+- TypeScript
+- SCSS
 
-## 🎯 Assignment Context
+## Run locally
 
-This project is a modern reinterpretation of the assignment from [The Odin Project's Foundations Course](https://www.theodinproject.com/lessons/foundations-rock-paper-scissors), which originally involved creating a simple console-based Rock Paper Scissors game. This React/TypeScript/SCSS version elevates the game with a user-friendly interface and interactive elements, while maintaining the core mechanics of the classic game.
+1. Clone the repository and install dependencies (from the repo root):
 
-## ⚙️ Setup and Installation
+```bash
+git clone https://github.com/itkrivoshei/react-typescript-web-apps.git
+cd react-typescript-web-apps
+npm ci
+npm start
+```
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/itkrivoshei/react-typescript-web-apps.git
-   ```
-2. Navigate to the Rock Paper Scissors directory:
-   ```bash
-   cd react-typescript-web-apps
-   ```
-3. Install the required dependencies:
-   ```bash
-   npm install
-   ```
-4. Start the application:
-   ```bash
-   npm start
-   ```
+2. Open the app and navigate to the Rock Paper Scissors route from the dashboard.
 
-## 🤝 How to Contribute
+## Contributing
 
-Interested in contributing? Here's how:
+- Fork the repo, create a feature branch, and open a PR. See the top-level CONTRIBUTING.md for guidelines.
 
-1. Fork the [main repository](https://github.com/itkrivoshei/react-typescript-web-apps).
-2. Create a new feature branch (`git checkout -b feature/YourFeature`).
-3. Implement your feature or improvement.
-4. Commit your changes (`git commit -m 'Add YourFeature'`).
-5. Push to the branch (`git push origin feature/YourFeature`).
-6. Create a new Pull Request.
+## License
 
-For more details, check the [CONTRIBUTING.md](https://github.com/itkrivoshei/react-typescript-web-apps/blob/master/CONTRIBUTING.md) in the main repository.
-
-## 📜 License
-
-This project is open source, available under the [MIT License](https://github.com/itkrivoshei/react-typescript-web-apps/blob/master/LICENSE).
-
-## 👏 Acknowledgments
-
-- A special thanks to [The Odin Project](https://www.theodinproject.com/) for the foundational assignment that inspired this implementation.
-- Appreciation to the various open-source libraries and tools that made this project possible.
+MIT — see the repository LICENSE.

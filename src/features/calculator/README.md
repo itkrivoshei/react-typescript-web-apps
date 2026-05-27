@@ -1,25 +1,38 @@
-# Calculator — IBM Numpad Edition
+# ➗ Calculator — IBM Numpad Edition
 
-Calculator is a React and TypeScript calculator styled around an old IBM keyboard numpad.
+Calculator UI inspired by classic numpad keyboards.
 
-## Highlights
+- Live demo: https://itkrivoshei.github.io/react-typescript-web-apps/#/Calculator
+- View source & README: https://github.com/itkrivoshei/react-typescript-web-apps/tree/main/src/features/calculator
 
-- Numpad-inspired visual layout.
-- Strict input handling without eval.
-- Sound feedback for a more tactile interaction.
-- Keyboard and button-based input.
-- SCSS styling with dedicated calculator components.
+Short description
+---------------
+Simple calculator with strict input handling and optional sound feedback.
 
-## Source structure
+Features
+--------
+- Numpad-style layout
+- Keyboard and button input
+- Sound feedback (optional)
 
-```text
-src/features/calculator/
-├── Button.tsx
-├── Calculator.scss
-├── Calculator.tsx
-└── index.ts
+Tech
+----
+- React
+- TypeScript
+- SCSS
+- Howler (audio)
+
+Run locally
+-----------
+```bash
+npm ci
+npm start
 ```
 
-## Stack
+Contributing
+------------
+Follow the repository CONTRIBUTING.md and open a PR.
 
-React, TypeScript, SCSS, Howler.
+License
+-------
+MIT — see the repository LICENSE.

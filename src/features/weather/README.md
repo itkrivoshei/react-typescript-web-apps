@@ -1,25 +1,47 @@
-# WeatherUp
+# ☁️ WeatherUp
 
-WeatherUp is a React and TypeScript weather dashboard with city search, browser geolocation, weather metrics, and a GIF reaction layer.
+Weather dashboard with city lookup, geolocation, and a GIF reaction layer.
 
-## Highlights
+- Live demo: https://itkrivoshei.github.io/react-typescript-web-apps/#/WeatherApp
+- View source & README: https://github.com/itkrivoshei/react-typescript-web-apps/tree/main/src/features/weather
 
-- City search and browser geolocation.
-- Weather metrics for temperature, wind, humidity, cloud cover, pressure, and precipitation.
-- Redux Toolkit state for async data requests.
-- Material UI dashboard layout.
+Short description
+---------------
+Search cities or use browser geolocation to view weather metrics and a playful GIF overlay.
 
-## Source structure
+Features
+--------
+- City search and geolocation
+- Temperature, wind, humidity, and other metrics
+- GIF reaction layer for visual context
 
-```text
-src/features/weather/
-├── index.ts
-├── MainWeatherDisplay.tsx
-├── SettingsMenu.tsx
-├── WeatherApp.tsx
-└── WeatherMeme.tsx
+Tech
+----
+- React
+- TypeScript
+- Redux Toolkit
+- Material UI
+
+Run locally
+-----------
+```bash
+npm ci
+npm start
 ```
 
-## Stack
+Environment
+-----------
+Optionally provide API keys in `.env`:
 
-React, TypeScript, Redux Toolkit, Material UI.
+```
+REACT_APP_WEATHER_API_KEY=
+REACT_APP_GIPHY_API_KEY=
+```
+
+Contributing
+------------
+Follow the repository CONTRIBUTING.md and open a PR.
+
+License
+-------
+MIT — see the repository LICENSE.

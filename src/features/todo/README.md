@@ -1,28 +1,40 @@
-# Todo Command Board
+# ✅ Todo Command Board
 
-Todo Command Board is a React and TypeScript task board with project switching, todo editing, completion state, and a lofi dashboard-style interface.
+Project-based todo board with Redux state management.
 
-## Highlights
+- Live demo: https://itkrivoshei.github.io/react-typescript-web-apps/#/TodoApp
+- View source & README: https://github.com/itkrivoshei/react-typescript-web-apps/tree/main/src/features/todo
 
-- Multiple project lists with active project switching.
-- Add, edit, complete, and delete todo items.
-- Redux Toolkit state for projects and tasks.
-- Material UI layout with a custom lofi visual theme.
-- Persisted state through the shared Redux setup.
+Short description
+---------------
+Manage multiple project task lists with add, edit, complete, and delete flows.
 
-## Source structure
+Features
+--------
+- Multiple projects and lists
+- Add / edit / complete / delete todos
+- Persisted state via Redux
 
-```text
-src/features/todo/
-├── AddProject.tsx
-├── AddTodo.tsx
-├── ProjectList.tsx
-├── TodoApp.tsx
-├── TodoItem.tsx
-├── TodoList.tsx
-└── index.ts
+Tech
+----
+- React
+- TypeScript
+- Redux Toolkit
+- Material UI
+
+Run locally
+-----------
+```bash
+npm ci
+npm start
 ```
 
-## Stack
+Open the Todo App route from the dashboard.
 
-React, TypeScript, Redux Toolkit, Material UI.
+Contributing
+------------
+Follow the project CONTRIBUTING.md and open a PR.
+
+License
+-------
+MIT — see the repository LICENSE.
