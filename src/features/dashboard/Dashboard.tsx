@@ -32,9 +32,8 @@ const dashboardFontFamily = [
   'sans-serif',
 ].join(', ');
 
-const appGroups: AppGroup[] = ['featured', 'advanced', 'interaction', 'layout'];
+const collectionGroups: AppGroup[] = ['advanced', 'interaction', 'layout'];
 const repoUrl = 'https://github.com/itkrivoshei/react-typescript-web-apps';
-const liveUrl = 'https://itkrivoshei.github.io/react-typescript-web-apps/';
 
 const projectStats = [
   { label: 'Live demos', value: dashboardApps.length.toString() },
@@ -61,25 +60,33 @@ const darkTheme = createTheme({
   },
 });
 
-const Dashboard: React.FunctionComponent = () => (
-  <ThemeProvider theme={darkTheme}>
-    <CssBaseline />
-    <Box
-      sx={{
-        minHeight: '100vh',
-        overflow: 'hidden',
-        color: '#e5e7eb',
-        background:
-          'linear-gradient(135deg, #071013 0%, #122023 45%, #1b1f2a 100%)',
-      }}
-    >
-      <Container component='main' maxWidth='xl' sx={{ py: { xs: 3, md: 5 } }}>
-        <HeroSection />
-        <AppCollection />
-      </Container>
-    </Box>
-  </ThemeProvider>
-);
+const getFeaturedApps = () =>
+  dashboardApps.filter((app) => app.group === 'featured').slice(0, 3);
+
+const Dashboard: React.FunctionComponent = () => {
+  const featuredApps = getFeaturedApps();
+
+  return (
+    <ThemeProvider theme={darkTheme}>
+      <CssBaseline />
+      <Box
+        sx={{
+          minHeight: '100vh',
+          overflow: 'hidden',
+          color: '#e5e7eb',
+          background:
+            'radial-gradient(circle at 8% 6%, rgba(56, 189, 248, 0.26), transparent 30rem), radial-gradient(circle at 92% 9%, rgba(168, 85, 247, 0.22), transparent 32rem), radial-gradient(circle at 50% 100%, rgba(34, 197, 94, 0.12), transparent 30rem), linear-gradient(135deg, #020617 0%, #0f172a 45%, #111827 100%)',
+        }}
+      >
+        <Container component='main' maxWidth='xl' sx={{ py: { xs: 3, md: 5 } }}>
+          <HeroSection />
+          <FeaturedStrip apps={featuredApps} />
+          <AppCollection />
+        </Container>
+      </Box>
+    </ThemeProvider>
+  );
+};
 
 const HeroSection: React.FC = () => (
   <Box
@@ -87,14 +94,20 @@ const HeroSection: React.FC = () => (
     sx={{
       position: 'relative',
       mb: { xs: 5, md: 7 },
-      py: { xs: 2, md: 4 },
+      p: { xs: 2.5, md: 4 },
+      border: '1px solid rgba(148, 163, 184, 0.18)',
+      borderRadius: { xs: 4, md: 6 },
+      background:
+        'linear-gradient(135deg, rgba(15, 23, 42, 0.88), rgba(2, 6, 23, 0.62))',
+      boxShadow: '0 34px 120px rgba(2, 6, 23, 0.38)',
+      backdropFilter: 'blur(18px)',
       overflow: 'hidden',
       '&::before': {
         content: '""',
         position: 'absolute',
         inset: 0,
         background:
-          'linear-gradient(90deg, rgba(255,255,255,0.08), transparent 70%)',
+          'linear-gradient(110deg, rgba(255,255,255,0.08), transparent 22%, rgba(56,189,248,0.08) 48%, transparent 72%)',
         pointerEvents: 'none',
       },
     }}
@@ -168,7 +181,8 @@ const HeroSection: React.FC = () => (
               lineHeight: 1.75,
             }}
           >
-            My React + TypeScript apps in one place.
+            A personal React + TypeScript app collection with weather,
+            calculator, todo, games, forms, audio UI, and layout demos.
           </Typography>
 
           <Stack
@@ -177,7 +191,7 @@ const HeroSection: React.FC = () => (
             sx={{ mt: 3.5 }}
           >
             <Button
-              href={liveUrl}
+              href={repoUrl}
               target='_blank'
               rel='noreferrer'
               variant='contained'
@@ -192,27 +206,6 @@ const HeroSection: React.FC = () => (
                 '&:hover': { background: '#dbeafe' },
               }}
             >
-              Live app
-            </Button>
-            <Button
-              href={repoUrl}
-              target='_blank'
-              rel='noreferrer'
-              variant='outlined'
-              sx={{
-                minHeight: 48,
-                px: 2.5,
-                borderRadius: 999,
-                borderColor: 'rgba(226, 232, 240, 0.22)',
-                color: '#f8fafc',
-                fontWeight: 900,
-                textTransform: 'none',
-                '&:hover': {
-                  borderColor: '#38bdf8',
-                  background: 'rgba(56, 189, 248, 0.08)',
-                },
-              }}
-            >
               Source
             </Button>
           </Stack>
@@ -224,7 +217,7 @@ const HeroSection: React.FC = () => (
             flexShrink: 0,
             p: 2,
             border: '1px solid rgba(226, 232, 240, 0.12)',
-            borderRadius: 1,
+            borderRadius: 4,
             background: 'rgba(2, 6, 23, 0.56)',
           }}
         >
@@ -238,7 +231,7 @@ const HeroSection: React.FC = () => (
                   gap: 2,
                   p: 1.5,
                   border: '1px solid rgba(148, 163, 184, 0.12)',
-                  borderRadius: 1,
+                  borderRadius: 3,
                   background: 'rgba(15, 23, 42, 0.74)',
                 }}
               >
@@ -257,11 +250,36 @@ const HeroSection: React.FC = () => (
   </Box>
 );
 
+const FeaturedStrip: React.FC<{ apps: DashboardApp[] }> = ({ apps }) => (
+  <Box component='section' sx={{ mb: { xs: 5, md: 7 } }}>
+    <SectionHeader
+      eyebrow='Main'
+      title='Main apps'
+      description='The three apps I want easiest to open.'
+    />
+    <Box
+      sx={{
+        display: 'grid',
+        gridTemplateColumns: { xs: '1fr', md: 'repeat(3, minmax(0, 1fr))' },
+        gap: 2,
+      }}
+    >
+      {apps.map((app, index) => (
+        <ProjectCard key={app.path} app={app} index={index + 1} featured />
+      ))}
+    </Box>
+  </Box>
+);
+
 const AppCollection: React.FC = () => (
   <Box component='section'>
-    <SectionHeader title='Apps' />
+    <SectionHeader
+      eyebrow='More'
+      title='More apps'
+      description='Other live routes in this project.'
+    />
     <Stack spacing={4}>
-      {appGroups.map((group) => {
+      {collectionGroups.map((group) => {
         const apps = dashboardApps.filter((app) => app.group === group);
         return (
           <Box key={group}>
@@ -372,7 +390,7 @@ const ProjectCard: React.FC<{
       position: 'relative',
       minHeight: featured ? 292 : 224,
       border: '1px solid rgba(226, 232, 240, 0.12)',
-      borderRadius: 1,
+      borderRadius: featured ? 5 : 4,
       background:
         'linear-gradient(145deg, rgba(15, 23, 42, 0.92), rgba(2, 6, 23, 0.78))',
       boxShadow: '0 22px 70px rgba(2, 6, 23, 0.32)',
