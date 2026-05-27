@@ -1,37 +1,30 @@
-# ❌ Tic Tac Toe
+<div align="center">
 
-Classic Tic‑Tac‑Toe game with optional simple AI.
+# Tic-Tac-Toe Mini Game
 
-- Live demo: https://itkrivoshei.github.io/react-typescript-web-apps/#/TicTacToe
-- View source & README: https://github.com/itkrivoshei/react-typescript-web-apps/tree/main/src/features/tic-tac-toe
+Classic 3x3 grid game with mode selection, random AI turns, win highlighting, and reset flow.
 
-## Short description
+[![Live app](https://img.shields.io/badge/live-TicTacToe-2ea44f?style=for-the-badge&logo=githubpages&logoColor=white)](https://itkrivoshei.github.io/react-typescript-web-apps/#/TicTacToe)
+[![Gallery](https://img.shields.io/badge/gallery-root%20README-111827?style=for-the-badge&logo=github&logoColor=white)](../../../README.md#app-gallery)
+[![React](https://img.shields.io/badge/React-19-61dafb?style=for-the-badge&logo=react&logoColor=111)](../../../package.json)
+[![TypeScript](https://img.shields.io/badge/TypeScript-4.9-3178c6?style=for-the-badge&logo=typescript&logoColor=white)](../../../tsconfig.json)
+[![SCSS](https://img.shields.io/badge/SCSS-game%20board-cf649a?style=for-the-badge&logo=sass&logoColor=white)](TicTacToe.scss)
 
-3×3 grid game with turn management, win/tie detection, and reset.
+</div>
 
-## Features
+## Highlights
 
-- Two-player and AI modes
-- Win/tie detection
-- Responsive layout
+| Focus          | Details                                                                             |
+| -------------- | ----------------------------------------------------------------------------------- |
+| Modes          | Starts in either player-vs-AI or local two-player mode.                             |
+| Board state    | Uses a typed nine-cell board with X, O, and empty cell states.                      |
+| Result logic   | Checks all winning combinations, marks winning cells, and detects tie boards.       |
+| Reset behavior | Reset restarts the current mode and clears board, result, tie, and highlight state. |
 
-## Tech
+## Source Map
 
-- React
-- TypeScript
-- SCSS
-
-## Run locally
-
-```bash
-npm ci
-npm start
-```
-
-## Contributing
-
-Follow the repository CONTRIBUTING.md and open a PR.
-
-## License
-
-MIT — see the repository LICENSE.
+| File                             | Purpose                                                                         |
+| -------------------------------- | ------------------------------------------------------------------------------- |
+| [TicTacToe.tsx](TicTacToe.tsx)   | Board state, mode selection, AI move selection, win/tie checks, and reset flow. |
+| [TicTacToe.scss](TicTacToe.scss) | Game panel, mode buttons, board visibility, winner and tie styles.              |
+| [index.ts](index.ts)             | Feature export used by the app router.                                          |

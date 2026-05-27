@@ -1,38 +1,32 @@
-# ➗ Calculator — IBM Numpad Edition
+<div align="center">
 
-Calculator UI inspired by classic numpad keyboards.
+# Calculator - IBM Numpad Edition
 
-- Live demo: https://itkrivoshei.github.io/react-typescript-web-apps/#/Calculator
-- View source & README: https://github.com/itkrivoshei/react-typescript-web-apps/tree/main/src/features/calculator
+Tactile calculator styled like a classic numpad keyboard, with keyboard input and switchable sound feedback.
 
-## Short description
+[![Live app](https://img.shields.io/badge/live-Calculator-2ea44f?style=for-the-badge&logo=githubpages&logoColor=white)](https://itkrivoshei.github.io/react-typescript-web-apps/#/Calculator)
+[![Gallery](https://img.shields.io/badge/gallery-root%20README-111827?style=for-the-badge&logo=github&logoColor=white)](../../../README.md#app-gallery)
+[![React](https://img.shields.io/badge/React-19-61dafb?style=for-the-badge&logo=react&logoColor=111)](../../../package.json)
+[![TypeScript](https://img.shields.io/badge/TypeScript-4.9-3178c6?style=for-the-badge&logo=typescript&logoColor=white)](../../../tsconfig.json)
+[![Howler](https://img.shields.io/badge/audio-Howler-ff5a5f?style=for-the-badge&logo=html5&logoColor=white)](../../../package.json)
+[![SCSS](https://img.shields.io/badge/SCSS-keyboard%20skin-cf649a?style=for-the-badge&logo=sass&logoColor=white)](Calculator.scss)
 
-Simple calculator with strict input handling and optional sound feedback.
+</div>
 
-## Features
+## Highlights
 
-- Numpad-style layout
-- Keyboard and button input
-- Sound feedback (optional)
+| Focus          | Details                                                                                                          |
+| -------------- | ---------------------------------------------------------------------------------------------------------------- |
+| Input engine   | Handles digits, decimal points, chained operators, backspace, clear, divide-by-zero errors, and repeated equals. |
+| Keyboard feel  | Custom SVG keycaps, long-key layout, active key states, NumLock power mode, and Git/volume command keys.         |
+| Display safety | Limits input digits, formats long results, and falls back to exponential notation when needed.                   |
+| Audio feedback | Howler-backed press/release sounds with separate samples for standard and long keys.                             |
 
-## Tech
+## Source Map
 
-- React
-- TypeScript
-- SCSS
-- Howler (audio)
-
-## Run locally
-
-```bash
-npm ci
-npm start
-```
-
-## Contributing
-
-Follow the repository CONTRIBUTING.md and open a PR.
-
-## License
-
-MIT — see the repository LICENSE.
+| File                               | Purpose                                                                                   |
+| ---------------------------------- | ----------------------------------------------------------------------------------------- |
+| [Calculator.tsx](Calculator.tsx)   | Calculator state machine, keyboard mapping, command buttons, formatting, and audio setup. |
+| [Button.tsx](Button.tsx)           | Reusable SVG key component with active and long-key states.                               |
+| [Calculator.scss](Calculator.scss) | IBM-inspired shell, display, key grid, status lights, and responsive styling.             |
+| [index.ts](index.ts)               | Feature export used by the app router.                                                    |

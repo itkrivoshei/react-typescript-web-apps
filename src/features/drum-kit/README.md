@@ -1,40 +1,32 @@
-# 🥁 Drum Kit
+<div align="center">
 
-Keyboard-triggered drum pads implemented with React and TypeScript.
+# Drum Kit Sound Pad
 
-- Live demo: https://itkrivoshei.github.io/react-typescript-web-apps/#/DrumKit
-- View source & README: https://github.com/itkrivoshei/react-typescript-web-apps/tree/main/src/features/drum-kit
+Keyboard sampler with A-L pads, instant audio retriggering, and animated hit feedback.
 
-## Short description
+[![Live app](https://img.shields.io/badge/live-DrumKit-2ea44f?style=for-the-badge&logo=githubpages&logoColor=white)](https://itkrivoshei.github.io/react-typescript-web-apps/#/DrumKit)
+[![Gallery](https://img.shields.io/badge/gallery-root%20README-111827?style=for-the-badge&logo=github&logoColor=white)](../../../README.md#app-gallery)
+[![React](https://img.shields.io/badge/React-19-61dafb?style=for-the-badge&logo=react&logoColor=111)](../../../package.json)
+[![TypeScript](https://img.shields.io/badge/TypeScript-4.9-3178c6?style=for-the-badge&logo=typescript&logoColor=white)](../../../tsconfig.json)
+[![Audio](https://img.shields.io/badge/audio-HTML5%20samples-e34f26?style=for-the-badge&logo=html5&logoColor=white)](DrumKit.tsx)
+[![SCSS](https://img.shields.io/badge/SCSS-pad%20animation-cf649a?style=for-the-badge&logo=sass&logoColor=white)](DrumKit.scss)
 
-Play drum sounds using your keyboard with animated pads and immediate audio feedback.
+</div>
 
-## Features
+## Highlights
 
-- Keyboard-triggered sounds
-- Animated pad feedback
-- Mapped keys to audio assets
+| Focus         | Details                                                                                          |
+| ------------- | ------------------------------------------------------------------------------------------------ |
+| Pad mapping   | Nine pads map A, S, D, F, G, H, J, K, and L to drum samples.                                     |
+| Fast playback | Audio refs reset `currentTime` before each play so repeated hits feel immediate.                 |
+| Sound design  | The G pad reuses the kick sample with lower volume and playback rate for a low-kick variation.   |
+| Interaction   | Pads respond to keyboard and click input, then clear the playing state after CSS transition end. |
 
-## Tech
+## Source Map
 
-- React
-- TypeScript
-- SCSS
-- Howler (audio handling)
-
-## Run locally
-
-```bash
-npm ci
-npm start
-```
-
-Open the Drum Kit route from the dashboard.
-
-## Contributing
-
-Follow the repository CONTRIBUTING.md and open a PR.
-
-## License
-
-MIT — see the repository LICENSE.
+| File                             | Purpose                                                          |
+| -------------------------------- | ---------------------------------------------------------------- |
+| [DrumKit.tsx](DrumKit.tsx)       | Pad data, keyboard listeners, audio refs, and playback behavior. |
+| [DrumKit.scss](DrumKit.scss)     | Background image, sampler layout, key states, and hit animation. |
+| [background.jpg](background.jpg) | Feature background image.                                        |
+| [index.ts](index.ts)             | Feature export used by the app router.                           |

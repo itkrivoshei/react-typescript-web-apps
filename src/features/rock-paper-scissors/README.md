@@ -1,43 +1,29 @@
-# 🪨✂️📜 Rock Paper Scissors
+<div align="center">
 
-Simple, interactive Rock–Paper–Scissors implemented with React and TypeScript.
+# Rock Paper Scissors Arena
 
-- Live demo: https://itkrivoshei.github.io/react-typescript-web-apps/#/RockPaperScissors
-- View source & README: https://github.com/itkrivoshei/react-typescript-web-apps/tree/main/src/features/rock-paper-scissors
+Arcade-style round game with random computer choices, result messaging, and live score tracking.
 
-## Short description
+[![Live app](https://img.shields.io/badge/live-RockPaperScissors-2ea44f?style=for-the-badge&logo=githubpages&logoColor=white)](https://itkrivoshei.github.io/react-typescript-web-apps/#/RockPaperScissors)
+[![Gallery](https://img.shields.io/badge/gallery-root%20README-111827?style=for-the-badge&logo=github&logoColor=white)](../../../README.md#app-gallery)
+[![React](https://img.shields.io/badge/React-19-61dafb?style=for-the-badge&logo=react&logoColor=111)](../../../package.json)
+[![TypeScript](https://img.shields.io/badge/TypeScript-4.9-3178c6?style=for-the-badge&logo=typescript&logoColor=white)](../../../tsconfig.json)
+[![MUI](https://img.shields.io/badge/MUI-arcade%20panel-007fff?style=for-the-badge&logo=mui&logoColor=white)](../../../package.json)
 
-This small game pits a player against a computer with live score tracking, round results, and reset functionality. It’s a compact self-contained feature inside the monorepo.
+</div>
 
-## Features
+## Highlights
 
-- Play versus computer
-- Live score and round results
-- Responsive UI and simple animations
+| Focus          | Details                                                                          |
+| -------------- | -------------------------------------------------------------------------------- |
+| Game logic     | Typed weapons and outcomes keep win, loss, tie, and message generation explicit. |
+| Scoreboard     | Tracks player score, computer score, ties, and total rounds in a compact grid.   |
+| Round feedback | Status chip and result icon update immediately after each pick.                  |
+| Reset flow     | Reset returns every counter and weapon selection to the initial state.           |
 
-## Tech
+## Source Map
 
-- React
-- TypeScript
-- SCSS
-
-## Run locally
-
-1. Clone the repository and install dependencies (from the repo root):
-
-```bash
-git clone https://github.com/itkrivoshei/react-typescript-web-apps.git
-cd react-typescript-web-apps
-npm ci
-npm start
-```
-
-2. Open the app and navigate to the Rock Paper Scissors route from the dashboard.
-
-## Contributing
-
-- Fork the repo, create a feature branch, and open a PR. See the top-level CONTRIBUTING.md for guidelines.
-
-## License
-
-MIT — see the repository LICENSE.
+| File                                           | Purpose                                                                   |
+| ---------------------------------------------- | ------------------------------------------------------------------------- |
+| [RockPaperScissors.tsx](RockPaperScissors.tsx) | Game state, round resolution, scoreboard, reset behavior, and MUI layout. |
+| [index.ts](index.ts)                           | Feature export used by the app router.                                    |
