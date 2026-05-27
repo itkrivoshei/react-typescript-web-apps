@@ -1,21 +1,21 @@
 import React from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 
-import AppNavigationMenu from './AppNavigationMenu';
-import Dashboard from '../features/dashboard/Dashboard';
+import DashLanding from '../features/admin-dashboard';
+import BookLibrary from '../features/book-library';
 import Calculator from '../features/calculator';
-import WeatherApp from '../features/weather';
-import TodoApp from '../features/todo';
+import Dashboard from '../features/dashboard/Dashboard';
+import DrumKit from '../features/drum-kit';
+import EtchASketch from '../features/etch-a-sketch';
+import Landing from '../features/landing-page';
+import OdinRecipes from '../features/odin-recipes';
+import Restaurant from '../features/restaurant-page';
+import RockPaperScissors from '../features/rock-paper-scissors';
 import SignUpForm from '../features/signup/SignUpForm';
 import TicTacToe from '../features/tic-tac-toe';
-import EtchASketch from '../features/etch-a-sketch';
-import Restaurant from '../features/restaurant-page';
-import BookLibrary from '../features/book-library';
-import DrumKit from '../features/drum-kit';
-import RockPaperScissors from '../features/rock-paper-scissors';
-import OdinRecipes from '../features/odin-recipes';
-import Landing from '../features/landing-page';
-import DashLanding from '../features/admin-dashboard';
+import TodoApp from '../features/todo';
+import WeatherApp from '../features/weather';
+import AppNavigationMenu from './AppNavigationMenu';
 
 const AppRoutes = () => {
   const location = useLocation();

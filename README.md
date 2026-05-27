@@ -16,34 +16,34 @@ A routed React app gallery with weather lookup, calculator, todo board, games, a
 
 The dashboard is served with `HashRouter`, so every app title opens a direct GitHub Pages route. Use the **Source & README** links to open each app folder with its source files and README preview.
 
-| App | Source & README | Focus |
-| --- | --- | --- |
-| ⭐ [WeatherUp — GIF Weather Dashboard](https://itkrivoshei.github.io/react-typescript-web-apps/#/WeatherApp) | [Source files & README](src/features/weather) | Weather search with geolocation, live metrics, and a GIF API layer that makes the forecast feel more visual and interactive |
-| ⭐ [Calculator — IBM Numpad Edition](https://itkrivoshei.github.io/react-typescript-web-apps/#/Calculator) | [Source files & README](src/features/calculator) | Calculator styled like an old IBM numpad keyboard, with tactile button layout, strict input handling, and sound feedback |
-| [Redux Todo Command Board](https://itkrivoshei.github.io/react-typescript-web-apps/#/TodoApp) | [Source files & README](src/features/todo) | Project-based task board with Redux state management |
-| ⭐ [Terminal Sign-up Form](https://itkrivoshei.github.io/react-typescript-web-apps/#/SignUpForm) | [Source files & README](src/features/signup) | Responsive form validation wrapped in a terminal-style interface |
-| ✦ [Tic-Tac-Toe Mini Game](https://itkrivoshei.github.io/react-typescript-web-apps/#/TicTacToe) | [Source files & README](src/features/tic-tac-toe) | Compact game flow with turn handling, state updates, and win/draw result logic |
-| ✦ [Etch-a-Sketch Drawing Grid](https://itkrivoshei.github.io/react-typescript-web-apps/#/EtchASketch) | [Source files & README](src/features/etch-a-sketch) | Interactive drawing grid with classic browser controls and quick visual feedback |
-| [Book Library Shelf](https://itkrivoshei.github.io/react-typescript-web-apps/#/BookLibrary) | [Source files & README](src/features/book-library) | Book list UI with add flow |
-| [Rock Paper Scissors Arena](https://itkrivoshei.github.io/react-typescript-web-apps/#/RockPaperScissors) | [Source files & README](src/features/rock-paper-scissors) | Scoreboard and result state |
-| [Drum Kit Sound Pad](https://itkrivoshei.github.io/react-typescript-web-apps/#/DrumKit) | [Source files & README](src/features/drum-kit) | Keyboard-triggered audio pads |
-| [Recipe Cards](https://itkrivoshei.github.io/react-typescript-web-apps/#/OdinRecipes) | [Source files & README](src/features/odin-recipes) | Static recipe page |
-| [Admin Dashboard Layout](https://itkrivoshei.github.io/react-typescript-web-apps/#/DashLanding) | [Source files & README](src/features/admin-dashboard) | Admin dashboard layout |
-| [Restaurant Menu Page](https://itkrivoshei.github.io/react-typescript-web-apps/#/Restaurant) | [Source files & README](src/features/restaurant-page) | Menu, contact, and home sections |
-| [Landing Page Demo](https://itkrivoshei.github.io/react-typescript-web-apps/#/Landing) | [Source files & README](src/features/landing-page) | Responsive marketing-style layout |
+| App                                                                                                          | Source & README                                           | Focus                                                                                                                       |
+| ------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| ⭐ [WeatherUp — GIF Weather Dashboard](https://itkrivoshei.github.io/react-typescript-web-apps/#/WeatherApp) | [Source files & README](src/features/weather)             | Weather search with geolocation, live metrics, and a GIF API layer that makes the forecast feel more visual and interactive |
+| ⭐ [Calculator — IBM Numpad Edition](https://itkrivoshei.github.io/react-typescript-web-apps/#/Calculator)   | [Source files & README](src/features/calculator)          | Calculator styled like an old IBM numpad keyboard, with tactile button layout, strict input handling, and sound feedback    |
+| [Redux Todo Command Board](https://itkrivoshei.github.io/react-typescript-web-apps/#/TodoApp)                | [Source files & README](src/features/todo)                | Project-based task board with Redux state management                                                                        |
+| ⭐ [Terminal Sign-up Form](https://itkrivoshei.github.io/react-typescript-web-apps/#/SignUpForm)             | [Source files & README](src/features/signup)              | Responsive form validation wrapped in a terminal-style interface                                                            |
+| ✦ [Tic-Tac-Toe Mini Game](https://itkrivoshei.github.io/react-typescript-web-apps/#/TicTacToe)               | [Source files & README](src/features/tic-tac-toe)         | Compact game flow with turn handling, state updates, and win/draw result logic                                              |
+| ✦ [Etch-a-Sketch Drawing Grid](https://itkrivoshei.github.io/react-typescript-web-apps/#/EtchASketch)        | [Source files & README](src/features/etch-a-sketch)       | Interactive drawing grid with classic browser controls and quick visual feedback                                            |
+| [Book Library Shelf](https://itkrivoshei.github.io/react-typescript-web-apps/#/BookLibrary)                  | [Source files & README](src/features/book-library)        | Book list UI with add flow                                                                                                  |
+| [Rock Paper Scissors Arena](https://itkrivoshei.github.io/react-typescript-web-apps/#/RockPaperScissors)     | [Source files & README](src/features/rock-paper-scissors) | Scoreboard and result state                                                                                                 |
+| [Drum Kit Sound Pad](https://itkrivoshei.github.io/react-typescript-web-apps/#/DrumKit)                      | [Source files & README](src/features/drum-kit)            | Keyboard-triggered audio pads                                                                                               |
+| [Recipe Cards](https://itkrivoshei.github.io/react-typescript-web-apps/#/OdinRecipes)                        | [Source files & README](src/features/odin-recipes)        | Static recipe page                                                                                                          |
+| [Admin Dashboard Layout](https://itkrivoshei.github.io/react-typescript-web-apps/#/DashLanding)              | [Source files & README](src/features/admin-dashboard)     | Admin dashboard layout                                                                                                      |
+| [Restaurant Menu Page](https://itkrivoshei.github.io/react-typescript-web-apps/#/Restaurant)                 | [Source files & README](src/features/restaurant-page)     | Menu, contact, and home sections                                                                                            |
+| [Landing Page Demo](https://itkrivoshei.github.io/react-typescript-web-apps/#/Landing)                       | [Source files & README](src/features/landing-page)        | Responsive marketing-style layout                                                                                           |
 
 ## Stack
 
-| Area | Tools |
-| --- | --- |
-| App shell | React, React Router, Create React App |
-| Language | TypeScript |
-| State | Redux Toolkit, React Redux, redux-persist |
-| UI libraries | Chakra UI, Material UI, React Icons |
-| Motion/audio | Framer Motion, Howler |
-| Styling | SCSS, component styles |
-| Quality | ESLint, Prettier, TypeScript, Jest |
-| Delivery | GitHub Actions, GitHub Pages |
+| Area         | Tools                                     |
+| ------------ | ----------------------------------------- |
+| App shell    | React, React Router, Create React App     |
+| Language     | TypeScript                                |
+| State        | Redux Toolkit, React Redux, redux-persist |
+| UI libraries | Chakra UI, Material UI, React Icons       |
+| Motion/audio | Framer Motion, Howler                     |
+| Styling      | SCSS, component styles                    |
+| Quality      | ESLint, Prettier, TypeScript, Jest        |
+| Delivery     | GitHub Actions, GitHub Pages              |
 
 ## Run Locally
 
@@ -70,15 +70,15 @@ The app can build without exposing secrets in the repository. GitHub Actions inj
 
 ## Commands
 
-| Command | Description |
-| --- | --- |
-| `npm start` | Start the dev server |
-| `npm run build` | Build static assets |
-| `npm test` | Run tests once |
-| `npm run typecheck` | Run TypeScript checks |
-| `npm run lint` | Run ESLint |
-| `npm run format:check` | Check Prettier formatting |
-| `npm run verify` | Type-check, lint, format-check, test, and build |
+| Command                | Description                                     |
+| ---------------------- | ----------------------------------------------- |
+| `npm start`            | Start the dev server                            |
+| `npm run build`        | Build static assets                             |
+| `npm test`             | Run tests once                                  |
+| `npm run typecheck`    | Run TypeScript checks                           |
+| `npm run lint`         | Run ESLint                                      |
+| `npm run format:check` | Check Prettier formatting                       |
+| `npm run verify`       | Type-check, lint, format-check, test, and build |
 
 ## Structure
 

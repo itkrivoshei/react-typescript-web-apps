@@ -5,32 +5,32 @@ Restaurant demo with Home, Menu, and Contact sections.
 - Live demo: https://itkrivoshei.github.io/react-typescript-web-apps/#/Restaurant
 - View source & README: https://github.com/itkrivoshei/react-typescript-web-apps/tree/main/src/features/restaurant-page
 
-Short description
----------------
+## Short description
+
 Simple restaurant site showcasing a landing page, menu, and contact sections.
 
-Features
---------
+## Features
+
 - Home, Menu, and Contact sections
 - Responsive layout
 
-Tech
-----
+## Tech
+
 - React
 - TypeScript
 - SCSS
 
-Run locally
------------
+## Run locally
+
 ```bash
 npm ci
 npm start
 ```
 
-Contributing
-------------
+## Contributing
+
 Follow the repository CONTRIBUTING.md and open a PR.
 
-License
--------
+## License
+
 MIT — see the repository LICENSE.

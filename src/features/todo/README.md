@@ -5,25 +5,25 @@ Project-based todo board with Redux state management.
 - Live demo: https://itkrivoshei.github.io/react-typescript-web-apps/#/TodoApp
 - View source & README: https://github.com/itkrivoshei/react-typescript-web-apps/tree/main/src/features/todo
 
-Short description
----------------
+## Short description
+
 Manage multiple project task lists with add, edit, complete, and delete flows.
 
-Features
---------
+## Features
+
 - Multiple projects and lists
 - Add / edit / complete / delete todos
 - Persisted state via Redux
 
-Tech
-----
+## Tech
+
 - React
 - TypeScript
 - Redux Toolkit
 - Material UI
 
-Run locally
------------
+## Run locally
+
 ```bash
 npm ci
 npm start
@@ -31,10 +31,10 @@ npm start
 
 Open the Todo App route from the dashboard.
 
-Contributing
-------------
+## Contributing
+
 Follow the project CONTRIBUTING.md and open a PR.
 
-License
--------
+## License
+
 MIT — see the repository LICENSE.

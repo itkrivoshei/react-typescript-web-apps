@@ -5,33 +5,33 @@ Simple personal library UI with add/read/remove functionality.
 - Live demo: https://itkrivoshei.github.io/react-typescript-web-apps/#/BookLibrary
 - View source & README: https://github.com/itkrivoshei/react-typescript-web-apps/tree/main/src/features/book-library
 
-Short description
----------------
+## Short description
+
 Manage a small collection of books with add, toggle read status, and remove actions.
 
-Features
---------
+## Features
+
 - Add and remove books
 - Toggle read/unread status
 - Responsive list UI
 
-Tech
-----
+## Tech
+
 - React
 - Material UI
 - TypeScript
 
-Run locally
------------
+## Run locally
+
 ```bash
 npm ci
 npm start
 ```
 
-Contributing
-------------
+## Contributing
+
 Follow the repository CONTRIBUTING.md and open a PR.
 
-License
--------
+## License
+
 MIT — see the repository LICENSE.
