@@ -291,6 +291,7 @@
   .content {
     display: grid;
     grid-template-columns: minmax(0, 2fr) minmax(260px, 0.85fr);
+    align-items: start;
     gap: 22px;
     padding: 24px;
     background: #383a4d;
@@ -298,12 +299,14 @@
 
   .main-content {
     display: grid;
+    align-content: start;
     gap: 22px;
   }
 
   .metrics-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: start;
     gap: 16px;
   }
 
@@ -311,6 +314,7 @@
     display: flex;
     align-items: center;
     gap: 14px;
+    min-height: 82px;
     padding: 18px;
     border: 1px solid rgba(248, 248, 242, 0.08);
     border-radius: 20px;
