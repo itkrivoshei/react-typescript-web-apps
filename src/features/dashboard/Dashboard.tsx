@@ -32,7 +32,7 @@ const dashboardFontFamily = [
   'sans-serif',
 ].join(', ');
 
-const collectionGroups: AppGroup[] = ['advanced', 'interaction', 'layout'];
+const appGroups: AppGroup[] = ['featured', 'advanced', 'interaction', 'layout'];
 const repoUrl = 'https://github.com/itkrivoshei/react-typescript-web-apps';
 const liveUrl = 'https://itkrivoshei.github.io/react-typescript-web-apps/';
 
@@ -61,33 +61,25 @@ const darkTheme = createTheme({
   },
 });
 
-const getFeaturedApps = () =>
-  dashboardApps.filter((app) => app.group === 'featured').slice(0, 3);
-
-const Dashboard: React.FunctionComponent = () => {
-  const featuredApps = getFeaturedApps();
-
-  return (
-    <ThemeProvider theme={darkTheme}>
-      <CssBaseline />
-      <Box
-        sx={{
-          minHeight: '100vh',
-          overflow: 'hidden',
-          color: '#e5e7eb',
-          background:
-            'linear-gradient(135deg, #071013 0%, #122023 45%, #1b1f2a 100%)',
-        }}
-      >
-        <Container component='main' maxWidth='xl' sx={{ py: { xs: 3, md: 5 } }}>
-          <HeroSection />
-          <FeaturedStrip apps={featuredApps} />
-          <AppCollection />
-        </Container>
-      </Box>
-    </ThemeProvider>
-  );
-};
+const Dashboard: React.FunctionComponent = () => (
+  <ThemeProvider theme={darkTheme}>
+    <CssBaseline />
+    <Box
+      sx={{
+        minHeight: '100vh',
+        overflow: 'hidden',
+        color: '#e5e7eb',
+        background:
+          'linear-gradient(135deg, #071013 0%, #122023 45%, #1b1f2a 100%)',
+      }}
+    >
+      <Container component='main' maxWidth='xl' sx={{ py: { xs: 3, md: 5 } }}>
+        <HeroSection />
+        <AppCollection />
+      </Container>
+    </Box>
+  </ThemeProvider>
+);
 
 const HeroSection: React.FC = () => (
   <Box
@@ -176,9 +168,7 @@ const HeroSection: React.FC = () => (
               lineHeight: 1.75,
             }}
           >
-            A single React app with separate live demos: weather, calculator,
-            todo board, games, forms, audio UI, and layout pages. Open any card
-            to run that demo in the browser.
+            My React + TypeScript apps in one place.
           </Typography>
 
           <Stack
@@ -202,7 +192,7 @@ const HeroSection: React.FC = () => (
                 '&:hover': { background: '#dbeafe' },
               }}
             >
-              Open live app
+              Live app
             </Button>
             <Button
               href={repoUrl}
@@ -223,7 +213,7 @@ const HeroSection: React.FC = () => (
                 },
               }}
             >
-              View source
+              Source
             </Button>
           </Stack>
         </Box>
@@ -267,36 +257,11 @@ const HeroSection: React.FC = () => (
   </Box>
 );
 
-const FeaturedStrip: React.FC<{ apps: DashboardApp[] }> = ({ apps }) => (
-  <Box component='section' sx={{ mb: { xs: 5, md: 7 } }}>
-    <SectionHeader
-      eyebrow='Start here'
-      title='Main demos'
-      description='WeatherUp, Calculator, and Sign-up Form are the most complete demos. Each card opens a live route inside this app.'
-    />
-    <Box
-      sx={{
-        display: 'grid',
-        gridTemplateColumns: { xs: '1fr', md: 'repeat(3, minmax(0, 1fr))' },
-        gap: 2,
-      }}
-    >
-      {apps.map((app, index) => (
-        <ProjectCard key={app.path} app={app} index={index + 1} featured />
-      ))}
-    </Box>
-  </Box>
-);
-
 const AppCollection: React.FC = () => (
   <Box component='section'>
-    <SectionHeader
-      eyebrow='More demos'
-      title='Open the rest'
-      description='These cards open the remaining live routes. The source folder is shown on each card so the matching code is easy to find.'
-    />
+    <SectionHeader title='Apps' />
     <Stack spacing={4}>
-      {collectionGroups.map((group) => {
+      {appGroups.map((group) => {
         const apps = dashboardApps.filter((app) => app.group === group);
         return (
           <Box key={group}>
@@ -350,24 +315,26 @@ const AppCollection: React.FC = () => (
 );
 
 const SectionHeader: React.FC<{
-  eyebrow: string;
+  eyebrow?: string;
   title: string;
-  description: string;
+  description?: string;
 }> = ({ eyebrow, title, description }) => (
   <Box sx={{ mb: 2.5 }}>
-    <Typography
-      component='p'
-      sx={{
-        mb: 0.75,
-        color: '#7dd3fc',
-        fontSize: '0.72rem',
-        fontWeight: 900,
-        letterSpacing: 0,
-        textTransform: 'uppercase',
-      }}
-    >
-      {eyebrow}
-    </Typography>
+    {eyebrow && (
+      <Typography
+        component='p'
+        sx={{
+          mb: 0.75,
+          color: '#7dd3fc',
+          fontSize: '0.72rem',
+          fontWeight: 900,
+          letterSpacing: 0,
+          textTransform: 'uppercase',
+        }}
+      >
+        {eyebrow}
+      </Typography>
+    )}
     <Typography
       variant='h2'
       sx={{
@@ -379,17 +346,19 @@ const SectionHeader: React.FC<{
     >
       {title}
     </Typography>
-    <Typography
-      sx={{
-        mt: 1,
-        maxWidth: 760,
-        color: 'rgba(226, 232, 240, 0.62)',
-        fontSize: '0.95rem',
-        lineHeight: 1.7,
-      }}
-    >
-      {description}
-    </Typography>
+    {description && (
+      <Typography
+        sx={{
+          mt: 1,
+          maxWidth: 760,
+          color: 'rgba(226, 232, 240, 0.62)',
+          fontSize: '0.95rem',
+          lineHeight: 1.7,
+        }}
+      >
+        {description}
+      </Typography>
+    )}
   </Box>
 );
 

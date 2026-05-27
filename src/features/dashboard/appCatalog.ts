@@ -12,7 +12,7 @@ export interface DashboardApp {
 }
 
 export const appGroupLabels: Record<AppGroup, string> = {
-  featured: 'Main demos',
+  featured: 'Main apps',
   advanced: 'State and logic',
   interaction: 'Interactive apps',
   layout: 'Pages and layouts',
