@@ -32,20 +32,15 @@ const dashboardFontFamily = [
   'sans-serif',
 ].join(', ');
 
-const groupOrder: AppGroup[] = [
-  'featured',
-  'advanced',
-  'interaction',
-  'layout',
-];
+const collectionGroups: AppGroup[] = ['advanced', 'interaction', 'layout'];
 const repoUrl = 'https://github.com/itkrivoshei/react-typescript-web-apps';
 const liveUrl = 'https://itkrivoshei.github.io/react-typescript-web-apps/';
 
 const projectStats = [
-  { label: 'Apps', value: dashboardApps.length.toString() },
+  { label: 'Live demos', value: dashboardApps.length.toString() },
   { label: 'Stack', value: 'React + TS' },
-  { label: 'Delivery', value: 'CI/CD' },
-  { label: 'Structure', value: 'Feature-first' },
+  { label: 'Routing', value: 'HashRouter' },
+  { label: 'Deploy', value: 'GitHub Pages' },
 ];
 
 const darkTheme = createTheme({
@@ -81,7 +76,7 @@ const Dashboard: React.FunctionComponent = () => {
           overflow: 'hidden',
           color: '#e5e7eb',
           background:
-            'radial-gradient(circle at 8% 6%, rgba(56, 189, 248, 0.26), transparent 30rem), radial-gradient(circle at 92% 9%, rgba(168, 85, 247, 0.22), transparent 32rem), radial-gradient(circle at 50% 100%, rgba(34, 197, 94, 0.12), transparent 30rem), linear-gradient(135deg, #020617 0%, #0f172a 45%, #111827 100%)',
+            'linear-gradient(135deg, #071013 0%, #122023 45%, #1b1f2a 100%)',
         }}
       >
         <Container component='main' maxWidth='xl' sx={{ py: { xs: 3, md: 5 } }}>
@@ -100,20 +95,14 @@ const HeroSection: React.FC = () => (
     sx={{
       position: 'relative',
       mb: { xs: 5, md: 7 },
-      p: { xs: 2.5, md: 4 },
-      border: '1px solid rgba(148, 163, 184, 0.18)',
-      borderRadius: { xs: 4, md: 6 },
-      background:
-        'linear-gradient(135deg, rgba(15, 23, 42, 0.88), rgba(2, 6, 23, 0.62))',
-      boxShadow: '0 34px 120px rgba(2, 6, 23, 0.38)',
-      backdropFilter: 'blur(18px)',
+      py: { xs: 2, md: 4 },
       overflow: 'hidden',
       '&::before': {
         content: '""',
         position: 'absolute',
         inset: 0,
         background:
-          'linear-gradient(110deg, rgba(255,255,255,0.08), transparent 22%, rgba(56,189,248,0.08) 48%, transparent 72%)',
+          'linear-gradient(90deg, rgba(255,255,255,0.08), transparent 70%)',
         pointerEvents: 'none',
       },
     }}
@@ -133,7 +122,7 @@ const HeroSection: React.FC = () => (
             flexWrap='wrap'
             sx={{ mb: 2 }}
           >
-            {['React 19', 'TypeScript', 'Feature folders', 'GitHub Pages'].map(
+            {['React 19', 'TypeScript', 'Redux', 'GitHub Pages'].map(
               (label) => (
                 <Chip
                   key={label}
@@ -157,11 +146,11 @@ const HeroSection: React.FC = () => (
               color: '#38bdf8',
               fontSize: '0.76rem',
               fontWeight: 900,
-              letterSpacing: '0.2em',
+              letterSpacing: 0,
               textTransform: 'uppercase',
             }}
           >
-            Frontend lab · routed app collection
+            App collection
           </Typography>
 
           <Typography
@@ -170,7 +159,7 @@ const HeroSection: React.FC = () => (
               maxWidth: 820,
               color: '#f8fafc',
               fontSize: 'clamp(3.4rem, 8vw, 7.75rem)',
-              letterSpacing: '-0.08em',
+              letterSpacing: 0,
               lineHeight: 0.86,
             }}
           >
@@ -187,10 +176,9 @@ const HeroSection: React.FC = () => (
               lineHeight: 1.75,
             }}
           >
-            A curated collection of polished React applications focused on API
-            work, state management, form UX, games, audio interaction, and
-            responsive layout practice. Built as a single deployable product
-            with feature-first source organization.
+            A single React app with separate live demos: weather, calculator,
+            todo board, games, forms, audio UI, and layout pages. Open any card
+            to run that demo in the browser.
           </Typography>
 
           <Stack
@@ -199,7 +187,7 @@ const HeroSection: React.FC = () => (
             sx={{ mt: 3.5 }}
           >
             <Button
-              href={repoUrl}
+              href={liveUrl}
               target='_blank'
               rel='noreferrer'
               variant='contained'
@@ -214,10 +202,10 @@ const HeroSection: React.FC = () => (
                 '&:hover': { background: '#dbeafe' },
               }}
             >
-              View source on GitHub
+              Open live app
             </Button>
             <Button
-              href={liveUrl}
+              href={repoUrl}
               target='_blank'
               rel='noreferrer'
               variant='outlined'
@@ -235,7 +223,7 @@ const HeroSection: React.FC = () => (
                 },
               }}
             >
-              Open live deployment
+              View source
             </Button>
           </Stack>
         </Box>
@@ -246,7 +234,7 @@ const HeroSection: React.FC = () => (
             flexShrink: 0,
             p: 2,
             border: '1px solid rgba(226, 232, 240, 0.12)',
-            borderRadius: 4,
+            borderRadius: 1,
             background: 'rgba(2, 6, 23, 0.56)',
           }}
         >
@@ -260,7 +248,7 @@ const HeroSection: React.FC = () => (
                   gap: 2,
                   p: 1.5,
                   border: '1px solid rgba(148, 163, 184, 0.12)',
-                  borderRadius: 3,
+                  borderRadius: 1,
                   background: 'rgba(15, 23, 42, 0.74)',
                 }}
               >
@@ -282,9 +270,9 @@ const HeroSection: React.FC = () => (
 const FeaturedStrip: React.FC<{ apps: DashboardApp[] }> = ({ apps }) => (
   <Box component='section' sx={{ mb: { xs: 5, md: 7 } }}>
     <SectionHeader
-      eyebrow='Portfolio spotlight'
-      title='Recruiter-friendly highlights'
-      description='The strongest demos are surfaced first, with clear technical labels and direct navigation into the live app.'
+      eyebrow='Start here'
+      title='Main demos'
+      description='WeatherUp, Calculator, and Sign-up Form are the most complete demos. Each card opens a live route inside this app.'
     />
     <Box
       sx={{
@@ -303,12 +291,12 @@ const FeaturedStrip: React.FC<{ apps: DashboardApp[] }> = ({ apps }) => (
 const AppCollection: React.FC = () => (
   <Box component='section'>
     <SectionHeader
-      eyebrow='Complete collection'
-      title='All apps in one product'
-      description='Grouped by implementation depth so devs can scan the project structure, feature scope, and interaction style quickly.'
+      eyebrow='More demos'
+      title='Open the rest'
+      description='These cards open the remaining live routes. The source folder is shown on each card so the matching code is easy to find.'
     />
     <Stack spacing={4}>
-      {groupOrder.map((group) => {
+      {collectionGroups.map((group) => {
         const apps = dashboardApps.filter((app) => app.group === group);
         return (
           <Box key={group}>
@@ -324,7 +312,7 @@ const AppCollection: React.FC = () => (
                 sx={{
                   color: '#f8fafc',
                   fontSize: { xs: '1.25rem', md: '1.5rem' },
-                  letterSpacing: '-0.04em',
+                  letterSpacing: 0,
                 }}
               >
                 {appGroupLabels[group]}
@@ -374,7 +362,7 @@ const SectionHeader: React.FC<{
         color: '#7dd3fc',
         fontSize: '0.72rem',
         fontWeight: 900,
-        letterSpacing: '0.18em',
+        letterSpacing: 0,
         textTransform: 'uppercase',
       }}
     >
@@ -385,7 +373,7 @@ const SectionHeader: React.FC<{
       sx={{
         color: '#f8fafc',
         fontSize: { xs: '1.8rem', md: '2.5rem' },
-        letterSpacing: '-0.06em',
+        letterSpacing: 0,
         lineHeight: 1,
       }}
     >
@@ -415,7 +403,7 @@ const ProjectCard: React.FC<{
       position: 'relative',
       minHeight: featured ? 292 : 224,
       border: '1px solid rgba(226, 232, 240, 0.12)',
-      borderRadius: featured ? 5 : 4,
+      borderRadius: 1,
       background:
         'linear-gradient(145deg, rgba(15, 23, 42, 0.92), rgba(2, 6, 23, 0.78))',
       boxShadow: '0 22px 70px rgba(2, 6, 23, 0.32)',
@@ -439,7 +427,7 @@ const ProjectCard: React.FC<{
     <CardActionArea
       component={RouterLink}
       to={app.path}
-      aria-label={`Open ${app.name}`}
+      aria-label={`Open live demo: ${app.name}`}
       sx={{
         position: 'relative',
         zIndex: 1,
@@ -487,7 +475,7 @@ const ProjectCard: React.FC<{
             sx={{
               color: '#f8fafc',
               fontSize: featured ? 'clamp(1.65rem, 3vw, 2.3rem)' : '1.35rem',
-              letterSpacing: '-0.05em',
+              letterSpacing: 0,
               lineHeight: 1,
             }}
           >
@@ -534,7 +522,7 @@ const ProjectCard: React.FC<{
               fontWeight: 800,
             }}
           >
-            {app.sourcePath}
+            Source: {app.sourcePath}
           </Typography>
           <Typography
             component='span'
@@ -544,11 +532,11 @@ const ProjectCard: React.FC<{
               color: app.accent,
               fontSize: '0.76rem',
               fontWeight: 900,
-              letterSpacing: '0.1em',
+              letterSpacing: 0,
               textTransform: 'uppercase',
             }}
           >
-            Open app →
+            Open live demo
           </Typography>
         </Box>
       </Stack>
