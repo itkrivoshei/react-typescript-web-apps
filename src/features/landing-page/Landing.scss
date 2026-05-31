@@ -89,7 +89,8 @@
   }
 
   .bg-full-gray {
-    background: radial-gradient(
+    background:
+      radial-gradient(
         circle at top left,
         rgba(37, 99, 235, 0.14),
         transparent 28rem
@@ -200,7 +201,8 @@
 
   .hero-section {
     overflow: hidden;
-    background: radial-gradient(
+    background:
+      radial-gradient(
         circle at 18% 20%,
         rgba(37, 99, 235, 0.34),
         transparent 34rem
@@ -295,7 +297,8 @@
     padding: 24px;
     border: 1px solid rgba(148, 163, 184, 0.16);
     border-radius: 18px;
-    background: radial-gradient(
+    background:
+      radial-gradient(
         circle at top right,
         rgba(37, 99, 235, 0.12),
         transparent 16rem
@@ -332,7 +335,8 @@
     border-radius: 18px;
     padding: 42px clamp(24px, 7vw, 86px);
     margin: 70px 0;
-    background: radial-gradient(
+    background:
+      radial-gradient(
         circle at top left,
         rgba(255, 255, 255, 0.16),
         transparent 18rem

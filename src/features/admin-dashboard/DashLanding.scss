@@ -2,7 +2,8 @@
   display: grid;
   grid-template-columns: 260px minmax(0, 1fr);
   min-height: 100vh;
-  background: radial-gradient(
+  background:
+    radial-gradient(
       circle at top left,
       rgba(255, 121, 198, 0.16),
       transparent 30rem
@@ -128,11 +129,8 @@
   }
 
   .header {
-    background: linear-gradient(
-        135deg,
-        rgba(68, 71, 90, 0.96),
-        rgba(40, 42, 54, 0.98)
-      ),
+    background:
+      linear-gradient(135deg, rgba(68, 71, 90, 0.96), rgba(40, 42, 54, 0.98)),
       #44475a;
     padding: 24px;
     border-bottom: 1px solid rgba(248, 248, 242, 0.08);

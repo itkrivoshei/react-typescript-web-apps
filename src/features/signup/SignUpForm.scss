@@ -8,7 +8,8 @@
   position: relative;
   min-height: 100vh;
   justify-content: space-between;
-  background: radial-gradient(
+  background:
+    radial-gradient(
       circle at 20% 0%,
       rgba(32, 255, 114, 0.12),
       transparent 32rem
@@ -25,10 +26,8 @@
     inset: 0;
     z-index: 1;
     pointer-events: none;
-    background: linear-gradient(
-        rgba(32, 255, 114, 0.03) 50%,
-        rgba(0, 0, 0, 0.08) 50%
-      ),
+    background:
+      linear-gradient(rgba(32, 255, 114, 0.03) 50%, rgba(0, 0, 0, 0.08) 50%),
       linear-gradient(
         90deg,
         rgba(255, 0, 0, 0.02),

@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
   group: ci-${{ github.ref }}
@@ -33,28 +33,10 @@ jobs:
           cache: npm
 
       - name: Install dependencies
-        run: npm ci
-
-      - name: Format source files
-        if: github.event_name == 'push'
-        run: npm run format
-
-      - name: Commit formatting changes
-        if: github.event_name == 'push'
-        run: |
-          if git diff --quiet; then
-            echo "No formatting changes to commit."
-          else
-            git config user.name "github-actions[bot]"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add .
-            git commit -m "style: format source files"
-            git push
-          fi
+        run: npm ci --loglevel=error
 
       - name: Verify
         run: npm run verify
         env:
           CI: true
-          REACT_APP_WEATHER_API_KEY: ${{ secrets.REACT_APP_WEATHER_API_KEY }}
-          REACT_APP_GIPHY_API_KEY: ${{ secrets.REACT_APP_GIPHY_API_KEY }}
+          VITE_GIPHY_API_KEY: ${{ secrets.REACT_APP_GIPHY_API_KEY }}
