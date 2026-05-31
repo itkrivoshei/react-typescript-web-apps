@@ -8,70 +8,57 @@
   "homepage": "https://itkrivoshei.github.io/react-typescript-web-apps/",
   "dependencies": {
     "@chakra-ui/react": "^3.35.0",
-    "@emotion/react": "^11.13.3",
-    "@emotion/styled": "^11.13.0",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
     "@fontsource/gideon-roman": "^5.1.0",
     "@fontsource/orbitron": "^5.1.0",
     "@fontsource/space-mono": "^5.1.0",
     "@mui/icons-material": "^6.1.0",
     "@mui/material": "^6.1.0",
     "@reduxjs/toolkit": "^2.12.0",
-    "@types/react": "^19.2.15",
-    "@types/react-dom": "^19.2.3",
-    "eslint-plugin-react": "^7.36.1",
     "framer-motion": "^12.40.0",
     "howler": "^2.2.4",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
     "react-icons": "^5.3.0",
     "react-redux": "^9.3.0",
-    "react-router-dom": "^6.26.2",
-    "react-scripts": "^5.0.1",
+    "react-router-dom": "^7.16.0",
     "redux": "^5.0.1",
     "redux-persist": "^6.0.0"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --watchAll=false --passWithNoTests",
-    "typecheck": "tsc --noEmit",
-    "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",
-    "prepare": "husky install",
-    "lint:fix": "eslint \"src/**/*.{js,jsx,ts,tsx}\" --fix",
-    "format": "prettier --write \"src/**/*.{ts,tsx,scss}\" \"public/**/*.html\" \"*.{json,js,mjs}\"",
-    "format:check": "prettier --check \"src/**/*.{ts,tsx,scss}\" \"public/**/*.html\" \"*.{json,js,mjs}\"",
-    "pretty": "npm run format",
-    "verify": "npm run typecheck && npm run lint && npm run format:check && npm test && npm run build",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "eject": "react-scripts eject"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
   "devDependencies": {
-    "husky": "^8.0.3",
-    "lint-staged": "^13.2.3",
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@types/howler": "^2.2.11",
+    "@types/react": "^19.2.15",
+    "@types/react-dom": "^19.2.3",
     "@typescript-eslint/eslint-plugin": "^8.60.0",
     "@typescript-eslint/parser": "^8.60.0",
+    "@vitejs/plugin-react": "^6.0.2",
     "eslint": "^9.10.0",
     "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-prettier": "^5.2.1",
-    "gh-pages": "^6.3.0",
+    "eslint-plugin-prettier": "^5.5.6",
+    "eslint-plugin-react": "^7.36.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^17.0.7",
     "prettier": "^3.3.3",
     "sass": "^1.78.0",
-    "typescript": "^4.9.5"
+    "typescript": "^5.9.3",
+    "vite": "^8.0.14",
+    "vite-plugin-svgr": "^5.2.0",
+    "vitest": "^4.1.7"
+  },
+  "scripts": {
+    "start": "vite",
+    "build": "vite build",
+    "test": "vitest run --passWithNoTests",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",
+    "prepare": "husky",
+    "lint:fix": "eslint \"src/**/*.{js,jsx,ts,tsx}\" --fix",
+    "format": "prettier --write \"src/**/*.{ts,tsx,scss}\" \"index.html\" \"*.{json,js,mjs}\"",
+    "format:check": "prettier --check \"src/**/*.{ts,tsx,scss}\" \"index.html\" \"*.{json,js,mjs}\"",
+    "pretty": "npm run format",
+    "verify": "npm run typecheck && npm run lint && npm run format:check && npm test && npm run build"
   },
   "lint-staged": {
     "src/**/*.{ts,tsx,js,jsx}": [
@@ -85,7 +72,7 @@
     ]
   },
   "engines": {
-    "node": ">=20",
+    "node": ">=20.19.0",
     "npm": ">=10"
   }
 }

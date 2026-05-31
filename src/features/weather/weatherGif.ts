@@ -28,9 +28,8 @@ const getQuery = (condition: string) => {
 };
 
 export const getWeatherGifUrl = async (condition: string) => {
-  const envName = ['REACT', 'APP', 'GIPHY', 'API', 'KEY'].join('_');
   const queryKey = ['api', 'key'].join('_');
-  const token = process.env[envName];
+  const token = import.meta.env.VITE_GIPHY_API_KEY;
 
   if (!token) return null;
 

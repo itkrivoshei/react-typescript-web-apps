@@ -43,14 +43,16 @@ jobs:
           cache: npm
 
       - name: Install dependencies
-        run: npm ci
+        run: npm ci --loglevel=error
 
       - name: Build
         run: npm run build
         env:
           CI: true
-          REACT_APP_WEATHER_API_KEY: ${{ secrets.REACT_APP_WEATHER_API_KEY }}
-          REACT_APP_GIPHY_API_KEY: ${{ secrets.REACT_APP_GIPHY_API_KEY }}
+          VITE_GIPHY_API_KEY: ${{ secrets.REACT_APP_GIPHY_API_KEY }}
+
+      - name: Add SPA fallback
+        run: cp dist/index.html dist/404.html
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v6
@@ -58,7 +60,7 @@ jobs:
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v5
         with:
-          path: build
+          path: dist
 
       - name: Deploy GitHub Pages
         id: deployment

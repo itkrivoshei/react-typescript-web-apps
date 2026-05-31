@@ -8,7 +8,7 @@ A routed React app gallery with weather lookup, calculator, todo board, games, a
 [![CI](https://img.shields.io/github/actions/workflow/status/itkrivoshei/react-typescript-web-apps/ci.yml?branch=main&style=for-the-badge&label=ci&logo=githubactions&logoColor=white)](https://github.com/itkrivoshei/react-typescript-web-apps/actions/workflows/ci.yml)
 [![Deploy](https://img.shields.io/github/actions/workflow/status/itkrivoshei/react-typescript-web-apps/deploy.yml?branch=main&style=for-the-badge&label=deploy&logo=githubactions&logoColor=white)](https://github.com/itkrivoshei/react-typescript-web-apps/actions/workflows/deploy.yml)
 [![React](https://img.shields.io/badge/React-19-61dafb?style=for-the-badge&logo=react&logoColor=111)](package.json)
-[![TypeScript](https://img.shields.io/badge/TypeScript-4.9-3178c6?style=for-the-badge&logo=typescript&logoColor=white)](tsconfig.json)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178c6?style=for-the-badge&logo=typescript&logoColor=white)](tsconfig.json)
 
 </div>
 
@@ -36,13 +36,13 @@ The dashboard is served with `HashRouter`, so every app title opens a direct Git
 
 | Area         | Tools                                     |
 | ------------ | ----------------------------------------- |
-| App shell    | React, React Router, Create React App     |
+| App shell    | React, React Router, Vite                 |
 | Language     | TypeScript                                |
 | State        | Redux Toolkit, React Redux, redux-persist |
 | UI libraries | Chakra UI, Material UI, React Icons       |
 | Motion/audio | Framer Motion, Howler                     |
 | Styling      | SCSS, component styles                    |
-| Quality      | ESLint, Prettier, TypeScript, Jest        |
+| Quality      | ESLint, Prettier, TypeScript, Vitest      |
 | Delivery     | GitHub Actions, GitHub Pages              |
 
 ## Run Locally
@@ -55,15 +55,14 @@ npm ci
 npm start
 ```
 
-Open `http://localhost:3000`.
+Open the URL printed by Vite, usually `http://localhost:5173`.
 
 ## Environment Variables
 
 Create `.env` from `.env.example` when using the API-backed apps:
 
 ```text
-REACT_APP_WEATHER_API_KEY=
-REACT_APP_GIPHY_API_KEY=
+VITE_GIPHY_API_KEY=
 ```
 
 The app can build without exposing secrets in the repository. GitHub Actions injects production values from repository secrets.
@@ -92,7 +91,7 @@ src/
 
 ## Deployment
 
-CI runs on pushes and pull requests to `main`. A successful `CI` workflow triggers the `Deploy` workflow, which builds the app and publishes the `build/` artifact to GitHub Pages.
+CI runs on pushes and pull requests to `main`. A successful `CI` workflow triggers the `Deploy` workflow, which builds the app and publishes the `dist/` artifact to GitHub Pages.
 
 ## License
 
