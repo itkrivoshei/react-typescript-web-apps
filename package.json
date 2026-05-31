@@ -63,12 +63,10 @@
   "lint-staged": {
     "src/**/*.{ts,tsx,js,jsx}": [
       "prettier --write",
-      "eslint --fix",
-      "git add"
+      "eslint --fix"
     ],
     "*.{scss,css,md,json}": [
-      "prettier --write",
-      "git add"
+      "prettier --write"
     ]
   },
   "engines": {
