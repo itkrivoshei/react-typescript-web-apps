@@ -60,7 +60,7 @@
   },
   "devDependencies": {
     "husky": "^8.0.3",
-    "lint-staged": "^13.2.3",
+    "lint-staged": "^17.0.7",
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@types/howler": "^2.2.11",
     "@typescript-eslint/eslint-plugin": "^8.60.0",
