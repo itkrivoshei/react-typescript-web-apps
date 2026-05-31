@@ -59,7 +59,7 @@
     ]
   },
   "devDependencies": {
-    "husky": "^8.0.3",
+    "husky": "^9.1.7",
     "lint-staged": "^13.2.3",
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@types/howler": "^2.2.11",
