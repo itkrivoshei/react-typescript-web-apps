@@ -4,17 +4,18 @@
 
 A routed React app gallery with weather lookup, calculator, todo board, games, audio UI, forms, and layout pages.
 
-[![Live app](https://img.shields.io/badge/live-GitHub%20Pages-2ea44f?style=for-the-badge&logo=githubpages&logoColor=white)](https://itkrivoshei.github.io/react-typescript-web-apps/)
-[![CI](https://img.shields.io/github/actions/workflow/status/itkrivoshei/react-typescript-web-apps/ci.yml?branch=main&style=for-the-badge&label=ci&logo=githubactions&logoColor=white)](https://github.com/itkrivoshei/react-typescript-web-apps/actions/workflows/ci.yml)
-[![Deploy](https://img.shields.io/github/actions/workflow/status/itkrivoshei/react-typescript-web-apps/deploy.yml?branch=main&style=for-the-badge&label=deploy&logo=githubactions&logoColor=white)](https://github.com/itkrivoshei/react-typescript-web-apps/actions/workflows/deploy.yml)
-[![React](https://img.shields.io/badge/React-19-61dafb?style=for-the-badge&logo=react&logoColor=111)](package.json)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178c6?style=for-the-badge&logo=typescript&logoColor=white)](tsconfig.json)
+[![Live app](https://img.shields.io/badge/live-app-2ea44f?style=for-the-badge&logo=githubpages&logoColor=white&labelColor=0f172a)](https://itkrivoshei.github.io/react-typescript-web-apps/)
+[![CI](https://img.shields.io/github/actions/workflow/status/itkrivoshei/react-typescript-web-apps/ci.yml?branch=main&style=for-the-badge&label=ci&logo=githubactions&logoColor=white&labelColor=0f172a)](https://github.com/itkrivoshei/react-typescript-web-apps/actions/workflows/ci.yml)
+[![Deploy](https://img.shields.io/github/actions/workflow/status/itkrivoshei/react-typescript-web-apps/deploy.yml?branch=main&style=for-the-badge&label=deploy&logo=githubactions&logoColor=white&labelColor=0f172a)](https://github.com/itkrivoshei/react-typescript-web-apps/actions/workflows/deploy.yml)
+[![React](https://img.shields.io/badge/React-19-61dafb?style=for-the-badge&logo=react&logoColor=111&labelColor=0f172a)](package.json)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178c6?style=for-the-badge&logo=typescript&logoColor=white&labelColor=0f172a)](tsconfig.json)
+[![License](https://img.shields.io/github/license/itkrivoshei/react-typescript-web-apps?style=for-the-badge&labelColor=0f172a)](LICENSE)
 
 </div>
 
 ## App Gallery
 
-The dashboard is served with `HashRouter`, so every app title opens a direct GitHub Pages route. Use the **Source & README** links to open each app folder with its source files and README preview.
+The dashboard is served with [`HashRouter`](https://reactrouter.com/), so every app title opens a direct [GitHub Pages](https://pages.github.com/) route. Use the **Source & README** links to open each app folder with its source files and README preview.
 
 | App                                                                                                          | Source & README                                           | Focus                                                                                                                       |
 | ------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
@@ -32,18 +33,18 @@ The dashboard is served with `HashRouter`, so every app title opens a direct Git
 | [Restaurant Menu Page](https://itkrivoshei.github.io/react-typescript-web-apps/#/Restaurant)                 | [Source files & README](src/features/restaurant-page)     | Menu, contact, and home sections                                                                                            |
 | [Landing Page Demo](https://itkrivoshei.github.io/react-typescript-web-apps/#/Landing)                       | [Source files & README](src/features/landing-page)        | Responsive marketing-style layout                                                                                           |
 
-## Stack
+## Tech Stack
 
-| Area         | Tools                                     |
-| ------------ | ----------------------------------------- |
-| App shell    | React, React Router, Vite                 |
-| Language     | TypeScript                                |
-| State        | Redux Toolkit, React Redux, redux-persist |
-| UI libraries | Chakra UI, Material UI, React Icons       |
-| Motion/audio | Framer Motion, Howler                     |
-| Styling      | SCSS, component styles                    |
-| Quality      | ESLint, Prettier, TypeScript, Vitest      |
-| Delivery     | GitHub Actions, GitHub Pages              |
+| Area         | Tools                                                                                                                                                        |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| App shell    | [React](https://react.dev/), [React Router](https://reactrouter.com/), [Vite](https://vite.dev/)                                                             |
+| Language     | [TypeScript](https://www.typescriptlang.org/)                                                                                                                |
+| State        | [Redux Toolkit](https://redux-toolkit.js.org/), [React Redux](https://react-redux.js.org/), [redux-persist](https://github.com/rt2zz/redux-persist)          |
+| UI libraries | [Chakra UI](https://chakra-ui.com/), [Material UI](https://mui.com/), [React Icons](https://react-icons.github.io/react-icons/)                              |
+| Motion/audio | [Framer Motion](https://motion.dev/), [Howler](https://howlerjs.com/)                                                                                        |
+| Styling      | [SCSS](https://sass-lang.com/), component styles                                                                                                             |
+| Quality      | [ESLint](https://eslint.org/), [Prettier](https://prettier.io/), [TypeScript](https://www.typescriptlang.org/), [Vitest](https://vitest.dev/)                |
+| Delivery     | [GitHub Actions](https://github.com/itkrivoshei/react-typescript-web-apps/actions), [GitHub Pages](https://itkrivoshei.github.io/react-typescript-web-apps/) |
 
 ## Run Locally
 
@@ -55,19 +56,21 @@ npm ci
 npm start
 ```
 
-Open the URL printed by Vite, usually `http://localhost:5173`.
+Open the URL printed by [Vite](https://vite.dev/), usually `http://localhost:5173`.
 
 ## Environment Variables
 
-Create `.env` from `.env.example` when using the API-backed apps:
+Create `.env` from [`.env.example`](.env.example) when using the API-backed apps:
 
 ```text
 VITE_GIPHY_API_KEY=
 ```
 
-The app can build without exposing secrets in the repository. GitHub Actions injects production values from repository secrets.
+The app can build without exposing secrets in the repository. [GitHub Actions](https://github.com/itkrivoshei/react-typescript-web-apps/actions) injects production values from repository secrets.
 
 ## Commands
+
+Scripts are defined in [`package.json`](package.json).
 
 | Command                | Description                                     |
 | ---------------------- | ----------------------------------------------- |
@@ -91,7 +94,7 @@ src/
 
 ## Deployment
 
-CI runs on pushes and pull requests to `main`. A successful `CI` workflow triggers the `Deploy` workflow, which builds the app and publishes the `dist/` artifact to GitHub Pages.
+[`ci.yml`](.github/workflows/ci.yml) runs on pushes and pull requests to `main`. A successful CI workflow triggers [`deploy.yml`](.github/workflows/deploy.yml), which builds the app and publishes the `dist/` artifact to [GitHub Pages](https://itkrivoshei.github.io/react-typescript-web-apps/).
 
 ## License
 
