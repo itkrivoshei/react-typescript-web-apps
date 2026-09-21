@@ -53,8 +53,7 @@ const EtchASketch: React.FC = () => {
 
   const resetPixels = (nextBoardColor = boardColor) => {
     const pixels = workspaceRef.current?.querySelectorAll('.pixel') as
-      | NodeListOf<HTMLDivElement>
-      | undefined;
+      NodeListOf<HTMLDivElement> | undefined;
 
     pixels?.forEach((pixel) => {
       pixel.style.backgroundColor = nextBoardColor;
