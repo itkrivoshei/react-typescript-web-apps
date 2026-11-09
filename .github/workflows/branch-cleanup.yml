@@ -1,0 +1,77 @@
+name: Branch cleanup
+
+# Keeps the repository down to main plus branches with work in progress.
+# - Merged PR branches are removed by the "Automatically delete head branches" setting.
+# - This deletes the branch of a PR that is closed without merging.
+# - A weekly sweep deletes any branch whose PRs are all closed (catches closes made
+#   by automation, which do not trigger workflows). Branches that never had a PR,
+#   the default branch, and protected branches are never deleted.
+
+on:
+  pull_request:
+    types: [closed]
+  schedule:
+    - cron: "41 5 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: read
+
+jobs:
+  closed-pr:
+    name: Delete closed PR branch
+    if: >-
+      github.event_name == 'pull_request' &&
+      !github.event.pull_request.merged &&
+      github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Delete branch if no other open PR uses it
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          BRANCH: ${{ github.event.pull_request.head.ref }}
+        run: |
+          set -euo pipefail
+          open="$(gh pr list -R "$REPO" --head "$BRANCH" --state open --json number --jq length)"
+          if [ "$open" != "0" ]; then
+            echo "Another open PR uses $BRANCH; keeping it."
+            exit 0
+          fi
+          if gh api -X DELETE "repos/$REPO/git/refs/heads/$BRANCH" 2>/dev/null; then
+            echo "Deleted $BRANCH"
+          else
+            echo "$BRANCH was already deleted."
+          fi
+
+  sweep:
+    name: Sweep branches with only closed PRs
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Delete stale PR branches
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          default="$(gh api "repos/$REPO" --jq .default_branch)"
+          gh api "repos/$REPO/branches" --paginate --jq '.[] | select(.protected | not) | .name' |
+            while IFS= read -r branch; do
+              [ "$branch" = "$default" ] && continue
+              counts="$(gh pr list -R "$REPO" --head "$branch" --state all --json state \
+                --jq '[length, ([.[] | select(.state == "OPEN")] | length)] | @tsv')"
+              total="${counts%%$'\t'*}"
+              open="${counts##*$'\t'}"
+              if [ "$total" -gt 0 ] && [ "$open" -eq 0 ]; then
+                gh api -X DELETE "repos/$REPO/git/refs/heads/$branch"
+                echo "Deleted $branch (all $total PR(s) closed)"
+              else
+                echo "Kept $branch (PRs: $total, open: $open)"
+              fi
+            done
