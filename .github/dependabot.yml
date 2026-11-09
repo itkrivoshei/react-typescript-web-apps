@@ -4,27 +4,25 @@ updates:
     directory: /
     schedule:
       interval: monthly
-      day: monday
       time: "09:00"
       timezone: Europe/Berlin
-    open-pull-requests-limit: 2
+    cooldown:
+      default-days: 7
+    open-pull-requests-limit: 5
     commit-message:
       prefix: deps
     ignore:
-      - dependency-name: eslint
-        versions:
-          - ">=10"
-      - dependency-name: "@mui/icons-material"
-        versions:
-          - ">=9"
-      - dependency-name: "@mui/material"
-        versions:
-          - ">=9"
-      - dependency-name: typescript
-        versions:
-          - ">=6"
+      # Major upgrades need migration work; do them manually when wanted.
+      - dependency-name: "*"
+        update-types:
+          - version-update:semver-major
     groups:
       app-dependencies:
+        applies-to: version-updates
+        patterns:
+          - "*"
+      security-updates:
+        applies-to: security-updates
         patterns:
           - "*"
 
@@ -32,9 +30,22 @@ updates:
     directory: /
     schedule:
       interval: monthly
-      day: monday
       time: "09:30"
       timezone: Europe/Berlin
-    open-pull-requests-limit: 1
+    cooldown:
+      default-days: 7
+    open-pull-requests-limit: 2
     commit-message:
       prefix: deps
+    groups:
+      actions-dependencies:
+        applies-to: version-updates
+        update-types:
+          - minor
+          - patch
+        patterns:
+          - "*"
+      security-updates:
+        applies-to: security-updates
+        patterns:
+          - "*"
