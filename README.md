@@ -13,10 +13,6 @@ A routed React app gallery with weather lookup, calculator, todo board, games, a
 
 </div>
 
-> [!NOTE]
-> **Archived.** This was a learning project. It is complete and no longer maintained, so the repository is read-only.
-> The live demo stays online.
-
 ## App Gallery
 
 The dashboard is served with [`HashRouter`](https://reactrouter.com/), so every app title opens a direct [GitHub Pages](https://pages.github.com/) route. Use the **Source & README** links to open each app folder with its source files and README preview.
