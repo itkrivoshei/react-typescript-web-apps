@@ -1,0 +1,39 @@
+name: Post-merge catch-up
+
+# Merges made by the auto-merge workflow use GITHUB_TOKEN, and pushes made with
+# GITHUB_TOKEN do not trigger other workflows. This job runs daily and dispatches
+# the listed workflows for the current main commit if they have not run on it yet.
+
+on:
+  schedule:
+    - cron: "17 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  actions: write
+  contents: read
+
+jobs:
+  dispatch:
+    name: Dispatch missing main runs
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Dispatch workflows that have not run on main HEAD
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          WORKFLOWS: "ci.yml"
+        run: |
+          set -euo pipefail
+          sha="$(gh api "repos/$REPO/commits/main" --jq .sha)"
+          for wf in $WORKFLOWS; do
+            runs="$(gh run list -R "$REPO" --workflow "$wf" --commit "$sha" --json databaseId --jq length)"
+            if [ "$runs" = "0" ]; then
+              echo "Dispatching $wf for $sha"
+              gh workflow run "$wf" -R "$REPO" --ref main
+            else
+              echo "$wf already ran for $sha"
+            fi
+          done
