@@ -72,5 +72,10 @@
   "engines": {
     "node": ">=20.19.0",
     "npm": ">=10"
+  },
+  "overrides": {
+    "@typescript-eslint/typescript-estree": {
+      "minimatch": "^11.0.1"
+    }
   }
 }
